@@ -1,0 +1,188 @@
+\doxysection{rtc\+\_\+time\+\_\+manager.\+h}
+\hypertarget{rtc__time__manager_8h_source}{}\label{rtc__time__manager_8h_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/rtc\_time\_manager.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/rtc\_time\_manager.h}}
+\mbox{\hyperlink{rtc__time__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}interfaces.h"{}}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00022}\mbox{\hyperlink{struct_time_components}{00022}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_time_components}{TimeComponents}}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00024}\mbox{\hyperlink{struct_time_components_a087d25b618a1976e6fab71c4c517b2f7}{00024}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_a087d25b618a1976e6fab71c4c517b2f7}{year}}\ =\ 2024;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00025}\mbox{\hyperlink{struct_time_components_a0d38c2c064562453d21337273e64ec7e}{00025}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_a0d38c2c064562453d21337273e64ec7e}{month}}\ =\ 1;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00026}\mbox{\hyperlink{struct_time_components_a431aba147987710a11e3e04522caf10a}{00026}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_a431aba147987710a11e3e04522caf10a}{day}}\ =\ 1;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00027}\mbox{\hyperlink{struct_time_components_ac92d18c10bb93bf13f89219a038c3046}{00027}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_ac92d18c10bb93bf13f89219a038c3046}{hour}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00028}\mbox{\hyperlink{struct_time_components_a0ae3083d9cb5cfe971ceb66a992eee9b}{00028}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_a0ae3083d9cb5cfe971ceb66a992eee9b}{minute}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00029}\mbox{\hyperlink{struct_time_components_ace84e11bf3530cdaa4c39a259a664a55}{00029}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_ace84e11bf3530cdaa4c39a259a664a55}{second}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00030}\mbox{\hyperlink{struct_time_components_a49fc74d490d9cf005635616e7016999d}{00030}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_a49fc74d490d9cf005635616e7016999d}{dayOfWeek}}\ =\ 1;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00031}\mbox{\hyperlink{struct_time_components_a6b7277ef0f4545d92e10811e3567c847}{00031}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_components_a6b7277ef0f4545d92e10811e3567c847}{timeZoneOffset}}\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00032}00032\ \};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00037}\mbox{\hyperlink{struct_time_sync_status}{00037}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_time_sync_status}{TimeSyncStatus}}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00039}\mbox{\hyperlink{struct_time_sync_status_a619c94d3b1ea2c086710d7e25bfb46e0}{00039}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_time_sync_status_a619c94d3b1ea2c086710d7e25bfb46e0}{rtcInitialized}}\ =\ \textcolor{keyword}{false};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00040}\mbox{\hyperlink{struct_time_sync_status_a6394afa4d611c20ab475a81429d5082c}{00040}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_time_sync_status_a6394afa4d611c20ab475a81429d5082c}{networkTimeSynced}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00041}\mbox{\hyperlink{struct_time_sync_status_a1df7f1392c15d0c69aa96a728e7062c7}{00041}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_time_sync_status_a1df7f1392c15d0c69aa96a728e7062c7}{lastSyncTime}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00042}\mbox{\hyperlink{struct_time_sync_status_aa1eabec7e01e865a56161c2795b8d01e}{00042}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_time_sync_status_aa1eabec7e01e865a56161c2795b8d01e}{timeSource}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00043}\mbox{\hyperlink{struct_time_sync_status_a2b998d625f60805ea41a48adb884abbd}{00043}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_sync_status_a2b998d625f60805ea41a48adb884abbd}{syncAttempts}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00044}\mbox{\hyperlink{struct_time_sync_status_acaa2f32292bf68563f1382485000b118}{00044}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_time_sync_status_acaa2f32292bf68563f1382485000b118}{successfulSyncs}}\ =\ 0;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00045}\mbox{\hyperlink{struct_time_sync_status_a22b78620e208c2d0e6b7087b8ad79593}{00045}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_time_sync_status_a22b78620e208c2d0e6b7087b8ad79593}{lastError}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00046}\mbox{\hyperlink{struct_time_sync_status_a5adfd9aa97890f3f5b71b1e44b08cf1d}{00046}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_time_sync_status_a5adfd9aa97890f3f5b71b1e44b08cf1d}{driftMilliseconds}}\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00047}00047\ \};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00052}\mbox{\hyperlink{struct_sleep_schedule}{00052}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_sleep_schedule}{SleepSchedule}}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00053}00053\ \{}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00054}\mbox{\hyperlink{struct_sleep_schedule_a124f5d1d871d4494e8f51e14b278423a}{00054}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_sleep_schedule_a124f5d1d871d4494e8f51e14b278423a}{nightStartHour}}\ =\ 22;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00055}\mbox{\hyperlink{struct_sleep_schedule_a62c309f000adebd64b3f392c87c9a09e}{00055}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_sleep_schedule_a62c309f000adebd64b3f392c87c9a09e}{nightEndHour}}\ =\ 6;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00056}\mbox{\hyperlink{struct_sleep_schedule_a1b5de513bb47174e4dc302fff1ccb540}{00056}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_sleep_schedule_a1b5de513bb47174e4dc302fff1ccb540}{nightSleepEnabled}}\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00057}\mbox{\hyperlink{struct_sleep_schedule_a07768479c7128543a1e6b8e98bb9f99c}{00057}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_sleep_schedule_a07768479c7128543a1e6b8e98bb9f99c}{nightSleepDurationUs}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00058}\mbox{\hyperlink{struct_sleep_schedule_a6a29be1aa48dde695216f72e792179ea}{00058}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_sleep_schedule_a6a29be1aa48dde695216f72e792179ea}{normalScanIntervalUs}}\ =\ 600000000;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00059}\mbox{\hyperlink{struct_sleep_schedule_a2980cb1315f1fa3cf512905cbdc1b010}{00059}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_sleep_schedule_a2980cb1315f1fa3cf512905cbdc1b010}{nightScanIntervalUs}}\ =\ 3600000000;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00060}00060\ \};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00077}\mbox{\hyperlink{class_r_t_c_time_manager}{00077}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_r_t_c_time_manager_a0f47edf7e2b9fd457ffad05698315e55}{RTCTimeManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_time_manager}{ITimeManager}}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00079}00079\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00085}\mbox{\hyperlink{class_r_t_c_time_manager_a0f47edf7e2b9fd457ffad05698315e55}{00085}}\ \ \ \ \ \mbox{\hyperlink{class_r_t_c_time_manager_a0f47edf7e2b9fd457ffad05698315e55}{RTCTimeManager}}(uint8\_t\ i2cAddress\ =\ 0x68,\ uint8\_t\ eepromAddress\ =\ 0x50);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00090}\mbox{\hyperlink{class_r_t_c_time_manager_adfcee0717bb7ab1679d179b0fcf4d748}{00090}}\ \ \ \ \ \mbox{\hyperlink{class_r_t_c_time_manager_adfcee0717bb7ab1679d179b0fcf4d748}{\string~RTCTimeManager}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ ITimeManager\ interface\ implementation}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00097}\mbox{\hyperlink{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10}{00097}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10}{getCurrentDateTime}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00104}\mbox{\hyperlink{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876}{00104}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876}{setTimeFromNetwork}}(\textcolor{keyword}{const}\ std::string\ \&networkTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00111}\mbox{\hyperlink{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d}{00111}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d}{isValidTime}}(\textcolor{keyword}{const}\ std::string\ \&timeStr)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00118}\mbox{\hyperlink{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4}{00118}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4}{getNightSleepDuration}}(\textcolor{keyword}{const}\ std::string\ \&currentTime)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ RTC-\/specific\ operations}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00125}\mbox{\hyperlink{class_r_t_c_time_manager_a6defb30a73374ac4a52359881a26e0dd}{00125}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a6defb30a73374ac4a52359881a26e0dd}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00132}\mbox{\hyperlink{class_r_t_c_time_manager_aded1a75cc12737188d00b959bc796236}{00132}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_aded1a75cc12737188d00b959bc796236}{setTime}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_time_components}{TimeComponents}}\ \&time);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00138}\mbox{\hyperlink{class_r_t_c_time_manager_aeb9fb7106e3e3d8bd16a9996f464d52b}{00138}}\ \ \ \ \ \mbox{\hyperlink{struct_time_components}{TimeComponents}}\ \mbox{\hyperlink{class_r_t_c_time_manager_aeb9fb7106e3e3d8bd16a9996f464d52b}{getTime}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00144}\mbox{\hyperlink{class_r_t_c_time_manager_aa5a8c3f020a8ecfe13a4aeb2d3464fe0}{00144}}\ \ \ \ \ \mbox{\hyperlink{struct_time_sync_status}{TimeSyncStatus}}\ \mbox{\hyperlink{class_r_t_c_time_manager_aa5a8c3f020a8ecfe13a4aeb2d3464fe0}{getSyncStatus}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ Clock\ control\ operations}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00151}\mbox{\hyperlink{class_r_t_c_time_manager_a867d178c4466e21d6a3a1a872fbb661b}{00151}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a867d178c4466e21d6a3a1a872fbb661b}{startClock}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00157}\mbox{\hyperlink{class_r_t_c_time_manager_a096abf3b104097494df9e8baa4a69346}{00157}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a096abf3b104097494df9e8baa4a69346}{stopClock}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00163}\mbox{\hyperlink{class_r_t_c_time_manager_a9dcaeba5961a82a65040d13db16f0886}{00163}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a9dcaeba5961a82a65040d13db16f0886}{isClockRunning}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00165}00165\ \ \ \ \ \textcolor{comment}{//\ Square\ wave\ output\ control}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00172}\mbox{\hyperlink{class_r_t_c_time_manager_a981797f824dc66b9eaae3ccdaed605fc}{00172}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a981797f824dc66b9eaae3ccdaed605fc}{configureSquareWave}}(\textcolor{keywordtype}{int}\ frequency,\ \textcolor{keywordtype}{bool}\ enabled\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00178}\mbox{\hyperlink{class_r_t_c_time_manager_a4f650128265106aec99d065da04d0229}{00178}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a4f650128265106aec99d065da04d0229}{disableSquareWave}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//\ EEPROM\ operations}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00185}\mbox{\hyperlink{class_r_t_c_time_manager_ae3cbd4ce03d34d6f113e26e2a00a3f03}{00185}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_ae3cbd4ce03d34d6f113e26e2a00a3f03}{saveTimeToEEPROM}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00191}\mbox{\hyperlink{class_r_t_c_time_manager_a38e0ae33a4a83ddc32960cc0c05e4fa1}{00191}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a38e0ae33a4a83ddc32960cc0c05e4fa1}{setTimeFromEEPROM}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00200}\mbox{\hyperlink{class_r_t_c_time_manager_a979f3fbf62d8708d8498529408fd12cb}{00200}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_r_t_c_time_manager_a979f3fbf62d8708d8498529408fd12cb}{readEEPROM}}(uint8\_t\ address,\ uint8\_t\ *buffer,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00209}\mbox{\hyperlink{class_r_t_c_time_manager_acaba243542dc173de0edc076a795babc}{00209}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_acaba243542dc173de0edc076a795babc}{writeEEPROM}}(uint8\_t\ address,\ \textcolor{keyword}{const}\ uint8\_t\ *buffer,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00211}00211\ \ \ \ \ \textcolor{comment}{//\ Time\ synchronization\ and\ drift\ management}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00217}\mbox{\hyperlink{class_r_t_c_time_manager_a62c95c0fa3b2ef4a9141a8ac48bc92ea}{00217}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a62c95c0fa3b2ef4a9141a8ac48bc92ea}{synchronizeWithNetwork}}(\textcolor{keyword}{const}\ std::string\ \&networkTime);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00223}\mbox{\hyperlink{class_r_t_c_time_manager_a5adb6e45f8b89134c843a60b1200b6d1}{00223}}\ \ \ \ \ int64\_t\ \mbox{\hyperlink{class_r_t_c_time_manager_a5adb6e45f8b89134c843a60b1200b6d1}{measureClockDrift}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00230}\mbox{\hyperlink{class_r_t_c_time_manager_a3d28e2df3782a7d12c848d32238004ea}{00230}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a3d28e2df3782a7d12c848d32238004ea}{applyDriftCorrection}}(int64\_t\ driftMs);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00232}00232\ \ \ \ \ \textcolor{comment}{//\ Sleep\ schedule\ management}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00237}\mbox{\hyperlink{class_r_t_c_time_manager_af9c37bd0a5e34bbb0df868353f9ecc86}{00237}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_r_t_c_time_manager_af9c37bd0a5e34bbb0df868353f9ecc86}{setSleepSchedule}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_sleep_schedule}{SleepSchedule}}\ \&schedule);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00243}\mbox{\hyperlink{class_r_t_c_time_manager_a2dbc61da54f1b77d2de97f028dbbdf48}{00243}}\ \ \ \ \ \mbox{\hyperlink{struct_sleep_schedule}{SleepSchedule}}\ \mbox{\hyperlink{class_r_t_c_time_manager_a2dbc61da54f1b77d2de97f028dbbdf48}{getSleepSchedule}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ sleepSchedule\_;\ \}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00250}\mbox{\hyperlink{class_r_t_c_time_manager_aae6668c4f07aafefea73b187cb6e0689}{00250}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_aae6668c4f07aafefea73b187cb6e0689}{isNightTime}}(\textcolor{keyword}{const}\ std::string\ \&currentTime\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00256}\mbox{\hyperlink{class_r_t_c_time_manager_ae489a3948af52f7d8875ee492526e23c}{00256}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_r_t_c_time_manager_ae489a3948af52f7d8875ee492526e23c}{getNextWakeupTime}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00258}00258\ \ \ \ \ \textcolor{comment}{//\ Time\ format\ conversion\ utilities}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00264}\mbox{\hyperlink{class_r_t_c_time_manager_ab4d09a5d8906bb27095d6350469ffc45}{00264}}\ \ \ \ \ \mbox{\hyperlink{struct_time_components}{TimeComponents}}\ \mbox{\hyperlink{class_r_t_c_time_manager_ab4d09a5d8906bb27095d6350469ffc45}{parseNetworkTime}}(\textcolor{keyword}{const}\ std::string\ \&networkTime);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00271}\mbox{\hyperlink{class_r_t_c_time_manager_ab04b248d5d9e44a8157580cfa86bdebb}{00271}}\ \ \ \ \ \mbox{\hyperlink{struct_time_components}{TimeComponents}}\ \mbox{\hyperlink{class_r_t_c_time_manager_ab04b248d5d9e44a8157580cfa86bdebb}{parseISOTime}}(\textcolor{keyword}{const}\ std::string\ \&isoTime);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00278}\mbox{\hyperlink{class_r_t_c_time_manager_a61891c9a098d212a9fd34211ad78bad9}{00278}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_r_t_c_time_manager_a61891c9a098d212a9fd34211ad78bad9}{formatISOTime}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_time_components}{TimeComponents}}\ \&time);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00285}\mbox{\hyperlink{class_r_t_c_time_manager_a3168dc7bc6f6fd8a586c0f441cc41a8a}{00285}}\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_r_t_c_time_manager_a3168dc7bc6f6fd8a586c0f441cc41a8a}{monthNameToNumber}}(\textcolor{keyword}{const}\ std::string\ \&monthName);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00287}00287\ \ \ \ \ \textcolor{comment}{//\ Validation\ and\ utility\ functions}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00293}\mbox{\hyperlink{class_r_t_c_time_manager_a10394aa092e338d4ad7d234806e2917a}{00293}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_a10394aa092e338d4ad7d234806e2917a}{validateTimeComponents}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_time_components}{TimeComponents}}\ \&time);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00299}\mbox{\hyperlink{class_r_t_c_time_manager_a5ba4ec2fba3c69719a69bbcc996d1ebd}{00299}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{class_r_t_c_time_manager_a5ba4ec2fba3c69719a69bbcc996d1ebd}{getUptimeSeconds}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00305}\mbox{\hyperlink{class_r_t_c_time_manager_a6b95d29af499e7e5a46d0c9f6890b8e5}{00305}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_r_t_c_time_manager_a6b95d29af499e7e5a46d0c9f6890b8e5}{getFilenameTimestamp}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00307}00307\ \ \ \ \ \textcolor{comment}{//\ Error\ handling\ and\ diagnostics}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00312}\mbox{\hyperlink{class_r_t_c_time_manager_a1419c10fd9ad30f5aeeb5af4ab92ecec}{00312}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_r_t_c_time_manager_a1419c10fd9ad30f5aeeb5af4ab92ecec}{getLastError}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ lastError\_;\ \}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00318}\mbox{\hyperlink{class_r_t_c_time_manager_acf5d8f744ed1b7b8a645b16f9ce69000}{00318}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_r_t_c_time_manager_acf5d8f744ed1b7b8a645b16f9ce69000}{performHealthCheck}}();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00320}00320\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00321}00321\ \ \ \ \ \textcolor{comment}{//\ Hardware\ configuration}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00322}00322\ \ \ \ \ uint8\_t\ rtcAddress\_;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00323}00323\ \ \ \ \ uint8\_t\ eepromAddress\_;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00324}00324\ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized\_;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00326}00326\ \ \ \ \ \textcolor{comment}{//\ Time\ synchronization\ state}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00327}00327\ \ \ \ \ \mbox{\hyperlink{struct_time_sync_status}{TimeSyncStatus}}\ syncStatus\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00328}00328\ \ \ \ \ \mbox{\hyperlink{struct_sleep_schedule}{SleepSchedule}}\ sleepSchedule\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00329}00329\ \ \ \ \ std::chrono::steady\_clock::time\_point\ lastSyncTime\_;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00330}00330\ \ \ \ \ int64\_t\ accumulatedDrift\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00332}00332\ \ \ \ \ \textcolor{comment}{//\ Thread\ safety\ and\ error\ handling}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00333}00333\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ timeMutex\_;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00334}00334\ \ \ \ \ std::string\ lastError\_;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00336}00336\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ handle}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00337}00337\ \ \ \ \ \textcolor{keywordtype}{void}\ *i2cHandle\_;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00339}00339\ \ \ \ \ \textcolor{comment}{//\ Internal\ DS1307\ operations}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00347}00347\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ readRegister(uint8\_t\ reg,\ uint8\_t\ *buffer,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00356}00356\ \ \ \ \ \textcolor{keywordtype}{bool}\ writeRegister(uint8\_t\ reg,\ \textcolor{keyword}{const}\ uint8\_t\ *buffer,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00363}00363\ \ \ \ \ uint8\_t\ binaryToBCD(uint8\_t\ value);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00370}00370\ \ \ \ \ uint8\_t\ bcdToBinary(uint8\_t\ value);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00372}00372\ \ \ \ \ \textcolor{comment}{//\ Time\ calculation\ utilities}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00380}00380\ \ \ \ \ \textcolor{keywordtype}{int}\ calculateDayOfWeek(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ day);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00381}00381\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00387}00387\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLeapYear(\textcolor{keywordtype}{int}\ year);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00395}00395\ \ \ \ \ \textcolor{keywordtype}{int}\ getDaysInMonth(\textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ year);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00396}00396\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00397}00397\ \ \ \ \ \textcolor{comment}{//\ Statistics\ and\ monitoring}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00403}00403\ \ \ \ \ \textcolor{keywordtype}{void}\ updateSyncStats(\textcolor{keywordtype}{bool}\ success,\ \textcolor{keyword}{const}\ std::string\ \&source);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00410}00410\ \ \ \ \ \textcolor{keywordtype}{void}\ logSyncEvent(\textcolor{keyword}{const}\ std::string\ \&event,\ \textcolor{keywordtype}{bool}\ success);}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00412}00412\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ implementations}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00417}00417\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformInitializeI2C();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00422}00422\ \ \ \ \ \textcolor{keywordtype}{void}\ platformCleanupI2C();}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00424}00424\ \ \ \ \ \textcolor{comment}{//\ Constants}}
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00425}00425\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ DS1307\_DEFAULT\_ADDRESS\ =\ 0x68;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00426}00426\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ DS1307\_EEPROM\_ADDRESS\ =\ 0x50;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00427}00427\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ DS1307\_SECONDS\_REG\ =\ 0x00;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00428}00428\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ DS1307\_CONTROL\_REG\ =\ 0x07;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00429}00429\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ DS1307\_RAM\_START\ =\ 0x08;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00430}00430\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ DS1307\_CLOCK\_HALT\_BIT\ =\ 0x80;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00431}00431\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ EEPROM\_TIME\_BACKUP\_ADDR\ =\ 248;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00432}00432\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DEFAULT\_NIGHT\_START\_HOUR\ =\ 22;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00433}00433\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DEFAULT\_NIGHT\_END\_HOUR\ =\ 6;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00434}00434\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ MICROSECONDS\_PER\_HOUR\ =\ 3600000000ULL;\ }
+\DoxyCodeLine{\Hypertarget{rtc__time__manager_8h_source_l00435}00435\ \};}
+
+\end{DoxyCode}

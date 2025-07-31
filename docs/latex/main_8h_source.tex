@@ -1,0 +1,112 @@
+\doxysection{main.\+h}
+\hypertarget{main_8h_source}{}\label{main_8h_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/main.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/main.h}}
+\mbox{\hyperlink{main_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00009}00009\ \textcolor{comment}{//\ Configuration\ constants}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00010}\mbox{\hyperlink{namespace_config}{00010}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_config}{Config}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00012}\mbox{\hyperlink{namespace_config_a6b4401a831c6a5f1f899992b0c1d3318}{00012}}\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{namespace_config_a6b4401a831c6a5f1f899992b0c1d3318}{ASSET\_ID}}\ =\ \textcolor{stringliteral}{"{}9c3f2d54-\/3e77-\/4c8a-\/8e1d-\/0f5b8e3a7b10"{}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00013}\mbox{\hyperlink{namespace_config_a4f6ee86837579d4892b81c96af4787b3}{00013}}\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{namespace_config_a4f6ee86837579d4892b81c96af4787b3}{DEVICE\_ID}}\ =\ \textcolor{stringliteral}{"{}Device23"{}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00014}\mbox{\hyperlink{namespace_config_a2f30de576662546383551a90cc10697c}{00014}}\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{namespace_config_a2f30de576662546383551a90cc10697c}{LOCATION}}\ =\ \textcolor{stringliteral}{"{}Device23"{}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00015}\mbox{\hyperlink{namespace_config_ad58084995cc5ae949043b4d34c84771a}{00015}}\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{namespace_config_ad58084995cc5ae949043b4d34c84771a}{FOREST\_NAME}}\ =\ \textcolor{stringliteral}{"{}Device23"{}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00016}\mbox{\hyperlink{namespace_config_af2163c4ce4729a85119e1510258a3b86}{00016}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_config_af2163c4ce4729a85119e1510258a3b86}{LATITUDE}}\ =\ 55.5;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00017}\mbox{\hyperlink{namespace_config_a9e2b4df07302242c3daea41e355f4ea6}{00017}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_config_a9e2b4df07302242c3daea41e355f4ea6}{LONGITUDE}}\ =\ -\/2.84;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00019}\mbox{\hyperlink{namespace_config_a7b56a950f6ecd80f4805d0b973e08cac}{00019}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a7b56a950f6ecd80f4805d0b973e08cac}{SCAN\_INTERVAL\_MS}}\ =\ 10000;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00020}\mbox{\hyperlink{namespace_config_a1ecd6e382f8729ec28361f2b1b685bdb}{00020}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a1ecd6e382f8729ec28361f2b1b685bdb}{BLE\_SCAN\_TIME\_MS}}\ =\ 60;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00021}\mbox{\hyperlink{namespace_config_a786f3a65fdb0e50e0c8c524da57c47d6}{00021}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a786f3a65fdb0e50e0c8c524da57c47d6}{WIFI\_SCAN\_TIME\_MS}}\ =\ 600;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00022}\mbox{\hyperlink{namespace_config_aef4c34c29136f6b01af094ebb1f9a9c3}{00022}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_aef4c34c29136f6b01af094ebb1f9a9c3}{LTE\_TIME\_MINUTES}}\ =\ 200;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00023}\mbox{\hyperlink{namespace_config_ab0e7a9dede11d00bf58e89fc061a4d19}{00023}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_ab0e7a9dede11d00bf58e89fc061a4d19}{MAX\_CHUNK\_SIZE}}\ =\ 4096;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00024}\mbox{\hyperlink{namespace_config_a47cadc4fb311dfc26c23f2dfae4ce523}{00024}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a47cadc4fb311dfc26c23f2dfae4ce523}{FILENAME\_LENGTH}}\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ Battery\ safety\ limits}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00027}\mbox{\hyperlink{namespace_config_a417d856167e4127a2f85bc542b062524}{00027}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a417d856167e4127a2f85bc542b062524}{BAT\_LOW\_SOC}}\ =\ 10;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 10\%\ State\ of\ Charge}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00028}\mbox{\hyperlink{namespace_config_a06d6626cb8d9a0f68bcbb418722ed08b}{00028}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a06d6626cb8d9a0f68bcbb418722ed08b}{BAT\_HIGH\_SOC}}\ =\ 101;\ \ \ \ \ \ \ \textcolor{comment}{//\ 101\%\ State\ of\ Charge}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00029}\mbox{\hyperlink{namespace_config_a1bc407d76722f4150c84772590e96dd4}{00029}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a1bc407d76722f4150c84772590e96dd4}{BAT\_LOW\_SOH}}\ =\ 50;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 50\%\ State\ of\ Health}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00030}\mbox{\hyperlink{namespace_config_ab7def6fd93b582ce1416ea98869ade8d}{00030}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_ab7def6fd93b582ce1416ea98869ade8d}{BAT\_LOW\_BOARD\_TEMP}}\ =\ 2;\ \ \ \textcolor{comment}{//\ 2°C}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00031}\mbox{\hyperlink{namespace_config_a9d7486097271641fd883c8a043fefa9e}{00031}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a9d7486097271641fd883c8a043fefa9e}{BAT\_HIGH\_BOARD\_TEMP}}\ =\ 30;\ \textcolor{comment}{//\ 30°C}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00032}\mbox{\hyperlink{namespace_config_ab3e33381ac0c54be8f95ba0dd5bd4172}{00032}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_ab3e33381ac0c54be8f95ba0dd5bd4172}{BAT\_LOW\_CELL\_TEMP}}\ =\ 4;\ \ \ \ \textcolor{comment}{//\ 4°C}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00033}\mbox{\hyperlink{namespace_config_a33044898eb192188f671c27774b182fd}{00033}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a33044898eb192188f671c27774b182fd}{BAT\_HIGH\_CELL\_TEMP}}\ =\ 30;\ \ \textcolor{comment}{//\ 30°C}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00036}00036\ \textcolor{comment}{//\ Data\ structures}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00037}\mbox{\hyperlink{struct_probe_request}{00037}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_probe_request}{ProbeRequest}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00039}\mbox{\hyperlink{struct_probe_request_ad3d64a882e16da21cb4fd8c169e8f2e9}{00039}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_probe_request_ad3d64a882e16da21cb4fd8c169e8f2e9}{dataType}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00040}\mbox{\hyperlink{struct_probe_request_a8a732636f814b964c8e521a19146646b}{00040}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_probe_request_a8a732636f814b964c8e521a19146646b}{timestamp}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00041}\mbox{\hyperlink{struct_probe_request_ae3a4a7d2e756575a0fa4d28eb6061d0b}{00041}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_probe_request_ae3a4a7d2e756575a0fa4d28eb6061d0b}{source}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00042}\mbox{\hyperlink{struct_probe_request_ad3b45f43e1f38f60836b4bab0c7f4ae8}{00042}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_probe_request_ad3b45f43e1f38f60836b4bab0c7f4ae8}{rssi}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00043}\mbox{\hyperlink{struct_probe_request_af39f57b590c8083a10033e4ccff0b7a3}{00043}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_probe_request_af39f57b590c8083a10033e4ccff0b7a3}{packetLength}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00044}\mbox{\hyperlink{struct_probe_request_a39d414586c639cbb8eb8ddc8a0a9b4b2}{00044}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_probe_request_a39d414586c639cbb8eb8ddc8a0a9b4b2}{macAddress}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00045}\mbox{\hyperlink{struct_probe_request_a4346f9a3cee65b37cf9c8965b039fa25}{00045}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_probe_request_a4346f9a3cee65b37cf9c8965b039fa25}{payload}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00046}00046\ \};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00048}\mbox{\hyperlink{struct_battery_status}{00048}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_battery_status}{BatteryStatus}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00050}\mbox{\hyperlink{struct_battery_status_a5f276e6d160e89bc57d18caaca538d06}{00050}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_battery_status_a5f276e6d160e89bc57d18caaca538d06}{voltage}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00051}\mbox{\hyperlink{struct_battery_status_a07a6a0a570a8b737b63ef80027faaa5d}{00051}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_battery_status_a07a6a0a570a8b737b63ef80027faaa5d}{current}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00052}\mbox{\hyperlink{struct_battery_status_ab7db2df51ec170b7313ec8fedd6c7ae1}{00052}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_battery_status_ab7db2df51ec170b7313ec8fedd6c7ae1}{remainingCapacity}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00053}\mbox{\hyperlink{struct_battery_status_a458ba534a78dac338466799f27a6216c}{00053}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_battery_status_a458ba534a78dac338466799f27a6216c}{averageTimeToEmpty}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00054}\mbox{\hyperlink{struct_battery_status_a56abc55e32d13fe453684f5041855c4c}{00054}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_battery_status_a56abc55e32d13fe453684f5041855c4c}{boardTemperature}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00055}\mbox{\hyperlink{struct_battery_status_a6b85003dfe2bb290c5890aff39f4d9b4}{00055}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_battery_status_a6b85003dfe2bb290c5890aff39f4d9b4}{cellTemperature}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00056}\mbox{\hyperlink{struct_battery_status_a5ffac824debd5f94cab4668e401ea39f}{00056}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_battery_status_a5ffac824debd5f94cab4668e401ea39f}{stateOfCharge}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00057}\mbox{\hyperlink{struct_battery_status_ad5cbc5233c9fa2d2011628e5d0dc5a99}{00057}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_battery_status_ad5cbc5233c9fa2d2011628e5d0dc5a99}{stateOfHealth}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00058}\mbox{\hyperlink{struct_battery_status_a4d900b9e516e6e22d6c55b627ae37d4f}{00058}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_battery_status_a4d900b9e516e6e22d6c55b627ae37d4f}{cycleCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00059}\mbox{\hyperlink{struct_battery_status_a00d42cd7be5690d5ba74a8721ead1876}{00059}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_battery_status_a00d42cd7be5690d5ba74a8721ead1876}{averageCurrent}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00060}00060\ \};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00062}\mbox{\hyperlink{struct_asset_info}{00062}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_asset_info}{AssetInfo}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00064}\mbox{\hyperlink{struct_asset_info_ad8f370aff00e988b2bcbd91630968032}{00064}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_asset_info_ad8f370aff00e988b2bcbd91630968032}{assetId}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00065}\mbox{\hyperlink{struct_asset_info_a90dcde77230007e8a24434981f6205df}{00065}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_asset_info_a90dcde77230007e8a24434981f6205df}{locationName}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00066}\mbox{\hyperlink{struct_asset_info_a512807dd9e56b05251dd3033c476ca7b}{00066}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_asset_info_a512807dd9e56b05251dd3033c476ca7b}{forestName}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00067}\mbox{\hyperlink{struct_asset_info_a61a16ec26ee07f387d2216000dc82ecc}{00067}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_asset_info_a61a16ec26ee07f387d2216000dc82ecc}{latitude}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00068}\mbox{\hyperlink{struct_asset_info_aa651e355ea2bf9aafe2c3cecaaa1d676}{00068}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_asset_info_aa651e355ea2bf9aafe2c3cecaaa1d676}{longitude}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00069}\mbox{\hyperlink{struct_asset_info_a910515ab1f65d2b4ab3e34e672979873}{00069}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_asset_info_a910515ab1f65d2b4ab3e34e672979873}{remainingBatteryCapacity}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00070}\mbox{\hyperlink{struct_asset_info_a0e69691ce694d753642c3d407867f408}{00070}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_asset_info_a0e69691ce694d753642c3d407867f408}{stateOfCharge}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00071}\mbox{\hyperlink{struct_asset_info_a3be297c6a57659e97d0043f884dd7f1a}{00071}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_asset_info_a3be297c6a57659e97d0043f884dd7f1a}{stateOfHealth}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00072}\mbox{\hyperlink{struct_asset_info_a044f9f51496440a60ba73f073b9bbfe8}{00072}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_asset_info_a044f9f51496440a60ba73f073b9bbfe8}{runtimeToEmpty}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00073}\mbox{\hyperlink{struct_asset_info_a6efdf7d6ed16ee28b67416e25cfd4a9d}{00073}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_asset_info_a6efdf7d6ed16ee28b67416e25cfd4a9d}{cycleCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00074}\mbox{\hyperlink{struct_asset_info_a1d0f7a9ae0721d3c0d56e02a725b53af}{00074}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_asset_info_a1d0f7a9ae0721d3c0d56e02a725b53af}{batteryVoltage}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00075}\mbox{\hyperlink{struct_asset_info_a2246b2abf9c27254bdfb2cb30a379261}{00075}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_asset_info_a2246b2abf9c27254bdfb2cb30a379261}{batteryCurrent}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00076}\mbox{\hyperlink{struct_asset_info_afcb5a79d5adeab55106380d7808638a2}{00076}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_asset_info_afcb5a79d5adeab55106380d7808638a2}{cellTemperature}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00077}\mbox{\hyperlink{struct_asset_info_aaa9443c3717bb66f6b7bfb60e1ddac9e}{00077}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_asset_info_aaa9443c3717bb66f6b7bfb60e1ddac9e}{pcbTemperature}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00078}\mbox{\hyperlink{struct_asset_info_a08dcdd2cc0eedd02c118f6de0b21a363}{00078}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_asset_info_a08dcdd2cc0eedd02c118f6de0b21a363}{sdCardCapacity}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00079}\mbox{\hyperlink{struct_asset_info_a477182b19d849671e3553cb719138390}{00079}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_asset_info_a477182b19d849671e3553cb719138390}{timeStamp}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00080}00080\ \};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00082}00082\ \textcolor{comment}{//\ Enums}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00083}\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{00083}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{SystemState}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00084}00084\ \{}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00085}\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a928107a5679ed3e1be104d5de63adb32}{00085}}\ \ \ \ \ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a928107a5679ed3e1be104d5de63adb32}{FIRST\_BOOT}},}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00086}\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}{00086}}\ \ \ \ \ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}{NORMAL\_OPERATION}},}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00087}\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f}{00087}}\ \ \ \ \ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f}{SLEEP\_MODE}},}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00088}\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58}{00088}}\ \ \ \ \ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58}{ERROR\_STATE}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00089}00089\ \};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00091}\mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44}{00091}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00092}00092\ \{}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00093}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{00093}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{TIMER}},}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00094}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d}{00094}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3932d629fb5e2be9d09b3a4485b3cc9d}{EXTERNAL}},}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00095}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{00095}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00096}00096\ \};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00098}00098\ \textcolor{comment}{//\ Forward\ declarations}}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00099}00099\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_wi_fi_scanner}{WiFiScanner}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00100}00100\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_b_l_e_scanner}{BLEScanner}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00101}00101\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_battery_monitor}{BatteryMonitor}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00102}00102\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cellular_manager}{CellularManager}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00103}00103\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_s_d_card_manager}{SDCardManager}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00104}00104\ \textcolor{keyword}{class\ }RTCManager;}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00105}00105\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_power_manager}{PowerManager}};}
+\DoxyCodeLine{\Hypertarget{main_8h_source_l00106}00106\ \textcolor{keyword}{class\ }DataLogger;}
+
+\end{DoxyCode}

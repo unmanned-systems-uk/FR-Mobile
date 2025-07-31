@@ -1,0 +1,271 @@
+\doxysection{D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/utils/logger.h File Reference}
+\hypertarget{logger_8h}{}\label{logger_8h}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/utils/logger.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/utils/logger.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$condition\+\_\+variable$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_log_entry}{Log\+Entry}}
+\begin{DoxyCompactList}\small\item\em Individual log entry structure. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_logger}{Logger}}
+\begin{DoxyCompactList}\small\item\em Comprehensive logging system for the forestry research device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{logger_8h_a77827b397e6aeebee4d410a604af8d19}{LOG\+\_\+\+DEBUG}}(component,  message)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a22f93952919677e2be7c01bcb6f6c13e}{LOG\+\_\+\+INFO}}(component,  message)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a5cc99dd77e66cb4eefb3993cc94be5fa}{LOG\+\_\+\+WARNING}}(component,  message)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a9dd6e4ff7d1ad86be0489b1faa8b0f09}{LOG\+\_\+\+ERROR}}(component,  message)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a976ddbf8041ec9fc020d66a36350201f}{LOG\+\_\+\+CRITICAL}}(component,  message)
+\item 
+\#define \mbox{\hyperlink{logger_8h_aed6e34501f948dca7882a14eae26c615}{LOGF\+\_\+\+DEBUG}}(component,  format, ...)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a1e354a023c6100d362a3fd1e59aa67e6}{LOGF\+\_\+\+INFO}}(component,  format, ...)
+\item 
+\#define \mbox{\hyperlink{logger_8h_a8518c5b87477ad80acc6c6f6a2f90719}{LOGF\+\_\+\+ERROR}}(component,  format, ...)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \{ \newline
+\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9adc30ec20708ef7b0f641ef78b7880a15}{DEBUG}} = 0
+, \mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a551b723eafd6a31d444fcb2f5920fbd3}{INFO}} = 1
+, \mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a059e9861e0400dfbe05c98a841f3f96b}{WARNING}} = 2
+, \mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9abb1ca97ec761fc37101737ba0aa2e7c5}{ERROR}} = 3
+, \newline
+\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a99cd1c61610c76a57cb8d10d6df6b870}{CRITICAL}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Log levels for filtering and categorization. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}} \{ \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850caaf87e944ac35c8c1296b3b366029c5b6}{CONSOLE\+\_\+\+ONLY}} = 1
+, \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850cae01fd8e0bc4c8033388d27b1fffc2e03}{FILE\+\_\+\+ONLY}} = 2
+, \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{BOTH}} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Log destinations for output control. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{logger_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{logger_8h_a976ddbf8041ec9fc020d66a36350201f}\index{logger.h@{logger.h}!LOG\_CRITICAL@{LOG\_CRITICAL}}
+\index{LOG\_CRITICAL@{LOG\_CRITICAL}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_CRITICAL}{LOG\_CRITICAL}}
+{\footnotesize\ttfamily \label{logger_8h_a976ddbf8041ec9fc020d66a36350201f} 
+\#define LOG\+\_\+\+CRITICAL(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>critical(component,\ message);\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00352}{352}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_a77827b397e6aeebee4d410a604af8d19}\index{logger.h@{logger.h}!LOG\_DEBUG@{LOG\_DEBUG}}
+\index{LOG\_DEBUG@{LOG\_DEBUG}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_DEBUG}{LOG\_DEBUG}}
+{\footnotesize\ttfamily \label{logger_8h_a77827b397e6aeebee4d410a604af8d19} 
+\#define LOG\+\_\+\+DEBUG(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>debug(component,\ message);\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00328}{328}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_a9dd6e4ff7d1ad86be0489b1faa8b0f09}\index{logger.h@{logger.h}!LOG\_ERROR@{LOG\_ERROR}}
+\index{LOG\_ERROR@{LOG\_ERROR}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_ERROR}{LOG\_ERROR}}
+{\footnotesize\ttfamily \label{logger_8h_a9dd6e4ff7d1ad86be0489b1faa8b0f09} 
+\#define LOG\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>error(component,\ message);\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00346}{346}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_a22f93952919677e2be7c01bcb6f6c13e}\index{logger.h@{logger.h}!LOG\_INFO@{LOG\_INFO}}
+\index{LOG\_INFO@{LOG\_INFO}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_INFO}{LOG\_INFO}}
+{\footnotesize\ttfamily \label{logger_8h_a22f93952919677e2be7c01bcb6f6c13e} 
+\#define LOG\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>info(component,\ message);\ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00334}{334}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_a5cc99dd77e66cb4eefb3993cc94be5fa}\index{logger.h@{logger.h}!LOG\_WARNING@{LOG\_WARNING}}
+\index{LOG\_WARNING@{LOG\_WARNING}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_WARNING}{LOG\_WARNING}}
+{\footnotesize\ttfamily \label{logger_8h_a5cc99dd77e66cb4eefb3993cc94be5fa} 
+\#define LOG\+\_\+\+WARNING(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{message}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>warning(component,\ message);\ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00340}{340}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_aed6e34501f948dca7882a14eae26c615}\index{logger.h@{logger.h}!LOGF\_DEBUG@{LOGF\_DEBUG}}
+\index{LOGF\_DEBUG@{LOGF\_DEBUG}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOGF\_DEBUG}{LOGF\_DEBUG}}
+{\footnotesize\ttfamily \label{logger_8h_aed6e34501f948dca7882a14eae26c615} 
+\#define LOGF\+\_\+\+DEBUG(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>logf(\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9adc30ec20708ef7b0f641ef78b7880a15}{LogLevel::DEBUG}},\ component,\ format,\ \#\#\_\_VA\_ARGS\_\_);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00359}{359}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_a8518c5b87477ad80acc6c6f6a2f90719}\index{logger.h@{logger.h}!LOGF\_ERROR@{LOGF\_ERROR}}
+\index{LOGF\_ERROR@{LOGF\_ERROR}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOGF\_ERROR}{LOGF\_ERROR}}
+{\footnotesize\ttfamily \label{logger_8h_a8518c5b87477ad80acc6c6f6a2f90719} 
+\#define LOGF\+\_\+\+ERROR(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>logf(\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9abb1ca97ec761fc37101737ba0aa2e7c5}{LogLevel::ERROR}},\ component,\ format,\ \#\#\_\_VA\_ARGS\_\_);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00371}{371}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_a1e354a023c6100d362a3fd1e59aa67e6}\index{logger.h@{logger.h}!LOGF\_INFO@{LOGF\_INFO}}
+\index{LOGF\_INFO@{LOGF\_INFO}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LOGF\_INFO}{LOGF\_INFO}}
+{\footnotesize\ttfamily \label{logger_8h_a1e354a023c6100d362a3fd1e59aa67e6} 
+\#define LOGF\+\_\+\+INFO(\begin{DoxyParamCaption}\item[{}]{component}{, }\item[{}]{format}{, }\item[{}]{}...{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}\ logger\ =\ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{Logger::getGlobalLogger}}())\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ logger-\/>logf(\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a551b723eafd6a31d444fcb2f5920fbd3}{LogLevel::INFO}},\ component,\ format,\ \#\#\_\_VA\_ARGS\_\_);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00365}{365}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{logger_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}\index{logger.h@{logger.h}!LogDestination@{LogDestination}}
+\index{LogDestination@{LogDestination}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LogDestination}{LogDestination}}
+{\footnotesize\ttfamily \label{logger_8h_a4d96f303a62a42f0088fbafbb30c850c} 
+enum class \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Log destinations for output control. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONSOLE\_ONLY@{CONSOLE\_ONLY}!logger.h@{logger.h}}\index{logger.h@{logger.h}!CONSOLE\_ONLY@{CONSOLE\_ONLY}}}\Hypertarget{logger_8h_a4d96f303a62a42f0088fbafbb30c850caaf87e944ac35c8c1296b3b366029c5b6}\label{logger_8h_a4d96f303a62a42f0088fbafbb30c850caaf87e944ac35c8c1296b3b366029c5b6} 
+CONSOLE\+\_\+\+ONLY&Output only to console/serial. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FILE\_ONLY@{FILE\_ONLY}!logger.h@{logger.h}}\index{logger.h@{logger.h}!FILE\_ONLY@{FILE\_ONLY}}}\Hypertarget{logger_8h_a4d96f303a62a42f0088fbafbb30c850cae01fd8e0bc4c8033388d27b1fffc2e03}\label{logger_8h_a4d96f303a62a42f0088fbafbb30c850cae01fd8e0bc4c8033388d27b1fffc2e03} 
+FILE\+\_\+\+ONLY&Output only to SD card file. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOTH@{BOTH}!logger.h@{logger.h}}\index{logger.h@{logger.h}!BOTH@{BOTH}}}\Hypertarget{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}\label{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197} 
+BOTH&Output to both console and file. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00031}{31}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}\index{logger.h@{logger.h}!LogLevel@{LogLevel}}
+\index{LogLevel@{LogLevel}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
+{\footnotesize\ttfamily \label{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9} 
+enum class \mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Log levels for filtering and categorization. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEBUG@{DEBUG}!logger.h@{logger.h}}\index{logger.h@{logger.h}!DEBUG@{DEBUG}}}\Hypertarget{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9adc30ec20708ef7b0f641ef78b7880a15}\label{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9adc30ec20708ef7b0f641ef78b7880a15} 
+DEBUG&Detailed debug information. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INFO@{INFO}!logger.h@{logger.h}}\index{logger.h@{logger.h}!INFO@{INFO}}}\Hypertarget{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a551b723eafd6a31d444fcb2f5920fbd3}\label{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a551b723eafd6a31d444fcb2f5920fbd3} 
+INFO&General information messages. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING@{WARNING}!logger.h@{logger.h}}\index{logger.h@{logger.h}!WARNING@{WARNING}}}\Hypertarget{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a059e9861e0400dfbe05c98a841f3f96b}\label{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a059e9861e0400dfbe05c98a841f3f96b} 
+WARNING&Warning messages. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR@{ERROR}!logger.h@{logger.h}}\index{logger.h@{logger.h}!ERROR@{ERROR}}}\Hypertarget{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9abb1ca97ec761fc37101737ba0aa2e7c5}\label{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9abb1ca97ec761fc37101737ba0aa2e7c5} 
+ERROR&Error messages. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CRITICAL@{CRITICAL}!logger.h@{logger.h}}\index{logger.h@{logger.h}!CRITICAL@{CRITICAL}}}\Hypertarget{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a99cd1c61610c76a57cb8d10d6df6b870}\label{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9a99cd1c61610c76a57cb8d10d6df6b870} 
+CRITICAL&Critical system errors. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00019}{19}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+

@@ -1,0 +1,48 @@
+\doxysection{D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/scanners/wifi\+\_\+scanner.h File Reference}
+\hypertarget{wifi__scanner_8h}{}\label{wifi__scanner_8h}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/scanners/wifi\_scanner.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/scanners/wifi\_scanner.h}}
+{\ttfamily \#include "{}interfaces.\+h"{}}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_wi_fi_scanner}{Wi\+Fi\+Scanner}}
+\begin{DoxyCompactList}\small\item\em Wi\+Fi Scanner class for capturing probe requests in promiscuous mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{wifi__scanner_8h_a3972d2cea51bfa11a2b08c42c8afa603}{wifi\+Scan\+Callback}} (\mbox{\hyperlink{class_wi_fi_scanner}{Wi\+Fi\+Scanner}} \texorpdfstring{$\ast$}{*}scanner, void \texorpdfstring{$\ast$}{*}buf, int type)
+\begin{DoxyCompactList}\small\item\em Global callback bridge function for Wi\+Fi scan results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{wifi__scanner_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wifi__scanner_8h_a3972d2cea51bfa11a2b08c42c8afa603}\index{wifi\_scanner.h@{wifi\_scanner.h}!wifiScanCallback@{wifiScanCallback}}
+\index{wifiScanCallback@{wifiScanCallback}!wifi\_scanner.h@{wifi\_scanner.h}}
+\doxysubsubsection{\texorpdfstring{wifiScanCallback()}{wifiScanCallback()}}
+{\footnotesize\ttfamily \label{wifi__scanner_8h_a3972d2cea51bfa11a2b08c42c8afa603} 
+void wifi\+Scan\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_wi_fi_scanner}{Wi\+Fi\+Scanner}} \texorpdfstring{$\ast$}{*}}]{scanner}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{int}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Global callback bridge function for Wi\+Fi scan results. 
+
+This function bridges the C-\/style callback required by the Wi\+Fi stack to the C++ class method. It\textquotesingle{}s used internally by the \doxylink{class_wi_fi_scanner}{Wi\+Fi\+Scanner}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Pointer to \doxylink{class_wi_fi_scanner}{Wi\+Fi\+Scanner} instance \\
+\hline
+{\em buf} & Packet buffer from Wi\+Fi stack \\
+\hline
+{\em type} & Packet type identifier \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00403}{403}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+

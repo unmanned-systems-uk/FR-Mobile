@@ -1,0 +1,175 @@
+\chapter{Implamentation }
+\hypertarget{md__implamentation}{}\label{md__implamentation}\index{Implamentation@{Implamentation}}
+/ Implementation Details
+
+// \doxylink{class_s_d_card_manager}{SDCard\+Manager} Implementation \doxylink{class_s_d_card_manager_aae6e52c99962cc46726da2ae1b8d6fff}{SDCard\+Manager\+::\+SDCard\+Manager()} \+: base\+Path\+\_\+("{}/sdcard"{}) , initialized\+\_\+(false) \{ \}
+
+\doxylink{class_s_d_card_manager_ab57ea76fda6af453daffd968f1e2f023}{SDCard\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+SDCard\+Manager()} \{ if (initialized\+\_\+) \{ unmount\+SDCard(); \} \}
+
+bool \doxylink{class_s_d_card_manager_acfe3494064c3f0949ee260dc80a72fb1}{SDCard\+Manager\+::initialize()} \{ printf("{}\+Initializing SD Card...\textbackslash{}n"{});
+
+if (!mount\+SDCard()) \{ printf("{}\+Failed to mount SD card\textbackslash{}n"{}); return false; \}
+
+// Create necessary directories ensure\+Directory\+Exists(base\+Path\+\_\+ + "{}/data"{}); ensure\+Directory\+Exists(base\+Path\+\_\+ + "{}/logs"{}); ensure\+Directory\+Exists(base\+Path\+\_\+ + "{}/assert"{});
+
+initialized\+\_\+ = true; printf("{}\+SD Card initialized successfully\textbackslash{}n"{}); return true; \}
+
+bool \doxylink{class_s_d_card_manager_a6ab77104e2009ea904cb1ca5e014a8dc}{SDCard\+Manager\+::write\+Data(const Probe\+Request\& data, const std\+::string\& filename)} \{ if (!initialized\+\_\+) \{ return false; \}
+
+std\+::string full\+Path = base\+Path\+\_\+ + "{}/"{} + sanitize\+Filename(filename);
+
+try \{ std\+::ofstream file(full\+Path, std\+::ios\+::app); if (!file.is\+\_\+open()) \{ printf("{}\+Failed to open file\+: \%s\textbackslash{}n"{}, full\+Path.\+c\+\_\+str()); return false; \}
+
+// Write CSV format file \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+data\+Type \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+timestamp \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+source \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+rssi \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+packet\+Length \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+mac\+Address \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+payload \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{}\textbackslash{}n"{};
+
+file.\+close(); return true;
+
+\} catch (const std\+::exception\& e) \{ printf("{}\+Error writing to SD card\+: \%s\textbackslash{}n"{}, e.\+what()); return false; \} \}
+
+bool \doxylink{class_s_d_card_manager_af4841369a577a377f6cd95022675b1c4}{SDCard\+Manager\+::write\+Asset\+Data(const Asset\+Info\& data)} \{ if (!initialized\+\_\+) \{ return false; \}
+
+std\+::string filename = base\+Path\+\_\+ + "{}/assert/assert\+\_\+"{} + data.\+time\+Stamp + "{}.\+csv"{}; filename = sanitize\+Filename(filename);
+
+try \{ std\+::ofstream file(filename); if (!file.is\+\_\+open()) \{ return false; \}
+
+// Write header file \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{}asset\+Id,location\+Name,forest\+Name,latitude,longitude,"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{}remaining\+Battery\+Capacity,state\+Of\+Charge,runtime\+To\+Empty,"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{}battery\+Voltage,battery\+Current,\+SDCard\+Capacity,time\+Stamp\textbackslash{}n"{};
+
+// Write data file \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+asset\+Id \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+location\+Name \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+forest\+Name \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+latitude \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+longitude \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+remaining\+Battery\+Capacity \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+state\+Of\+Charge \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+runtime\+To\+Empty \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+battery\+Voltage \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+battery\+Current \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+sd\+Card\+Capacity \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{},"{} \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} data.\+time\+Stamp \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} "{}\textbackslash{}n"{};
+
+file.\+close(); return true;
+
+\} catch (const std\+::exception\& e) \{ printf("{}\+Error writing asset data\+: \%s\textbackslash{}n"{}, e.\+what()); return false; \} \}
+
+std\+::vector$<$std\+::string$>$ \doxylink{class_s_d_card_manager_af43ef1a9bf7c1b018e4a5fb6749eb4bf}{SDCard\+Manager\+::read\+File(const std\+::string\& filename)} \{ std\+::vector$<$std\+::string$>$ lines;
+
+if (!initialized\+\_\+) \{ return lines; \}
+
+std\+::string full\+Path = base\+Path\+\_\+ + "{}/"{} + sanitize\+Filename(filename);
+
+try \{ std\+::ifstream file(full\+Path); if (!file.is\+\_\+open()) \{ return lines; \}
+
+std\+::string line; while (std\+::getline(file, line)) \{ lines.\+push\+\_\+back(line); \}
+
+file.\+close();
+
+\} catch (const std\+::exception\& e) \{ printf("{}\+Error reading file\+: \%s\textbackslash{}n"{}, e.\+what()); \}
+
+return lines; \}
+
+bool \doxylink{class_s_d_card_manager_a0904bd3d1f9f31b78491050569548b50}{SDCard\+Manager\+::file\+Exists(const std\+::string\& filename)} \{ std\+::string full\+Path = base\+Path\+\_\+ + "{}/"{} + sanitize\+Filename(filename); return std\+::filesystem\+::exists(full\+Path); \}
+
+size\+\_\+t \doxylink{class_s_d_card_manager_a28d799290f6cc9da4fde5cbdc0e0c86b}{SDCard\+Manager\+::get\+File\+Size(const std\+::string\& filename)} \{ std\+::string full\+Path = base\+Path\+\_\+ + "{}/"{} + sanitize\+Filename(filename);
+
+try \{ return std\+::filesystem\+::file\+\_\+size(full\+Path); \} catch (const std\+::exception\& e) \{ return 0; \} \}
+
+float \doxylink{class_s_d_card_manager_a01ebab598264e675f413c65c7d471d91}{SDCard\+Manager\+::get\+Remaining\+Capacity\+Percent()} \{ try \{ auto space = std\+::filesystem\+::space(base\+Path\+\_\+); float used = static\+\_\+cast$<$float$>$(space.\+capacity -\/ space.\+available); float total = static\+\_\+cast$<$float$>$(space.\+capacity); return 100.\+0f \texorpdfstring{$\ast$}{*} (1.\+0f -\/ (used / total)); \} catch (const std\+::exception\& e) \{ return 0.\+0f; \} \}
+
+// \doxylink{class_cellular_manager}{Cellular\+Manager} Implementation \doxylink{class_cellular_manager_a64cd463ed759ad563d3f0bd9d3028095}{Cellular\+Manager\+::\+Cellular\+Manager()} \+: connected\+\_\+(false) , serial\+Handle\+\_\+(nullptr) , api\+Url\+\_\+("{}https\+://uk-\/610246-\/forestryresearchapi-\/app-\/dev-\/01.\+azurewebsites.\+net/api/\+Device\+Data"{}) \{ \}
+
+\doxylink{class_cellular_manager_ac22f2d9e34917aa6039d273e643bc699}{Cellular\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Cellular\+Manager()} \{ disconnect(); \}
+
+bool \doxylink{class_cellular_manager_ac903c33125d1da07d1bedc7fe74cdca4}{Cellular\+Manager\+::connect()} \{ printf("{}\+Connecting to cellular network...\textbackslash{}n"{});
+
+try \{ // Initialize serial communication \#ifdef ESP32\+\_\+\+PLATFORM // Serial2.\+begin(115200, SERIAL\+\_\+8\+N1, RX\+\_\+\+PIN, TX\+\_\+\+PIN); // Serial2.\+set\+Rx\+Buffer\+Size(1024); \#endif
+
+// Test basic AT communication if (!send\+ATCommand("{}\+AT"{}, "{}\+OK"{}, 10)) \{ printf("{}\+Failed basic AT communication\textbackslash{}n"{}); return false; \}
+
+// Check SIM status if (!send\+ATCommand("{}\+AT+\+CPIN?"{}, "{}+\+CPIN\+: READY"{}, 10)) \{ printf("{}\+SIM not ready\textbackslash{}n"{}); return false; \}
+
+// Check network registration if (!send\+ATCommand("{}\+AT+\+CREG?"{}, "{}+\+CREG\+: 0,1"{}, 10)) \{ printf("{}\+Not registered to network\textbackslash{}n"{}); return false; \}
+
+// Configure APN if (!configure\+APN()) \{ printf("{}\+Failed to configure APN\textbackslash{}n"{}); return false; \}
+
+// Activate PDP context if (!activate\+PDPContext()) \{ printf("{}\+Failed to activate PDP context\textbackslash{}n"{}); return false; \}
+
+connected\+\_\+ = true; printf("{}\+Cellular connection established\textbackslash{}n"{}); return true;
+
+\} catch (const std\+::exception\& e) \{ printf("{}\+Cellular connection failed\+: \%s\textbackslash{}n"{}, e.\+what()); return false; \} \}
+
+bool \doxylink{class_cellular_manager_aabd59f33e3c4d44d8e05dc32b5d56751}{Cellular\+Manager\+::send\+Data(const std\+::string\& data)} \{ if (!connected\+\_\+) \{ printf("{}\+Not connected to cellular network\textbackslash{}n"{}); return false; \}
+
+return send\+HTTPData(data); \}
+
+std\+::string \doxylink{class_cellular_manager_adc96fcfbc4531bde2ba1043bbfd6f378}{Cellular\+Manager\+::get\+Network\+Time()} \{ if (!send\+ATCommand("{}\+AT"{}, "{}\+OK"{}, 10)) \{ return "{}\+Error\+: Unable to fetch network time"{}; \}
+
+std\+::string response;
+
+\#ifdef ESP32\+\_\+\+PLATFORM // Send CCLK command and parse response // Serial2.\+println("{}\+AT+\+CCLK?"{}); // // auto start\+Time = std\+::chrono\+::steady\+\_\+clock\+::now(); // const auto timeout = std\+::chrono\+::seconds(5); // // while (std\+::chrono\+::steady\+\_\+clock\+::now() -\/ start\+Time \texorpdfstring{$<$}{<} timeout) \{ // if (Serial2.\+available()) \{ // char c = Serial2.\+read(); // response += c; // ~\newline
+ // if (response.\+find("{}+\+CCLK\+:"{}) != std\+::string\+::npos \&\& // response.\+find("{}\+OK"{}) != std\+::string\+::npos) \{ // break; // \} // \} // \} \#endif
+
+// Parse time from response size\+\_\+t time\+Start = response.\+find("{}+\+CCLK\+: \textbackslash{}"{}"{}) + 8; size\+\_\+t time\+End = response.\+find("{}\textbackslash{}"{}"{}, time\+Start);
+
+if (time\+Start != std\+::string\+::npos \&\& time\+End != std\+::string\+::npos) \{ return response.\+substr(time\+Start, time\+End -\/ time\+Start); \}
+
+return "{}\+Error\+: Unable to fetch network time"{}; \}
+
+bool Cellular\+Manager\+::send\+ATCommand(const std\+::string\& command,                                     const std\+::string\& expected\+Response,                                     int max\+Attempts, int timeout\+Ms) \{ for (int attempt = 0; attempt \texorpdfstring{$<$}{<} max\+Attempts; ++attempt) \{ \#ifdef ESP32\+\_\+\+PLATFORM // Serial2.\+println(command.\+c\+\_\+str()); \#endif
+
+auto start\+Time = std\+::chrono\+::steady\+\_\+clock\+::now(); auto timeout = std\+::chrono\+::milliseconds(timeout\+Ms); std\+::string response;
+
+while (std\+::chrono\+::steady\+\_\+clock\+::now() -\/ start\+Time \texorpdfstring{$<$}{<} timeout) \{ \#ifdef ESP32\+\_\+\+PLATFORM // if (Serial2.\+available()) \{ // char c = Serial2.\+read(); // response += c; // \} \#endif
+
+if (response.\+find(expected\+Response) != std\+::string\+::npos) \{ printf("{}\+AT Response\+: \%s\textbackslash{}n"{}, response.\+c\+\_\+str()); return true; \} \}
+
+printf("{}\+AT Command failed (attempt \%d)\+: \%s\textbackslash{}n"{}, attempt + 1, response.\+c\+\_\+str()); \}
+
+return false; \}
+
+// \doxylink{class_r_t_c_time_manager}{RTCTime\+Manager} Implementation \doxylink{class_r_t_c_time_manager_a0f47edf7e2b9fd457ffad05698315e55}{RTCTime\+Manager\+::\+RTCTime\+Manager()} \+: rtc\+Handle\+\_\+(nullptr) , initialized\+\_\+(false) \{ \}
+
+std\+::string \doxylink{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10}{RTCTime\+Manager\+::get\+Current\+Date\+Time()} \{ if (!initialized\+\_\+) \{ return "{}"{}; \}
+
+auto now = std\+::chrono\+::system\+\_\+clock\+::now(); auto time\+\_\+t = std\+::chrono\+::system\+\_\+clock\+::to\+\_\+time\+\_\+t(now); auto tm = \texorpdfstring{$\ast$}{*}std\+::gmtime(\&time\+\_\+t);
+
+char buffer\mbox{[}30\mbox{]}; std\+::strftime(buffer, sizeof(buffer), "{}\%\+Y-\/\%m-\/\%d\+T\%\+H\+:\%\+M\+:\%\+SZ"{}, \&tm);
+
+return std\+::string(buffer); \}
+
+bool \doxylink{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876}{RTCTime\+Manager\+::set\+Time\+From\+Network(const std\+::string\& network\+Time)} \{ printf("{}\+Setting RTC from network time\+: \%s\textbackslash{}n"{}, network\+Time.\+c\+\_\+str());
+
+if (!is\+Valid\+Time(network\+Time)) \{ printf("{}\+Invalid network time format\textbackslash{}n"{}); return false; \}
+
+try \{ \doxylink{struct_time_components}{Time\+Components} time = parse\+Network\+Time(network\+Time);
+
+\#ifdef ESP32\+\_\+\+PLATFORM // Platform-\/specific RTC setting code would go here // DS1307.\+set\+Time(time\+Array); \#endif
+
+printf("{}\+RTC time updated successfully\textbackslash{}n"{}); return true;
+
+\} catch (const std\+::exception\& e) \{ printf("{}\+Failed to set RTC time\+: \%s\textbackslash{}n"{}, e.\+what()); return false; \} \}
+
+bool \doxylink{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d}{RTCTime\+Manager\+::is\+Valid\+Time(const std\+::string\& time\+Str)} \{ // Check format\+: "{}\+YY/\+MM/\+DD,\+HH\+:\+MM\+:\+SS+\+ZZ"{} if (time\+Str.\+length() != 20) \{ return false; \}
+
+// Check delimiters return (time\+Str\mbox{[}2\mbox{]} == \textquotesingle{}/\textquotesingle{} \&\& time\+Str\mbox{[}5\mbox{]} == \textquotesingle{}/\textquotesingle{} \&\& time\+Str\mbox{[}8\mbox{]} == \textquotesingle{},\textquotesingle{} \&\& time\+Str\mbox{[}11\mbox{]} == \textquotesingle{}\+:\textquotesingle{} \&\& time\+Str\mbox{[}14\mbox{]} == \textquotesingle{}\+:\textquotesingle{} \&\& time\+Str\mbox{[}17\mbox{]} == \textquotesingle{}+\textquotesingle{}); \}
+
+uint64\+\_\+t \doxylink{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4}{RTCTime\+Manager\+::get\+Night\+Sleep\+Duration(const std\+::string\& current\+Time)} \{ if (!is\+Valid\+Time(current\+Time)) \{ return 0; \}
+
+\doxylink{struct_time_components}{Time\+Components} time = parse\+Network\+Time(current\+Time);
+
+// Check if it\textquotesingle{}s night time (22\+:00 -\/ 06\+:00) if (time.\+hour \texorpdfstring{$>$}{>}= 22 \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} time.\+hour \texorpdfstring{$<$}{<}= 6) \{ return calculate\+Sleep\+Duration(time.\+hour, time.\+minute); \}
+
+return 0; // Not night time \}
+
+// \doxylink{class_power_manager}{Power\+Manager} Implementation ~\newline
+ \doxylink{class_power_manager_ac042154201d1c37f6bd5cfc0441849b9}{Power\+Manager\+::\+Power\+Manager()} \+: initialized\+\_\+(false) , last\+Wakeup\+Cause\+\_\+(\+Wakeup\+Cause\+::\+UNKNOWN) \{ \}
+
+bool \doxylink{class_power_manager_a217939b880543bfff917203a06d45258}{Power\+Manager\+::initialize()} \{ printf("{}\+Initializing Power Management\textbackslash{}n"{});
+
+// Configure watchdog configure\+Watchdog(300000); // 5 minutes
+
+// Analyze wakeup cause last\+Wakeup\+Cause\+\_\+ = get\+Wakeup\+Cause(); printf("{}\+Wakeup cause\+: \%s\textbackslash{}n"{}, get\+Wakeup\+Cause\+String().c\+\_\+str()); printf("{}\+Reset reason\+: \%s\textbackslash{}n"{}, get\+Reset\+Reason\+String().c\+\_\+str());
+
+initialized\+\_\+ = true; return true; \}
+
+void \doxylink{class_power_manager_a416206aeab4fad278771c33df90d55aa}{Power\+Manager\+::enable\+Peripherals()} \{ printf("{}\+Enabling 5\+V peripheral power\textbackslash{}n"{}); enable5\+V(); std\+::this\+\_\+thread\+::sleep\+\_\+for(std\+::chrono\+::milliseconds(1000)); \}
+
+void \doxylink{class_power_manager_a84eca8b42dcd28a7211ddd33e4057d01}{Power\+Manager\+::disable\+Peripherals()} \{ printf("{}\+Disabling 5\+V peripheral power\textbackslash{}n"{}); disable5\+V(); \}
+
+void \doxylink{class_power_manager_a1a7bb8e40ab19a380bb6a3930c2deb75}{Power\+Manager\+::enter\+Sleep(uint64\+\_\+t sleep\+Time\+Us)} \{ printf("{}\+Entering deep sleep for \%llu seconds\textbackslash{}n"{}, sleep\+Time\+Us / 1000000);
+
+disable\+Peripherals(); configure\+Wakeup(sleep\+Time\+Us);
+
+\#ifdef ESP32\+\_\+\+PLATFORM // esp\+\_\+deep\+\_\+sleep\+\_\+start(); \#endif \}
+
+\doxylink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause} \doxylink{class_power_manager_ac9f7272f6409e1da2271e4c3b692000e}{Power\+Manager\+::get\+Wakeup\+Cause()} \{ \#ifdef ESP32\+\_\+\+PLATFORM // esp\+\_\+sleep\+\_\+wakeup\+\_\+cause\+\_\+t cause = esp\+\_\+sleep\+\_\+get\+\_\+wakeup\+\_\+cause(); // switch (cause) \{ // case ESP\+\_\+\+SLEEP\+\_\+\+WAKEUP\+\_\+\+TIMER\+: // return \doxylink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{Wakeup\+Cause\+::\+TIMER}; // case ESP\+\_\+\+SLEEP\+\_\+\+WAKEUP\+\_\+\+EXT0\+: // case ESP\+\_\+\+SLEEP\+\_\+\+WAKEUP\+\_\+\+EXT1\+: // return \doxylink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d}{Wakeup\+Cause\+::\+EXTERNAL}; // default\+: // return \doxylink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{Wakeup\+Cause\+::\+UNKNOWN}; // \} \#endif
+
+return \doxylink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{Wakeup\+Cause\+::\+UNKNOWN}; 

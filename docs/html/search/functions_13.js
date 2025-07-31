@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['_7ebatterymonitor_0',['~BatteryMonitor',['../class_battery_monitor.html#adfb2bd1c77b76189fc052035517cd2f3',1,'BatteryMonitor']]],
+  ['_7eblescanner_1',['~BLEScanner',['../class_b_l_e_scanner.html#a8ef403142715b8759aed86a667eb4b43',1,'BLEScanner']]],
+  ['_7ecellularmanager_2',['~CellularManager',['../class_cellular_manager.html#ac22f2d9e34917aa6039d273e643bc699',1,'CellularManager']]],
+  ['_7eforestryresearchdevice_3',['~ForestryResearchDevice',['../class_forestry_research_device.html#a4aa3a66a0510ad1fdf40d4491e6bd872',1,'ForestryResearchDevice']]],
+  ['_7eidatastorage_4',['~IDataStorage',['../class_i_data_storage.html#aa5c10f594fa2de589a0f0882632835ae',1,'IDataStorage::~IDataStorage()=default'],['../class_i_data_storage.html#aa5c10f594fa2de589a0f0882632835ae',1,'IDataStorage::~IDataStorage()=default']]],
+  ['_7eihardwareinterface_5',['~IHardwareInterface',['../class_i_hardware_interface.html#a11b02ca7834579417ed763c92473616f',1,'IHardwareInterface::~IHardwareInterface()=default'],['../class_i_hardware_interface.html#a11b02ca7834579417ed763c92473616f',1,'IHardwareInterface::~IHardwareInterface()=default']]],
+  ['_7einetworkinterface_6',['~INetworkInterface',['../class_i_network_interface.html#afaacd2ba18f47e3efebf6eb80986af0f',1,'INetworkInterface::~INetworkInterface()=default'],['../class_i_network_interface.html#afaacd2ba18f47e3efebf6eb80986af0f',1,'INetworkInterface::~INetworkInterface()=default']]],
+  ['_7eipowermanager_7',['~IPowerManager',['../class_i_power_manager.html#a9e4aad48ce1c57600c7dd89dc7d37f94',1,'IPowerManager::~IPowerManager()=default'],['../class_i_power_manager.html#a9e4aad48ce1c57600c7dd89dc7d37f94',1,'IPowerManager::~IPowerManager()=default']]],
+  ['_7eiscanner_8',['~IScanner',['../class_i_scanner.html#a36d72465c5414925b7c849b3bfdbe9f5',1,'IScanner::~IScanner()=default'],['../class_i_scanner.html#a36d72465c5414925b7c849b3bfdbe9f5',1,'IScanner::~IScanner()=default']]],
+  ['_7eitimemanager_9',['~ITimeManager',['../class_i_time_manager.html#a4c83c29aaadd2e38a94303f8928b8305',1,'ITimeManager::~ITimeManager()=default'],['../class_i_time_manager.html#a4c83c29aaadd2e38a94303f8928b8305',1,'ITimeManager::~ITimeManager()=default']]],
+  ['_7eitimercallback_10',['~ITimerCallback',['../class_i_timer_callback.html#aaa229738c76a5097868c4ef8e51fff16',1,'ITimerCallback::~ITimerCallback()=default'],['../class_i_timer_callback.html#aaa229738c76a5097868c4ef8e51fff16',1,'ITimerCallback::~ITimerCallback()=default']]],
+  ['_7elogger_11',['~Logger',['../class_logger.html#acb668a9e186a25fbaad2e4af6d1ed00a',1,'Logger']]],
+  ['_7epowermanager_12',['~PowerManager',['../class_power_manager.html#a7849fc619b62385be6b6461c16d84df2',1,'PowerManager']]],
+  ['_7ertctimemanager_13',['~RTCTimeManager',['../class_r_t_c_time_manager.html#adfcee0717bb7ab1679d179b0fcf4d748',1,'RTCTimeManager']]],
+  ['_7esdcardmanager_14',['~SDCardManager',['../class_s_d_card_manager.html#ab57ea76fda6af453daffd968f1e2f023',1,'SDCardManager']]],
+  ['_7ewifiscanner_15',['~WiFiScanner',['../class_wi_fi_scanner.html#a01b85975193c72e751fe908e81f0645a',1,'WiFiScanner']]]
+];

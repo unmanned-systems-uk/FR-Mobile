@@ -1,0 +1,211 @@
+\doxysection{D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/hardware/power\+\_\+manager.h File Reference}
+\hypertarget{power__manager_8h}{}\label{power__manager_8h}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/hardware/power\_manager.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/hardware/power\_manager.h}}
+
+
+Power Manager for ESP32 sleep modes and peripheral control.  
+
+
+{\ttfamily \#include "{}interfaces.\+h"{}}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_power_stats}{Power\+Stats}}
+\begin{DoxyCompactList}\small\item\em Power consumption statistics and monitoring. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_peripheral_config}{Peripheral\+Config}}
+\begin{DoxyCompactList}\small\item\em Peripheral power configuration. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_power_config}{Power\+Config}}
+\begin{DoxyCompactList}\small\item\em Power management configuration and limits. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_power_manager}{Power\+Manager}}
+\begin{DoxyCompactList}\small\item\em Power Manager implementing comprehensive power control and optimization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{Reset\+Reason}} \{ \newline
+\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3d6fc432ff9e2d9b890c591179a4401e}{POWER\+\_\+\+ON}} = 0
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3932d629fb5e2be9d09b3a4485b3cc9d}{EXTERNAL}} = 1
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aaea541d7f9574587656dc5125116e548}{SOFTWARE}} = 2
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a98a11b6a207bf1c64618790847ab8055}{PANIC}} = 3
+, \newline
+\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a827df3e98009b971dadb3eaba51cffb1}{INTERRUPT\+\_\+\+WDT}} = 4
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11ac80849fdaa3d6d5b6a9899b5c639a6e0}{TASK\+\_\+\+WDT}} = 5
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a602205889db1ebcc2ac94039b4e94578}{OTHER\+\_\+\+WDT}} = 6
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a918f0271f592b3866ce1470abe164b8a}{DEEP\+\_\+\+SLEEP}} = 7
+, \newline
+\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aeb701471494a2c0840c816eb49c0cc3e}{BROWNOUT}} = 8
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a6b582b7da9433378610142d5903664c9}{SDIO}} = 9
+, \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}} = 10
+ \}
+\begin{DoxyCompactList}\small\item\em System reset reason enumeration. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} \{ \newline
+\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3}{UNDEFINED}} = 0
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d}{ALL}} = 1
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638}{EXT0}} = 2
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a}{EXT1}} = 3
+, \newline
+\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{TIMER}} = 4
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1}{TOUCHPAD}} = 5
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca}{ULP}} = 6
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235}{GPIO}} = 7
+, \newline
+\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f}{UART}} = 8
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}} = 9
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{TIMER}}
+, \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d}{EXTERNAL}}
+, \newline
+\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}}
+ \}
+\begin{DoxyCompactList}\small\item\em Deep sleep wakeup cause enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Power Manager for ESP32 sleep modes and peripheral control. 
+
+\begin{DoxyAuthor}{Author}
+Anthony Kirk 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/07-\/29 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0
+\end{DoxyVersion}
+This class provides comprehensive power management for the ESP32 including deep sleep modes, peripheral control, wakeup management, and power optimization. 
+
+Definition in file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{power__manager_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}\index{power\_manager.h@{power\_manager.h}!ResetReason@{ResetReason}}
+\index{ResetReason@{ResetReason}!power\_manager.h@{power\_manager.h}}
+\doxysubsubsection{\texorpdfstring{ResetReason}{ResetReason}}
+{\footnotesize\ttfamily \label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11} 
+enum class \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{Reset\+Reason}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+System reset reason enumeration. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POWER\_ON@{POWER\_ON}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!POWER\_ON@{POWER\_ON}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3d6fc432ff9e2d9b890c591179a4401e}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3d6fc432ff9e2d9b890c591179a4401e} 
+POWER\+\_\+\+ON&Power-\/on reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXTERNAL@{EXTERNAL}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!EXTERNAL@{EXTERNAL}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3932d629fb5e2be9d09b3a4485b3cc9d}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3932d629fb5e2be9d09b3a4485b3cc9d} 
+EXTERNAL&External reset pin. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SOFTWARE@{SOFTWARE}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!SOFTWARE@{SOFTWARE}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aaea541d7f9574587656dc5125116e548}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aaea541d7f9574587656dc5125116e548} 
+SOFTWARE&Software reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PANIC@{PANIC}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!PANIC@{PANIC}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a98a11b6a207bf1c64618790847ab8055}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a98a11b6a207bf1c64618790847ab8055} 
+PANIC&System panic reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INTERRUPT\_WDT@{INTERRUPT\_WDT}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!INTERRUPT\_WDT@{INTERRUPT\_WDT}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a827df3e98009b971dadb3eaba51cffb1}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a827df3e98009b971dadb3eaba51cffb1} 
+INTERRUPT\+\_\+\+WDT&Interrupt watchdog reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TASK\_WDT@{TASK\_WDT}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!TASK\_WDT@{TASK\_WDT}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11ac80849fdaa3d6d5b6a9899b5c639a6e0}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11ac80849fdaa3d6d5b6a9899b5c639a6e0} 
+TASK\+\_\+\+WDT&Task watchdog reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OTHER\_WDT@{OTHER\_WDT}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!OTHER\_WDT@{OTHER\_WDT}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a602205889db1ebcc2ac94039b4e94578}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a602205889db1ebcc2ac94039b4e94578} 
+OTHER\+\_\+\+WDT&Other watchdog reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEEP\_SLEEP@{DEEP\_SLEEP}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!DEEP\_SLEEP@{DEEP\_SLEEP}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a918f0271f592b3866ce1470abe164b8a}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a918f0271f592b3866ce1470abe164b8a} 
+DEEP\+\_\+\+SLEEP&Wake from deep sleep. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BROWNOUT@{BROWNOUT}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!BROWNOUT@{BROWNOUT}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aeb701471494a2c0840c816eb49c0cc3e}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aeb701471494a2c0840c816eb49c0cc3e} 
+BROWNOUT&Brownout reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SDIO@{SDIO}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!SDIO@{SDIO}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a6b582b7da9433378610142d5903664c9}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a6b582b7da9433378610142d5903664c9} 
+SDIO&SDIO reset. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN@{UNKNOWN}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!UNKNOWN@{UNKNOWN}}}\Hypertarget{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a696b031073e74bf2cb98e5ef201d4aa3}\label{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a696b031073e74bf2cb98e5ef201d4aa3} 
+UNKNOWN&Unknown reset reason. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00022}{22}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}\index{power\_manager.h@{power\_manager.h}!WakeupCause@{WakeupCause}}
+\index{WakeupCause@{WakeupCause}!power\_manager.h@{power\_manager.h}}
+\doxysubsubsection{\texorpdfstring{WakeupCause}{WakeupCause}}
+{\footnotesize\ttfamily \label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44} 
+enum class \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Deep sleep wakeup cause enumeration. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNDEFINED@{UNDEFINED}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!UNDEFINED@{UNDEFINED}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3} 
+UNDEFINED&Undefined or first boot. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL@{ALL}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!ALL@{ALL}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d} 
+ALL&All wakeup sources. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXT0@{EXT0}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!EXT0@{EXT0}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638} 
+EXT0&External signal on RTC\+\_\+\+IO. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXT1@{EXT1}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!EXT1@{EXT1}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a} 
+EXT1&External signal on RTC\+\_\+\+CNTL. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER@{TIMER}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!TIMER@{TIMER}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d} 
+TIMER&Timer wakeup. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOUCHPAD@{TOUCHPAD}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!TOUCHPAD@{TOUCHPAD}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1} 
+TOUCHPAD&Touchpad wakeup. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ULP@{ULP}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!ULP@{ULP}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca} 
+ULP&ULP program wakeup. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GPIO@{GPIO}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!GPIO@{GPIO}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235} 
+GPIO&GPIO wakeup (light sleep only) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART@{UART}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!UART@{UART}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f} 
+UART&UART wakeup (light sleep only) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN@{UNKNOWN}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!UNKNOWN@{UNKNOWN}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3} 
+UNKNOWN&Unknown wakeup cause. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER@{TIMER}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!TIMER@{TIMER}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d} 
+TIMER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXTERNAL@{EXTERNAL}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!EXTERNAL@{EXTERNAL}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d} 
+EXTERNAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN@{UNKNOWN}!power\_manager.h@{power\_manager.h}}\index{power\_manager.h@{power\_manager.h}!UNKNOWN@{UNKNOWN}}}\Hypertarget{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}\label{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3} 
+UNKNOWN&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00040}{40}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+

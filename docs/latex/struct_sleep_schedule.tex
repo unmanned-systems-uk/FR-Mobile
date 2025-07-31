@@ -1,0 +1,127 @@
+\doxysection{Sleep\+Schedule Struct Reference}
+\hypertarget{struct_sleep_schedule}{}\label{struct_sleep_schedule}\index{SleepSchedule@{SleepSchedule}}
+
+
+Sleep schedule configuration for power management.  
+
+
+
+
+{\ttfamily \#include $<$rtc\+\_\+time\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_sleep_schedule_a124f5d1d871d4494e8f51e14b278423a}{night\+Start\+Hour}} = 22
+\begin{DoxyCompactList}\small\item\em Hour to start night sleep (0-\/23) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_sleep_schedule_a62c309f000adebd64b3f392c87c9a09e}{night\+End\+Hour}} = 6
+\begin{DoxyCompactList}\small\item\em Hour to end night sleep (0-\/23) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_sleep_schedule_a1b5de513bb47174e4dc302fff1ccb540}{night\+Sleep\+Enabled}} = true
+\begin{DoxyCompactList}\small\item\em Whether night sleep is enabled. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_sleep_schedule_a07768479c7128543a1e6b8e98bb9f99c}{night\+Sleep\+Duration\+Us}} = 0
+\begin{DoxyCompactList}\small\item\em Calculated night sleep duration in microseconds. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_sleep_schedule_a6a29be1aa48dde695216f72e792179ea}{normal\+Scan\+Interval\+Us}} = 600000000
+\begin{DoxyCompactList}\small\item\em Normal scan interval (10 minutes) \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_sleep_schedule_a2980cb1315f1fa3cf512905cbdc1b010}{night\+Scan\+Interval\+Us}} = 3600000000
+\begin{DoxyCompactList}\small\item\em Night scan interval (1 hour) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Sleep schedule configuration for power management. 
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00052}{52}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_sleep_schedule_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_sleep_schedule_a62c309f000adebd64b3f392c87c9a09e}\index{SleepSchedule@{SleepSchedule}!nightEndHour@{nightEndHour}}
+\index{nightEndHour@{nightEndHour}!SleepSchedule@{SleepSchedule}}
+\doxysubsubsection{\texorpdfstring{nightEndHour}{nightEndHour}}
+{\footnotesize\ttfamily \label{struct_sleep_schedule_a62c309f000adebd64b3f392c87c9a09e} 
+int Sleep\+Schedule\+::night\+End\+Hour = 6}
+
+
+
+Hour to end night sleep (0-\/23) 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00055}{55}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_sleep_schedule_a2980cb1315f1fa3cf512905cbdc1b010}\index{SleepSchedule@{SleepSchedule}!nightScanIntervalUs@{nightScanIntervalUs}}
+\index{nightScanIntervalUs@{nightScanIntervalUs}!SleepSchedule@{SleepSchedule}}
+\doxysubsubsection{\texorpdfstring{nightScanIntervalUs}{nightScanIntervalUs}}
+{\footnotesize\ttfamily \label{struct_sleep_schedule_a2980cb1315f1fa3cf512905cbdc1b010} 
+uint64\+\_\+t Sleep\+Schedule\+::night\+Scan\+Interval\+Us = 3600000000}
+
+
+
+Night scan interval (1 hour) 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00059}{59}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_sleep_schedule_a07768479c7128543a1e6b8e98bb9f99c}\index{SleepSchedule@{SleepSchedule}!nightSleepDurationUs@{nightSleepDurationUs}}
+\index{nightSleepDurationUs@{nightSleepDurationUs}!SleepSchedule@{SleepSchedule}}
+\doxysubsubsection{\texorpdfstring{nightSleepDurationUs}{nightSleepDurationUs}}
+{\footnotesize\ttfamily \label{struct_sleep_schedule_a07768479c7128543a1e6b8e98bb9f99c} 
+uint64\+\_\+t Sleep\+Schedule\+::night\+Sleep\+Duration\+Us = 0}
+
+
+
+Calculated night sleep duration in microseconds. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00057}{57}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_sleep_schedule_a1b5de513bb47174e4dc302fff1ccb540}\index{SleepSchedule@{SleepSchedule}!nightSleepEnabled@{nightSleepEnabled}}
+\index{nightSleepEnabled@{nightSleepEnabled}!SleepSchedule@{SleepSchedule}}
+\doxysubsubsection{\texorpdfstring{nightSleepEnabled}{nightSleepEnabled}}
+{\footnotesize\ttfamily \label{struct_sleep_schedule_a1b5de513bb47174e4dc302fff1ccb540} 
+bool Sleep\+Schedule\+::night\+Sleep\+Enabled = true}
+
+
+
+Whether night sleep is enabled. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00056}{56}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_sleep_schedule_a124f5d1d871d4494e8f51e14b278423a}\index{SleepSchedule@{SleepSchedule}!nightStartHour@{nightStartHour}}
+\index{nightStartHour@{nightStartHour}!SleepSchedule@{SleepSchedule}}
+\doxysubsubsection{\texorpdfstring{nightStartHour}{nightStartHour}}
+{\footnotesize\ttfamily \label{struct_sleep_schedule_a124f5d1d871d4494e8f51e14b278423a} 
+int Sleep\+Schedule\+::night\+Start\+Hour = 22}
+
+
+
+Hour to start night sleep (0-\/23) 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00054}{54}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_sleep_schedule_a6a29be1aa48dde695216f72e792179ea}\index{SleepSchedule@{SleepSchedule}!normalScanIntervalUs@{normalScanIntervalUs}}
+\index{normalScanIntervalUs@{normalScanIntervalUs}!SleepSchedule@{SleepSchedule}}
+\doxysubsubsection{\texorpdfstring{normalScanIntervalUs}{normalScanIntervalUs}}
+{\footnotesize\ttfamily \label{struct_sleep_schedule_a6a29be1aa48dde695216f72e792179ea} 
+uint64\+\_\+t Sleep\+Schedule\+::normal\+Scan\+Interval\+Us = 600000000}
+
+
+
+Normal scan interval (10 minutes) 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00058}{58}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{rtc__time__manager_8h}{rtc\+\_\+time\+\_\+manager.\+h}}\end{DoxyCompactItemize}

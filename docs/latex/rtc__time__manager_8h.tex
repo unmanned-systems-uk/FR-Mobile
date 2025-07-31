@@ -1,0 +1,40 @@
+\doxysection{D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/rtc\+\_\+time\+\_\+manager.h File Reference}
+\hypertarget{rtc__time__manager_8h}{}\label{rtc__time__manager_8h}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/rtc\_time\_manager.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/rtc\_time\_manager.h}}
+
+
+Real-\/\+Time Clock Manager for DS1307 time management and synchronization.  
+
+
+{\ttfamily \#include "{}interfaces.\+h"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_time_components}{Time\+Components}}
+\begin{DoxyCompactList}\small\item\em Time components structure for date/time manipulation. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_time_sync_status}{Time\+Sync\+Status}}
+\begin{DoxyCompactList}\small\item\em Time synchronization status and statistics. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_sleep_schedule}{Sleep\+Schedule}}
+\begin{DoxyCompactList}\small\item\em Sleep schedule configuration for power management. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_r_t_c_time_manager}{RTCTime\+Manager}}
+\begin{DoxyCompactList}\small\item\em RTC Time Manager implementing comprehensive time management. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Real-\/\+Time Clock Manager for DS1307 time management and synchronization. 
+
+\begin{DoxyAuthor}{Author}
+Anthony Kirk 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2025-\/07-\/29 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0.\+0
+\end{DoxyVersion}
+This class provides comprehensive time management using the DS1307 RTC module including network time synchronization, sleep scheduling, and EEPROM operations. 
+
+Definition in file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+

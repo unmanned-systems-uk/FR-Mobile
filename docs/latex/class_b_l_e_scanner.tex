@@ -1,0 +1,388 @@
+\doxysection{BLEScanner Class Reference}
+\hypertarget{class_b_l_e_scanner}{}\label{class_b_l_e_scanner}\index{BLEScanner@{BLEScanner}}
+
+
+BLE Scanner class for capturing and processing BLE advertisements.  
+
+
+
+
+{\ttfamily \#include $<$ble\+\_\+scanner.\+h$>$}
+
+Inheritance diagram for BLEScanner\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_b_l_e_scanner}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_b_l_e_scanner_1_1_scan_config}{Scan\+Config}}
+\begin{DoxyCompactList}\small\item\em Get current scan configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_l_e_scanner_abd8f734a8ff1c195203f7dbafdb7521a}{BLEScanner}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$ storage, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_time_manager}{ITime\+Manager}} $>$ time\+Manager)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_l_e_scanner_a8ef403142715b8759aed86a667eb4b43}{\texorpdfstring{$\sim$}{\string~}\+BLEScanner}} () override
+\begin{DoxyCompactList}\small\item\em Destructor -\/ automatically cleans up BLE resources. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_b_l_e_scanner_a76addad96849c91eea738f3320db7687}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initialize the BLE scanner and Bluetooth stack. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_b_l_e_scanner_a04d2df81cc799b64668e46a2dffa9a6e}{start\+Scan}} () override
+\begin{DoxyCompactList}\small\item\em Start BLE advertisement scanning. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_b_l_e_scanner_a2873741b6119765ba562d402cafb776f}{stop\+Scan}} () override
+\begin{DoxyCompactList}\small\item\em Stop BLE advertisement scanning. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ \mbox{\hyperlink{class_b_l_e_scanner_ac53f2b2dc624e5c097a98778c59fa289}{get\+Results}} () override
+\begin{DoxyCompactList}\small\item\em Get all BLE scan results collected so far. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_l_e_scanner_af625c78173a44e5eeb61aeb11e4ad0b3}{cleanup}} () override
+\begin{DoxyCompactList}\small\item\em Clean up all BLE resources and reset state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_l_e_scanner_a2306d061f182b345d9f50971fd146bb5}{set\+Min\+RSSI}} (int min\+Rssi)
+\begin{DoxyCompactList}\small\item\em Set minimum RSSI threshold for filtering weak signals. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_l_e_scanner_a57df3694e0fa6e9ffce45abf5e14f01e}{set\+Scan\+Params}} (uint16\+\_\+t interval, uint16\+\_\+t window)
+\begin{DoxyCompactList}\small\item\em Configure BLE scan timing parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_l_e_scanner_a53f8f1b3002fd1c5f7bbc4200cdb0dc2}{set\+Result\+Callback}} (std\+::function$<$ void(const \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} \&)$>$ callback)
+\begin{DoxyCompactList}\small\item\em Set callback function for real-\/time advertisement processing. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_b_l_e_scanner_a32db065cbc890b82b90a25a7fd5e3678}{is\+Scanning}} () const
+\begin{DoxyCompactList}\small\item\em Check if scanner is currently active. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_b_l_e_scanner_a5df3014a57b037891384e22e65df5122}{get\+Result\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Get number of BLE advertisements captured. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_l_e_scanner_ae5e3ca31c62abe3ee57c8e25237215e7}{clear\+Results}} ()
+\begin{DoxyCompactList}\small\item\em Clear all stored scan results. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_b_l_e_scanner_1_1_scan_config}{Scan\+Config}} \mbox{\hyperlink{class_b_l_e_scanner_a442bfae593c67952b5bc11ca8a3f4ffa}{get\+Scan\+Config}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_scanner}{IScanner}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{\texorpdfstring{$\sim$}{\string~}\+IScanner}} ()=default
+\item 
+virtual \mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{\texorpdfstring{$\sim$}{\string~}\+IScanner}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_b_l_e_scanner_a075604450ecaa03acf5a5827b698e391}{ble\+Scan\+Result\+Handler}} (\mbox{\hyperlink{class_b_l_e_scanner}{BLEScanner}} \texorpdfstring{$\ast$}{*}scanner, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}address, int rssi, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}adv\+Data, size\+\_\+t adv\+Data\+Len)
+\begin{DoxyCompactList}\small\item\em Global callback bridge function for BLE scan results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+BLE Scanner class for capturing and processing BLE advertisements. 
+
+This class implements the \doxylink{class_i_scanner}{IScanner} interface to provide comprehensive BLE scanning functionality. It captures BLE advertisements, processes device information, and integrates with the logging and storage systems.
+
+Key features\+:
+\begin{DoxyItemize}
+\item Thread-\/safe scanning operations
+\item Configurable scan parameters (interval, window, RSSI threshold)
+\item Real-\/time result callbacks
+\item Automatic data persistence
+\item Platform abstraction (ESP32/development)
+\item Comprehensive error handling and logging 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{ble__scanner_8h_source_l00038}{38}} of file \mbox{\hyperlink{ble__scanner_8h_source}{ble\+\_\+scanner.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_b_l_e_scanner_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_b_l_e_scanner_abd8f734a8ff1c195203f7dbafdb7521a}\index{BLEScanner@{BLEScanner}!BLEScanner@{BLEScanner}}
+\index{BLEScanner@{BLEScanner}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{BLEScanner()}{BLEScanner()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_abd8f734a8ff1c195203f7dbafdb7521a} 
+BLEScanner\+::\+BLEScanner (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$}]{storage}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_time_manager}{ITime\+Manager}} $>$}]{time\+Manager}{}\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em storage} & Shared pointer to data storage interface \\
+\hline
+{\em time\+Manager} & Shared pointer to time management interface \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a8ef403142715b8759aed86a667eb4b43}\index{BLEScanner@{BLEScanner}!````~BLEScanner@{\texorpdfstring{$\sim$}{\string~}BLEScanner}}
+\index{````~BLEScanner@{\texorpdfstring{$\sim$}{\string~}BLEScanner}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BLEScanner()}{\string~BLEScanner()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a8ef403142715b8759aed86a667eb4b43} 
+BLEScanner\+::\texorpdfstring{$\sim$}{\string~}\+BLEScanner (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor -\/ automatically cleans up BLE resources. 
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_b_l_e_scanner_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_b_l_e_scanner_af625c78173a44e5eeb61aeb11e4ad0b3}\index{BLEScanner@{BLEScanner}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_af625c78173a44e5eeb61aeb11e4ad0b3} 
+void BLEScanner\+::cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clean up all BLE resources and reset state. 
+
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_ae5e3ca31c62abe3ee57c8e25237215e7}\index{BLEScanner@{BLEScanner}!clearResults@{clearResults}}
+\index{clearResults@{clearResults}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{clearResults()}{clearResults()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_ae5e3ca31c62abe3ee57c8e25237215e7} 
+void BLEScanner\+::clear\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clear all stored scan results. 
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00247}{247}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a5df3014a57b037891384e22e65df5122}\index{BLEScanner@{BLEScanner}!getResultCount@{getResultCount}}
+\index{getResultCount@{getResultCount}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{getResultCount()}{getResultCount()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a5df3014a57b037891384e22e65df5122} 
+size\+\_\+t BLEScanner\+::get\+Result\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get number of BLE advertisements captured. 
+
+\begin{DoxyReturn}{Returns}
+Count of captured advertisements 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00241}{241}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_ac53f2b2dc624e5c097a98778c59fa289}\index{BLEScanner@{BLEScanner}!getResults@{getResults}}
+\index{getResults@{getResults}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{getResults()}{getResults()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_ac53f2b2dc624e5c097a98778c59fa289} 
+std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ BLEScanner\+::get\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get all BLE scan results collected so far. 
+
+\begin{DoxyReturn}{Returns}
+Vector of \doxylink{struct_probe_request}{Probe\+Request} structures containing BLE data 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a442bfae593c67952b5bc11ca8a3f4ffa}\index{BLEScanner@{BLEScanner}!getScanConfig@{getScanConfig}}
+\index{getScanConfig@{getScanConfig}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{getScanConfig()}{getScanConfig()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a442bfae593c67952b5bc11ca8a3f4ffa} 
+\mbox{\hyperlink{struct_b_l_e_scanner_1_1_scan_config}{BLEScanner\+::\+Scan\+Config}} BLEScanner\+::get\+Scan\+Config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00255}{255}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a76addad96849c91eea738f3320db7687}\index{BLEScanner@{BLEScanner}!initialize@{initialize}}
+\index{initialize@{initialize}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a76addad96849c91eea738f3320db7687} 
+bool BLEScanner\+::initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialize the BLE scanner and Bluetooth stack. 
+
+\begin{DoxyReturn}{Returns}
+true if initialization successful, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a32db065cbc890b82b90a25a7fd5e3678}\index{BLEScanner@{BLEScanner}!isScanning@{isScanning}}
+\index{isScanning@{isScanning}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{isScanning()}{isScanning()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a32db065cbc890b82b90a25a7fd5e3678} 
+bool BLEScanner\+::is\+Scanning (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if scanner is currently active. 
+
+\begin{DoxyReturn}{Returns}
+true if scanning is in progress 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8h_source_l00108}{108}} of file \mbox{\hyperlink{ble__scanner_8h_source}{ble\+\_\+scanner.\+h}}.
+
+\Hypertarget{class_b_l_e_scanner_a2306d061f182b345d9f50971fd146bb5}\index{BLEScanner@{BLEScanner}!setMinRSSI@{setMinRSSI}}
+\index{setMinRSSI@{setMinRSSI}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{setMinRSSI()}{setMinRSSI()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a2306d061f182b345d9f50971fd146bb5} 
+void BLEScanner\+::set\+Min\+RSSI (\begin{DoxyParamCaption}\item[{int}]{min\+Rssi}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set minimum RSSI threshold for filtering weak signals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+Rssi} & Minimum RSSI value (typically -\/120 to 0 d\+Bm) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8h_source_l00089}{89}} of file \mbox{\hyperlink{ble__scanner_8h_source}{ble\+\_\+scanner.\+h}}.
+
+\Hypertarget{class_b_l_e_scanner_a53f8f1b3002fd1c5f7bbc4200cdb0dc2}\index{BLEScanner@{BLEScanner}!setResultCallback@{setResultCallback}}
+\index{setResultCallback@{setResultCallback}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{setResultCallback()}{setResultCallback()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a53f8f1b3002fd1c5f7bbc4200cdb0dc2} 
+void BLEScanner\+::set\+Result\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} \&)$>$}]{callback}{}\end{DoxyParamCaption})}
+
+
+
+Set callback function for real-\/time advertisement processing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Function to call when a BLE advertisement is detected \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a57df3694e0fa6e9ffce45abf5e14f01e}\index{BLEScanner@{BLEScanner}!setScanParams@{setScanParams}}
+\index{setScanParams@{setScanParams}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{setScanParams()}{setScanParams()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a57df3694e0fa6e9ffce45abf5e14f01e} 
+void BLEScanner\+::set\+Scan\+Params (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{interval}{, }\item[{uint16\+\_\+t}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Configure BLE scan timing parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em interval} & Scan interval in BLE time units (0.\+625ms each) \\
+\hline
+{\em window} & Scan window in BLE time units (must be \texorpdfstring{$<$}{<}= interval) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00208}{208}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a04d2df81cc799b64668e46a2dffa9a6e}\index{BLEScanner@{BLEScanner}!startScan@{startScan}}
+\index{startScan@{startScan}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{startScan()}{startScan()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a04d2df81cc799b64668e46a2dffa9a6e} 
+bool BLEScanner\+::start\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Start BLE advertisement scanning. 
+
+\begin{DoxyReturn}{Returns}
+true if scan started successfully, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_b_l_e_scanner_a2873741b6119765ba562d402cafb776f}\index{BLEScanner@{BLEScanner}!stopScan@{stopScan}}
+\index{stopScan@{stopScan}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{stopScan()}{stopScan()}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a2873741b6119765ba562d402cafb776f} 
+bool BLEScanner\+::stop\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Stop BLE advertisement scanning. 
+
+\begin{DoxyReturn}{Returns}
+true if scan stopped successfully, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00137}{137}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+
+
+\label{doc-related-members}
+\Hypertarget{class_b_l_e_scanner_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_b_l_e_scanner_a075604450ecaa03acf5a5827b698e391}\index{BLEScanner@{BLEScanner}!bleScanResultHandler@{bleScanResultHandler}}
+\index{bleScanResultHandler@{bleScanResultHandler}!BLEScanner@{BLEScanner}}
+\doxysubsubsection{\texorpdfstring{bleScanResultHandler}{bleScanResultHandler}}
+{\footnotesize\ttfamily \label{class_b_l_e_scanner_a075604450ecaa03acf5a5827b698e391} 
+void ble\+Scan\+Result\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_l_e_scanner}{BLEScanner}} \texorpdfstring{$\ast$}{*}}]{scanner}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{int}]{rssi}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{adv\+Data}{, }\item[{size\+\_\+t}]{adv\+Data\+Len}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Global callback bridge function for BLE scan results. 
+
+This function bridges the C-\/style callback required by the BLE stack to the C++ class method. It\textquotesingle{}s used internally by the \doxylink{class_b_l_e_scanner}{BLEScanner}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Pointer to \doxylink{class_b_l_e_scanner}{BLEScanner} instance \\
+\hline
+{\em address} & Device MAC address \\
+\hline
+{\em rssi} & Received signal strength \\
+\hline
+{\em adv\+Data} & Advertisement data \\
+\hline
+{\em adv\+Data\+Len} & Advertisement data length \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00656}{656}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/scanners/\mbox{\hyperlink{ble__scanner_8h}{ble\+\_\+scanner.\+h}}\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/src/scanners/\mbox{\hyperlink{ble__scanner_8cpp}{ble\+\_\+scanner.\+cpp}}\end{DoxyCompactItemize}

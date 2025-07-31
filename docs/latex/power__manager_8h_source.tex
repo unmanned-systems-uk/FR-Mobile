@@ -1,0 +1,254 @@
+\doxysection{power\+\_\+manager.\+h}
+\hypertarget{power__manager_8h_source}{}\label{power__manager_8h_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/hardware/power\_manager.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/hardware/power\_manager.h}}
+\mbox{\hyperlink{power__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}interfaces.h"{}}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00022}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{00022}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{ResetReason}}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00024}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3d6fc432ff9e2d9b890c591179a4401e}{00024}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3d6fc432ff9e2d9b890c591179a4401e}{POWER\_ON}}\ =\ 0,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00025}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3932d629fb5e2be9d09b3a4485b3cc9d}{00025}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a3932d629fb5e2be9d09b3a4485b3cc9d}{EXTERNAL}}\ =\ 1,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00026}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aaea541d7f9574587656dc5125116e548}{00026}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aaea541d7f9574587656dc5125116e548}{SOFTWARE}}\ =\ 2,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00027}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a98a11b6a207bf1c64618790847ab8055}{00027}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a98a11b6a207bf1c64618790847ab8055}{PANIC}}\ =\ 3,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00028}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a827df3e98009b971dadb3eaba51cffb1}{00028}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a827df3e98009b971dadb3eaba51cffb1}{INTERRUPT\_WDT}}\ =\ 4,\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00029}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11ac80849fdaa3d6d5b6a9899b5c639a6e0}{00029}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11ac80849fdaa3d6d5b6a9899b5c639a6e0}{TASK\_WDT}}\ =\ 5,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00030}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a602205889db1ebcc2ac94039b4e94578}{00030}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a602205889db1ebcc2ac94039b4e94578}{OTHER\_WDT}}\ =\ 6,\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00031}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a918f0271f592b3866ce1470abe164b8a}{00031}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a918f0271f592b3866ce1470abe164b8a}{DEEP\_SLEEP}}\ =\ 7,\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00032}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aeb701471494a2c0840c816eb49c0cc3e}{00032}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11aeb701471494a2c0840c816eb49c0cc3e}{BROWNOUT}}\ =\ 8,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00033}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a6b582b7da9433378610142d5903664c9}{00033}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a6b582b7da9433378610142d5903664c9}{SDIO}}\ =\ 9,\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00034}\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a696b031073e74bf2cb98e5ef201d4aa3}{00034}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}}\ =\ 10\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00035}00035\ \};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00040}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{00040}}\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00042}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3}{00042}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3}{UNDEFINED}}\ =\ 0,\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00043}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d}{00043}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d}{ALL}}\ =\ 1,\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00044}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638}{00044}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638}{EXT0}}\ =\ 2,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00045}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a}{00045}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a}{EXT1}}\ =\ 3,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00046}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{00046}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{TIMER}}\ =\ 4,\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00047}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1}{00047}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1}{TOUCHPAD}}\ =\ 5,\ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00048}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca}{00048}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca}{ULP}}\ =\ 6,\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00049}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235}{00049}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235}{GPIO}}\ =\ 7,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00050}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f}{00050}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f}{UART}}\ =\ 8,\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00051}\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{00051}}\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}}\ =\ 9\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00052}00052\ \};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00057}\mbox{\hyperlink{struct_power_stats}{00057}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_power_stats}{PowerStats}}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00058}00058\ \{}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00059}\mbox{\hyperlink{struct_power_stats_a1dbb73ef499a59d9d2e3408bc76383c4}{00059}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_power_stats_a1dbb73ef499a59d9d2e3408bc76383c4}{totalSleepTime}}\ =\ 0;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00060}\mbox{\hyperlink{struct_power_stats_aae7c2ed95cd6f0bdc2d032c7f8d02061}{00060}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_power_stats_aae7c2ed95cd6f0bdc2d032c7f8d02061}{totalActiveTime}}\ =\ 0;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00061}\mbox{\hyperlink{struct_power_stats_a2594474738c90c4abb9c5f8f62226771}{00061}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_power_stats_a2594474738c90c4abb9c5f8f62226771}{sleepCycles}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00062}\mbox{\hyperlink{struct_power_stats_a6e21bcde8c623192a54f7059ede59e56}{00062}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_power_stats_a6e21bcde8c623192a54f7059ede59e56}{wakeupEvents}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00063}\mbox{\hyperlink{struct_power_stats_ab7e6464c7fc852c57f03bcb2f270fa77}{00063}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_power_stats_ab7e6464c7fc852c57f03bcb2f270fa77}{averageSleepDuration}}\ =\ 0.0f;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00064}\mbox{\hyperlink{struct_power_stats_a877f5a5d29f02dfcfbd8bc50951e06d5}{00064}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_power_stats_a877f5a5d29f02dfcfbd8bc50951e06d5}{dutyCycle}}\ =\ 0.0f;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00065}\mbox{\hyperlink{struct_power_stats_ad4fb8005de7533c1c923c11149d05cb5}{00065}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_power_stats_ad4fb8005de7533c1c923c11149d05cb5}{lastWakeupCause}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00066}\mbox{\hyperlink{struct_power_stats_aaa77b20f1d6a1edb11c4bfcf5b5c408e}{00066}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_power_stats_aaa77b20f1d6a1edb11c4bfcf5b5c408e}{lastResetReason}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00067}\mbox{\hyperlink{struct_power_stats_a85a40a17464e4a29de04ca6e359c777e}{00067}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_power_stats_a85a40a17464e4a29de04ca6e359c777e}{bootTime}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00068}00068\ \};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00073}\mbox{\hyperlink{struct_peripheral_config}{00073}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_peripheral_config}{PeripheralConfig}}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00075}\mbox{\hyperlink{struct_peripheral_config_af81e5edbe0ad8ca5f8f9f60d9ec9b53f}{00075}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_af81e5edbe0ad8ca5f8f9f60d9ec9b53f}{wifi}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00076}\mbox{\hyperlink{struct_peripheral_config_aa3c1618fccefba66b6e2688f4874e674}{00076}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_aa3c1618fccefba66b6e2688f4874e674}{bluetooth}}\ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00077}\mbox{\hyperlink{struct_peripheral_config_a5fc1043fd095dc352c80f8f6c68ea5e1}{00077}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_a5fc1043fd095dc352c80f8f6c68ea5e1}{cellular}}\ =\ \textcolor{keyword}{false};\ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00078}\mbox{\hyperlink{struct_peripheral_config_afb19e49db244cd1ca98a685f94f0cda6}{00078}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_afb19e49db244cd1ca98a685f94f0cda6}{sdcard}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00079}\mbox{\hyperlink{struct_peripheral_config_a6cc302bb3ceb187f5282e06398cb8aa9}{00079}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_a6cc302bb3ceb187f5282e06398cb8aa9}{sensors}}\ =\ \textcolor{keyword}{false};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00080}\mbox{\hyperlink{struct_peripheral_config_af583bd6c8227a2a8a2acbdcdeaac0a50}{00080}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_af583bd6c8227a2a8a2acbdcdeaac0a50}{external5V}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00081}\mbox{\hyperlink{struct_peripheral_config_af487cd6b187330a06ddb42d389427703}{00081}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_af487cd6b187330a06ddb42d389427703}{rtc}}\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00082}\mbox{\hyperlink{struct_peripheral_config_a2f2dfc3386661889cc1803bb78e5b0bd}{00082}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_peripheral_config_a2f2dfc3386661889cc1803bb78e5b0bd}{watchdog}}\ =\ \textcolor{keyword}{true};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00083}00083\ \};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00088}\mbox{\hyperlink{struct_power_config}{00088}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_power_config}{PowerConfig}}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00090}\mbox{\hyperlink{struct_power_config_a1d4c0a4cae4d55c39983f9465a456244}{00090}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_power_config_a1d4c0a4cae4d55c39983f9465a456244}{maxSleepDuration}}\ =\ 3600000000ULL;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00091}\mbox{\hyperlink{struct_power_config_a0a9456aa0c916cad4f8934ea0630e94d}{00091}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_power_config_a0a9456aa0c916cad4f8934ea0630e94d}{minSleepDuration}}\ =\ 1000000ULL;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00092}\mbox{\hyperlink{struct_power_config_a77f179378b1649db5ff1f34989b39471}{00092}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_power_config_a77f179378b1649db5ff1f34989b39471}{lowBatteryThreshold}}\ =\ 15.0f;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00093}\mbox{\hyperlink{struct_power_config_a0b49bd79eedaa5a5403a03e7a7a8c8bc}{00093}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_power_config_a0b49bd79eedaa5a5403a03e7a7a8c8bc}{criticalBatteryThreshold}}\ =\ 5.0f;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00094}\mbox{\hyperlink{struct_power_config_a706c45dfc6f45dc86fe6da3021205ce2}{00094}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_power_config_a706c45dfc6f45dc86fe6da3021205ce2}{emergencyShutdownEnabled}}\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00095}\mbox{\hyperlink{struct_power_config_abedbaa794a3d71fa7119e4e642d9c3fb}{00095}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_power_config_abedbaa794a3d71fa7119e4e642d9c3fb}{watchdogTimeoutMs}}\ =\ 300000;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00096}\mbox{\hyperlink{struct_power_config_a52d496332384a49fd18c0ef25f3d94b6}{00096}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_power_config_a52d496332384a49fd18c0ef25f3d94b6}{wakeupPin}}\ =\ -\/1;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00097}\mbox{\hyperlink{struct_power_config_a53993dbc79e64d468656fde1fb859fe1}{00097}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_power_config_a53993dbc79e64d468656fde1fb859fe1}{wakeupPinLevel}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00098}00098\ \};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00115}\mbox{\hyperlink{class_power_manager}{00115}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_power_manager_ac042154201d1c37f6bd5cfc0441849b9}{PowerManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_power_manager}{IPowerManager}}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00116}00116\ \{}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00117}00117\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_power_manager_ac042154201d1c37f6bd5cfc0441849b9}{PowerManager}}(\textcolor{keywordtype}{int}\ powerPin\ =\ 15);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{class_power_manager_a7849fc619b62385be6b6461c16d84df2}{\string~PowerManager}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ IPowerManager\ interface\ implementation}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00133}00133\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a416206aeab4fad278771c33df90d55aa}{enablePeripherals}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a84eca8b42dcd28a7211ddd33e4057d01}{disablePeripherals}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00144}00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a1a7bb8e40ab19a380bb6a3930c2deb75}{enterSleep}}(uint64\_t\ sleepTimeUs)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00150}00150\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}\ \mbox{\hyperlink{class_power_manager_ac9f7272f6409e1da2271e4c3b692000e}{getWakeupCause}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00156}00156\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a064ec6a4f8af44c7424dba52c67c6796}{configureWakeup}}(uint64\_t\ timeUs)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00158}00158\ \ \ \ \ \textcolor{comment}{//\ Power\ management\ initialization\ and\ control}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00163}00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a217939b880543bfff917203a06d45258}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00169}00169\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ad3d753133614fcd081d31817babc2563}{shutdown}}(\textcolor{keywordtype}{bool}\ emergency\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00175}00175\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ac9a041d36f4eb1d08bf9779a9fd3f838}{restart}}(\textcolor{keyword}{const}\ std::string\ \&reason\ =\ \textcolor{stringliteral}{"{}Manual\ restart"{}});}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00177}00177\ \ \ \ \ \textcolor{comment}{//\ Peripheral\ control\ operations}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00182}00182\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ab0c173dfb217be78e3c4238c52c92086}{configurePeripherals}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_peripheral_config}{PeripheralConfig}}\ \&config);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00188}\mbox{\hyperlink{class_power_manager_a161d68ae694f4c8e4201e0f743b3b56a}{00188}}\ \ \ \ \ \mbox{\hyperlink{struct_peripheral_config}{PeripheralConfig}}\ \mbox{\hyperlink{class_power_manager_a161d68ae694f4c8e4201e0f743b3b56a}{getPeripheralConfig}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ peripheralConfig\_;\ \}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00194}00194\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ad5a8992dece801d78b9988bc7e5ba4b4}{set5VSupply}}(\textcolor{keywordtype}{bool}\ enabled);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_ad22dc5868e67d1285b89640237843ca0}{is5VSupplyEnabled}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00202}00202\ \ \ \ \ \textcolor{comment}{//\ Sleep\ mode\ operations}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00208}00208\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a162ef739385345cf7d1ca7280c3a9590}{enterLightSleep}}(uint64\_t\ sleepTimeUs);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00215}00215\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ad9963d983aa1085e3f4335e7094ee804}{enterDeepSleep}}(uint64\_t\ sleepTimeUs,\ uint32\_t\ wakeupSources\ =\ 0x01);\ \textcolor{comment}{//\ Timer\ only\ by\ default}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00223}\mbox{\hyperlink{class_power_manager_ab602a6342e1fad3200a4a7facfadf6d2}{00223}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_ab602a6342e1fad3200a4a7facfadf6d2}{configureGPIOWakeup}}(\textcolor{keywordtype}{int}\ pin,\ \textcolor{keywordtype}{bool}\ level);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00228}\mbox{\hyperlink{class_power_manager_a477a7cb4a8d7ff7d0b09e7df7087b11c}{00228}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a477a7cb4a8d7ff7d0b09e7df7087b11c}{disableAllWakeupSources}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00230}00230\ \ \ \ \ \textcolor{comment}{//\ Watchdog\ timer\ operations}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00236}00236\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_aafffc0b472611483926b7102ba571355}{configureWatchdog}}(uint32\_t\ timeoutMs);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00241}00241\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ada75c3c09242a3d075209faa228bff6e}{resetWatchdog}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00247}00247\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_ab4f233f92d33569b5ab573bc8544fc56}{enableWatchdog}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00253}00253\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a9ced864cc6707771dead21ca5e2ee037}{disableWatchdog}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00255}00255\ \ \ \ \ \textcolor{comment}{//\ System\ information\ and\ diagnostics}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00260}00260\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{ResetReason}}\ \mbox{\hyperlink{class_power_manager_a7f2a50879a9868c38d331d2b0cc6d2f2}{getResetReason}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00266}00266\ \ \ \ \ \mbox{\hyperlink{struct_power_stats}{PowerStats}}\ \mbox{\hyperlink{class_power_manager_ae967934d313d10234e5fab23613a2ee6}{getPowerStats}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00272}00272\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{class_power_manager_ac5b5c5f6089fb57a320f46260a019db7}{getUptimeMs}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00278}00278\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_power_manager_adbd4e0f5a46925e9bcec95441600740c}{getFreeHeap}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00284}00284\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{class_power_manager_a7a9e35c768063af1eb45da661b2c6c83}{getMinFreeHeap}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00286}00286\ \ \ \ \ \textcolor{comment}{//\ Battery-\/aware\ power\ management}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00291}\mbox{\hyperlink{class_power_manager_a7b588ed795b254ecacdbc1ccb73e2b43}{00291}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a7b588ed795b254ecacdbc1ccb73e2b43}{setPowerConfig}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_power_config}{PowerConfig}}\ \&config);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00297}\mbox{\hyperlink{class_power_manager_a179920d4ee849a080eafe47b404e1616}{00297}}\ \ \ \ \ \mbox{\hyperlink{struct_power_config}{PowerConfig}}\ \mbox{\hyperlink{class_power_manager_a179920d4ee849a080eafe47b404e1616}{getPowerConfig}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ powerConfig\_;\ \}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00304}00304\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a0ec834e5c8fadc8527e356344ec4cb30}{checkBatteryLevel}}(\textcolor{keywordtype}{float}\ batteryPercent);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00310}00310\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_acf8d3bcfd0bed530739ffa76f8126cae}{enterEmergencyMode}}(\textcolor{keyword}{const}\ std::string\ \&reason);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00312}00312\ \ \ \ \ \textcolor{comment}{//\ GPIO\ hold\ and\ persistence}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00316}00316\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a197ec87e10039ec1a208de75ba606cd6}{configureGPIOHolds}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00323}00323\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_ac6001976d6c2d649b8221323bd55a10e}{enableGPIOHold}}(\textcolor{keywordtype}{int}\ pin,\ \textcolor{keywordtype}{bool}\ state);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00328}00328\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_manager_a1ccd85ba3f64a07e2eedd53337296f2e}{disableAllGPIOHolds}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00330}00330\ \ \ \ \ \textcolor{comment}{//\ Error\ handling\ and\ recovery}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00335}\mbox{\hyperlink{class_power_manager_a26e654a762cf48b8ced461d2a250f108}{00335}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_power_manager_a26e654a762cf48b8ced461d2a250f108}{getLastError}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ lastError\_;\ \}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00341}00341\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_manager_a278d871f68d75780b8a96f3b75fb0c15}{performHealthCheck}}();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00343}00343\ \ \ \ \ \textcolor{comment}{//\ Utility\ functions}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00349}00349\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{class_power_manager_ad1b259ad02f19b34587754fbed5276d8}{resetReasonToString}}(\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{ResetReason}}\ reason);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00356}00356\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{class_power_manager_af238912ea6946c69c9228d449838f4bc}{wakeupCauseToString}}(\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}\ cause);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00358}00358\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00359}00359\ \ \ \ \ \textcolor{comment}{//\ Hardware\ configuration}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00360}00360\ \ \ \ \ \textcolor{keywordtype}{int}\ powerPin\_;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00361}00361\ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized\_;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00362}00362\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00363}00363\ \ \ \ \ \textcolor{comment}{//\ Power\ state\ tracking}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00364}00364\ \ \ \ \ \mbox{\hyperlink{struct_peripheral_config}{PeripheralConfig}}\ peripheralConfig\_;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00365}00365\ \ \ \ \ \mbox{\hyperlink{struct_power_config}{PowerConfig}}\ powerConfig\_;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00366}00366\ \ \ \ \ \mbox{\hyperlink{struct_power_stats}{PowerStats}}\ powerStats\_;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00367}00367\ \ \ \ \ std::atomic<bool>\ emergencyMode\_;\ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00369}00369\ \ \ \ \ \textcolor{comment}{//\ Timing\ and\ statistics}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00370}00370\ \ \ \ \ std::chrono::steady\_clock::time\_point\ bootTime\_;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00371}00371\ \ \ \ \ std::chrono::steady\_clock::time\_point\ lastSleepTime\_;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00372}00372\ \ \ \ \ std::chrono::steady\_clock::time\_point\ lastWakeTime\_;\ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00373}00373\ \ \ \ \ uint64\_t\ accumulatedSleepTime\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00374}00374\ \ \ \ \ uint64\_t\ accumulatedActiveTime\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00376}00376\ \ \ \ \ \textcolor{comment}{//\ Error\ handling}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00377}00377\ \ \ \ \ std::string\ lastError\_;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00379}00379\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ handles}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00380}00380\ \ \ \ \ \textcolor{keywordtype}{void}\ *watchdogHandle\_;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00381}00381\ \ \ \ \ \textcolor{keywordtype}{void}\ *powerHandle\_;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00383}00383\ \ \ \ \ \textcolor{comment}{//\ Internal\ power\ control\ methods}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00390}00390\ \ \ \ \ \textcolor{keywordtype}{bool}\ controlPeripheralPower(\textcolor{keyword}{const}\ std::string\ \&peripheral,\ \textcolor{keywordtype}{bool}\ enabled);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00397}00397\ \ \ \ \ \textcolor{keywordtype}{void}\ updatePowerStats(\textcolor{keyword}{const}\ std::string\ \&operation,\ uint64\_t\ duration);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00402}00402\ \ \ \ \ \textcolor{keywordtype}{void}\ updateDutyCycle();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00404}00404\ \ \ \ \ \textcolor{comment}{//\ Sleep\ preparation\ and\ recovery}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00409}00409\ \ \ \ \ \textcolor{keywordtype}{void}\ prepareSleep(\textcolor{keywordtype}{bool}\ deepSleep);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00410}00410\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00415}00415\ \ \ \ \ \textcolor{keywordtype}{void}\ restoreFromSleep(\textcolor{keywordtype}{bool}\ fromDeepSleep);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00416}00416\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00422}00422\ \ \ \ \ uint64\_t\ validateSleepDuration(uint64\_t\ sleepTimeUs);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00424}00424\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ implementations}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00429}00429\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformInitialize();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00435}00435\ \ \ \ \ \textcolor{keywordtype}{void}\ platformEnterDeepSleep(uint64\_t\ sleepTimeUs);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00442}00442\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformEnterLightSleep(uint64\_t\ sleepTimeUs);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00447}00447\ \ \ \ \ \textcolor{keywordtype}{void}\ platformConfigureGPIOForSleep();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00452}00452\ \ \ \ \ \textcolor{keywordtype}{void}\ platformRestart();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00454}00454\ \ \ \ \ \textcolor{comment}{//\ Watchdog\ implementations}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00460}00460\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformInitializeWatchdog(uint32\_t\ timeoutMs);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00465}00465\ \ \ \ \ \textcolor{keywordtype}{void}\ platformResetWatchdog();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00470}00470\ \ \ \ \ \textcolor{keywordtype}{void}\ platformCleanupWatchdog();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00471}00471\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00472}00472\ \ \ \ \ \textcolor{comment}{//\ System\ information\ retrieval}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00477}00477\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{ResetReason}}\ platformGetResetReason();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00483}00483\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}\ platformGetWakeupCause();}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00484}00484\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00490}00490\ \ \ \ \ \textcolor{keywordtype}{void}\ platformGetMemoryInfo(uint32\_t\ *freeHeap,\ uint32\_t\ *minFreeHeap);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00491}00491\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00492}00492\ \ \ \ \ \textcolor{comment}{//\ Emergency\ procedures}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00497}00497\ \ \ \ \ \textcolor{keywordtype}{void}\ executeEmergencyShutdown(\textcolor{keyword}{const}\ std::string\ \&reason);}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00498}00498\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00504}00504\ \ \ \ \ \textcolor{keywordtype}{void}\ logCriticalPowerEvent(\textcolor{keyword}{const}\ std::string\ \&event,\ \textcolor{keyword}{const}\ std::string\ \&data\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00505}00505\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00506}00506\ \ \ \ \ \textcolor{comment}{//\ Constants\ and\ configuration}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00507}00507\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DEFAULT\_POWER\_PIN\ =\ 15;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00508}00508\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ DEFAULT\_WATCHDOG\_TIMEOUT\ =\ 300000;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00509}00509\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ MIN\_SLEEP\_DURATION\ =\ 1000000ULL;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00510}00510\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ MAX\_SLEEP\_DURATION\ =\ 3600000000ULL;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00511}00511\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ DEFAULT\_LOW\_BATTERY\ =\ 15.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00512}00512\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ DEFAULT\_CRITICAL\_BATTERY\ =\ 5.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00513}00513\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint64\_t\ EMERGENCY\_SLEEP\_DURATION\ =\ 3600000000ULL;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00515}00515\ \ \ \ \ \textcolor{comment}{//\ ESP32-\/specific\ wakeup\ source\ bits\ (for\ ESP32\ platform)}}
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00516}00516\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ WAKEUP\_TIMER\ =\ 0x01;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00517}00517\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ WAKEUP\_EXT0\ =\ 0x02;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00518}00518\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ WAKEUP\_EXT1\ =\ 0x04;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00519}00519\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ WAKEUP\_TOUCHPAD\ =\ 0x08;\ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00520}00520\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ WAKEUP\_ULP\ =\ 0x10;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{power__manager_8h_source_l00521}00521\ \};}
+
+\end{DoxyCode}

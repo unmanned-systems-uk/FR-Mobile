@@ -1,0 +1,229 @@
+\chapter{Forestry Research Device -\/ C++ Migration Guide }
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration}{}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration}\index{Forestry Research Device -\/ C++ Migration Guide@{Forestry Research Device -\/ C++ Migration Guide}}
+\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md37}%
+\Hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md37}%
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md38}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md38}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ForestryResearchDevice/}
+\DoxyCodeLine{├──\ CMakeLists.txt\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Main\ build\ configuration}
+\DoxyCodeLine{├──\ README.md\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Project\ documentation}
+\DoxyCodeLine{├──\ .gitignore\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Git\ ignore\ file}
+\DoxyCodeLine{├──\ .clang-\/format\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Code\ formatting\ rules}
+\DoxyCodeLine{├──\ include/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Header\ files}
+\DoxyCodeLine{│\ \ \ ├──\ main.h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Main\ application\ header}
+\DoxyCodeLine{│\ \ \ ├──\ interfaces.h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Abstract\ interfaces}
+\DoxyCodeLine{│\ \ \ ├──\ config.h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Configuration\ constants}
+\DoxyCodeLine{│\ \ \ └──\ platform/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Platform-\/specific\ headers}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ esp32/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ │\ \ \ ├──\ esp32\_wifi.h}
+\DoxyCodeLine{│\ \ \ \ \ \ \ │\ \ \ ├──\ esp32\_ble.h}
+\DoxyCodeLine{│\ \ \ \ \ \ \ │\ \ \ └──\ esp32\_power.h}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ linux/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ \ \ \ \ └──\ linux\_mock.h}
+\DoxyCodeLine{├──\ src/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Source\ files}
+\DoxyCodeLine{│\ \ \ ├──\ main.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Main\ application}
+\DoxyCodeLine{│\ \ \ ├──\ interfaces.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Interface\ implementations}
+\DoxyCodeLine{│\ \ \ ├──\ utils.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Utility\ functions}
+\DoxyCodeLine{│\ \ \ ├──\ scanners/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Scanner\ implementations}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ wifi\_scanner.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ ble\_scanner.cpp}
+\DoxyCodeLine{│\ \ \ ├──\ hardware/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Hardware\ interfaces}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ battery\_monitor.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ power\_manager.cpp}
+\DoxyCodeLine{│\ \ \ ├──\ data/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Data\ management}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ sdcard\_manager.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ cellular\_manager.cpp}
+\DoxyCodeLine{│\ \ \ │\ \ \ └──\ rtc\_manager.cpp}
+\DoxyCodeLine{│\ \ \ └──\ platform/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Platform-\/specific\ code}
+\DoxyCodeLine{│\ \ \ \ \ \ \ ├──\ esp32/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ │\ \ \ ├──\ esp32\_wifi.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ │\ \ \ ├──\ esp32\_ble.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ │\ \ \ ├──\ esp32\_i2c.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ │\ \ \ └──\ esp32\_power.cpp}
+\DoxyCodeLine{│\ \ \ \ \ \ \ └──\ linux/}
+\DoxyCodeLine{│\ \ \ \ \ \ \ \ \ \ \ └──\ linux\_mock.cpp}
+\DoxyCodeLine{├──\ tests/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Unit\ tests\ (optional)}
+\DoxyCodeLine{│\ \ \ ├──\ CMakeLists.txt}
+\DoxyCodeLine{│\ \ \ ├──\ test\_main.cpp}
+\DoxyCodeLine{│\ \ \ ├──\ test\_scanners.cpp}
+\DoxyCodeLine{│\ \ \ └──\ test\_battery.cpp}
+\DoxyCodeLine{├──\ docs/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Documentation}
+\DoxyCodeLine{│\ \ \ ├──\ Doxyfile}
+\DoxyCodeLine{│\ \ \ ├──\ API.md}
+\DoxyCodeLine{│\ \ \ └──\ ARCHITECTURE.md}
+\DoxyCodeLine{├──\ scripts/\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Build\ and\ utility\ scripts}
+\DoxyCodeLine{│\ \ \ ├──\ build.sh\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Build\ script}
+\DoxyCodeLine{│\ \ \ ├──\ format.sh\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Code\ formatting}
+\DoxyCodeLine{│\ \ \ └──\ install\_deps.sh\ \ \ \ \ \ \ \ \ \ \ \ \#\ Dependency\ installation}
+\DoxyCodeLine{└──\ platformio.ini\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ PlatformIO\ config\ (for\ ESP32)}
+
+\end{DoxyCode}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md39}{}\doxysection{\texorpdfstring{Key Improvements Made}{Key Improvements Made}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md39}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md40}{}\doxysubsection{\texorpdfstring{1. {\bfseries{Modern C++ Structure}}}{1. {\bfseries{Modern C++ Structure}}}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md40}
+
+\begin{DoxyItemize}
+\item Used C++17 features (smart pointers, auto, range-\/based loops)
+\item RAII pattern for resource management
+\item Exception-\/safe code with proper error handling
+\item Clear separation of concerns with interfaces
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md41}{}\doxysubsection{\texorpdfstring{2. {\bfseries{Platform Abstraction}}}{2. {\bfseries{Platform Abstraction}}}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md41}
+
+\begin{DoxyItemize}
+\item Abstract interfaces for hardware components
+\item Platform-\/specific implementations separated
+\item Easy to port between ESP32, Linux, Windows
+\item Conditional compilation with preprocessor directives
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md42}{}\doxysubsection{\texorpdfstring{3. {\bfseries{Memory Management}}}{3. {\bfseries{Memory Management}}}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md42}
+
+\begin{DoxyItemize}
+\item Replaced raw pointers with {\ttfamily std\+::shared\+\_\+ptr} and {\ttfamily std\+::unique\+\_\+ptr}
+\item Automatic resource cleanup in destructors
+\item No manual memory management required
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md43}{}\doxysubsection{\texorpdfstring{4. {\bfseries{Error Handling}}}{4. {\bfseries{Error Handling}}}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md43}
+
+\begin{DoxyItemize}
+\item Exceptions instead of error codes
+\item Comprehensive error logging
+\item Graceful degradation on component failures
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md44}{}\doxysubsection{\texorpdfstring{5. {\bfseries{Thread Safety}}}{5. {\bfseries{Thread Safety}}}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md44}
+
+\begin{DoxyItemize}
+\item Used {\ttfamily std\+::atomic} for flags
+\item {\ttfamily std\+::mutex} for protecting shared data
+\item Safe concurrent access to scan results
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md45}{}\doxysubsection{\texorpdfstring{6. {\bfseries{Modular Design}}}{6. {\bfseries{Modular Design}}}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md45}
+
+\begin{DoxyItemize}
+\item Each component is a separate class
+\item Dependency injection for testability
+\item Easy to mock components for testing
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md46}{}\doxysection{\texorpdfstring{Build Instructions}{Build Instructions}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md46}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md47}{}\doxysubsection{\texorpdfstring{For Linux Development/\+Testing}{For Linux Development/\+Testing}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md47}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Install\ dependencies}
+\DoxyCodeLine{sudo\ apt\ update}
+\DoxyCodeLine{sudo\ apt\ install\ build-\/essential\ cmake\ git}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Clone\ and\ build}
+\DoxyCodeLine{git\ clone\ <repository-\/url>}
+\DoxyCodeLine{cd\ ForestryResearchDevice}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{make\ -\/j\$(nproc)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Run}
+\DoxyCodeLine{./ForestryResearchDevice}
+
+\end{DoxyCode}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md48}{}\doxysubsection{\texorpdfstring{For ESP32 with Platform\+IO}{For ESP32 with Platform\+IO}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md48}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Install\ PlatformIO}
+\DoxyCodeLine{pip\ install\ platformio}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Build\ and\ upload}
+\DoxyCodeLine{pio\ run}
+\DoxyCodeLine{pio\ run\ -\/-\/target\ upload}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Monitor\ serial\ output}
+\DoxyCodeLine{pio\ device\ monitor}
+
+\end{DoxyCode}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md49}{}\doxysubsection{\texorpdfstring{For ESP32 with Arduino IDE}{For ESP32 with Arduino IDE}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md49}
+
+\begin{DoxyEnumerate}
+\item Copy the header files to your Arduino sketch folder
+\item Install required libraries through Library Manager
+\item Configure board settings for your ESP32
+\item Compile and upload
+\end{DoxyEnumerate}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md50}{}\doxysection{\texorpdfstring{Configuration}{Configuration}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md50}
+Edit {\ttfamily include/config.\+h} to customize\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_config}{Config}}\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{namespace_config_a4f6ee86837579d4892b81c96af4787b3}{DEVICE\_ID}}\ =\ \textcolor{stringliteral}{"{}Your\_Device\_ID"{}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ std::string\ \mbox{\hyperlink{namespace_config_a2f30de576662546383551a90cc10697c}{LOCATION}}\ =\ \textcolor{stringliteral}{"{}Your\_Location"{}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_config_af2163c4ce4729a85119e1510258a3b86}{LATITUDE}}\ =\ 55.5;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespace_config_a9e2b4df07302242c3daea41e355f4ea6}{LONGITUDE}}\ =\ -\/2.84;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a7b56a950f6ecd80f4805d0b973e08cac}{SCAN\_INTERVAL\_MS}}\ =\ 10000;\ \ \ \ \ \ \textcolor{comment}{//\ 10\ seconds}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a786f3a65fdb0e50e0c8c524da57c47d6}{WIFI\_SCAN\_TIME\_MS}}\ =\ 600;\ \ \ \ \ \ \ \textcolor{comment}{//\ 600ms}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_a1ecd6e382f8729ec28361f2b1b685bdb}{BLE\_SCAN\_TIME\_MS}}\ =\ 60;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 60ms}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespace_config_aef4c34c29136f6b01af094ebb1f9a9c3}{LTE\_TIME\_MINUTES}}\ =\ 200;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 200\ minutes}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md51}{}\doxysection{\texorpdfstring{Usage Examples}{Usage Examples}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md51}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md52}{}\doxysubsection{\texorpdfstring{Basic Usage}{Basic Usage}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md52}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{class_forestry_research_device}{ForestryResearchDevice}}\ device;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!device.\mbox{\hyperlink{class_forestry_research_device_ad32cb29c1cb85192dfbec5a6f4c897af}{initialize}}())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ device.\mbox{\hyperlink{class_forestry_research_device_a6341ce26a448f3cfdafa7a72a2fd5e60}{run}}();\ \textcolor{comment}{//\ Runs\ until\ shutdown}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md53}{}\doxysubsection{\texorpdfstring{Custom Configuration}{Custom Configuration}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md53}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Create\ device\ with\ custom\ settings}}
+\DoxyCodeLine{\mbox{\hyperlink{class_forestry_research_device}{ForestryResearchDevice}}\ device;}
+\DoxyCodeLine{device.setScanInterval(5000);\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 5\ second\ intervals}}
+\DoxyCodeLine{device.setUploadInterval(120);\ \ \ \ \ \ \ \textcolor{comment}{//\ Upload\ every\ 2\ hours}}
+\DoxyCodeLine{device.enableNightSleep(\textcolor{keyword}{true});\ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ night\ time\ sleep}}
+\DoxyCodeLine{device.setDebugMode(\textcolor{keyword}{true});\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ debug\ output}}
+
+\end{DoxyCode}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md54}{}\doxysubsection{\texorpdfstring{Component Access}{Component Access}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md54}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Access\ individual\ components}}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ batteryStatus\ =\ device.getBatteryMonitor()-\/>readBatteryStatus();}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ scanResults\ =\ device.getWiFiScanner()-\/>getResults();}
+\DoxyCodeLine{\textcolor{keywordtype}{float}\ sdCapacity\ =\ device.getStorage()-\/>getRemainingCapacityPercent();}
+
+\end{DoxyCode}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md55}{}\doxysection{\texorpdfstring{Migration Benefits}{Migration Benefits}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md55}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Maintainability}}\+: Clear code structure, easier to debug and modify
+\item {\bfseries{Portability}}\+: Runs on multiple platforms (ESP32, Linux, Windows)
+\item {\bfseries{Testability}}\+: Each component can be unit tested independently
+\item {\bfseries{Reliability}}\+: Better error handling and resource management
+\item {\bfseries{Performance}}\+: Efficient memory usage and optimized scanning
+\item {\bfseries{Extensibility}}\+: Easy to add new features and sensors
+\end{DoxyEnumerate}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md56}{}\doxysection{\texorpdfstring{Platform-\/\+Specific Notes}{Platform-\/\+Specific Notes}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md56}
+\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md57}{}\doxysubsection{\texorpdfstring{ESP32}{ESP32}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md57}
+
+\begin{DoxyItemize}
+\item Uses ESP-\/\+IDF or Arduino framework
+\item Hardware-\/specific implementations for Wi\+Fi, BLE, I2C
+\item Deep sleep functionality preserved
+\item Watchdog timer support
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md58}{}\doxysubsection{\texorpdfstring{Linux}{Linux}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md58}
+
+\begin{DoxyItemize}
+\item Mock implementations for testing
+\item File-\/based storage instead of SD card
+\item Can simulate scanning operations
+\item Useful for algorithm development
+\end{DoxyItemize}\hypertarget{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md59}{}\doxysubsection{\texorpdfstring{Windows}{Windows}}\label{md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration_autotoc_md59}
+
+\begin{DoxyItemize}
+\item Similar to Linux but with Windows-\/specific file paths
+\item Could integrate with Windows Bluetooth/\+Wi\+Fi APIs
+\item Good for data analysis and visualization tools
+\end{DoxyItemize}
+
+This structure provides a solid foundation for migrating your Arduino code to a more maintainable and portable C++ application while preserving all the original functionality. 

@@ -1,0 +1,143 @@
+\doxysection{HTTPResponse Struct Reference}
+\hypertarget{struct_h_t_t_p_response}{}\label{struct_h_t_t_p_response}\index{HTTPResponse@{HTTPResponse}}
+
+
+HTTP response structure.  
+
+
+
+
+{\ttfamily \#include $<$cellular\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_h_t_t_p_response_a77eadb87b99b44f99018c9cbcf26c549}{status\+Code}} = 0
+\begin{DoxyCompactList}\small\item\em HTTP status code (200, 404, etc.) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_h_t_t_p_response_ac1f255c3129550b5967ac1b2b11081a8}{status\+Text}}
+\begin{DoxyCompactList}\small\item\em HTTP status text. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_h_t_t_p_response_a64a9aad0bf4cc1b2b5f7bbc8b3cb1867}{body}}
+\begin{DoxyCompactList}\small\item\em Response body content. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_h_t_t_p_response_a5cc4d04dbca2b18d0e4e971e1f6426db}{headers}}
+\begin{DoxyCompactList}\small\item\em Response headers. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{struct_h_t_t_p_response_ab44845077d3531dba50627eb9483ec9c}{content\+Length}} = 0
+\begin{DoxyCompactList}\small\item\em Content length in bytes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_h_t_t_p_response_a334ed0fcea65383b205ae0c457b0997d}{success}} = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}
+\begin{DoxyCompactList}\small\item\em Overall success flag. \end{DoxyCompactList}\item 
+std\+::chrono\+::milliseconds \mbox{\hyperlink{struct_h_t_t_p_response_aa1e711b4bc61d22a7d1c0d2fa3c9fc96}{response\+Time}} \{0\}
+\begin{DoxyCompactList}\small\item\em Response time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+HTTP response structure. 
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00071}{71}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_h_t_t_p_response_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_h_t_t_p_response_a64a9aad0bf4cc1b2b5f7bbc8b3cb1867}\index{HTTPResponse@{HTTPResponse}!body@{body}}
+\index{body@{body}!HTTPResponse@{HTTPResponse}}
+\doxysubsubsection{\texorpdfstring{body}{body}}
+{\footnotesize\ttfamily \label{struct_h_t_t_p_response_a64a9aad0bf4cc1b2b5f7bbc8b3cb1867} 
+std\+::string HTTPResponse\+::body}
+
+
+
+Response body content. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00075}{75}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_h_t_t_p_response_ab44845077d3531dba50627eb9483ec9c}\index{HTTPResponse@{HTTPResponse}!contentLength@{contentLength}}
+\index{contentLength@{contentLength}!HTTPResponse@{HTTPResponse}}
+\doxysubsubsection{\texorpdfstring{contentLength}{contentLength}}
+{\footnotesize\ttfamily \label{struct_h_t_t_p_response_ab44845077d3531dba50627eb9483ec9c} 
+size\+\_\+t HTTPResponse\+::content\+Length = 0}
+
+
+
+Content length in bytes. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00077}{77}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_h_t_t_p_response_a5cc4d04dbca2b18d0e4e971e1f6426db}\index{HTTPResponse@{HTTPResponse}!headers@{headers}}
+\index{headers@{headers}!HTTPResponse@{HTTPResponse}}
+\doxysubsubsection{\texorpdfstring{headers}{headers}}
+{\footnotesize\ttfamily \label{struct_h_t_t_p_response_a5cc4d04dbca2b18d0e4e971e1f6426db} 
+std\+::string HTTPResponse\+::headers}
+
+
+
+Response headers. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00076}{76}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_h_t_t_p_response_aa1e711b4bc61d22a7d1c0d2fa3c9fc96}\index{HTTPResponse@{HTTPResponse}!responseTime@{responseTime}}
+\index{responseTime@{responseTime}!HTTPResponse@{HTTPResponse}}
+\doxysubsubsection{\texorpdfstring{responseTime}{responseTime}}
+{\footnotesize\ttfamily \label{struct_h_t_t_p_response_aa1e711b4bc61d22a7d1c0d2fa3c9fc96} 
+std\+::chrono\+::milliseconds HTTPResponse\+::response\+Time \{0\}}
+
+
+
+Response time. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00079}{79}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_h_t_t_p_response_a77eadb87b99b44f99018c9cbcf26c549}\index{HTTPResponse@{HTTPResponse}!statusCode@{statusCode}}
+\index{statusCode@{statusCode}!HTTPResponse@{HTTPResponse}}
+\doxysubsubsection{\texorpdfstring{statusCode}{statusCode}}
+{\footnotesize\ttfamily \label{struct_h_t_t_p_response_a77eadb87b99b44f99018c9cbcf26c549} 
+int HTTPResponse\+::status\+Code = 0}
+
+
+
+HTTP status code (200, 404, etc.) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00073}{73}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_h_t_t_p_response_ac1f255c3129550b5967ac1b2b11081a8}\index{HTTPResponse@{HTTPResponse}!statusText@{statusText}}
+\index{statusText@{statusText}!HTTPResponse@{HTTPResponse}}
+\doxysubsubsection{\texorpdfstring{statusText}{statusText}}
+{\footnotesize\ttfamily \label{struct_h_t_t_p_response_ac1f255c3129550b5967ac1b2b11081a8} 
+std\+::string HTTPResponse\+::status\+Text}
+
+
+
+HTTP status text. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00074}{74}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_h_t_t_p_response_a334ed0fcea65383b205ae0c457b0997d}\index{HTTPResponse@{HTTPResponse}!success@{success}}
+\index{success@{success}!HTTPResponse@{HTTPResponse}}
+\doxysubsubsection{\texorpdfstring{success}{success}}
+{\footnotesize\ttfamily \label{struct_h_t_t_p_response_a334ed0fcea65383b205ae0c457b0997d} 
+bool HTTPResponse\+::success = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}
+
+
+
+Overall success flag. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00078}{78}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{cellular__manager_8h}{cellular\+\_\+manager.\+h}}\end{DoxyCompactItemize}

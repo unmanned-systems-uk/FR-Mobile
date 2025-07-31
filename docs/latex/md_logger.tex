@@ -1,0 +1,43 @@
+\chapter{logger }
+\hypertarget{md_logger}{}\label{md_logger}\index{logger@{logger}}
+🚀 Complete Logging System Features\+:
+\begin{DoxyEnumerate}
+\item \doxylink{class_logger}{Logger} Header (\doxylink{logger_8h}{include/utils/logger.\+h})
+\end{DoxyEnumerate}
+
+Multiple log levels\+: DEBUG, INFO, WARNING, ERROR, CRITICAL Dual output\+: Console + SD card simultaneously Thread-\/safe\+: Mutex protection for concurrent access Asynchronous logging\+: Background thread prevents blocking File rotation\+: Automatic rotation by size/time with backup files Timestamp integration\+: Uses your RTC or network time Component-\/based\+: Each module logs with its own identifier
+
+
+\begin{DoxyEnumerate}
+\item \doxylink{class_logger}{Logger} Implementation (\doxylink{logger_8cpp}{src/utils/logger.\+cpp})
+\end{DoxyEnumerate}
+
+Color-\/coded console output\+: Different colors for each log level Professional file formatting\+: Structured, parseable log files Error recovery\+: Handles file write failures gracefully Memory efficient\+: Configurable buffer sizes and limits Cross-\/platform\+: Works on ESP32, Linux, Windows
+
+
+\begin{DoxyEnumerate}
+\item Wi\+Fi Scanner with Logging (\doxylink{wifi__scanner_8cpp}{src/scanners/wifi\+\_\+scanner.\+cpp})
+\end{DoxyEnumerate}
+
+Detailed operation logging\+: Every step tracked and logged Error diagnostics\+: Comprehensive error reporting with context Performance metrics\+: Scan counts, timing, success rates Debug information\+: Packet details, MAC filtering, validation
+
+
+\begin{DoxyEnumerate}
+\item Main Application Integration
+\end{DoxyEnumerate}
+
+System health monitoring\+: Battery, storage, network status Startup/shutdown logging\+: Complete system lifecycle tracking Error recovery\+: Intelligent error handling with detailed logs Configuration logging\+: All settings recorded at startup
+
+🎯 Key Benefits\+: For Development\+: cpp// Easy debugging with different levels LOG\+\_\+\+DEBUG("{}\+Wi\+Fi\+Scanner"{}, "{}\+Processing packet with RSSI\+: "{} + std\+::to\+\_\+string(rssi)); LOG\+\_\+\+INFO("{}\+Battery\+Monitor"{}, "{}\+Battery level\+: 85\%"{}); LOG\+\_\+\+ERROR("{}\+Cellular\+Manager"{}, "{}\+Failed to connect to network"{}); For Field Deployment\+:
+
+Remote diagnostics\+: Detailed logs on SD card for field analysis Problem tracking\+: Timestamps help correlate issues with events Performance monitoring\+: Track system behavior over time Maintenance planning\+: Log data helps predict component failures
+
+For Production\+:
+
+Configurable verbosity\+: Reduce console output, maintain file logs Automatic rotation\+: Prevents SD card from filling up Error escalation\+: Critical errors logged immediately, others buffered
+
+📋 Usage Examples\+: Basic Logging\+: cpp\+LOG\+\_\+\+INFO("{}\+My\+Component"{}, "{}\+Operation completed successfully"{}); LOG\+\_\+\+ERROR("{}\+My\+Component"{}, "{}\+Failed to read sensor data"{}); Formatted Logging\+: cpp\+LOGF\+\_\+\+INFO("{}\+Battery\+Monitor"{}, "{}\+Battery\+: \%d\%\% (\%.\+2f\+V, \%.\+1f°\+C)"{}, soc, voltage, temperature); Conditional Logging\+: cpp\#ifdef DEBUG\+\_\+\+MODE LOG\+\_\+\+DEBUG("{}\+Wi\+Fi\+Scanner"{}, "{}\+Detailed packet analysis\+: "{} + packet\+Details); \#endif 🔧 Configuration Options\+: cpp// Set log levels logger-\/\texorpdfstring{$>$}{>}set\+Console\+Log\+Level(\+Log\+Level\+::\+WARNING); // Only warnings+ on console logger-\/\texorpdfstring{$>$}{>}set\+File\+Log\+Level(\+Log\+Level\+::\+DEBUG); // Everything to file
+
+// Configure file rotation logger-\/\texorpdfstring{$>$}{>}set\+Max\+File\+Size(1024 \texorpdfstring{$\ast$}{*} 1024); // 1MB files logger-\/\texorpdfstring{$>$}{>}set\+Max\+Backup\+Files(10); // Keep 10 backups
+
+// Enable async logging for performance logger-\/\texorpdfstring{$>$}{>}set\+Async\+Logging(true); 📁 Log File Structure\+: /logs/ ├── forestry\+\_\+log\+\_\+2024-\/03-\/15\+\_\+10\+\_\+30\+\_\+45.\+txt \# Current log ├── forestry\+\_\+log\+\_\+2024-\/03-\/15\+\_\+10\+\_\+30\+\_\+45.\+txt.\+1 \# Previous log ├── forestry\+\_\+log\+\_\+2024-\/03-\/15\+\_\+10\+\_\+30\+\_\+45.\+txt.\+2 \# Older backup └── ... 🎨 Log File Format\+: \mbox{[}2024-\/03-\/15 10\+:30\+:45\mbox{]} \mbox{[}INFO \mbox{]} \mbox{[}\doxylink{class_wi_fi_scanner}{Wi\+Fi\+Scanner} \mbox{]} Wi\+Fi scan started successfully \mbox{[}2024-\/03-\/15 10\+:30\+:46\mbox{]} \mbox{[}DEBUG \mbox{]} \mbox{[}\doxylink{class_wi_fi_scanner}{Wi\+Fi\+Scanner} \mbox{]} Captured probe request from aa\+:bb\+:cc\+:dd\+:ee\+:ff \mbox{[}2024-\/03-\/15 10\+:30\+:47\mbox{]} \mbox{[}WARNING \mbox{]} \mbox{[}Battery\+Mon \mbox{]} Battery temperature high\+: 35.\+2°C \mbox{[}2024-\/03-\/15 10\+:30\+:48\mbox{]} \mbox{[}ERROR \mbox{]} \mbox{[}Cellular\+Mgr \mbox{]} Network connection timeout 

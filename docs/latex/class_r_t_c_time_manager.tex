@@ -1,0 +1,700 @@
+\doxysection{RTCTime\+Manager Class Reference}
+\hypertarget{class_r_t_c_time_manager}{}\label{class_r_t_c_time_manager}\index{RTCTimeManager@{RTCTimeManager}}
+
+
+RTC Time Manager implementing comprehensive time management.  
+
+
+
+
+{\ttfamily \#include $<$rtc\+\_\+time\+\_\+manager.\+h$>$}
+
+Inheritance diagram for RTCTime\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_r_t_c_time_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_r_t_c_time_manager_a0f47edf7e2b9fd457ffad05698315e55}{RTCTime\+Manager}} (uint8\+\_\+t i2c\+Address=0x68, uint8\+\_\+t eeprom\+Address=0x50)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_r_t_c_time_manager_adfcee0717bb7ab1679d179b0fcf4d748}{\texorpdfstring{$\sim$}{\string~}\+RTCTime\+Manager}} () override
+\begin{DoxyCompactList}\small\item\em Destructor -\/ ensures proper cleanup. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10}{get\+Current\+Date\+Time}} () override
+\begin{DoxyCompactList}\small\item\em Get current date and time as ISO 8601 string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876}{set\+Time\+From\+Network}} (const std\+::string \&network\+Time) override
+\begin{DoxyCompactList}\small\item\em Set RTC time from network time string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d}{is\+Valid\+Time}} (const std\+::string \&time\+Str) override
+\begin{DoxyCompactList}\small\item\em Validate network time string format and content. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4}{get\+Night\+Sleep\+Duration}} (const std\+::string \&current\+Time) override
+\begin{DoxyCompactList}\small\item\em Calculate sleep duration for night time power saving. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a6defb30a73374ac4a52359881a26e0dd}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initialize DS1307 RTC module and I2C communication. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_aded1a75cc12737188d00b959bc796236}{set\+Time}} (const \mbox{\hyperlink{struct_time_components}{Time\+Components}} \&time)
+\begin{DoxyCompactList}\small\item\em Set RTC time using time components structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_time_components}{Time\+Components}} \mbox{\hyperlink{class_r_t_c_time_manager_aeb9fb7106e3e3d8bd16a9996f464d52b}{get\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Get current time as time components structure. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_time_sync_status}{Time\+Sync\+Status}} \mbox{\hyperlink{class_r_t_c_time_manager_aa5a8c3f020a8ecfe13a4aeb2d3464fe0}{get\+Sync\+Status}} () const
+\begin{DoxyCompactList}\small\item\em Get comprehensive time synchronization status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a867d178c4466e21d6a3a1a872fbb661b}{start\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Start the RTC oscillator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a096abf3b104097494df9e8baa4a69346}{stop\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Stop the RTC oscillator. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a9dcaeba5961a82a65040d13db16f0886}{is\+Clock\+Running}} ()
+\begin{DoxyCompactList}\small\item\em Check if RTC oscillator is running. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a981797f824dc66b9eaae3ccdaed605fc}{configure\+Square\+Wave}} (int frequency, bool enabled=true)
+\begin{DoxyCompactList}\small\item\em Configure square wave output pin. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a4f650128265106aec99d065da04d0229}{disable\+Square\+Wave}} ()
+\begin{DoxyCompactList}\small\item\em Disable square wave output. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_ae3cbd4ce03d34d6f113e26e2a00a3f03}{save\+Time\+To\+EEPROM}} ()
+\begin{DoxyCompactList}\small\item\em Save current time to EEPROM for power-\/loss recovery. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a38e0ae33a4a83ddc32960cc0c05e4fa1}{set\+Time\+From\+EEPROM}} ()
+\begin{DoxyCompactList}\small\item\em Restore time from EEPROM after power loss. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_r_t_c_time_manager_a979f3fbf62d8708d8498529408fd12cb}{read\+EEPROM}} (uint8\+\_\+t address, uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Read data from DS1307 EEPROM. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_acaba243542dc173de0edc076a795babc}{write\+EEPROM}} (uint8\+\_\+t address, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write data to DS1307 EEPROM. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a62c95c0fa3b2ef4a9141a8ac48bc92ea}{synchronize\+With\+Network}} (const std\+::string \&network\+Time)
+\begin{DoxyCompactList}\small\item\em Synchronize RTC with network time and calculate drift. \end{DoxyCompactList}\item 
+int64\+\_\+t \mbox{\hyperlink{class_r_t_c_time_manager_a5adb6e45f8b89134c843a60b1200b6d1}{measure\+Clock\+Drift}} ()
+\begin{DoxyCompactList}\small\item\em Detect and measure clock drift against system time. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a3d28e2df3782a7d12c848d32238004ea}{apply\+Drift\+Correction}} (int64\+\_\+t drift\+Ms)
+\begin{DoxyCompactList}\small\item\em Apply drift correction to RTC time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_t_c_time_manager_af9c37bd0a5e34bbb0df868353f9ecc86}{set\+Sleep\+Schedule}} (const \mbox{\hyperlink{struct_sleep_schedule}{Sleep\+Schedule}} \&schedule)
+\begin{DoxyCompactList}\small\item\em Configure sleep schedule for power management. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_sleep_schedule}{Sleep\+Schedule}} \mbox{\hyperlink{class_r_t_c_time_manager_a2dbc61da54f1b77d2de97f028dbbdf48}{get\+Sleep\+Schedule}} () const
+\begin{DoxyCompactList}\small\item\em Get current sleep schedule configuration. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_aae6668c4f07aafefea73b187cb6e0689}{is\+Night\+Time}} (const std\+::string \&current\+Time="{}"{})
+\begin{DoxyCompactList}\small\item\em Check if current time is within night sleep period. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_r_t_c_time_manager_ae489a3948af52f7d8875ee492526e23c}{get\+Next\+Wakeup\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Calculate next wakeup time based on schedule. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_time_components}{Time\+Components}} \mbox{\hyperlink{class_r_t_c_time_manager_ab4d09a5d8906bb27095d6350469ffc45}{parse\+Network\+Time}} (const std\+::string \&network\+Time)
+\begin{DoxyCompactList}\small\item\em Parse network time string to time components. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_time_components}{Time\+Components}} \mbox{\hyperlink{class_r_t_c_time_manager_ab04b248d5d9e44a8157580cfa86bdebb}{parse\+ISOTime}} (const std\+::string \&iso\+Time)
+\begin{DoxyCompactList}\small\item\em Parse ISO 8601 date/time string to time components. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_r_t_c_time_manager_a61891c9a098d212a9fd34211ad78bad9}{format\+ISOTime}} (const \mbox{\hyperlink{struct_time_components}{Time\+Components}} \&time)
+\begin{DoxyCompactList}\small\item\em Convert time components to ISO 8601 string. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_r_t_c_time_manager_a3168dc7bc6f6fd8a586c0f441cc41a8a}{month\+Name\+To\+Number}} (const std\+::string \&month\+Name)
+\begin{DoxyCompactList}\small\item\em Convert month name to number. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_a10394aa092e338d4ad7d234806e2917a}{validate\+Time\+Components}} (const \mbox{\hyperlink{struct_time_components}{Time\+Components}} \&time)
+\begin{DoxyCompactList}\small\item\em Validate time components for correctness. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{class_r_t_c_time_manager_a5ba4ec2fba3c69719a69bbcc996d1ebd}{get\+Uptime\+Seconds}} ()
+\begin{DoxyCompactList}\small\item\em Get system uptime in seconds. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_r_t_c_time_manager_a6b95d29af499e7e5a46d0c9f6890b8e5}{get\+Filename\+Timestamp}} ()
+\begin{DoxyCompactList}\small\item\em Get timestamp for file naming (safe for filesystem) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_r_t_c_time_manager_a1419c10fd9ad30f5aeeb5af4ab92ecec}{get\+Last\+Error}} () const
+\begin{DoxyCompactList}\small\item\em Get last error message for diagnostics. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_t_c_time_manager_acf5d8f744ed1b7b8a645b16f9ce69000}{perform\+Health\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Perform RTC health check and diagnostics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_time_manager}{ITime\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}{\texorpdfstring{$\sim$}{\string~}\+ITime\+Manager}} ()=default
+\item 
+virtual \mbox{\hyperlink{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}{\texorpdfstring{$\sim$}{\string~}\+ITime\+Manager}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+RTC Time Manager implementing comprehensive time management. 
+
+This class provides a complete interface for time management using the DS1307 RTC module. Features include\+:
+
+
+\begin{DoxyItemize}
+\item DS1307 RTC module communication and control
+\item Network time synchronization with automatic drift correction
+\item Sleep schedule management for power optimization
+\item EEPROM operations for persistent time storage
+\item Time format conversion and validation
+\item Clock drift detection and compensation
+\item Thread-\/safe time operations
+\item Comprehensive error handling and recovery 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00077}{77}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_r_t_c_time_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_r_t_c_time_manager_a0f47edf7e2b9fd457ffad05698315e55}\index{RTCTimeManager@{RTCTimeManager}!RTCTimeManager@{RTCTimeManager}}
+\index{RTCTimeManager@{RTCTimeManager}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{RTCTimeManager()}{RTCTimeManager()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a0f47edf7e2b9fd457ffad05698315e55} 
+RTCTime\+Manager\+::\+RTCTime\+Manager (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{i2c\+Address}{ = {\ttfamily 0x68}, }\item[{uint8\+\_\+t}]{eeprom\+Address}{ = {\ttfamily 0x50}}\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i2c\+Address} & DS1307 I2C address (default\+: 0x68) \\
+\hline
+{\em eeprom\+Address} & DS1307 EEPROM I2C address (default\+: 0x50) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_r_t_c_time_manager_adfcee0717bb7ab1679d179b0fcf4d748}\index{RTCTimeManager@{RTCTimeManager}!````~RTCTimeManager@{\texorpdfstring{$\sim$}{\string~}RTCTimeManager}}
+\index{````~RTCTimeManager@{\texorpdfstring{$\sim$}{\string~}RTCTimeManager}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}RTCTimeManager()}{\string~RTCTimeManager()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_adfcee0717bb7ab1679d179b0fcf4d748} 
+RTCTime\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+RTCTime\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor -\/ ensures proper cleanup. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_r_t_c_time_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_r_t_c_time_manager_a3d28e2df3782a7d12c848d32238004ea}\index{RTCTimeManager@{RTCTimeManager}!applyDriftCorrection@{applyDriftCorrection}}
+\index{applyDriftCorrection@{applyDriftCorrection}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{applyDriftCorrection()}{applyDriftCorrection()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a3d28e2df3782a7d12c848d32238004ea} 
+bool RTCTime\+Manager\+::apply\+Drift\+Correction (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{drift\+Ms}{}\end{DoxyParamCaption})}
+
+
+
+Apply drift correction to RTC time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drift\+Ms} & Drift correction in milliseconds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if correction applied successfully, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a981797f824dc66b9eaae3ccdaed605fc}\index{RTCTimeManager@{RTCTimeManager}!configureSquareWave@{configureSquareWave}}
+\index{configureSquareWave@{configureSquareWave}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{configureSquareWave()}{configureSquareWave()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a981797f824dc66b9eaae3ccdaed605fc} 
+bool RTCTime\+Manager\+::configure\+Square\+Wave (\begin{DoxyParamCaption}\item[{int}]{frequency}{, }\item[{bool}]{enabled}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+Configure square wave output pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frequency} & Square wave frequency (1Hz, 4096Hz, 8192Hz, 32768Hz) \\
+\hline
+{\em enabled} & Whether to enable square wave output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if configuration successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a4f650128265106aec99d065da04d0229}\index{RTCTimeManager@{RTCTimeManager}!disableSquareWave@{disableSquareWave}}
+\index{disableSquareWave@{disableSquareWave}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{disableSquareWave()}{disableSquareWave()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a4f650128265106aec99d065da04d0229} 
+bool RTCTime\+Manager\+::disable\+Square\+Wave (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Disable square wave output. 
+
+\begin{DoxyReturn}{Returns}
+true if disable successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a61891c9a098d212a9fd34211ad78bad9}\index{RTCTimeManager@{RTCTimeManager}!formatISOTime@{formatISOTime}}
+\index{formatISOTime@{formatISOTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{formatISOTime()}{formatISOTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a61891c9a098d212a9fd34211ad78bad9} 
+std\+::string RTCTime\+Manager\+::format\+ISOTime (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_time_components}{Time\+Components}} \&}]{time}{}\end{DoxyParamCaption})}
+
+
+
+Convert time components to ISO 8601 string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Time components to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ISO 8601 formatted string 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10}\index{RTCTimeManager@{RTCTimeManager}!getCurrentDateTime@{getCurrentDateTime}}
+\index{getCurrentDateTime@{getCurrentDateTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentDateTime()}{getCurrentDateTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10} 
+std\+::string RTCTime\+Manager\+::get\+Current\+Date\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get current date and time as ISO 8601 string. 
+
+\begin{DoxyReturn}{Returns}
+Current date/time string in format "{}\+YYYY-\/\+MM-\/\+DDTHH\+:\+MM\+:\+SSZ"{} 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6}{ITime\+Manager}}.
+
+\Hypertarget{class_r_t_c_time_manager_a6b95d29af499e7e5a46d0c9f6890b8e5}\index{RTCTimeManager@{RTCTimeManager}!getFilenameTimestamp@{getFilenameTimestamp}}
+\index{getFilenameTimestamp@{getFilenameTimestamp}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getFilenameTimestamp()}{getFilenameTimestamp()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a6b95d29af499e7e5a46d0c9f6890b8e5} 
+std\+::string RTCTime\+Manager\+::get\+Filename\+Timestamp (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get timestamp for file naming (safe for filesystem) 
+
+\begin{DoxyReturn}{Returns}
+Timestamp string with underscores instead of colons 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a1419c10fd9ad30f5aeeb5af4ab92ecec}\index{RTCTimeManager@{RTCTimeManager}!getLastError@{getLastError}}
+\index{getLastError@{getLastError}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getLastError()}{getLastError()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a1419c10fd9ad30f5aeeb5af4ab92ecec} 
+std\+::string RTCTime\+Manager\+::get\+Last\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get last error message for diagnostics. 
+
+\begin{DoxyReturn}{Returns}
+String describing the last error that occurred 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00312}{312}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{class_r_t_c_time_manager_ae489a3948af52f7d8875ee492526e23c}\index{RTCTimeManager@{RTCTimeManager}!getNextWakeupTime@{getNextWakeupTime}}
+\index{getNextWakeupTime@{getNextWakeupTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getNextWakeupTime()}{getNextWakeupTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_ae489a3948af52f7d8875ee492526e23c} 
+std\+::string RTCTime\+Manager\+::get\+Next\+Wakeup\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Calculate next wakeup time based on schedule. 
+
+\begin{DoxyReturn}{Returns}
+Next wakeup time as ISO string 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4}\index{RTCTimeManager@{RTCTimeManager}!getNightSleepDuration@{getNightSleepDuration}}
+\index{getNightSleepDuration@{getNightSleepDuration}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getNightSleepDuration()}{getNightSleepDuration()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4} 
+uint64\+\_\+t RTCTime\+Manager\+::get\+Night\+Sleep\+Duration (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{current\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Calculate sleep duration for night time power saving. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Time} & Current time string for calculation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Sleep duration in microseconds, 0 if not night time 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b}{ITime\+Manager}}.
+
+\Hypertarget{class_r_t_c_time_manager_a2dbc61da54f1b77d2de97f028dbbdf48}\index{RTCTimeManager@{RTCTimeManager}!getSleepSchedule@{getSleepSchedule}}
+\index{getSleepSchedule@{getSleepSchedule}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getSleepSchedule()}{getSleepSchedule()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a2dbc61da54f1b77d2de97f028dbbdf48} 
+\mbox{\hyperlink{struct_sleep_schedule}{Sleep\+Schedule}} RTCTime\+Manager\+::get\+Sleep\+Schedule (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get current sleep schedule configuration. 
+
+\begin{DoxyReturn}{Returns}
+Current sleep schedule 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00243}{243}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{class_r_t_c_time_manager_aa5a8c3f020a8ecfe13a4aeb2d3464fe0}\index{RTCTimeManager@{RTCTimeManager}!getSyncStatus@{getSyncStatus}}
+\index{getSyncStatus@{getSyncStatus}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getSyncStatus()}{getSyncStatus()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_aa5a8c3f020a8ecfe13a4aeb2d3464fe0} 
+\mbox{\hyperlink{struct_time_sync_status}{Time\+Sync\+Status}} RTCTime\+Manager\+::get\+Sync\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get comprehensive time synchronization status. 
+
+\begin{DoxyReturn}{Returns}
+Time sync status with statistics and error information 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_aeb9fb7106e3e3d8bd16a9996f464d52b}\index{RTCTimeManager@{RTCTimeManager}!getTime@{getTime}}
+\index{getTime@{getTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_aeb9fb7106e3e3d8bd16a9996f464d52b} 
+\mbox{\hyperlink{struct_time_components}{Time\+Components}} RTCTime\+Manager\+::get\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get current time as time components structure. 
+
+\begin{DoxyReturn}{Returns}
+Current time components 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a5ba4ec2fba3c69719a69bbcc996d1ebd}\index{RTCTimeManager@{RTCTimeManager}!getUptimeSeconds@{getUptimeSeconds}}
+\index{getUptimeSeconds@{getUptimeSeconds}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{getUptimeSeconds()}{getUptimeSeconds()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a5ba4ec2fba3c69719a69bbcc996d1ebd} 
+uint64\+\_\+t RTCTime\+Manager\+::get\+Uptime\+Seconds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get system uptime in seconds. 
+
+\begin{DoxyReturn}{Returns}
+Uptime in seconds since last boot 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a6defb30a73374ac4a52359881a26e0dd}\index{RTCTimeManager@{RTCTimeManager}!initialize@{initialize}}
+\index{initialize@{initialize}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a6defb30a73374ac4a52359881a26e0dd} 
+bool RTCTime\+Manager\+::initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize DS1307 RTC module and I2C communication. 
+
+\begin{DoxyReturn}{Returns}
+true if initialization successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a9dcaeba5961a82a65040d13db16f0886}\index{RTCTimeManager@{RTCTimeManager}!isClockRunning@{isClockRunning}}
+\index{isClockRunning@{isClockRunning}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{isClockRunning()}{isClockRunning()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a9dcaeba5961a82a65040d13db16f0886} 
+bool RTCTime\+Manager\+::is\+Clock\+Running (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Check if RTC oscillator is running. 
+
+\begin{DoxyReturn}{Returns}
+true if clock is running, false if stopped 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_aae6668c4f07aafefea73b187cb6e0689}\index{RTCTimeManager@{RTCTimeManager}!isNightTime@{isNightTime}}
+\index{isNightTime@{isNightTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{isNightTime()}{isNightTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_aae6668c4f07aafefea73b187cb6e0689} 
+bool RTCTime\+Manager\+::is\+Night\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{current\+Time}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Check if current time is within night sleep period. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Time} & Time to check (optional, uses current time if empty) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if night time, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d}\index{RTCTimeManager@{RTCTimeManager}!isValidTime@{isValidTime}}
+\index{isValidTime@{isValidTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{isValidTime()}{isValidTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d} 
+bool RTCTime\+Manager\+::is\+Valid\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{time\+Str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Validate network time string format and content. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Str} & Time string to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if format is valid, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2}{ITime\+Manager}}.
+
+\Hypertarget{class_r_t_c_time_manager_a5adb6e45f8b89134c843a60b1200b6d1}\index{RTCTimeManager@{RTCTimeManager}!measureClockDrift@{measureClockDrift}}
+\index{measureClockDrift@{measureClockDrift}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{measureClockDrift()}{measureClockDrift()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a5adb6e45f8b89134c843a60b1200b6d1} 
+int64\+\_\+t RTCTime\+Manager\+::measure\+Clock\+Drift (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Detect and measure clock drift against system time. 
+
+\begin{DoxyReturn}{Returns}
+Detected drift in milliseconds (positive = RTC fast, negative = RTC slow) 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a3168dc7bc6f6fd8a586c0f441cc41a8a}\index{RTCTimeManager@{RTCTimeManager}!monthNameToNumber@{monthNameToNumber}}
+\index{monthNameToNumber@{monthNameToNumber}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{monthNameToNumber()}{monthNameToNumber()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a3168dc7bc6f6fd8a586c0f441cc41a8a} 
+uint8\+\_\+t RTCTime\+Manager\+::month\+Name\+To\+Number (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{month\+Name}{}\end{DoxyParamCaption})}
+
+
+
+Convert month name to number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em month\+Name} & Month name (Jan, Feb, etc.) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Month number (1-\/12), 0 if invalid 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_ab04b248d5d9e44a8157580cfa86bdebb}\index{RTCTimeManager@{RTCTimeManager}!parseISOTime@{parseISOTime}}
+\index{parseISOTime@{parseISOTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{parseISOTime()}{parseISOTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_ab04b248d5d9e44a8157580cfa86bdebb} 
+\mbox{\hyperlink{struct_time_components}{Time\+Components}} RTCTime\+Manager\+::parse\+ISOTime (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{iso\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Parse ISO 8601 date/time string to time components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em iso\+Time} & ISO time string "{}\+YYYY-\/\+MM-\/\+DDTHH\+:\+MM\+:\+SSZ"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Parsed time components 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_ab4d09a5d8906bb27095d6350469ffc45}\index{RTCTimeManager@{RTCTimeManager}!parseNetworkTime@{parseNetworkTime}}
+\index{parseNetworkTime@{parseNetworkTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{parseNetworkTime()}{parseNetworkTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_ab4d09a5d8906bb27095d6350469ffc45} 
+\mbox{\hyperlink{struct_time_components}{Time\+Components}} RTCTime\+Manager\+::parse\+Network\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{network\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Parse network time string to time components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+Time} & Network time string "{}\+YY/\+MM/\+DD,\+HH\+:\+MM\+:\+SS+\+ZZ"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Parsed time components 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_acf5d8f744ed1b7b8a645b16f9ce69000}\index{RTCTimeManager@{RTCTimeManager}!performHealthCheck@{performHealthCheck}}
+\index{performHealthCheck@{performHealthCheck}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{performHealthCheck()}{performHealthCheck()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_acf5d8f744ed1b7b8a645b16f9ce69000} 
+bool RTCTime\+Manager\+::perform\+Health\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Perform RTC health check and diagnostics. 
+
+\begin{DoxyReturn}{Returns}
+true if RTC appears healthy, false if issues detected 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a979f3fbf62d8708d8498529408fd12cb}\index{RTCTimeManager@{RTCTimeManager}!readEEPROM@{readEEPROM}}
+\index{readEEPROM@{readEEPROM}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{readEEPROM()}{readEEPROM()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a979f3fbf62d8708d8498529408fd12cb} 
+size\+\_\+t RTCTime\+Manager\+::read\+EEPROM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Read data from DS1307 EEPROM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & EEPROM address to read (0-\/255) \\
+\hline
+{\em buffer} & Buffer to store read data \\
+\hline
+{\em length} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes actually read 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_ae3cbd4ce03d34d6f113e26e2a00a3f03}\index{RTCTimeManager@{RTCTimeManager}!saveTimeToEEPROM@{saveTimeToEEPROM}}
+\index{saveTimeToEEPROM@{saveTimeToEEPROM}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{saveTimeToEEPROM()}{saveTimeToEEPROM()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_ae3cbd4ce03d34d6f113e26e2a00a3f03} 
+bool RTCTime\+Manager\+::save\+Time\+To\+EEPROM (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Save current time to EEPROM for power-\/loss recovery. 
+
+\begin{DoxyReturn}{Returns}
+true if save successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_af9c37bd0a5e34bbb0df868353f9ecc86}\index{RTCTimeManager@{RTCTimeManager}!setSleepSchedule@{setSleepSchedule}}
+\index{setSleepSchedule@{setSleepSchedule}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{setSleepSchedule()}{setSleepSchedule()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_af9c37bd0a5e34bbb0df868353f9ecc86} 
+void RTCTime\+Manager\+::set\+Sleep\+Schedule (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_sleep_schedule}{Sleep\+Schedule}} \&}]{schedule}{}\end{DoxyParamCaption})}
+
+
+
+Configure sleep schedule for power management. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em schedule} & Sleep schedule configuration \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_r_t_c_time_manager_aded1a75cc12737188d00b959bc796236}\index{RTCTimeManager@{RTCTimeManager}!setTime@{setTime}}
+\index{setTime@{setTime}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{setTime()}{setTime()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_aded1a75cc12737188d00b959bc796236} 
+bool RTCTime\+Manager\+::set\+Time (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_time_components}{Time\+Components}} \&}]{time}{}\end{DoxyParamCaption})}
+
+
+
+Set RTC time using time components structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Time components to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if time set successfully, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a38e0ae33a4a83ddc32960cc0c05e4fa1}\index{RTCTimeManager@{RTCTimeManager}!setTimeFromEEPROM@{setTimeFromEEPROM}}
+\index{setTimeFromEEPROM@{setTimeFromEEPROM}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{setTimeFromEEPROM()}{setTimeFromEEPROM()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a38e0ae33a4a83ddc32960cc0c05e4fa1} 
+bool RTCTime\+Manager\+::set\+Time\+From\+EEPROM (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Restore time from EEPROM after power loss. 
+
+\begin{DoxyReturn}{Returns}
+true if restore successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876}\index{RTCTimeManager@{RTCTimeManager}!setTimeFromNetwork@{setTimeFromNetwork}}
+\index{setTimeFromNetwork@{setTimeFromNetwork}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{setTimeFromNetwork()}{setTimeFromNetwork()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876} 
+bool RTCTime\+Manager\+::set\+Time\+From\+Network (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{network\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set RTC time from network time string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+Time} & Network time in format "{}\+YY/\+MM/\+DD,\+HH\+:\+MM\+:\+SS+\+ZZ"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if time set successfully, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66}{ITime\+Manager}}.
+
+\Hypertarget{class_r_t_c_time_manager_a867d178c4466e21d6a3a1a872fbb661b}\index{RTCTimeManager@{RTCTimeManager}!startClock@{startClock}}
+\index{startClock@{startClock}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{startClock()}{startClock()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a867d178c4466e21d6a3a1a872fbb661b} 
+bool RTCTime\+Manager\+::start\+Clock (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Start the RTC oscillator. 
+
+\begin{DoxyReturn}{Returns}
+true if start successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a096abf3b104097494df9e8baa4a69346}\index{RTCTimeManager@{RTCTimeManager}!stopClock@{stopClock}}
+\index{stopClock@{stopClock}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{stopClock()}{stopClock()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a096abf3b104097494df9e8baa4a69346} 
+bool RTCTime\+Manager\+::stop\+Clock (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Stop the RTC oscillator. 
+
+\begin{DoxyReturn}{Returns}
+true if stop successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a62c95c0fa3b2ef4a9141a8ac48bc92ea}\index{RTCTimeManager@{RTCTimeManager}!synchronizeWithNetwork@{synchronizeWithNetwork}}
+\index{synchronizeWithNetwork@{synchronizeWithNetwork}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{synchronizeWithNetwork()}{synchronizeWithNetwork()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a62c95c0fa3b2ef4a9141a8ac48bc92ea} 
+bool RTCTime\+Manager\+::synchronize\+With\+Network (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{network\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Synchronize RTC with network time and calculate drift. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em network\+Time} & Network time string from cellular module \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if synchronization successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_a10394aa092e338d4ad7d234806e2917a}\index{RTCTimeManager@{RTCTimeManager}!validateTimeComponents@{validateTimeComponents}}
+\index{validateTimeComponents@{validateTimeComponents}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{validateTimeComponents()}{validateTimeComponents()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_a10394aa092e338d4ad7d234806e2917a} 
+bool RTCTime\+Manager\+::validate\+Time\+Components (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_time_components}{Time\+Components}} \&}]{time}{}\end{DoxyParamCaption})}
+
+
+
+Validate time components for correctness. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Time components to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all components are valid, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_r_t_c_time_manager_acaba243542dc173de0edc076a795babc}\index{RTCTimeManager@{RTCTimeManager}!writeEEPROM@{writeEEPROM}}
+\index{writeEEPROM@{writeEEPROM}!RTCTimeManager@{RTCTimeManager}}
+\doxysubsubsection{\texorpdfstring{writeEEPROM()}{writeEEPROM()}}
+{\footnotesize\ttfamily \label{class_r_t_c_time_manager_acaba243542dc173de0edc076a795babc} 
+bool RTCTime\+Manager\+::write\+EEPROM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Write data to DS1307 EEPROM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & EEPROM address to write (0-\/247, 248-\/255 reserved for time) \\
+\hline
+{\em buffer} & Data to write \\
+\hline
+{\em length} & Number of bytes to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if write successful, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{rtc__time__manager_8h}{rtc\+\_\+time\+\_\+manager.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,684 @@
+Folder PATH listing for volume Soft-Dev
+Volume serial number is 6EF3-08E8
+D:.
+¦   .clangd
+¦   CMakeLists.txt
+¦   CMakeLists_crossplatform.txt
+¦   Migration.md
+¦   project_structure.txt
+¦   sdkconfig.defaults
+¦   
++---.devcontainer
+¦       devcontainer.json
+¦       Dockerfile
+¦       
++---.vscode
+¦       c_cpp_properties.json
+¦       launch.json
+¦       settings.json
+¦       tasks.json
+¦       
++---build
+¦   ¦   CMakeCache.txt
+¦   ¦   
+¦   +---CMakeFiles
+¦       ¦   cmake.check_cache
+¦       ¦   CMakeConfigureLog.yaml
+¦       ¦   
+¦       +---3.30.2
+¦       ¦   ¦   CMakeRCCompiler.cmake
+¦       ¦   ¦   CMakeSystem.cmake
+¦       ¦   ¦   
+¦       ¦   +---CompilerIdCXX
+¦       ¦       ¦   a.out
+¦       ¦       ¦   CMakeCXXCompilerId.cpp
+¦       ¦       ¦   
+¦       ¦       +---tmp
+¦       +---CMakeScratch
+¦       +---pkgRedirects
++---docs
+¦   ¦   ble_scanner.md
+¦   ¦   bq34z100.md
+¦   ¦   Cellular Manager.md
+¦   ¦   Context.md
+¦   ¦   data managment.md
+¦   ¦   Doxyfile
+¦   ¦   Implamentation.md
+¦   ¦   logger.md
+¦   ¦   Power Manager.md
+¦   ¦   RTC Time Manager.md
+¦   ¦   SD Card Manager.md
+¦   ¦   
+¦   +---html
+¦   ¦   ¦   annotated.html
+¦   ¦   ¦   annotated_dup.js
+¦   ¦   ¦   battery__monitor_8cpp.html
+¦   ¦   ¦   battery__monitor_8cpp.js
+¦   ¦   ¦   battery__monitor_8cpp_source.html
+¦   ¦   ¦   battery__monitor_8h.html
+¦   ¦   ¦   battery__monitor_8h_source.html
+¦   ¦   ¦   ble__scanner_8cpp.html
+¦   ¦   ¦   ble__scanner_8cpp.js
+¦   ¦   ¦   ble__scanner_8cpp_source.html
+¦   ¦   ¦   ble__scanner_8h.html
+¦   ¦   ¦   ble__scanner_8h.js
+¦   ¦   ¦   ble__scanner_8h_source.html
+¦   ¦   ¦   ble__scanner_8md.html
+¦   ¦   ¦   bq34z100_8cpp.html
+¦   ¦   ¦   bq34z100_8cpp_source.html
+¦   ¦   ¦   bq34z100_8h.html
+¦   ¦   ¦   bq34z100_8h_source.html
+¦   ¦   ¦   bq34z100_8md.html
+¦   ¦   ¦   cellular__manager_8h.html
+¦   ¦   ¦   cellular__manager_8h.js
+¦   ¦   ¦   cellular__manager_8h_source.html
+¦   ¦   ¦   classes.html
+¦   ¦   ¦   class_battery_monitor-members.html
+¦   ¦   ¦   class_battery_monitor.html
+¦   ¦   ¦   class_battery_monitor.js
+¦   ¦   ¦   class_battery_monitor.png
+¦   ¦   ¦   class_b_l_e_scanner-members.html
+¦   ¦   ¦   class_b_l_e_scanner.html
+¦   ¦   ¦   class_b_l_e_scanner.js
+¦   ¦   ¦   class_b_l_e_scanner.png
+¦   ¦   ¦   class_cellular_manager-members.html
+¦   ¦   ¦   class_cellular_manager.html
+¦   ¦   ¦   class_cellular_manager.js
+¦   ¦   ¦   class_cellular_manager.png
+¦   ¦   ¦   class_forestry_research_device-members.html
+¦   ¦   ¦   class_forestry_research_device.html
+¦   ¦   ¦   class_forestry_research_device.js
+¦   ¦   ¦   class_i_data_storage-members.html
+¦   ¦   ¦   class_i_data_storage.html
+¦   ¦   ¦   class_i_data_storage.js
+¦   ¦   ¦   class_i_data_storage.png
+¦   ¦   ¦   class_i_hardware_interface-members.html
+¦   ¦   ¦   class_i_hardware_interface.html
+¦   ¦   ¦   class_i_hardware_interface.js
+¦   ¦   ¦   class_i_hardware_interface.png
+¦   ¦   ¦   class_i_network_interface-members.html
+¦   ¦   ¦   class_i_network_interface.html
+¦   ¦   ¦   class_i_network_interface.js
+¦   ¦   ¦   class_i_network_interface.png
+¦   ¦   ¦   class_i_power_manager-members.html
+¦   ¦   ¦   class_i_power_manager.html
+¦   ¦   ¦   class_i_power_manager.js
+¦   ¦   ¦   class_i_power_manager.png
+¦   ¦   ¦   class_i_scanner-members.html
+¦   ¦   ¦   class_i_scanner.html
+¦   ¦   ¦   class_i_scanner.js
+¦   ¦   ¦   class_i_scanner.png
+¦   ¦   ¦   class_i_timer_callback-members.html
+¦   ¦   ¦   class_i_timer_callback.html
+¦   ¦   ¦   class_i_timer_callback.js
+¦   ¦   ¦   class_i_time_manager-members.html
+¦   ¦   ¦   class_i_time_manager.html
+¦   ¦   ¦   class_i_time_manager.js
+¦   ¦   ¦   class_i_time_manager.png
+¦   ¦   ¦   class_logger-members.html
+¦   ¦   ¦   class_logger.html
+¦   ¦   ¦   class_logger.js
+¦   ¦   ¦   class_power_manager-members.html
+¦   ¦   ¦   class_power_manager.html
+¦   ¦   ¦   class_power_manager.js
+¦   ¦   ¦   class_power_manager.png
+¦   ¦   ¦   class_r_t_c_time_manager-members.html
+¦   ¦   ¦   class_r_t_c_time_manager.html
+¦   ¦   ¦   class_r_t_c_time_manager.js
+¦   ¦   ¦   class_r_t_c_time_manager.png
+¦   ¦   ¦   class_s_d_card_manager-members.html
+¦   ¦   ¦   class_s_d_card_manager.html
+¦   ¦   ¦   class_s_d_card_manager.js
+¦   ¦   ¦   class_s_d_card_manager.png
+¦   ¦   ¦   class_utils-members.html
+¦   ¦   ¦   class_utils.html
+¦   ¦   ¦   class_wi_fi_scanner-members.html
+¦   ¦   ¦   class_wi_fi_scanner.html
+¦   ¦   ¦   class_wi_fi_scanner.js
+¦   ¦   ¦   class_wi_fi_scanner.png
+¦   ¦   ¦   clipboard.js
+¦   ¦   ¦   cookie.js
+¦   ¦   ¦   data_01managment_8md.html
+¦   ¦   ¦   dir_313caf1132e152dd9b58bea13a4052ca.html
+¦   ¦   ¦   dir_313caf1132e152dd9b58bea13a4052ca.js
+¦   ¦   ¦   dir_59b1e980a670de987a696efba6dbbdbc.html
+¦   ¦   ¦   dir_59b1e980a670de987a696efba6dbbdbc.js
+¦   ¦   ¦   dir_604648a4c1af5bf0acfe73dc1c5ef397.html
+¦   ¦   ¦   dir_604648a4c1af5bf0acfe73dc1c5ef397.js
+¦   ¦   ¦   dir_68267d1309a1af8e8297ef4c3efbcdba.html
+¦   ¦   ¦   dir_68267d1309a1af8e8297ef4c3efbcdba.js
+¦   ¦   ¦   dir_73e8f38c45bc714d2c71df9072a2319c.html
+¦   ¦   ¦   dir_73e8f38c45bc714d2c71df9072a2319c.js
+¦   ¦   ¦   dir_821002d4f10779a80d4fb17bc32f21f1.html
+¦   ¦   ¦   dir_821002d4f10779a80d4fb17bc32f21f1.js
+¦   ¦   ¦   dir_bd52eb7ac821349adc834157bbaf2648.html
+¦   ¦   ¦   dir_bd52eb7ac821349adc834157bbaf2648.js
+¦   ¦   ¦   dir_d2a91e2a9fc539acc94173fe7e28aab1.html
+¦   ¦   ¦   dir_d2a91e2a9fc539acc94173fe7e28aab1.js
+¦   ¦   ¦   dir_d44c64559bbebec7f509842c48db8b23.html
+¦   ¦   ¦   dir_d44c64559bbebec7f509842c48db8b23.js
+¦   ¦   ¦   doxygen.css
+¦   ¦   ¦   doxygen.svg
+¦   ¦   ¦   doxygen_crawl.html
+¦   ¦   ¦   dynsections.js
+¦   ¦   ¦   files.html
+¦   ¦   ¦   files_dup.js
+¦   ¦   ¦   functions.html
+¦   ¦   ¦   functions_b.html
+¦   ¦   ¦   functions_c.html
+¦   ¦   ¦   functions_d.html
+¦   ¦   ¦   functions_dup.js
+¦   ¦   ¦   functions_e.html
+¦   ¦   ¦   functions_f.html
+¦   ¦   ¦   functions_func.html
+¦   ¦   ¦   functions_func.js
+¦   ¦   ¦   functions_func_b.html
+¦   ¦   ¦   functions_func_c.html
+¦   ¦   ¦   functions_func_d.html
+¦   ¦   ¦   functions_func_e.html
+¦   ¦   ¦   functions_func_f.html
+¦   ¦   ¦   functions_func_g.html
+¦   ¦   ¦   functions_func_h.html
+¦   ¦   ¦   functions_func_i.html
+¦   ¦   ¦   functions_func_l.html
+¦   ¦   ¦   functions_func_m.html
+¦   ¦   ¦   functions_func_o.html
+¦   ¦   ¦   functions_func_p.html
+¦   ¦   ¦   functions_func_r.html
+¦   ¦   ¦   functions_func_s.html
+¦   ¦   ¦   functions_func_t.html
+¦   ¦   ¦   functions_func_u.html
+¦   ¦   ¦   functions_func_v.html
+¦   ¦   ¦   functions_func_w.html
+¦   ¦   ¦   functions_func_~.html
+¦   ¦   ¦   functions_g.html
+¦   ¦   ¦   functions_h.html
+¦   ¦   ¦   functions_i.html
+¦   ¦   ¦   functions_l.html
+¦   ¦   ¦   functions_m.html
+¦   ¦   ¦   functions_n.html
+¦   ¦   ¦   functions_o.html
+¦   ¦   ¦   functions_p.html
+¦   ¦   ¦   functions_r.html
+¦   ¦   ¦   functions_rela.html
+¦   ¦   ¦   functions_s.html
+¦   ¦   ¦   functions_t.html
+¦   ¦   ¦   functions_u.html
+¦   ¦   ¦   functions_v.html
+¦   ¦   ¦   functions_vars.html
+¦   ¦   ¦   functions_w.html
+¦   ¦   ¦   functions_y.html
+¦   ¦   ¦   functions_~.html
+¦   ¦   ¦   globals.html
+¦   ¦   ¦   globals_defs.html
+¦   ¦   ¦   globals_enum.html
+¦   ¦   ¦   globals_func.html
+¦   ¦   ¦   globals_vars.html
+¦   ¦   ¦   hierarchy.html
+¦   ¦   ¦   hierarchy.js
+¦   ¦   ¦   include_2interfaces_8h.html
+¦   ¦   ¦   include_2interfaces_8h.js
+¦   ¦   ¦   include_2interfaces_8h_source.html
+¦   ¦   ¦   index.html
+¦   ¦   ¦   interfaces_8h.html
+¦   ¦   ¦   interfaces_8h.js
+¦   ¦   ¦   interfaces_8h_source.html
+¦   ¦   ¦   jquery.js
+¦   ¦   ¦   logger_8cpp.html
+¦   ¦   ¦   logger_8cpp_source.html
+¦   ¦   ¦   logger_8h.html
+¦   ¦   ¦   logger_8h.js
+¦   ¦   ¦   logger_8h_source.html
+¦   ¦   ¦   logger_8md.html
+¦   ¦   ¦   main_8cpp.html
+¦   ¦   ¦   main_8cpp.js
+¦   ¦   ¦   main_8cpp_source.html
+¦   ¦   ¦   main_8h.html
+¦   ¦   ¦   main_8h.js
+¦   ¦   ¦   main_8h_source.html
+¦   ¦   ¦   md_ble__scanner.html
+¦   ¦   ¦   md_bq34z100.html
+¦   ¦   ¦   md_data_01managment.html
+¦   ¦   ¦   md_logger.html
+¦   ¦   ¦   md__context.html
+¦   ¦   ¦   md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html
+¦   ¦   ¦   md__implamentation.html
+¦   ¦   ¦   md__power_01_manager.html
+¦   ¦   ¦   menu.js
+¦   ¦   ¦   menudata.js
+¦   ¦   ¦   namespacemembers.html
+¦   ¦   ¦   namespacemembers_vars.html
+¦   ¦   ¦   namespaces.html
+¦   ¦   ¦   namespaces_dup.js
+¦   ¦   ¦   namespace_config.html
+¦   ¦   ¦   navtree.css
+¦   ¦   ¦   navtree.js
+¦   ¦   ¦   navtreedata.js
+¦   ¦   ¦   navtreeindex0.js
+¦   ¦   ¦   navtreeindex1.js
+¦   ¦   ¦   navtreeindex2.js
+¦   ¦   ¦   pages.html
+¦   ¦   ¦   power__manager_8cpp.html
+¦   ¦   ¦   power__manager_8cpp_source.html
+¦   ¦   ¦   power__manager_8h.html
+¦   ¦   ¦   power__manager_8h.js
+¦   ¦   ¦   power__manager_8h_source.html
+¦   ¦   ¦   rtc__time__manager_8h.html
+¦   ¦   ¦   rtc__time__manager_8h.js
+¦   ¦   ¦   rtc__time__manager_8h_source.html
+¦   ¦   ¦   sdcard__manager_8h.html
+¦   ¦   ¦   sdcard__manager_8h.js
+¦   ¦   ¦   sdcard__manager_8h_source.html
+¦   ¦   ¦   struct_asset_info-members.html
+¦   ¦   ¦   struct_asset_info.html
+¦   ¦   ¦   struct_asset_info.js
+¦   ¦   ¦   struct_battery_status-members.html
+¦   ¦   ¦   struct_battery_status.html
+¦   ¦   ¦   struct_battery_status.js
+¦   ¦   ¦   struct_b_l_e_scanner_1_1_scan_config-members.html
+¦   ¦   ¦   struct_b_l_e_scanner_1_1_scan_config.html
+¦   ¦   ¦   struct_b_l_e_scanner_1_1_scan_config.js
+¦   ¦   ¦   struct_connection_stats-members.html
+¦   ¦   ¦   struct_connection_stats.html
+¦   ¦   ¦   struct_connection_stats.js
+¦   ¦   ¦   struct_file_operation_stats-members.html
+¦   ¦   ¦   struct_file_operation_stats.html
+¦   ¦   ¦   struct_file_operation_stats.js
+¦   ¦   ¦   struct_h_t_t_p_response-members.html
+¦   ¦   ¦   struct_h_t_t_p_response.html
+¦   ¦   ¦   struct_h_t_t_p_response.js
+¦   ¦   ¦   struct_log_entry-members.html
+¦   ¦   ¦   struct_log_entry.html
+¦   ¦   ¦   struct_log_entry.js
+¦   ¦   ¦   struct_peripheral_config-members.html
+¦   ¦   ¦   struct_peripheral_config.html
+¦   ¦   ¦   struct_peripheral_config.js
+¦   ¦   ¦   struct_power_config-members.html
+¦   ¦   ¦   struct_power_config.html
+¦   ¦   ¦   struct_power_config.js
+¦   ¦   ¦   struct_power_stats-members.html
+¦   ¦   ¦   struct_power_stats.html
+¦   ¦   ¦   struct_power_stats.js
+¦   ¦   ¦   struct_probe_request-members.html
+¦   ¦   ¦   struct_probe_request.html
+¦   ¦   ¦   struct_probe_request.js
+¦   ¦   ¦   struct_signal_info-members.html
+¦   ¦   ¦   struct_signal_info.html
+¦   ¦   ¦   struct_signal_info.js
+¦   ¦   ¦   struct_sleep_schedule-members.html
+¦   ¦   ¦   struct_sleep_schedule.html
+¦   ¦   ¦   struct_sleep_schedule.js
+¦   ¦   ¦   struct_s_d_card_info-members.html
+¦   ¦   ¦   struct_s_d_card_info.html
+¦   ¦   ¦   struct_s_d_card_info.js
+¦   ¦   ¦   struct_s_i_m_info-members.html
+¦   ¦   ¦   struct_s_i_m_info.html
+¦   ¦   ¦   struct_s_i_m_info.js
+¦   ¦   ¦   struct_time_components-members.html
+¦   ¦   ¦   struct_time_components.html
+¦   ¦   ¦   struct_time_components.js
+¦   ¦   ¦   struct_time_sync_status-members.html
+¦   ¦   ¦   struct_time_sync_status.html
+¦   ¦   ¦   struct_time_sync_status.js
+¦   ¦   ¦   tabs.css
+¦   ¦   ¦   wifi__scanner_8cpp.html
+¦   ¦   ¦   wifi__scanner_8cpp.js
+¦   ¦   ¦   wifi__scanner_8cpp_source.html
+¦   ¦   ¦   wifi__scanner_8h.html
+¦   ¦   ¦   wifi__scanner_8h.js
+¦   ¦   ¦   wifi__scanner_8h_source.html
+¦   ¦   ¦   _context_8md.html
+¦   ¦   ¦   _implamentation_8md.html
+¦   ¦   ¦   _migration_8md.html
+¦   ¦   ¦   _power_01_manager_8md.html
+¦   ¦   ¦   
+¦   ¦   +---search
+¦   ¦           all_0.js
+¦   ¦           all_1.js
+¦   ¦           all_10.js
+¦   ¦           all_11.js
+¦   ¦           all_12.js
+¦   ¦           all_13.js
+¦   ¦           all_14.js
+¦   ¦           all_15.js
+¦   ¦           all_16.js
+¦   ¦           all_17.js
+¦   ¦           all_18.js
+¦   ¦           all_19.js
+¦   ¦           all_1a.js
+¦   ¦           all_1b.js
+¦   ¦           all_1c.js
+¦   ¦           all_1d.js
+¦   ¦           all_1e.js
+¦   ¦           all_1f.js
+¦   ¦           all_2.js
+¦   ¦           all_20.js
+¦   ¦           all_21.js
+¦   ¦           all_22.js
+¦   ¦           all_23.js
+¦   ¦           all_24.js
+¦   ¦           all_25.js
+¦   ¦           all_26.js
+¦   ¦           all_27.js
+¦   ¦           all_28.js
+¦   ¦           all_29.js
+¦   ¦           all_2a.js
+¦   ¦           all_3.js
+¦   ¦           all_4.js
+¦   ¦           all_5.js
+¦   ¦           all_6.js
+¦   ¦           all_7.js
+¦   ¦           all_8.js
+¦   ¦           all_9.js
+¦   ¦           all_a.js
+¦   ¦           all_b.js
+¦   ¦           all_c.js
+¦   ¦           all_d.js
+¦   ¦           all_e.js
+¦   ¦           all_f.js
+¦   ¦           classes_0.js
+¦   ¦           classes_1.js
+¦   ¦           classes_2.js
+¦   ¦           classes_3.js
+¦   ¦           classes_4.js
+¦   ¦           classes_5.js
+¦   ¦           classes_6.js
+¦   ¦           classes_7.js
+¦   ¦           classes_8.js
+¦   ¦           classes_9.js
+¦   ¦           classes_a.js
+¦   ¦           classes_b.js
+¦   ¦           classes_c.js
+¦   ¦           defines_0.js
+¦   ¦           enums_0.js
+¦   ¦           enums_1.js
+¦   ¦           enums_2.js
+¦   ¦           enums_3.js
+¦   ¦           enumvalues_0.js
+¦   ¦           enumvalues_1.js
+¦   ¦           enumvalues_2.js
+¦   ¦           enumvalues_3.js
+¦   ¦           enumvalues_4.js
+¦   ¦           enumvalues_5.js
+¦   ¦           enumvalues_6.js
+¦   ¦           enumvalues_7.js
+¦   ¦           enumvalues_8.js
+¦   ¦           enumvalues_9.js
+¦   ¦           enumvalues_a.js
+¦   ¦           enumvalues_b.js
+¦   ¦           enumvalues_c.js
+¦   ¦           enumvalues_d.js
+¦   ¦           enumvalues_e.js
+¦   ¦           files_0.js
+¦   ¦           files_1.js
+¦   ¦           files_2.js
+¦   ¦           files_3.js
+¦   ¦           files_4.js
+¦   ¦           files_5.js
+¦   ¦           files_6.js
+¦   ¦           files_7.js
+¦   ¦           files_8.js
+¦   ¦           files_9.js
+¦   ¦           functions_0.js
+¦   ¦           functions_1.js
+¦   ¦           functions_10.js
+¦   ¦           functions_11.js
+¦   ¦           functions_12.js
+¦   ¦           functions_13.js
+¦   ¦           functions_2.js
+¦   ¦           functions_3.js
+¦   ¦           functions_4.js
+¦   ¦           functions_5.js
+¦   ¦           functions_6.js
+¦   ¦           functions_7.js
+¦   ¦           functions_8.js
+¦   ¦           functions_9.js
+¦   ¦           functions_a.js
+¦   ¦           functions_b.js
+¦   ¦           functions_c.js
+¦   ¦           functions_d.js
+¦   ¦           functions_e.js
+¦   ¦           functions_f.js
+¦   ¦           namespaces_0.js
+¦   ¦           pages_0.js
+¦   ¦           pages_1.js
+¦   ¦           pages_10.js
+¦   ¦           pages_11.js
+¦   ¦           pages_12.js
+¦   ¦           pages_13.js
+¦   ¦           pages_14.js
+¦   ¦           pages_15.js
+¦   ¦           pages_16.js
+¦   ¦           pages_17.js
+¦   ¦           pages_18.js
+¦   ¦           pages_19.js
+¦   ¦           pages_1a.js
+¦   ¦           pages_1b.js
+¦   ¦           pages_1c.js
+¦   ¦           pages_1d.js
+¦   ¦           pages_1e.js
+¦   ¦           pages_1f.js
+¦   ¦           pages_2.js
+¦   ¦           pages_20.js
+¦   ¦           pages_21.js
+¦   ¦           pages_22.js
+¦   ¦           pages_23.js
+¦   ¦           pages_24.js
+¦   ¦           pages_25.js
+¦   ¦           pages_26.js
+¦   ¦           pages_27.js
+¦   ¦           pages_3.js
+¦   ¦           pages_4.js
+¦   ¦           pages_5.js
+¦   ¦           pages_6.js
+¦   ¦           pages_7.js
+¦   ¦           pages_8.js
+¦   ¦           pages_9.js
+¦   ¦           pages_a.js
+¦   ¦           pages_b.js
+¦   ¦           pages_c.js
+¦   ¦           pages_d.js
+¦   ¦           pages_e.js
+¦   ¦           pages_f.js
+¦   ¦           related_0.js
+¦   ¦           related_1.js
+¦   ¦           search.css
+¦   ¦           search.js
+¦   ¦           searchdata.js
+¦   ¦           variables_0.js
+¦   ¦           variables_1.js
+¦   ¦           variables_10.js
+¦   ¦           variables_11.js
+¦   ¦           variables_12.js
+¦   ¦           variables_13.js
+¦   ¦           variables_2.js
+¦   ¦           variables_3.js
+¦   ¦           variables_4.js
+¦   ¦           variables_5.js
+¦   ¦           variables_6.js
+¦   ¦           variables_7.js
+¦   ¦           variables_8.js
+¦   ¦           variables_9.js
+¦   ¦           variables_a.js
+¦   ¦           variables_b.js
+¦   ¦           variables_c.js
+¦   ¦           variables_d.js
+¦   ¦           variables_e.js
+¦   ¦           variables_f.js
+¦   ¦           
+¦   +---latex
+¦           annotated.tex
+¦           battery__monitor_8cpp.tex
+¦           battery__monitor_8cpp_source.tex
+¦           battery__monitor_8h.tex
+¦           battery__monitor_8h_source.tex
+¦           ble__scanner_8cpp.tex
+¦           ble__scanner_8cpp_source.tex
+¦           ble__scanner_8h.tex
+¦           ble__scanner_8h_source.tex
+¦           ble__scanner_8md.tex
+¦           bq34z100_8cpp.tex
+¦           bq34z100_8cpp_source.tex
+¦           bq34z100_8h.tex
+¦           bq34z100_8h_source.tex
+¦           bq34z100_8md.tex
+¦           cellular__manager_8h.tex
+¦           cellular__manager_8h_source.tex
+¦           class_battery_monitor.eps
+¦           class_battery_monitor.tex
+¦           class_b_l_e_scanner.eps
+¦           class_b_l_e_scanner.tex
+¦           class_cellular_manager.eps
+¦           class_cellular_manager.tex
+¦           class_forestry_research_device.tex
+¦           class_i_data_storage.eps
+¦           class_i_data_storage.tex
+¦           class_i_hardware_interface.eps
+¦           class_i_hardware_interface.tex
+¦           class_i_network_interface.eps
+¦           class_i_network_interface.tex
+¦           class_i_power_manager.eps
+¦           class_i_power_manager.tex
+¦           class_i_scanner.eps
+¦           class_i_scanner.tex
+¦           class_i_timer_callback.tex
+¦           class_i_time_manager.eps
+¦           class_i_time_manager.tex
+¦           class_logger.tex
+¦           class_power_manager.eps
+¦           class_power_manager.tex
+¦           class_r_t_c_time_manager.eps
+¦           class_r_t_c_time_manager.tex
+¦           class_s_d_card_manager.eps
+¦           class_s_d_card_manager.tex
+¦           class_utils.tex
+¦           class_wi_fi_scanner.eps
+¦           class_wi_fi_scanner.tex
+¦           data_01managment_8md.tex
+¦           dir_313caf1132e152dd9b58bea13a4052ca.tex
+¦           dir_59b1e980a670de987a696efba6dbbdbc.tex
+¦           dir_604648a4c1af5bf0acfe73dc1c5ef397.tex
+¦           dir_68267d1309a1af8e8297ef4c3efbcdba.tex
+¦           dir_73e8f38c45bc714d2c71df9072a2319c.tex
+¦           dir_821002d4f10779a80d4fb17bc32f21f1.tex
+¦           dir_bd52eb7ac821349adc834157bbaf2648.tex
+¦           dir_d2a91e2a9fc539acc94173fe7e28aab1.tex
+¦           dir_d44c64559bbebec7f509842c48db8b23.tex
+¦           doxygen.sty
+¦           etoc_doxygen.sty
+¦           files.tex
+¦           hierarchy.tex
+¦           include_2interfaces_8h.tex
+¦           include_2interfaces_8h_source.tex
+¦           interfaces_8h.tex
+¦           interfaces_8h_source.tex
+¦           logger_8cpp.tex
+¦           logger_8cpp_source.tex
+¦           logger_8h.tex
+¦           logger_8h_source.tex
+¦           logger_8md.tex
+¦           longtable_doxygen.sty
+¦           main_8cpp.tex
+¦           main_8cpp_source.tex
+¦           main_8h.tex
+¦           main_8h_source.tex
+¦           make.bat
+¦           Makefile
+¦           md_ble__scanner.tex
+¦           md_bq34z100.tex
+¦           md_data_01managment.tex
+¦           md_logger.tex
+¦           md__context.tex
+¦           md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.tex
+¦           md__implamentation.tex
+¦           md__power_01_manager.tex
+¦           namespaces.tex
+¦           namespace_config.tex
+¦           power__manager_8cpp.tex
+¦           power__manager_8cpp_source.tex
+¦           power__manager_8h.tex
+¦           power__manager_8h_source.tex
+¦           refman.tex
+¦           rtc__time__manager_8h.tex
+¦           rtc__time__manager_8h_source.tex
+¦           sdcard__manager_8h.tex
+¦           sdcard__manager_8h_source.tex
+¦           struct_asset_info.tex
+¦           struct_battery_status.tex
+¦           struct_b_l_e_scanner_1_1_scan_config.tex
+¦           struct_connection_stats.tex
+¦           struct_file_operation_stats.tex
+¦           struct_h_t_t_p_response.tex
+¦           struct_log_entry.tex
+¦           struct_peripheral_config.tex
+¦           struct_power_config.tex
+¦           struct_power_stats.tex
+¦           struct_probe_request.tex
+¦           struct_signal_info.tex
+¦           struct_sleep_schedule.tex
+¦           struct_s_d_card_info.tex
+¦           struct_s_i_m_info.tex
+¦           struct_time_components.tex
+¦           struct_time_sync_status.tex
+¦           tabu_doxygen.sty
+¦           wifi__scanner_8cpp.tex
+¦           wifi__scanner_8cpp_source.tex
+¦           wifi__scanner_8h.tex
+¦           wifi__scanner_8h_source.tex
+¦           _context_8md.tex
+¦           _implamentation_8md.tex
+¦           _migration_8md.tex
+¦           _power_01_manager_8md.tex
+¦           
++---include
+¦   ¦   interfaces.h
+¦   ¦   main.h
+¦   ¦   
+¦   +---data
+¦   ¦       cellular_manager.h
+¦   ¦       rtc_time_manager.h
+¦   ¦       sdcard_manager.h
+¦   ¦       
+¦   +---hardware
+¦   ¦       bq34z100.h
+¦   ¦       bq34z100_battery_monitor.h
+¦   ¦       power_manager.h
+¦   ¦       
+¦   +---platform
+¦   ¦   +---esp32
+¦   ¦   +---linux
+¦   +---scanners
+¦   ¦       ble_scanner.h
+¦   ¦       wifi_scanner.h
+¦   ¦       
+¦   +---utils
+¦           logger.h
+¦           
++---main
+¦       CMakeLists.txt
+¦       
++---scripts
++---src
+¦   ¦   main.cpp
+¦   ¦   
+¦   +---data
+¦   ¦       cellular_manager.cpp
+¦   ¦       rtc_time_manager.cpp
+¦   ¦       sdcard_manager.cpp
+¦   ¦       
+¦   +---hardware
+¦   ¦       bq34z100_battery_monitor.cpp
+¦   ¦       power_manager.cpp
+¦   ¦       
+¦   +---platform
+¦   ¦   +---esp32
+¦   ¦   +---linux
+¦   +---scanners
+¦   ¦       ble_scanner.cpp
+¦   ¦       wifi_scanner.cpp
+¦   ¦       
+¦   +---utils
+¦           logger.cpp
+¦           utils.cpp
+¦           
++---tests

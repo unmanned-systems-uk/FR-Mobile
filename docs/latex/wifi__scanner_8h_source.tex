@@ -1,0 +1,81 @@
+\doxysection{wifi\+\_\+scanner.\+h}
+\hypertarget{wifi__scanner_8h_source}{}\label{wifi__scanner_8h_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/scanners/wifi\_scanner.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/scanners/wifi\_scanner.h}}
+\mbox{\hyperlink{wifi__scanner_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}interfaces.h"{}}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00017}\mbox{\hyperlink{class_wi_fi_scanner}{00017}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_wi_fi_scanner_afe2ffe2d2fe144354c1cbc89a7f50c5a}{WiFiScanner}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_scanner}{IScanner}}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00019}00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00025}00025\ \ \ \ \ \mbox{\hyperlink{class_wi_fi_scanner_afe2ffe2d2fe144354c1cbc89a7f50c5a}{WiFiScanner}}(std::shared\_ptr<IDataStorage>\ storage,}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<ITimeManager>\ timeManager);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00031}00031\ \ \ \ \ \mbox{\hyperlink{class_wi_fi_scanner_a01b85975193c72e751fe908e81f0645a}{\string~WiFiScanner}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ IScanner\ interface\ implementation}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wi_fi_scanner_a751322ae2e826c3c362b6223c8294ac1}{initialize}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wi_fi_scanner_af8fce93fc52ecc67f57f5a13593d7601}{startScan}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wi_fi_scanner_ab68185d3e130718f5f08a785236c2432}{stopScan}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00056}00056\ \ \ \ \ std::vector<ProbeRequest>\ \mbox{\hyperlink{class_wi_fi_scanner_af54348497b160d0a841a530c9b71c012}{getResults}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wi_fi_scanner_a8e7a37bca3c7be0622724b371a6c295b}{cleanup}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00067}00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wi_fi_scanner_a7f620ce0b709b326a9acad4ec0e38825}{setProbeCallback}}(std::function<\textcolor{keywordtype}{void}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_probe_request}{ProbeRequest}}\ \&)>\ callback);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00073}\mbox{\hyperlink{class_wi_fi_scanner_ad66c7f8a15d20cef66092d1e440dd9d5}{00073}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_wi_fi_scanner_ad66c7f8a15d20cef66092d1e440dd9d5}{isScanning}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ scanning\_.load();\ \}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00079}00079\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_wi_fi_scanner_ac8ecc3a616464919b318508dc713f486}{getResultCount}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wi_fi_scanner_a8cd405889e091acca25d2d31eadd2615}{clearResults}}();}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00086}00086\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Dependencies}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00088}00088\ \ \ \ \ std::shared\_ptr<IDataStorage>\ storage\_;}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00089}00089\ \ \ \ \ std::shared\_ptr<ITimeManager>\ timeManager\_;}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00091}00091\ \ \ \ \ \textcolor{comment}{//\ Scan\ results\ and\ synchronization}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00092}00092\ \ \ \ \ std::vector<ProbeRequest>\ scanResults\_;}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ resultsMutex\_;}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00094}00094\ \ \ \ \ std::atomic<bool>\ scanning\_;}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ Callback\ for\ real-\/time\ processing}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00097}00097\ \ \ \ \ std::function<void(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_probe_request}{ProbeRequest}}\ \&)>\ probeCallback\_;}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ implementation}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00100}00100\ \ \ \ \ \textcolor{keywordtype}{void}\ *platformHandle\_;\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00108}00108\ \ \ \ \ \textcolor{keywordtype}{void}\ processProbeRequest(\textcolor{keyword}{const}\ uint8\_t\ *packet,\ \textcolor{keywordtype}{size\_t}\ length,\ \textcolor{keywordtype}{int}\ rssi);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{bool}\ isValidProbeRequest(\textcolor{keyword}{const}\ uint8\_t\ *packet,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00123}00123\ \ \ \ \ std::string\ extractMAC(\textcolor{keyword}{const}\ uint8\_t\ *packet);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00131}00131\ \ \ \ \ std::string\ packetToHexString(\textcolor{keyword}{const}\ uint8\_t\ *packet,\ \textcolor{keywordtype}{size\_t}\ length);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00137}00137\ \ \ \ \ \textcolor{keywordtype}{void}\ saveProbeRequest(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_probe_request}{ProbeRequest}}\ \&request);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ callbacks\ (static\ for\ C\ compatibility)}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ promiscuousCallback(\textcolor{keywordtype}{void}\ *buf,\ \textcolor{keywordtype}{int}\ type);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//\ Friend\ function\ for\ callback\ bridging}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00148}00148\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wi_fi_scanner_a3972d2cea51bfa11a2b08c42c8afa603}{wifiScanCallback}}(\mbox{\hyperlink{class_wi_fi_scanner}{WiFiScanner}}\ *scanner,\ \textcolor{keywordtype}{void}\ *buf,\ \textcolor{keywordtype}{int}\ type);}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00150}00150\ \ \ \ \ \textcolor{comment}{//\ Constants}}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00151}00151\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint8\_t\ PROBE\_REQUEST\_TYPE\ =\ 0x40;\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00152}00152\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ MIN\_PACKET\_SIZE\ =\ 24;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00153}00153\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ MAC\_ADDRESS\_OFFSET\ =\ 10;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00154}00154\ \};}
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{wifi__scanner_8h_source_l00166}00166\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{wifi__scanner_8h_a3972d2cea51bfa11a2b08c42c8afa603}{wifiScanCallback}}(\mbox{\hyperlink{class_wi_fi_scanner}{WiFiScanner}}\ *scanner,\ \textcolor{keywordtype}{void}\ *buf,\ \textcolor{keywordtype}{int}\ type);}
+
+\end{DoxyCode}

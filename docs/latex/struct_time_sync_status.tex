@@ -1,0 +1,159 @@
+\doxysection{Time\+Sync\+Status Struct Reference}
+\hypertarget{struct_time_sync_status}{}\label{struct_time_sync_status}\index{TimeSyncStatus@{TimeSyncStatus}}
+
+
+Time synchronization status and statistics.  
+
+
+
+
+{\ttfamily \#include $<$rtc\+\_\+time\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{struct_time_sync_status_a619c94d3b1ea2c086710d7e25bfb46e0}{rtc\+Initialized}} = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}
+\begin{DoxyCompactList}\small\item\em RTC module initialization status. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_time_sync_status_a6394afa4d611c20ab475a81429d5082c}{network\+Time\+Synced}} = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}
+\begin{DoxyCompactList}\small\item\em Network time synchronization status. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_time_sync_status_a1df7f1392c15d0c69aa96a728e7062c7}{last\+Sync\+Time}}
+\begin{DoxyCompactList}\small\item\em Timestamp of last successful sync. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_time_sync_status_aa1eabec7e01e865a56161c2795b8d01e}{time\+Source}}
+\begin{DoxyCompactList}\small\item\em Source of current time (RTC/\+Network/\+System) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_time_sync_status_a2b998d625f60805ea41a48adb884abbd}{sync\+Attempts}} = 0
+\begin{DoxyCompactList}\small\item\em Number of sync attempts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_time_sync_status_acaa2f32292bf68563f1382485000b118}{successful\+Syncs}} = 0
+\begin{DoxyCompactList}\small\item\em Number of successful syncs. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_time_sync_status_a22b78620e208c2d0e6b7087b8ad79593}{last\+Error}}
+\begin{DoxyCompactList}\small\item\em Last synchronization error. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_time_sync_status_a5adfd9aa97890f3f5b71b1e44b08cf1d}{drift\+Milliseconds}} = 0
+\begin{DoxyCompactList}\small\item\em Detected clock drift in milliseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Time synchronization status and statistics. 
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00037}{37}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_time_sync_status_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_time_sync_status_a5adfd9aa97890f3f5b71b1e44b08cf1d}\index{TimeSyncStatus@{TimeSyncStatus}!driftMilliseconds@{driftMilliseconds}}
+\index{driftMilliseconds@{driftMilliseconds}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{driftMilliseconds}{driftMilliseconds}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_a5adfd9aa97890f3f5b71b1e44b08cf1d} 
+uint64\+\_\+t Time\+Sync\+Status\+::drift\+Milliseconds = 0}
+
+
+
+Detected clock drift in milliseconds. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00046}{46}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_time_sync_status_a22b78620e208c2d0e6b7087b8ad79593}\index{TimeSyncStatus@{TimeSyncStatus}!lastError@{lastError}}
+\index{lastError@{lastError}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{lastError}{lastError}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_a22b78620e208c2d0e6b7087b8ad79593} 
+std\+::string Time\+Sync\+Status\+::last\+Error}
+
+
+
+Last synchronization error. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00045}{45}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_time_sync_status_a1df7f1392c15d0c69aa96a728e7062c7}\index{TimeSyncStatus@{TimeSyncStatus}!lastSyncTime@{lastSyncTime}}
+\index{lastSyncTime@{lastSyncTime}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{lastSyncTime}{lastSyncTime}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_a1df7f1392c15d0c69aa96a728e7062c7} 
+std\+::string Time\+Sync\+Status\+::last\+Sync\+Time}
+
+
+
+Timestamp of last successful sync. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00041}{41}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_time_sync_status_a6394afa4d611c20ab475a81429d5082c}\index{TimeSyncStatus@{TimeSyncStatus}!networkTimeSynced@{networkTimeSynced}}
+\index{networkTimeSynced@{networkTimeSynced}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{networkTimeSynced}{networkTimeSynced}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_a6394afa4d611c20ab475a81429d5082c} 
+bool Time\+Sync\+Status\+::network\+Time\+Synced = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}
+
+
+
+Network time synchronization status. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00040}{40}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_time_sync_status_a619c94d3b1ea2c086710d7e25bfb46e0}\index{TimeSyncStatus@{TimeSyncStatus}!rtcInitialized@{rtcInitialized}}
+\index{rtcInitialized@{rtcInitialized}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{rtcInitialized}{rtcInitialized}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_a619c94d3b1ea2c086710d7e25bfb46e0} 
+bool Time\+Sync\+Status\+::rtc\+Initialized = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}
+
+
+
+RTC module initialization status. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00039}{39}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_time_sync_status_acaa2f32292bf68563f1382485000b118}\index{TimeSyncStatus@{TimeSyncStatus}!successfulSyncs@{successfulSyncs}}
+\index{successfulSyncs@{successfulSyncs}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{successfulSyncs}{successfulSyncs}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_acaa2f32292bf68563f1382485000b118} 
+int Time\+Sync\+Status\+::successful\+Syncs = 0}
+
+
+
+Number of successful syncs. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00044}{44}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_time_sync_status_a2b998d625f60805ea41a48adb884abbd}\index{TimeSyncStatus@{TimeSyncStatus}!syncAttempts@{syncAttempts}}
+\index{syncAttempts@{syncAttempts}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{syncAttempts}{syncAttempts}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_a2b998d625f60805ea41a48adb884abbd} 
+int Time\+Sync\+Status\+::sync\+Attempts = 0}
+
+
+
+Number of sync attempts. 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00043}{43}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_time_sync_status_aa1eabec7e01e865a56161c2795b8d01e}\index{TimeSyncStatus@{TimeSyncStatus}!timeSource@{timeSource}}
+\index{timeSource@{timeSource}!TimeSyncStatus@{TimeSyncStatus}}
+\doxysubsubsection{\texorpdfstring{timeSource}{timeSource}}
+{\footnotesize\ttfamily \label{struct_time_sync_status_aa1eabec7e01e865a56161c2795b8d01e} 
+std\+::string Time\+Sync\+Status\+::time\+Source}
+
+
+
+Source of current time (RTC/\+Network/\+System) 
+
+
+
+Definition at line \mbox{\hyperlink{rtc__time__manager_8h_source_l00042}{42}} of file \mbox{\hyperlink{rtc__time__manager_8h_source}{rtc\+\_\+time\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{rtc__time__manager_8h}{rtc\+\_\+time\+\_\+manager.\+h}}\end{DoxyCompactItemize}

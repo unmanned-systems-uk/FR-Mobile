@@ -1,0 +1,159 @@
+\doxysection{Power\+Config Struct Reference}
+\hypertarget{struct_power_config}{}\label{struct_power_config}\index{PowerConfig@{PowerConfig}}
+
+
+Power management configuration and limits.  
+
+
+
+
+{\ttfamily \#include $<$power\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_power_config_a1d4c0a4cae4d55c39983f9465a456244}{max\+Sleep\+Duration}} = 3600000000\+ULL
+\begin{DoxyCompactList}\small\item\em Maximum sleep duration (1 hour) \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_power_config_a0a9456aa0c916cad4f8934ea0630e94d}{min\+Sleep\+Duration}} = 1000000\+ULL
+\begin{DoxyCompactList}\small\item\em Minimum sleep duration (1 second) \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_power_config_a77f179378b1649db5ff1f34989b39471}{low\+Battery\+Threshold}} = 15.\+0f
+\begin{DoxyCompactList}\small\item\em Low battery threshold (\%) \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_power_config_a0b49bd79eedaa5a5403a03e7a7a8c8bc}{critical\+Battery\+Threshold}} = 5.\+0f
+\begin{DoxyCompactList}\small\item\em Critical battery threshold (\%) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_power_config_a706c45dfc6f45dc86fe6da3021205ce2}{emergency\+Shutdown\+Enabled}} = true
+\begin{DoxyCompactList}\small\item\em Emergency shutdown on critical battery. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_power_config_abedbaa794a3d71fa7119e4e642d9c3fb}{watchdog\+Timeout\+Ms}} = 300000
+\begin{DoxyCompactList}\small\item\em Watchdog timeout (5 minutes) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_power_config_a52d496332384a49fd18c0ef25f3d94b6}{wakeup\+Pin}} = -\/1
+\begin{DoxyCompactList}\small\item\em GPIO pin for external wakeup (-\/1 = disabled) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_power_config_a53993dbc79e64d468656fde1fb859fe1}{wakeup\+Pin\+Level}} = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}
+\begin{DoxyCompactList}\small\item\em Wakeup pin active level (true = HIGH) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Power management configuration and limits. 
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00088}{88}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_power_config_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_power_config_a0b49bd79eedaa5a5403a03e7a7a8c8bc}\index{PowerConfig@{PowerConfig}!criticalBatteryThreshold@{criticalBatteryThreshold}}
+\index{criticalBatteryThreshold@{criticalBatteryThreshold}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{criticalBatteryThreshold}{criticalBatteryThreshold}}
+{\footnotesize\ttfamily \label{struct_power_config_a0b49bd79eedaa5a5403a03e7a7a8c8bc} 
+float Power\+Config\+::critical\+Battery\+Threshold = 5.\+0f}
+
+
+
+Critical battery threshold (\%) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00093}{93}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_config_a706c45dfc6f45dc86fe6da3021205ce2}\index{PowerConfig@{PowerConfig}!emergencyShutdownEnabled@{emergencyShutdownEnabled}}
+\index{emergencyShutdownEnabled@{emergencyShutdownEnabled}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{emergencyShutdownEnabled}{emergencyShutdownEnabled}}
+{\footnotesize\ttfamily \label{struct_power_config_a706c45dfc6f45dc86fe6da3021205ce2} 
+bool Power\+Config\+::emergency\+Shutdown\+Enabled = true}
+
+
+
+Emergency shutdown on critical battery. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00094}{94}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_config_a77f179378b1649db5ff1f34989b39471}\index{PowerConfig@{PowerConfig}!lowBatteryThreshold@{lowBatteryThreshold}}
+\index{lowBatteryThreshold@{lowBatteryThreshold}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{lowBatteryThreshold}{lowBatteryThreshold}}
+{\footnotesize\ttfamily \label{struct_power_config_a77f179378b1649db5ff1f34989b39471} 
+float Power\+Config\+::low\+Battery\+Threshold = 15.\+0f}
+
+
+
+Low battery threshold (\%) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00092}{92}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_config_a1d4c0a4cae4d55c39983f9465a456244}\index{PowerConfig@{PowerConfig}!maxSleepDuration@{maxSleepDuration}}
+\index{maxSleepDuration@{maxSleepDuration}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{maxSleepDuration}{maxSleepDuration}}
+{\footnotesize\ttfamily \label{struct_power_config_a1d4c0a4cae4d55c39983f9465a456244} 
+uint64\+\_\+t Power\+Config\+::max\+Sleep\+Duration = 3600000000\+ULL}
+
+
+
+Maximum sleep duration (1 hour) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00090}{90}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_config_a0a9456aa0c916cad4f8934ea0630e94d}\index{PowerConfig@{PowerConfig}!minSleepDuration@{minSleepDuration}}
+\index{minSleepDuration@{minSleepDuration}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{minSleepDuration}{minSleepDuration}}
+{\footnotesize\ttfamily \label{struct_power_config_a0a9456aa0c916cad4f8934ea0630e94d} 
+uint64\+\_\+t Power\+Config\+::min\+Sleep\+Duration = 1000000\+ULL}
+
+
+
+Minimum sleep duration (1 second) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00091}{91}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_config_a52d496332384a49fd18c0ef25f3d94b6}\index{PowerConfig@{PowerConfig}!wakeupPin@{wakeupPin}}
+\index{wakeupPin@{wakeupPin}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{wakeupPin}{wakeupPin}}
+{\footnotesize\ttfamily \label{struct_power_config_a52d496332384a49fd18c0ef25f3d94b6} 
+int Power\+Config\+::wakeup\+Pin = -\/1}
+
+
+
+GPIO pin for external wakeup (-\/1 = disabled) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00096}{96}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_config_a53993dbc79e64d468656fde1fb859fe1}\index{PowerConfig@{PowerConfig}!wakeupPinLevel@{wakeupPinLevel}}
+\index{wakeupPinLevel@{wakeupPinLevel}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{wakeupPinLevel}{wakeupPinLevel}}
+{\footnotesize\ttfamily \label{struct_power_config_a53993dbc79e64d468656fde1fb859fe1} 
+bool Power\+Config\+::wakeup\+Pin\+Level = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}
+
+
+
+Wakeup pin active level (true = HIGH) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00097}{97}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_config_abedbaa794a3d71fa7119e4e642d9c3fb}\index{PowerConfig@{PowerConfig}!watchdogTimeoutMs@{watchdogTimeoutMs}}
+\index{watchdogTimeoutMs@{watchdogTimeoutMs}!PowerConfig@{PowerConfig}}
+\doxysubsubsection{\texorpdfstring{watchdogTimeoutMs}{watchdogTimeoutMs}}
+{\footnotesize\ttfamily \label{struct_power_config_abedbaa794a3d71fa7119e4e642d9c3fb} 
+uint32\+\_\+t Power\+Config\+::watchdog\+Timeout\+Ms = 300000}
+
+
+
+Watchdog timeout (5 minutes) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00095}{95}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/hardware/\mbox{\hyperlink{power__manager_8h}{power\+\_\+manager.\+h}}\end{DoxyCompactItemize}

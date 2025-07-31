@@ -1,0 +1,175 @@
+\doxysection{Power\+Stats Struct Reference}
+\hypertarget{struct_power_stats}{}\label{struct_power_stats}\index{PowerStats@{PowerStats}}
+
+
+Power consumption statistics and monitoring.  
+
+
+
+
+{\ttfamily \#include $<$power\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_power_stats_a1dbb73ef499a59d9d2e3408bc76383c4}{total\+Sleep\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em Total time spent in sleep (microseconds) \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_power_stats_aae7c2ed95cd6f0bdc2d032c7f8d02061}{total\+Active\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em Total time spent active (microseconds) \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_power_stats_a2594474738c90c4abb9c5f8f62226771}{sleep\+Cycles}} = 0
+\begin{DoxyCompactList}\small\item\em Number of sleep cycles completed. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_power_stats_a6e21bcde8c623192a54f7059ede59e56}{wakeup\+Events}} = 0
+\begin{DoxyCompactList}\small\item\em Number of wakeup events. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_power_stats_ab7e6464c7fc852c57f03bcb2f270fa77}{average\+Sleep\+Duration}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Average sleep duration (seconds) \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_power_stats_a877f5a5d29f02dfcfbd8bc50951e06d5}{duty\+Cycle}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Duty cycle percentage (active/total) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_power_stats_ad4fb8005de7533c1c923c11149d05cb5}{last\+Wakeup\+Cause}}
+\begin{DoxyCompactList}\small\item\em Last wakeup cause description. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_power_stats_aaa77b20f1d6a1edb11c4bfcf5b5c408e}{last\+Reset\+Reason}}
+\begin{DoxyCompactList}\small\item\em Last reset reason description. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_power_stats_a85a40a17464e4a29de04ca6e359c777e}{boot\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em System boot timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Power consumption statistics and monitoring. 
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00057}{57}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_power_stats_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_power_stats_ab7e6464c7fc852c57f03bcb2f270fa77}\index{PowerStats@{PowerStats}!averageSleepDuration@{averageSleepDuration}}
+\index{averageSleepDuration@{averageSleepDuration}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{averageSleepDuration}{averageSleepDuration}}
+{\footnotesize\ttfamily \label{struct_power_stats_ab7e6464c7fc852c57f03bcb2f270fa77} 
+float Power\+Stats\+::average\+Sleep\+Duration = 0.\+0f}
+
+
+
+Average sleep duration (seconds) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00063}{63}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_a85a40a17464e4a29de04ca6e359c777e}\index{PowerStats@{PowerStats}!bootTime@{bootTime}}
+\index{bootTime@{bootTime}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{bootTime}{bootTime}}
+{\footnotesize\ttfamily \label{struct_power_stats_a85a40a17464e4a29de04ca6e359c777e} 
+uint64\+\_\+t Power\+Stats\+::boot\+Time = 0}
+
+
+
+System boot timestamp. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00067}{67}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_a877f5a5d29f02dfcfbd8bc50951e06d5}\index{PowerStats@{PowerStats}!dutyCycle@{dutyCycle}}
+\index{dutyCycle@{dutyCycle}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{dutyCycle}{dutyCycle}}
+{\footnotesize\ttfamily \label{struct_power_stats_a877f5a5d29f02dfcfbd8bc50951e06d5} 
+float Power\+Stats\+::duty\+Cycle = 0.\+0f}
+
+
+
+Duty cycle percentage (active/total) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00064}{64}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_aaa77b20f1d6a1edb11c4bfcf5b5c408e}\index{PowerStats@{PowerStats}!lastResetReason@{lastResetReason}}
+\index{lastResetReason@{lastResetReason}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{lastResetReason}{lastResetReason}}
+{\footnotesize\ttfamily \label{struct_power_stats_aaa77b20f1d6a1edb11c4bfcf5b5c408e} 
+std\+::string Power\+Stats\+::last\+Reset\+Reason}
+
+
+
+Last reset reason description. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00066}{66}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_ad4fb8005de7533c1c923c11149d05cb5}\index{PowerStats@{PowerStats}!lastWakeupCause@{lastWakeupCause}}
+\index{lastWakeupCause@{lastWakeupCause}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{lastWakeupCause}{lastWakeupCause}}
+{\footnotesize\ttfamily \label{struct_power_stats_ad4fb8005de7533c1c923c11149d05cb5} 
+std\+::string Power\+Stats\+::last\+Wakeup\+Cause}
+
+
+
+Last wakeup cause description. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00065}{65}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_a2594474738c90c4abb9c5f8f62226771}\index{PowerStats@{PowerStats}!sleepCycles@{sleepCycles}}
+\index{sleepCycles@{sleepCycles}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{sleepCycles}{sleepCycles}}
+{\footnotesize\ttfamily \label{struct_power_stats_a2594474738c90c4abb9c5f8f62226771} 
+uint32\+\_\+t Power\+Stats\+::sleep\+Cycles = 0}
+
+
+
+Number of sleep cycles completed. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00061}{61}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_aae7c2ed95cd6f0bdc2d032c7f8d02061}\index{PowerStats@{PowerStats}!totalActiveTime@{totalActiveTime}}
+\index{totalActiveTime@{totalActiveTime}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{totalActiveTime}{totalActiveTime}}
+{\footnotesize\ttfamily \label{struct_power_stats_aae7c2ed95cd6f0bdc2d032c7f8d02061} 
+uint64\+\_\+t Power\+Stats\+::total\+Active\+Time = 0}
+
+
+
+Total time spent active (microseconds) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00060}{60}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_a1dbb73ef499a59d9d2e3408bc76383c4}\index{PowerStats@{PowerStats}!totalSleepTime@{totalSleepTime}}
+\index{totalSleepTime@{totalSleepTime}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{totalSleepTime}{totalSleepTime}}
+{\footnotesize\ttfamily \label{struct_power_stats_a1dbb73ef499a59d9d2e3408bc76383c4} 
+uint64\+\_\+t Power\+Stats\+::total\+Sleep\+Time = 0}
+
+
+
+Total time spent in sleep (microseconds) 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00059}{59}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_power_stats_a6e21bcde8c623192a54f7059ede59e56}\index{PowerStats@{PowerStats}!wakeupEvents@{wakeupEvents}}
+\index{wakeupEvents@{wakeupEvents}!PowerStats@{PowerStats}}
+\doxysubsubsection{\texorpdfstring{wakeupEvents}{wakeupEvents}}
+{\footnotesize\ttfamily \label{struct_power_stats_a6e21bcde8c623192a54f7059ede59e56} 
+uint32\+\_\+t Power\+Stats\+::wakeup\+Events = 0}
+
+
+
+Number of wakeup events. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00062}{62}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/hardware/\mbox{\hyperlink{power__manager_8h}{power\+\_\+manager.\+h}}\end{DoxyCompactItemize}

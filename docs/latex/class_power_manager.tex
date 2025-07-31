@@ -1,0 +1,834 @@
+\doxysection{Power\+Manager Class Reference}
+\hypertarget{class_power_manager}{}\label{class_power_manager}\index{PowerManager@{PowerManager}}
+
+
+Power Manager implementing comprehensive power control and optimization.  
+
+
+
+
+{\ttfamily \#include $<$power\+\_\+manager.\+h$>$}
+
+Inheritance diagram for Power\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_power_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_power_manager_ac042154201d1c37f6bd5cfc0441849b9}{Power\+Manager}} (int power\+Pin=15)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_power_manager_a7849fc619b62385be6b6461c16d84df2}{\texorpdfstring{$\sim$}{\string~}\+Power\+Manager}} () override
+\begin{DoxyCompactList}\small\item\em Destructor -\/ ensures safe shutdown. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a416206aeab4fad278771c33df90d55aa}{enable\+Peripherals}} () override
+\begin{DoxyCompactList}\small\item\em Enable peripheral power supplies. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a84eca8b42dcd28a7211ddd33e4057d01}{disable\+Peripherals}} () override
+\begin{DoxyCompactList}\small\item\em Disable peripheral power supplies for power saving. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a1a7bb8e40ab19a380bb6a3930c2deb75}{enter\+Sleep}} (uint64\+\_\+t sleep\+Time\+Us) override
+\begin{DoxyCompactList}\small\item\em Enter deep sleep mode for specified duration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} \mbox{\hyperlink{class_power_manager_ac9f7272f6409e1da2271e4c3b692000e}{get\+Wakeup\+Cause}} () override
+\begin{DoxyCompactList}\small\item\em Get the cause of the last wakeup event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a064ec6a4f8af44c7424dba52c67c6796}{configure\+Wakeup}} (uint64\+\_\+t time\+Us) override
+\begin{DoxyCompactList}\small\item\em Configure timer wakeup for next sleep cycle. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_a217939b880543bfff917203a06d45258}{initialize}} ()
+\begin{DoxyCompactList}\small\item\em Initialize power management system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_ad3d753133614fcd081d31817babc2563}{shutdown}} (bool emergency=\mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}})
+\begin{DoxyCompactList}\small\item\em Shutdown system safely with proper cleanup. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_ac9a041d36f4eb1d08bf9779a9fd3f838}{restart}} (const std\+::string \&reason="{}Manual restart"{})
+\begin{DoxyCompactList}\small\item\em Restart the ESP32 system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_ab0c173dfb217be78e3c4238c52c92086}{configure\+Peripherals}} (const \mbox{\hyperlink{struct_peripheral_config}{Peripheral\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Control individual peripheral power. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_peripheral_config}{Peripheral\+Config}} \mbox{\hyperlink{class_power_manager_a161d68ae694f4c8e4201e0f743b3b56a}{get\+Peripheral\+Config}} () const
+\begin{DoxyCompactList}\small\item\em Get current peripheral power configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_ad5a8992dece801d78b9988bc7e5ba4b4}{set5\+VSupply}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Enable/disable 5V external power supply. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_ad22dc5868e67d1285b89640237843ca0}{is5\+VSupply\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em Check if 5V supply is currently enabled. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_a162ef739385345cf7d1ca7280c3a9590}{enter\+Light\+Sleep}} (uint64\+\_\+t sleep\+Time\+Us)
+\begin{DoxyCompactList}\small\item\em Enter light sleep mode (CPU halted, peripherals active) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_ad9963d983aa1085e3f4335e7094ee804}{enter\+Deep\+Sleep}} (uint64\+\_\+t sleep\+Time\+Us, uint32\+\_\+t wakeup\+Sources=0x01)
+\begin{DoxyCompactList}\small\item\em Enter deep sleep mode with full power down. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_ab602a6342e1fad3200a4a7facfadf6d2}{configure\+GPIOWakeup}} (int pin, bool level)
+\begin{DoxyCompactList}\small\item\em Configure external GPIO wakeup. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a477a7cb4a8d7ff7d0b09e7df7087b11c}{disable\+All\+Wakeup\+Sources}} ()
+\begin{DoxyCompactList}\small\item\em Disable all wakeup sources. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_aafffc0b472611483926b7102ba571355}{configure\+Watchdog}} (uint32\+\_\+t timeout\+Ms)
+\begin{DoxyCompactList}\small\item\em Configure task watchdog timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_ada75c3c09242a3d075209faa228bff6e}{reset\+Watchdog}} ()
+\begin{DoxyCompactList}\small\item\em Reset watchdog timer to prevent timeout. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_ab4f233f92d33569b5ab573bc8544fc56}{enable\+Watchdog}} ()
+\begin{DoxyCompactList}\small\item\em Enable watchdog timer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_a9ced864cc6707771dead21ca5e2ee037}{disable\+Watchdog}} ()
+\begin{DoxyCompactList}\small\item\em Disable watchdog timer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{Reset\+Reason}} \mbox{\hyperlink{class_power_manager_a7f2a50879a9868c38d331d2b0cc6d2f2}{get\+Reset\+Reason}} ()
+\begin{DoxyCompactList}\small\item\em Get system reset reason. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_power_stats}{Power\+Stats}} \mbox{\hyperlink{class_power_manager_ae967934d313d10234e5fab23613a2ee6}{get\+Power\+Stats}} () const
+\begin{DoxyCompactList}\small\item\em Get comprehensive power statistics. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{class_power_manager_ac5b5c5f6089fb57a320f46260a019db7}{get\+Uptime\+Ms}} ()
+\begin{DoxyCompactList}\small\item\em Get system uptime in milliseconds. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_power_manager_adbd4e0f5a46925e9bcec95441600740c}{get\+Free\+Heap}} ()
+\begin{DoxyCompactList}\small\item\em Get free heap memory in bytes. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{class_power_manager_a7a9e35c768063af1eb45da661b2c6c83}{get\+Min\+Free\+Heap}} ()
+\begin{DoxyCompactList}\small\item\em Get minimum free heap since boot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a7b588ed795b254ecacdbc1ccb73e2b43}{set\+Power\+Config}} (const \mbox{\hyperlink{struct_power_config}{Power\+Config}} \&config)
+\begin{DoxyCompactList}\small\item\em Set power configuration including battery thresholds. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_power_config}{Power\+Config}} \mbox{\hyperlink{class_power_manager_a179920d4ee849a080eafe47b404e1616}{get\+Power\+Config}} () const
+\begin{DoxyCompactList}\small\item\em Get current power configuration. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_a0ec834e5c8fadc8527e356344ec4cb30}{check\+Battery\+Level}} (float battery\+Percent)
+\begin{DoxyCompactList}\small\item\em Check battery level and apply power management policies. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_acf8d3bcfd0bed530739ffa76f8126cae}{enter\+Emergency\+Mode}} (const std\+::string \&reason)
+\begin{DoxyCompactList}\small\item\em Enter emergency low power mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a197ec87e10039ec1a208de75ba606cd6}{configure\+GPIOHolds}} ()
+\begin{DoxyCompactList}\small\item\em Configure GPIO holds for deep sleep persistence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_ac6001976d6c2d649b8221323bd55a10e}{enable\+GPIOHold}} (int pin, bool state)
+\begin{DoxyCompactList}\small\item\em Enable GPIO hold for specific pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_manager_a1ccd85ba3f64a07e2eedd53337296f2e}{disable\+All\+GPIOHolds}} ()
+\begin{DoxyCompactList}\small\item\em Disable all GPIO holds. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_power_manager_a26e654a762cf48b8ced461d2a250f108}{get\+Last\+Error}} () const
+\begin{DoxyCompactList}\small\item\em Get last error message for diagnostics. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_power_manager_a278d871f68d75780b8a96f3b75fb0c15}{perform\+Health\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Perform power system health check. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_power_manager}{IPower\+Manager}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}{\texorpdfstring{$\sim$}{\string~}\+IPower\+Manager}} ()=default
+\item 
+virtual \mbox{\hyperlink{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}{\texorpdfstring{$\sim$}{\string~}\+IPower\+Manager}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{class_power_manager_ad1b259ad02f19b34587754fbed5276d8}{reset\+Reason\+To\+String}} (\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{Reset\+Reason}} reason)
+\begin{DoxyCompactList}\small\item\em Convert reset reason to human-\/readable string. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{class_power_manager_af238912ea6946c69c9228d449838f4bc}{wakeup\+Cause\+To\+String}} (\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} cause)
+\begin{DoxyCompactList}\small\item\em Convert wakeup cause to human-\/readable string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Power Manager implementing comprehensive power control and optimization. 
+
+This class provides complete power management for the ESP32-\/based forestry research device. Features include\+:
+
+
+\begin{DoxyItemize}
+\item Deep sleep modes with configurable wakeup sources
+\item Peripheral power control and optimization
+\item Battery-\/aware power management with emergency procedures
+\item Watchdog timer configuration and monitoring
+\item Wake/sleep cycle statistics and analysis
+\item GPIO hold states for deep sleep persistence
+\item Reset and wakeup cause analysis
+\item Power consumption monitoring and optimization 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00115}{115}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_power_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_power_manager_ac042154201d1c37f6bd5cfc0441849b9}\index{PowerManager@{PowerManager}!PowerManager@{PowerManager}}
+\index{PowerManager@{PowerManager}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{PowerManager()}{PowerManager()}}
+{\footnotesize\ttfamily \label{class_power_manager_ac042154201d1c37f6bd5cfc0441849b9} 
+Power\+Manager\+::\+Power\+Manager (\begin{DoxyParamCaption}\item[{int}]{power\+Pin}{ = {\ttfamily 15}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em power\+Pin} & GPIO pin for 5V peripheral power control (default\+: 15) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a7849fc619b62385be6b6461c16d84df2}\index{PowerManager@{PowerManager}!````~PowerManager@{\texorpdfstring{$\sim$}{\string~}PowerManager}}
+\index{````~PowerManager@{\texorpdfstring{$\sim$}{\string~}PowerManager}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}PowerManager()}{\string~PowerManager()}}
+{\footnotesize\ttfamily \label{class_power_manager_a7849fc619b62385be6b6461c16d84df2} 
+Power\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Power\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor -\/ ensures safe shutdown. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_power_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_power_manager_a0ec834e5c8fadc8527e356344ec4cb30}\index{PowerManager@{PowerManager}!checkBatteryLevel@{checkBatteryLevel}}
+\index{checkBatteryLevel@{checkBatteryLevel}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{checkBatteryLevel()}{checkBatteryLevel()}}
+{\footnotesize\ttfamily \label{class_power_manager_a0ec834e5c8fadc8527e356344ec4cb30} 
+bool Power\+Manager\+::check\+Battery\+Level (\begin{DoxyParamCaption}\item[{float}]{battery\+Percent}{}\end{DoxyParamCaption})}
+
+
+
+Check battery level and apply power management policies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em battery\+Percent} & Current battery level (0-\/100\%) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if system should continue operation, false if shutdown needed 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00653}{653}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a197ec87e10039ec1a208de75ba606cd6}\index{PowerManager@{PowerManager}!configureGPIOHolds@{configureGPIOHolds}}
+\index{configureGPIOHolds@{configureGPIOHolds}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{configureGPIOHolds()}{configureGPIOHolds()}}
+{\footnotesize\ttfamily \label{class_power_manager_a197ec87e10039ec1a208de75ba606cd6} 
+void Power\+Manager\+::configure\+GPIOHolds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Configure GPIO holds for deep sleep persistence. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00720}{720}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ab602a6342e1fad3200a4a7facfadf6d2}\index{PowerManager@{PowerManager}!configureGPIOWakeup@{configureGPIOWakeup}}
+\index{configureGPIOWakeup@{configureGPIOWakeup}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{configureGPIOWakeup()}{configureGPIOWakeup()}}
+{\footnotesize\ttfamily \label{class_power_manager_ab602a6342e1fad3200a4a7facfadf6d2} 
+bool Power\+Manager\+::configure\+GPIOWakeup (\begin{DoxyParamCaption}\item[{int}]{pin}{, }\item[{bool}]{level}{}\end{DoxyParamCaption})}
+
+
+
+Configure external GPIO wakeup. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & GPIO pin number for wakeup \\
+\hline
+{\em level} & Logic level for wakeup (true = HIGH, false = LOW) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if configuration successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_power_manager_ab0c173dfb217be78e3c4238c52c92086}\index{PowerManager@{PowerManager}!configurePeripherals@{configurePeripherals}}
+\index{configurePeripherals@{configurePeripherals}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{configurePeripherals()}{configurePeripherals()}}
+{\footnotesize\ttfamily \label{class_power_manager_ab0c173dfb217be78e3c4238c52c92086} 
+void Power\+Manager\+::configure\+Peripherals (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_peripheral_config}{Peripheral\+Config}} \&}]{config}{}\end{DoxyParamCaption})}
+
+
+
+Control individual peripheral power. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Peripheral configuration structure \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00443}{443}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a064ec6a4f8af44c7424dba52c67c6796}\index{PowerManager@{PowerManager}!configureWakeup@{configureWakeup}}
+\index{configureWakeup@{configureWakeup}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{configureWakeup()}{configureWakeup()}}
+{\footnotesize\ttfamily \label{class_power_manager_a064ec6a4f8af44c7424dba52c67c6796} 
+void Power\+Manager\+::configure\+Wakeup (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{time\+Us}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Configure timer wakeup for next sleep cycle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Us} & Wakeup time in microseconds from now \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5}{IPower\+Manager}}.
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00411}{411}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_aafffc0b472611483926b7102ba571355}\index{PowerManager@{PowerManager}!configureWatchdog@{configureWatchdog}}
+\index{configureWatchdog@{configureWatchdog}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{configureWatchdog()}{configureWatchdog()}}
+{\footnotesize\ttfamily \label{class_power_manager_aafffc0b472611483926b7102ba571355} 
+bool Power\+Manager\+::configure\+Watchdog (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{timeout\+Ms}{}\end{DoxyParamCaption})}
+
+
+
+Configure task watchdog timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Ms} & Timeout in milliseconds (0 = disable) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if configuration successful, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00529}{529}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a1ccd85ba3f64a07e2eedd53337296f2e}\index{PowerManager@{PowerManager}!disableAllGPIOHolds@{disableAllGPIOHolds}}
+\index{disableAllGPIOHolds@{disableAllGPIOHolds}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{disableAllGPIOHolds()}{disableAllGPIOHolds()}}
+{\footnotesize\ttfamily \label{class_power_manager_a1ccd85ba3f64a07e2eedd53337296f2e} 
+void Power\+Manager\+::disable\+All\+GPIOHolds (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Disable all GPIO holds. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00750}{750}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a477a7cb4a8d7ff7d0b09e7df7087b11c}\index{PowerManager@{PowerManager}!disableAllWakeupSources@{disableAllWakeupSources}}
+\index{disableAllWakeupSources@{disableAllWakeupSources}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{disableAllWakeupSources()}{disableAllWakeupSources()}}
+{\footnotesize\ttfamily \label{class_power_manager_a477a7cb4a8d7ff7d0b09e7df7087b11c} 
+void Power\+Manager\+::disable\+All\+Wakeup\+Sources (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Disable all wakeup sources. 
+
+\Hypertarget{class_power_manager_a84eca8b42dcd28a7211ddd33e4057d01}\index{PowerManager@{PowerManager}!disablePeripherals@{disablePeripherals}}
+\index{disablePeripherals@{disablePeripherals}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{disablePeripherals()}{disablePeripherals()}}
+{\footnotesize\ttfamily \label{class_power_manager_a84eca8b42dcd28a7211ddd33e4057d01} 
+void Power\+Manager\+::disable\+Peripherals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Disable peripheral power supplies for power saving. 
+
+
+
+Implements \mbox{\hyperlink{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3}{IPower\+Manager}}.
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00207}{207}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a9ced864cc6707771dead21ca5e2ee037}\index{PowerManager@{PowerManager}!disableWatchdog@{disableWatchdog}}
+\index{disableWatchdog@{disableWatchdog}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{disableWatchdog()}{disableWatchdog()}}
+{\footnotesize\ttfamily \label{class_power_manager_a9ced864cc6707771dead21ca5e2ee037} 
+bool Power\+Manager\+::disable\+Watchdog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Disable watchdog timer. 
+
+\begin{DoxyReturn}{Returns}
+true if disable successful, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00568}{568}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ac6001976d6c2d649b8221323bd55a10e}\index{PowerManager@{PowerManager}!enableGPIOHold@{enableGPIOHold}}
+\index{enableGPIOHold@{enableGPIOHold}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{enableGPIOHold()}{enableGPIOHold()}}
+{\footnotesize\ttfamily \label{class_power_manager_ac6001976d6c2d649b8221323bd55a10e} 
+void Power\+Manager\+::enable\+GPIOHold (\begin{DoxyParamCaption}\item[{int}]{pin}{, }\item[{bool}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Enable GPIO hold for specific pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & GPIO pin number \\
+\hline
+{\em state} & State to maintain during sleep \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00736}{736}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a416206aeab4fad278771c33df90d55aa}\index{PowerManager@{PowerManager}!enablePeripherals@{enablePeripherals}}
+\index{enablePeripherals@{enablePeripherals}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{enablePeripherals()}{enablePeripherals()}}
+{\footnotesize\ttfamily \label{class_power_manager_a416206aeab4fad278771c33df90d55aa} 
+void Power\+Manager\+::enable\+Peripherals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Enable peripheral power supplies. 
+
+
+
+Implements \mbox{\hyperlink{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8}{IPower\+Manager}}.
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ab4f233f92d33569b5ab573bc8544fc56}\index{PowerManager@{PowerManager}!enableWatchdog@{enableWatchdog}}
+\index{enableWatchdog@{enableWatchdog}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{enableWatchdog()}{enableWatchdog()}}
+{\footnotesize\ttfamily \label{class_power_manager_ab4f233f92d33569b5ab573bc8544fc56} 
+bool Power\+Manager\+::enable\+Watchdog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Enable watchdog timer. 
+
+\begin{DoxyReturn}{Returns}
+true if enable successful, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00556}{556}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ad9963d983aa1085e3f4335e7094ee804}\index{PowerManager@{PowerManager}!enterDeepSleep@{enterDeepSleep}}
+\index{enterDeepSleep@{enterDeepSleep}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{enterDeepSleep()}{enterDeepSleep()}}
+{\footnotesize\ttfamily \label{class_power_manager_ad9963d983aa1085e3f4335e7094ee804} 
+void Power\+Manager\+::enter\+Deep\+Sleep (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{sleep\+Time\+Us}{, }\item[{uint32\+\_\+t}]{wakeup\+Sources}{ = {\ttfamily 0x01}}\end{DoxyParamCaption})}
+
+
+
+Enter deep sleep mode with full power down. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sleep\+Time\+Us} & Sleep duration in microseconds \\
+\hline
+{\em wakeup\+Sources} & Bitmask of enabled wakeup sources \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00309}{309}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_acf8d3bcfd0bed530739ffa76f8126cae}\index{PowerManager@{PowerManager}!enterEmergencyMode@{enterEmergencyMode}}
+\index{enterEmergencyMode@{enterEmergencyMode}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{enterEmergencyMode()}{enterEmergencyMode()}}
+{\footnotesize\ttfamily \label{class_power_manager_acf8d3bcfd0bed530739ffa76f8126cae} 
+void Power\+Manager\+::enter\+Emergency\+Mode (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reason}{}\end{DoxyParamCaption})}
+
+
+
+Enter emergency low power mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reason} & Reason for emergency mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00687}{687}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a162ef739385345cf7d1ca7280c3a9590}\index{PowerManager@{PowerManager}!enterLightSleep@{enterLightSleep}}
+\index{enterLightSleep@{enterLightSleep}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{enterLightSleep()}{enterLightSleep()}}
+{\footnotesize\ttfamily \label{class_power_manager_a162ef739385345cf7d1ca7280c3a9590} 
+bool Power\+Manager\+::enter\+Light\+Sleep (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{sleep\+Time\+Us}{}\end{DoxyParamCaption})}
+
+
+
+Enter light sleep mode (CPU halted, peripherals active) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sleep\+Time\+Us} & Sleep duration in microseconds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if sleep completed normally, false if interrupted 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00358}{358}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a1a7bb8e40ab19a380bb6a3930c2deb75}\index{PowerManager@{PowerManager}!enterSleep@{enterSleep}}
+\index{enterSleep@{enterSleep}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{enterSleep()}{enterSleep()}}
+{\footnotesize\ttfamily \label{class_power_manager_a1a7bb8e40ab19a380bb6a3930c2deb75} 
+void Power\+Manager\+::enter\+Sleep (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{sleep\+Time\+Us}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Enter deep sleep mode for specified duration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sleep\+Time\+Us} & Sleep duration in microseconds \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e}{IPower\+Manager}}.
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00302}{302}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_adbd4e0f5a46925e9bcec95441600740c}\index{PowerManager@{PowerManager}!getFreeHeap@{getFreeHeap}}
+\index{getFreeHeap@{getFreeHeap}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getFreeHeap()}{getFreeHeap()}}
+{\footnotesize\ttfamily \label{class_power_manager_adbd4e0f5a46925e9bcec95441600740c} 
+uint32\+\_\+t Power\+Manager\+::get\+Free\+Heap (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get free heap memory in bytes. 
+
+\begin{DoxyReturn}{Returns}
+Available heap memory 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00635}{635}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a26e654a762cf48b8ced461d2a250f108}\index{PowerManager@{PowerManager}!getLastError@{getLastError}}
+\index{getLastError@{getLastError}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getLastError()}{getLastError()}}
+{\footnotesize\ttfamily \label{class_power_manager_a26e654a762cf48b8ced461d2a250f108} 
+std\+::string Power\+Manager\+::get\+Last\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get last error message for diagnostics. 
+
+\begin{DoxyReturn}{Returns}
+String describing the last error that occurred 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00335}{335}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{class_power_manager_a7a9e35c768063af1eb45da661b2c6c83}\index{PowerManager@{PowerManager}!getMinFreeHeap@{getMinFreeHeap}}
+\index{getMinFreeHeap@{getMinFreeHeap}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getMinFreeHeap()}{getMinFreeHeap()}}
+{\footnotesize\ttfamily \label{class_power_manager_a7a9e35c768063af1eb45da661b2c6c83} 
+uint32\+\_\+t Power\+Manager\+::get\+Min\+Free\+Heap (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get minimum free heap since boot. 
+
+\begin{DoxyReturn}{Returns}
+Minimum heap that was available 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00644}{644}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a161d68ae694f4c8e4201e0f743b3b56a}\index{PowerManager@{PowerManager}!getPeripheralConfig@{getPeripheralConfig}}
+\index{getPeripheralConfig@{getPeripheralConfig}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getPeripheralConfig()}{getPeripheralConfig()}}
+{\footnotesize\ttfamily \label{class_power_manager_a161d68ae694f4c8e4201e0f743b3b56a} 
+\mbox{\hyperlink{struct_peripheral_config}{Peripheral\+Config}} Power\+Manager\+::get\+Peripheral\+Config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get current peripheral power configuration. 
+
+\begin{DoxyReturn}{Returns}
+Current peripheral configuration 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00188}{188}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{class_power_manager_a179920d4ee849a080eafe47b404e1616}\index{PowerManager@{PowerManager}!getPowerConfig@{getPowerConfig}}
+\index{getPowerConfig@{getPowerConfig}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getPowerConfig()}{getPowerConfig()}}
+{\footnotesize\ttfamily \label{class_power_manager_a179920d4ee849a080eafe47b404e1616} 
+\mbox{\hyperlink{struct_power_config}{Power\+Config}} Power\+Manager\+::get\+Power\+Config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get current power configuration. 
+
+\begin{DoxyReturn}{Returns}
+Current power configuration 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8h_source_l00297}{297}} of file \mbox{\hyperlink{power__manager_8h_source}{power\+\_\+manager.\+h}}.
+
+\Hypertarget{class_power_manager_ae967934d313d10234e5fab23613a2ee6}\index{PowerManager@{PowerManager}!getPowerStats@{getPowerStats}}
+\index{getPowerStats@{getPowerStats}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getPowerStats()}{getPowerStats()}}
+{\footnotesize\ttfamily \label{class_power_manager_ae967934d313d10234e5fab23613a2ee6} 
+\mbox{\hyperlink{struct_power_stats}{Power\+Stats}} Power\+Manager\+::get\+Power\+Stats (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get comprehensive power statistics. 
+
+\begin{DoxyReturn}{Returns}
+Power statistics structure with usage data 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00591}{591}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a7f2a50879a9868c38d331d2b0cc6d2f2}\index{PowerManager@{PowerManager}!getResetReason@{getResetReason}}
+\index{getResetReason@{getResetReason}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getResetReason()}{getResetReason()}}
+{\footnotesize\ttfamily \label{class_power_manager_a7f2a50879a9868c38d331d2b0cc6d2f2} 
+\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{Reset\+Reason}} Power\+Manager\+::get\+Reset\+Reason (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get system reset reason. 
+
+\begin{DoxyReturn}{Returns}
+Reset reason enumeration value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00437}{437}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ac5b5c5f6089fb57a320f46260a019db7}\index{PowerManager@{PowerManager}!getUptimeMs@{getUptimeMs}}
+\index{getUptimeMs@{getUptimeMs}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getUptimeMs()}{getUptimeMs()}}
+{\footnotesize\ttfamily \label{class_power_manager_ac5b5c5f6089fb57a320f46260a019db7} 
+uint64\+\_\+t Power\+Manager\+::get\+Uptime\+Ms (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get system uptime in milliseconds. 
+
+\begin{DoxyReturn}{Returns}
+Uptime since last reset/boot 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00625}{625}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ac9f7272f6409e1da2271e4c3b692000e}\index{PowerManager@{PowerManager}!getWakeupCause@{getWakeupCause}}
+\index{getWakeupCause@{getWakeupCause}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{getWakeupCause()}{getWakeupCause()}}
+{\footnotesize\ttfamily \label{class_power_manager_ac9f7272f6409e1da2271e4c3b692000e} 
+\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} Power\+Manager\+::get\+Wakeup\+Cause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the cause of the last wakeup event. 
+
+\begin{DoxyReturn}{Returns}
+Wakeup cause enumeration value 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130}{IPower\+Manager}}.
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00431}{431}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a217939b880543bfff917203a06d45258}\index{PowerManager@{PowerManager}!initialize@{initialize}}
+\index{initialize@{initialize}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_power_manager_a217939b880543bfff917203a06d45258} 
+bool Power\+Manager\+::initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize power management system. 
+
+\begin{DoxyReturn}{Returns}
+true if initialization successful, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ad22dc5868e67d1285b89640237843ca0}\index{PowerManager@{PowerManager}!is5VSupplyEnabled@{is5VSupplyEnabled}}
+\index{is5VSupplyEnabled@{is5VSupplyEnabled}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{is5VSupplyEnabled()}{is5VSupplyEnabled()}}
+{\footnotesize\ttfamily \label{class_power_manager_ad22dc5868e67d1285b89640237843ca0} 
+bool Power\+Manager\+::is5\+VSupply\+Enabled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Check if 5V supply is currently enabled. 
+
+\begin{DoxyReturn}{Returns}
+true if 5V supply is on, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00289}{289}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a278d871f68d75780b8a96f3b75fb0c15}\index{PowerManager@{PowerManager}!performHealthCheck@{performHealthCheck}}
+\index{performHealthCheck@{performHealthCheck}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{performHealthCheck()}{performHealthCheck()}}
+{\footnotesize\ttfamily \label{class_power_manager_a278d871f68d75780b8a96f3b75fb0c15} 
+bool Power\+Manager\+::perform\+Health\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Perform power system health check. 
+
+\begin{DoxyReturn}{Returns}
+true if power system appears healthy, false if issues detected 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00763}{763}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ad1b259ad02f19b34587754fbed5276d8}\index{PowerManager@{PowerManager}!resetReasonToString@{resetReasonToString}}
+\index{resetReasonToString@{resetReasonToString}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{resetReasonToString()}{resetReasonToString()}}
+{\footnotesize\ttfamily \label{class_power_manager_ad1b259ad02f19b34587754fbed5276d8} 
+std\+::string Power\+Manager\+::reset\+Reason\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{power__manager_8h_a06d9333e5541d14a05e83e78d4a07e11}{Reset\+Reason}}}]{reason}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert reset reason to human-\/readable string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reason} & Reset reason enumeration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Descriptive string for reset reason 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l01222}{1222}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ada75c3c09242a3d075209faa228bff6e}\index{PowerManager@{PowerManager}!resetWatchdog@{resetWatchdog}}
+\index{resetWatchdog@{resetWatchdog}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{resetWatchdog()}{resetWatchdog()}}
+{\footnotesize\ttfamily \label{class_power_manager_ada75c3c09242a3d075209faa228bff6e} 
+void Power\+Manager\+::reset\+Watchdog (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Reset watchdog timer to prevent timeout. 
+
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00547}{547}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ac9a041d36f4eb1d08bf9779a9fd3f838}\index{PowerManager@{PowerManager}!restart@{restart}}
+\index{restart@{restart}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily \label{class_power_manager_ac9a041d36f4eb1d08bf9779a9fd3f838} 
+void Power\+Manager\+::restart (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reason}{ = {\ttfamily "{}Manual~restart"{}}}\end{DoxyParamCaption})}
+
+
+
+Restart the ESP32 system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reason} & Reason for restart (for logging) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00514}{514}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_ad5a8992dece801d78b9988bc7e5ba4b4}\index{PowerManager@{PowerManager}!set5VSupply@{set5VSupply}}
+\index{set5VSupply@{set5VSupply}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{set5VSupply()}{set5VSupply()}}
+{\footnotesize\ttfamily \label{class_power_manager_ad5a8992dece801d78b9988bc7e5ba4b4} 
+void Power\+Manager\+::set5\+VSupply (\begin{DoxyParamCaption}\item[{bool}]{enabled}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable 5V external power supply. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enabled} & Whether to enable 5V supply \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00250}{250}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_a7b588ed795b254ecacdbc1ccb73e2b43}\index{PowerManager@{PowerManager}!setPowerConfig@{setPowerConfig}}
+\index{setPowerConfig@{setPowerConfig}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{setPowerConfig()}{setPowerConfig()}}
+{\footnotesize\ttfamily \label{class_power_manager_a7b588ed795b254ecacdbc1ccb73e2b43} 
+void Power\+Manager\+::set\+Power\+Config (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_power_config}{Power\+Config}} \&}]{config}{}\end{DoxyParamCaption})}
+
+
+
+Set power configuration including battery thresholds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Power configuration structure \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_power_manager_ad3d753133614fcd081d31817babc2563}\index{PowerManager@{PowerManager}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily \label{class_power_manager_ad3d753133614fcd081d31817babc2563} 
+void Power\+Manager\+::shutdown (\begin{DoxyParamCaption}\item[{bool}]{emergency}{ = {\ttfamily \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}}\end{DoxyParamCaption})}
+
+
+
+Shutdown system safely with proper cleanup. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em emergency} & Whether this is an emergency shutdown \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l00490}{490}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+\Hypertarget{class_power_manager_af238912ea6946c69c9228d449838f4bc}\index{PowerManager@{PowerManager}!wakeupCauseToString@{wakeupCauseToString}}
+\index{wakeupCauseToString@{wakeupCauseToString}!PowerManager@{PowerManager}}
+\doxysubsubsection{\texorpdfstring{wakeupCauseToString()}{wakeupCauseToString()}}
+{\footnotesize\ttfamily \label{class_power_manager_af238912ea6946c69c9228d449838f4bc} 
+std\+::string Power\+Manager\+::wakeup\+Cause\+To\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}}}]{cause}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert wakeup cause to human-\/readable string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cause} & Wakeup cause enumeration \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Descriptive string for wakeup cause 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{power__manager_8cpp_source_l01253}{1253}} of file \mbox{\hyperlink{power__manager_8cpp_source}{power\+\_\+manager.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/hardware/\mbox{\hyperlink{power__manager_8h}{power\+\_\+manager.\+h}}\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/src/hardware/\mbox{\hyperlink{power__manager_8cpp}{power\+\_\+manager.\+cpp}}\end{DoxyCompactItemize}

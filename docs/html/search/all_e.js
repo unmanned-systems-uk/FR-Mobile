@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['emergencyshutdownenabled_0',['emergencyShutdownEnabled',['../struct_power_config.html#a706c45dfc6f45dc86fe6da3021205ce2',1,'PowerConfig']]],
+  ['enablectzr_1',['enableCTZR',['../class_cellular_manager.html#a5910f6da0b564b8f4b17b0792923c373',1,'CellularManager']]],
+  ['enablegpiohold_2',['enableGPIOHold',['../class_power_manager.html#ac6001976d6c2d649b8221323bd55a10e',1,'PowerManager']]],
+  ['enablenitz_3',['enableNITZ',['../class_cellular_manager.html#af0ce9644dd225c9b7725ea42c7583f07',1,'CellularManager']]],
+  ['enableperipherals_4',['enablePeripherals',['../class_power_manager.html#a416206aeab4fad278771c33df90d55aa',1,'PowerManager::enablePeripherals()'],['../class_i_power_manager.html#a1fdf209a6ce3532bd53cf5528ce745e8',1,'IPowerManager::enablePeripherals()=0'],['../class_i_power_manager.html#a1fdf209a6ce3532bd53cf5528ce745e8',1,'IPowerManager::enablePeripherals()=0']]],
+  ['enablewatchdog_5',['enableWatchdog',['../class_power_manager.html#ab4f233f92d33569b5ab573bc8544fc56',1,'PowerManager']]],
+  ['enterdeepsleep_6',['enterDeepSleep',['../class_power_manager.html#ad9963d983aa1085e3f4335e7094ee804',1,'PowerManager']]],
+  ['enteremergencymode_7',['enterEmergencyMode',['../class_power_manager.html#acf8d3bcfd0bed530739ffa76f8126cae',1,'PowerManager']]],
+  ['enterlightsleep_8',['enterLightSleep',['../class_power_manager.html#a162ef739385345cf7d1ca7280c3a9590',1,'PowerManager']]],
+  ['entersleep_9',['enterSleep',['../class_power_manager.html#a1a7bb8e40ab19a380bb6a3930c2deb75',1,'PowerManager::enterSleep()'],['../class_i_power_manager.html#a956eb583bac8e1e075a13994d57e825e',1,'IPowerManager::enterSleep(uint64_t sleepTimeUs)=0'],['../class_i_power_manager.html#a956eb583bac8e1e075a13994d57e825e',1,'IPowerManager::enterSleep(uint64_t sleepTimeUs)=0']]],
+  ['environment_20setup_10',['🔧 Development Environment Setup',['../md__context.html#autotoc_md23',1,'']]],
+  ['error_11',['ERROR',['../logger_8h.html#aca1fd1d8935433e6ba2e3918214e07f9abb1ca97ec761fc37101737ba0aa2e7c5',1,'logger.h']]],
+  ['error_12',['error',['../class_logger.html#a99dcb4e0352c7ed51e1dae91a36be1cc',1,'Logger']]],
+  ['error_20handling_13',['4. &lt;b&gt;Error Handling&lt;/b&gt;',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md43',1,'']]],
+  ['error_5fstate_14',['ERROR_STATE',['../main_8h.html#aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58',1,'main.h']]],
+  ['escapejsonstring_15',['escapeJSONString',['../class_utils.html#a801d4f7c8bad7d3b9fdb7e00730dd872',1,'Utils::escapeJSONString(const std::string &amp;input)'],['../class_utils.html#aad0b68923a16138fe3e10231b5c7615d',1,'Utils::escapeJSONString(const std::string &amp;input)']]],
+  ['esp32_16',['ESP32',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md57',1,'']]],
+  ['esp32_20with_20arduino_20ide_17',['For ESP32 with Arduino IDE',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md49',1,'']]],
+  ['esp32_20with_20platformio_18',['For ESP32 with PlatformIO',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md48',1,'']]],
+  ['examples_19',['Usage Examples',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md51',1,'']]],
+  ['excellence_20',['&lt;b&gt;6. Data Management Excellence&lt;/b&gt;',['../md__context.html#autotoc_md22',1,'']]],
+  ['ext0_21',['EXT0',['../power__manager_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638',1,'EXT0:&#160;power_manager.h'],['../main_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638',1,'EXT0:&#160;power_manager.h']]],
+  ['ext1_22',['EXT1',['../power__manager_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a',1,'EXT1:&#160;power_manager.h'],['../main_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a',1,'EXT1:&#160;power_manager.h']]],
+  ['external_23',['EXTERNAL',['../power__manager_8h.html#a06d9333e5541d14a05e83e78d4a07e11a3932d629fb5e2be9d09b3a4485b3cc9d',1,'EXTERNAL:&#160;power_manager.h'],['../power__manager_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d',1,'EXTERNAL:&#160;main.h'],['../main_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d',1,'EXTERNAL:&#160;main.h']]],
+  ['external5v_24',['external5V',['../struct_peripheral_config.html#af583bd6c8227a2a8a2acbdcdeaac0a50',1,'PeripheralConfig']]]
+];

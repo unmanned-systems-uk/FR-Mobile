@@ -1,0 +1,71 @@
+\chapter{Power Manager }
+\hypertarget{md__power_01_manager}{}\label{md__power_01_manager}\index{Power Manager@{Power Manager}}
+Key Features of the \doxylink{class_power_manager}{Power\+Manager} Implementation\+:
+\begin{DoxyEnumerate}
+\item 5V Power Control
+\end{DoxyEnumerate}
+
+Proper GPIO15 control with LOW = enabled, HIGH = disabled GPIO hold functionality to maintain state during deep sleep Safe initialization starting with 5V disabled Proper sequencing with 1-\/second delay for power stabilization
+
+
+\begin{DoxyEnumerate}
+\item Sleep Mode Management
+\end{DoxyEnumerate}
+
+Deep sleep with configurable wakeup sources Light sleep for lower latency wakeup Sleep duration validation and limits Proper statistics tracking for duty cycle monitoring
+
+
+\begin{DoxyEnumerate}
+\item Peripheral Power Management
+\end{DoxyEnumerate}
+
+Individual control for Wi\+Fi, Bluetooth, cellular, SD card, and sensors Proper shutdown sequencing (peripherals first, then 5V) Power-\/up sequencing (5V first, then peripherals)
+
+
+\begin{DoxyEnumerate}
+\item Battery-\/\+Aware Power Management
+\end{DoxyEnumerate}
+
+Low battery threshold triggers power saving Critical battery threshold triggers emergency mode Emergency shutdown procedures with logging
+
+
+\begin{DoxyEnumerate}
+\item Watchdog Timer Support
+\end{DoxyEnumerate}
+
+Configurable timeout with automatic reset Integration with sleep modes Proper cleanup on shutdown
+
+
+\begin{DoxyEnumerate}
+\item Comprehensive Logging
+\end{DoxyEnumerate}
+
+Follows your established logging patterns Critical events are logged immediately Detailed diagnostic information
+
+
+\begin{DoxyEnumerate}
+\item Platform Abstraction
+\end{DoxyEnumerate}
+
+Full ESP32 implementation with proper ESP-\/\+IDF calls Development platform simulation for testing Clean separation of platform-\/specific code
+
+
+\begin{DoxyEnumerate}
+\item Safety Features
+\end{DoxyEnumerate}
+
+Health check functionality Emergency mode for critical situations Proper GPIO hold configuration for deep sleep Memory monitoring
+
+Integration Points\+: The \doxylink{class_power_manager}{Power\+Manager} is now ready to be used by other components\+:
+
+RTC Time Manager can call enable\+Peripherals() or set5\+VSupply(true) to power up the RTC Cellular Manager can use the same methods to control modem power Main Application can use sleep modes for power optimization Battery Monitor can call check\+Battery\+Level() to trigger power policies
+
+Usage Example\+: cpp// Initialize power manager \doxylink{class_power_manager}{Power\+Manager} power\+Manager(15); // GPIO 15 for 5V control power\+Manager.\+initialize();
+
+// Enable 5V for RTC and cellular power\+Manager.\+set5\+VSupply(true);
+
+// Or enable all configured peripherals power\+Manager.\+enable\+Peripherals();
+
+// Enter deep sleep for 10 minutes power\+Manager.\+enter\+Deep\+Sleep(600000000\+ULL); // 600 seconds in microseconds
+
+// Check battery and apply policies power\+Manager.\+check\+Battery\+Level(battery\+Percent); 

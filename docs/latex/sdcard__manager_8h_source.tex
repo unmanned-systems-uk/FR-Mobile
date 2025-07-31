@@ -1,0 +1,159 @@
+\doxysection{sdcard\+\_\+manager.\+h}
+\hypertarget{sdcard__manager_8h_source}{}\label{sdcard__manager_8h_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/sdcard\_manager.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/sdcard\_manager.h}}
+\mbox{\hyperlink{sdcard__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}interfaces.h"{}}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00025}\mbox{\hyperlink{struct_s_d_card_info}{00025}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_d_card_info}{SDCardInfo}}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00027}\mbox{\hyperlink{struct_s_d_card_info_a34380d8f892829a1e99f8a4effeaa59b}{00027}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_s_d_card_info_a34380d8f892829a1e99f8a4effeaa59b}{totalSpace}}\ =\ 0;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00028}\mbox{\hyperlink{struct_s_d_card_info_ad45dbf94e51d3c2958b4fa8f5b74ff9d}{00028}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_s_d_card_info_ad45dbf94e51d3c2958b4fa8f5b74ff9d}{usedSpace}}\ =\ 0;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00029}\mbox{\hyperlink{struct_s_d_card_info_ac8639510667a3e0f080d1e9c4f1d5747}{00029}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_s_d_card_info_ac8639510667a3e0f080d1e9c4f1d5747}{availableSpace}}\ =\ 0;\ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00030}\mbox{\hyperlink{struct_s_d_card_info_ade1b00cbe54f435c71131a4fa64759e7}{00030}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{struct_s_d_card_info_ade1b00cbe54f435c71131a4fa64759e7}{capacityPercent}}\ =\ 0.0f;\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00031}\mbox{\hyperlink{struct_s_d_card_info_ab8da38e930a308e426b41b3d95690060}{00031}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_s_d_card_info_ab8da38e930a308e426b41b3d95690060}{cardType}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00032}\mbox{\hyperlink{struct_s_d_card_info_ade3f351228a95f611cf90a89d1aaf34b}{00032}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_s_d_card_info_ade3f351228a95f611cf90a89d1aaf34b}{fileSystem}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00033}\mbox{\hyperlink{struct_s_d_card_info_a39ae9e2636eeafeac042f1bad4717957}{00033}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_s_d_card_info_a39ae9e2636eeafeac042f1bad4717957}{mounted}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00034}\mbox{\hyperlink{struct_s_d_card_info_a079150b7900bac482c6b6cec69a016a9}{00034}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_s_d_card_info_a079150b7900bac482c6b6cec69a016a9}{sectorSize}}\ =\ 512;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00035}\mbox{\hyperlink{struct_s_d_card_info_a1aeb62a6c5d3f0a78ef3cd6fb6683241}{00035}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_s_d_card_info_a1aeb62a6c5d3f0a78ef3cd6fb6683241}{sectorCount}}\ =\ 0;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00036}00036\ \};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00041}\mbox{\hyperlink{struct_file_operation_stats}{00041}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_file_operation_stats}{FileOperationStats}}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00043}\mbox{\hyperlink{struct_file_operation_stats_a0467d52c55bb2834f8e7869486930690}{00043}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_a0467d52c55bb2834f8e7869486930690}{filesCreated}}\ =\ 0;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00044}\mbox{\hyperlink{struct_file_operation_stats_a795190043b0e2491e32b8bd0596075ae}{00044}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_a795190043b0e2491e32b8bd0596075ae}{filesWritten}}\ =\ 0;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00045}\mbox{\hyperlink{struct_file_operation_stats_a995696a2d2e90b7d0223027e235ea213}{00045}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_a995696a2d2e90b7d0223027e235ea213}{filesRead}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00046}\mbox{\hyperlink{struct_file_operation_stats_adc1885937cdbbe0e4947fd66989619a8}{00046}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_adc1885937cdbbe0e4947fd66989619a8}{bytesWritten}}\ =\ 0;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00047}\mbox{\hyperlink{struct_file_operation_stats_af8445b7e06e926cb73cc5df49f365af9}{00047}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_af8445b7e06e926cb73cc5df49f365af9}{bytesRead}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00048}\mbox{\hyperlink{struct_file_operation_stats_a6121f2e898b5ea63c7a3d107063576c2}{00048}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_a6121f2e898b5ea63c7a3d107063576c2}{writeErrors}}\ =\ 0;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00049}\mbox{\hyperlink{struct_file_operation_stats_ab43814ec334c5edca85bac5cad206552}{00049}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_ab43814ec334c5edca85bac5cad206552}{readErrors}}\ =\ 0;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00050}\mbox{\hyperlink{struct_file_operation_stats_acbadd1d6a5cb609312a539eba0d4fcd0}{00050}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_file_operation_stats_acbadd1d6a5cb609312a539eba0d4fcd0}{lastOperationTime}}\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00051}00051\ \};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00068}\mbox{\hyperlink{class_s_d_card_manager}{00068}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_s_d_card_manager_aae6e52c99962cc46726da2ae1b8d6fff}{SDCardManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_data_storage}{IDataStorage}}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00069}00069\ \{}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00070}00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00075}\mbox{\hyperlink{class_s_d_card_manager_aae6e52c99962cc46726da2ae1b8d6fff}{00075}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_s_d_card_manager_aae6e52c99962cc46726da2ae1b8d6fff}{SDCardManager}}(\textcolor{keyword}{const}\ std::string\ \&basePath\ =\ \textcolor{stringliteral}{"{}/sdcard"{}});}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00080}\mbox{\hyperlink{class_s_d_card_manager_ab57ea76fda6af453daffd968f1e2f023}{00080}}\ \ \ \ \ \mbox{\hyperlink{class_s_d_card_manager_ab57ea76fda6af453daffd968f1e2f023}{\string~SDCardManager}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00082}00082\ \ \ \ \ \textcolor{comment}{//\ IDataStorage\ interface\ implementation}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00089}\mbox{\hyperlink{class_s_d_card_manager_a6ab77104e2009ea904cb1ca5e014a8dc}{00089}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a6ab77104e2009ea904cb1ca5e014a8dc}{writeData}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_probe_request}{ProbeRequest}}\ \&data,\ \textcolor{keyword}{const}\ std::string\ \&filename)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00096}\mbox{\hyperlink{class_s_d_card_manager_af4841369a577a377f6cd95022675b1c4}{00096}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_af4841369a577a377f6cd95022675b1c4}{writeAssetData}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_asset_info}{AssetInfo}}\ \&data)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00103}\mbox{\hyperlink{class_s_d_card_manager_af43ef1a9bf7c1b018e4a5fb6749eb4bf}{00103}}\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_s_d_card_manager_af43ef1a9bf7c1b018e4a5fb6749eb4bf}{readFile}}(\textcolor{keyword}{const}\ std::string\ \&filename)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00110}\mbox{\hyperlink{class_s_d_card_manager_a0904bd3d1f9f31b78491050569548b50}{00110}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a0904bd3d1f9f31b78491050569548b50}{fileExists}}(\textcolor{keyword}{const}\ std::string\ \&filename)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00117}\mbox{\hyperlink{class_s_d_card_manager_a28d799290f6cc9da4fde5cbdc0e0c86b}{00117}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_s_d_card_manager_a28d799290f6cc9da4fde5cbdc0e0c86b}{getFileSize}}(\textcolor{keyword}{const}\ std::string\ \&filename)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00123}\mbox{\hyperlink{class_s_d_card_manager_a01ebab598264e675f413c65c7d471d91}{00123}}\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_s_d_card_manager_a01ebab598264e675f413c65c7d471d91}{getRemainingCapacityPercent}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00125}00125\ \ \ \ \ \textcolor{comment}{//\ SD\ Card\ specific\ operations}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00132}\mbox{\hyperlink{class_s_d_card_manager_acfe3494064c3f0949ee260dc80a72fb1}{00132}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_acfe3494064c3f0949ee260dc80a72fb1}{initialize}}(\textcolor{keywordtype}{int}\ maxRetries\ =\ 20,\ \textcolor{keywordtype}{int}\ retryDelayMs\ =\ 200);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00138}\mbox{\hyperlink{class_s_d_card_manager_ada8d7a94bba99b1facc95542ccc2315d}{00138}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_ada8d7a94bba99b1facc95542ccc2315d}{unmount}}();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00144}\mbox{\hyperlink{class_s_d_card_manager_acaf08bfc0e4fbfea2b88d0ac64c5948c}{00144}}\ \ \ \ \ \mbox{\hyperlink{struct_s_d_card_info}{SDCardInfo}}\ \mbox{\hyperlink{class_s_d_card_manager_acaf08bfc0e4fbfea2b88d0ac64c5948c}{getCardInfo}}();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00150}\mbox{\hyperlink{class_s_d_card_manager_a455c245b34d6f9610d427754f2594e00}{00150}}\ \ \ \ \ \mbox{\hyperlink{struct_file_operation_stats}{FileOperationStats}}\ \mbox{\hyperlink{class_s_d_card_manager_a455c245b34d6f9610d427754f2594e00}{getOperationStats}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00152}00152\ \ \ \ \ \textcolor{comment}{//\ File\ and\ directory\ management}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00158}\mbox{\hyperlink{class_s_d_card_manager_a067e9c89a397dcb7bae167742a366e22}{00158}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a067e9c89a397dcb7bae167742a366e22}{createDirectory}}(\textcolor{keyword}{const}\ std::string\ \&path);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00166}\mbox{\hyperlink{class_s_d_card_manager_a951f283ae6e1a2379aa381b18b9cba4c}{00166}}\ \ \ \ \ std::vector<std::string>\ \mbox{\hyperlink{class_s_d_card_manager_a951f283ae6e1a2379aa381b18b9cba4c}{listFiles}}(\textcolor{keyword}{const}\ std::string\ \&directory\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{bool}\ recursive\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00173}\mbox{\hyperlink{class_s_d_card_manager_a6d4e47b49080df9056805e0b97025e86}{00173}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a6d4e47b49080df9056805e0b97025e86}{deleteFile}}(\textcolor{keyword}{const}\ std::string\ \&filename);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00181}\mbox{\hyperlink{class_s_d_card_manager_a9c4b65c985474919799b0bdc17802b17}{00181}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a9c4b65c985474919799b0bdc17802b17}{createDataFile}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keyword}{const}\ std::string\ \&customHeader\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00183}00183\ \ \ \ \ \textcolor{comment}{//\ Data\ integrity\ and\ backup\ operations}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00190}\mbox{\hyperlink{class_s_d_card_manager_a3b3db9db283459c3fb145ae6a40bfffc}{00190}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a3b3db9db283459c3fb145ae6a40bfffc}{writeFileAtomic}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keyword}{const}\ std::string\ \&data);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00198}\mbox{\hyperlink{class_s_d_card_manager_a44b83db07769e3182a038f963dc0a17b}{00198}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a44b83db07769e3182a038f963dc0a17b}{createBackup}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keyword}{const}\ std::string\ \&backupSuffix\ =\ \textcolor{stringliteral}{"{}.bak"{}});}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00205}\mbox{\hyperlink{class_s_d_card_manager_aaa4ba40c5161a42b75d95d0ddc9b1d79}{00205}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_aaa4ba40c5161a42b75d95d0ddc9b1d79}{verifyFileIntegrity}}(\textcolor{keyword}{const}\ std::string\ \&filename);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00207}00207\ \ \ \ \ \textcolor{comment}{//\ Capacity\ and\ maintenance\ operations}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00213}\mbox{\hyperlink{class_s_d_card_manager_a2874b91794672cb2d2e95c87e9ce0cc4}{00213}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a2874b91794672cb2d2e95c87e9ce0cc4}{hasSufficientSpace}}(\textcolor{keywordtype}{size\_t}\ requiredBytes);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00219}\mbox{\hyperlink{class_s_d_card_manager_a0a8764d2ab20346b3d7bc5a0696e76a8}{00219}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{class_s_d_card_manager_a0a8764d2ab20346b3d7bc5a0696e76a8}{getFreeSpace}}();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00225}\mbox{\hyperlink{class_s_d_card_manager_a09f4906345b56a4d4cccbc060fc830f0}{00225}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{class_s_d_card_manager_a09f4906345b56a4d4cccbc060fc830f0}{getUsedSpace}}();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00233}\mbox{\hyperlink{class_s_d_card_manager_a3e9b3537c9e69c665c27bf34c4258dc7}{00233}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_s_d_card_manager_a3e9b3537c9e69c665c27bf34c4258dc7}{cleanupOldFiles}}(\textcolor{keywordtype}{float}\ targetFreePercent\ =\ 20.0f,\ \textcolor{keyword}{const}\ std::string\ \&deletePattern\ =\ \textcolor{stringliteral}{"{}data\_*.csv"{}});}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00235}00235\ \ \ \ \ \textcolor{comment}{//\ Error\ handling\ and\ recovery}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00240}\mbox{\hyperlink{class_s_d_card_manager_ab6fa0cd2bb5153ec18710f3ea8c33d99}{00240}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_ab6fa0cd2bb5153ec18710f3ea8c33d99}{performHealthCheck}}();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00246}\mbox{\hyperlink{class_s_d_card_manager_a017d00a88df0ed0b672c82c8cc6ce0af}{00246}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_s_d_card_manager_a017d00a88df0ed0b672c82c8cc6ce0af}{attemptErrorRecovery}}();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00252}\mbox{\hyperlink{class_s_d_card_manager_abd44cb7d3decbe9d00bf03fe8f31915f}{00252}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_s_d_card_manager_abd44cb7d3decbe9d00bf03fe8f31915f}{getLastError}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ lastError\_;\ \}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00254}00254\ \ \ \ \ \textcolor{comment}{//\ Configuration\ and\ settings}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00259}\mbox{\hyperlink{class_s_d_card_manager_aa62e4c89430c45debb8b9313111d2501}{00259}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_d_card_manager_aa62e4c89430c45debb8b9313111d2501}{setLowSpaceThreshold}}(\textcolor{keywordtype}{float}\ thresholdPercent)\ \{\ lowSpaceThreshold\_\ =\ thresholdPercent;\ \}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00265}\mbox{\hyperlink{class_s_d_card_manager_a0bc87029719dfe1bafcddb17c12dd494}{00265}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_d_card_manager_a0bc87029719dfe1bafcddb17c12dd494}{setAutoCleanup}}(\textcolor{keywordtype}{bool}\ enabled)\ \{\ autoCleanupEnabled\_\ =\ enabled;\ \}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00271}\mbox{\hyperlink{class_s_d_card_manager_a582d0e103802122d67675655169e9402}{00271}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_s_d_card_manager_a582d0e103802122d67675655169e9402}{setMaxFileSize}}(\textcolor{keywordtype}{size\_t}\ maxSizeBytes)\ \{\ maxFileSize\_\ =\ maxSizeBytes;\ \}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00273}00273\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00274}00274\ \ \ \ \ \textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00275}00275\ \ \ \ \ std::string\ basePath\_;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00276}00276\ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized\_;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00277}00277\ \ \ \ \ \textcolor{keywordtype}{float}\ lowSpaceThreshold\_;\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00278}00278\ \ \ \ \ \textcolor{keywordtype}{bool}\ autoCleanupEnabled\_;\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00279}00279\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ maxFileSize\_;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00281}00281\ \ \ \ \ \textcolor{comment}{//\ State\ tracking}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00282}00282\ \ \ \ \ \mbox{\hyperlink{struct_s_d_card_info}{SDCardInfo}}\ cardInfo\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00283}00283\ \ \ \ \ \mbox{\hyperlink{struct_file_operation_stats}{FileOperationStats}}\ stats\_;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00284}00284\ \ \ \ \ std::string\ lastError\_;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00285}00285\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ operationMutex\_;\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00286}00286\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ statsMutex\_;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ handle}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00289}00289\ \ \ \ \ \textcolor{keywordtype}{void}\ *platformHandle\_;\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00291}00291\ \ \ \ \ \textcolor{comment}{//\ Internal\ file\ operations}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00299}00299\ \ \ \ \ \textcolor{keywordtype}{bool}\ writeToFile(\textcolor{keyword}{const}\ std::string\ \&fullPath,\ \textcolor{keyword}{const}\ std::string\ \&data,\ \textcolor{keywordtype}{bool}\ append\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00306}00306\ \ \ \ \ std::string\ readFromFile(\textcolor{keyword}{const}\ std::string\ \&fullPath);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00313}00313\ \ \ \ \ std::string\ getFullPath(\textcolor{keyword}{const}\ std::string\ \&relativePath);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00320}00320\ \ \ \ \ std::string\ sanitizeFilename(\textcolor{keyword}{const}\ std::string\ \&filename);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00322}00322\ \ \ \ \ \textcolor{comment}{//\ Statistics\ and\ monitoring}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00329}00329\ \ \ \ \ \textcolor{keywordtype}{void}\ updateStats(\textcolor{keyword}{const}\ std::string\ \&operation,\ \textcolor{keywordtype}{bool}\ success,\ \textcolor{keywordtype}{size\_t}\ bytes\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00334}00334\ \ \ \ \ \textcolor{keywordtype}{void}\ checkAndHandleLowSpace();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00336}00336\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ implementations}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00341}00341\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformMount();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00347}00347\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformUnmount();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00353}00353\ \ \ \ \ \mbox{\hyperlink{struct_s_d_card_info}{SDCardInfo}}\ platformGetCardInfo();}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00355}00355\ \ \ \ \ \textcolor{comment}{//\ Constants}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00356}00356\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ DEFAULT\_SECTOR\_SIZE\ =\ 512;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00357}00357\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ DEFAULT\_LOW\_SPACE\_THRESHOLD\ =\ 10.0f;\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00358}00358\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ MAX\_FILENAME\_LENGTH\ =\ 255;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00359}00359\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *DEFAULT\_CSV\_HEADER\ =\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00360}00360\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}dataType,timestamp,source,rssi,packetLength,macAddress,payload"{}};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00361}00361\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *ASSET\_CSV\_HEADER\ =\ }
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}assetId,locationName,forestName,latitude,longitude,"{}}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}remainingBatteryCapacity,stateOfCharge,runtimeToEmpty,"{}}}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}batteryVoltage,batteryCurrent,SDCardCapacity,timeStamp"{}};}
+\DoxyCodeLine{\Hypertarget{sdcard__manager_8h_source_l00365}00365\ \};}
+
+\end{DoxyCode}

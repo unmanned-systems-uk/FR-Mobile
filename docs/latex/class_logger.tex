@@ -1,0 +1,539 @@
+\doxysection{Logger Class Reference}
+\hypertarget{class_logger}{}\label{class_logger}\index{Logger@{Logger}}
+
+
+Comprehensive logging system for the forestry research device.  
+
+
+
+
+{\ttfamily \#include $<$logger.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_logger_aa3f66cdeb01641168dd4d3b4321b38a1}{Logger}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_time_manager}{ITime\+Manager}} $>$ time\+Manager, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$ storage)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}{\texorpdfstring{$\sim$}{\string~}\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Destructor -\/ ensures all logs are flushed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_logger_abd5e843165a1301a2a64b77da796d73e}{initialize}} (const std\+::string \&log\+Directory="{}/logs"{})
+\begin{DoxyCompactList}\small\item\em Initialize the logging system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a9dbb809282232adfbe81a780077e587a}{shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Shutdown the logging system gracefully. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a4df94c4b592f4bf9098ef22d735b0092}{set\+Console\+Log\+Level}} (\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Set minimum log level for console output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a7e228454164a85cd2e61281319b66445}{set\+File\+Log\+Level}} (\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Set minimum log level for file output. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a656a669c2e93021464272575d6690d6a}{set\+Log\+Destination}} (\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}} destination)
+\begin{DoxyCompactList}\small\item\em Set default log destination. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_acf4f5c4f1be6036c7c164873a5035ce2}{set\+Async\+Logging}} (bool enabled)
+\begin{DoxyCompactList}\small\item\em Enable/disable asynchronous logging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a81288808f3c1fca988ebee489a2e2205}{set\+Max\+File\+Size}} (size\+\_\+t size\+Bytes)
+\begin{DoxyCompactList}\small\item\em Set maximum log file size before rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a6a5cbd9a390bcf40b796eb442fde8461}{set\+Max\+Backup\+Files}} (int count)
+\begin{DoxyCompactList}\small\item\em Set maximum number of rotated log files to keep. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_abec3a2b3c821c18beb665848c69b5801}{debug}} (const std\+::string \&component, const std\+::string \&message, \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}} destination=\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}})
+\begin{DoxyCompactList}\small\item\em Log a debug message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a793cbdc12c2db002ad256dc9e79972e2}{info}} (const std\+::string \&component, const std\+::string \&message, \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}} destination=\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}})
+\begin{DoxyCompactList}\small\item\em Log an info message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_aeb01828c91516c2a9c243eb49471b5ab}{warning}} (const std\+::string \&component, const std\+::string \&message, \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}} destination=\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}})
+\begin{DoxyCompactList}\small\item\em Log a warning message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a99dcb4e0352c7ed51e1dae91a36be1cc}{error}} (const std\+::string \&component, const std\+::string \&message, \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}} destination=\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}})
+\begin{DoxyCompactList}\small\item\em Log an error message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a9eb96357985dbb65c119fc8b8389a541}{critical}} (const std\+::string \&component, const std\+::string \&message, \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}} destination=\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}})
+\begin{DoxyCompactList}\small\item\em Log a critical error message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a830fec85c3e39c66028ca96274c81dbb}{logf}} (\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} level, const std\+::string \&component, const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Log a formatted message with printf-\/style formatting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_ad3f4d554839b4da88d494656a74d0431}{log\+System\+Startup}} (const std\+::string \&device\+Info)
+\begin{DoxyCompactList}\small\item\em Log system startup information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a6985945e90517c2b4cd31c4f4da2f651}{log\+System\+Shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Log system shutdown information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a5cc08473729523bb4bde48459f2ac468}{flush}} ()
+\begin{DoxyCompactList}\small\item\em Force flush all pending log entries. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_logger_ad62de8725e3a69d9d97b1763cddce6a3}{get\+Current\+Log\+File}} () const
+\begin{DoxyCompactList}\small\item\em Get current log file path. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_logger_ad24b5c07ec0a84b2f4b7fafc384ccfc5}{get\+Total\+Log\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Get total number of log entries written. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_logger_a0f72b848687018de7dc741d7576a389e}{set\+Global\+Logger}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_logger}{Logger}} $>$ logger)
+\begin{DoxyCompactList}\small\item\em Set global logger instance. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_logger}{Logger}} $>$ \mbox{\hyperlink{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}{get\+Global\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Get global logger instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Comprehensive logging system for the forestry research device. 
+
+Features\+:
+\begin{DoxyItemize}
+\item Multiple log levels (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+\item Dual output (console + SD card)
+\item Automatic file rotation by size and time
+\item Thread-\/safe operation
+\item Asynchronous logging to prevent blocking
+\item Configurable formatting
+\item Component-\/based filtering 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00067}{67}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_logger_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_logger_aa3f66cdeb01641168dd4d3b4321b38a1}\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
+{\footnotesize\ttfamily \label{class_logger_aa3f66cdeb01641168dd4d3b4321b38a1} 
+Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_time_manager}{ITime\+Manager}} $>$}]{time\+Manager}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$}]{storage}{}\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+Manager} & Time manager for timestamps \\
+\hline
+{\em storage} & Storage manager for file operations \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}\index{Logger@{Logger}!````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}}
+\index{````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Logger()}{\string~Logger()}}
+{\footnotesize\ttfamily \label{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a} 
+Logger\+::\texorpdfstring{$\sim$}{\string~}\+Logger (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor -\/ ensures all logs are flushed. 
+
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_logger_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_logger_a9eb96357985dbb65c119fc8b8389a541}\index{Logger@{Logger}!critical@{critical}}
+\index{critical@{critical}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{critical()}{critical()}}
+{\footnotesize\ttfamily \label{class_logger_a9eb96357985dbb65c119fc8b8389a541} 
+void Logger\+::critical (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{component}{, }\item[{const std\+::string \&}]{message}{, }\item[{\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}}}]{destination}{ = {\ttfamily \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}}}}\end{DoxyParamCaption})}
+
+
+
+Log a critical error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & Component name \\
+\hline
+{\em message} & Log message \\
+\hline
+{\em destination} & Override default destination \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_abec3a2b3c821c18beb665848c69b5801}\index{Logger@{Logger}!debug@{debug}}
+\index{debug@{debug}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{debug()}{debug()}}
+{\footnotesize\ttfamily \label{class_logger_abec3a2b3c821c18beb665848c69b5801} 
+void Logger\+::debug (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{component}{, }\item[{const std\+::string \&}]{message}{, }\item[{\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}}}]{destination}{ = {\ttfamily \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}}}}\end{DoxyParamCaption})}
+
+
+
+Log a debug message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & Component name \\
+\hline
+{\em message} & Log message \\
+\hline
+{\em destination} & Override default destination \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00128}{128}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_a99dcb4e0352c7ed51e1dae91a36be1cc}\index{Logger@{Logger}!error@{error}}
+\index{error@{error}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily \label{class_logger_a99dcb4e0352c7ed51e1dae91a36be1cc} 
+void Logger\+::error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{component}{, }\item[{const std\+::string \&}]{message}{, }\item[{\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}}}]{destination}{ = {\ttfamily \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}}}}\end{DoxyParamCaption})}
+
+
+
+Log an error message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & Component name \\
+\hline
+{\em message} & Log message \\
+\hline
+{\em destination} & Override default destination \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00152}{152}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_a5cc08473729523bb4bde48459f2ac468}\index{Logger@{Logger}!flush@{flush}}
+\index{flush@{flush}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{flush()}{flush()}}
+{\footnotesize\ttfamily \label{class_logger_a5cc08473729523bb4bde48459f2ac468} 
+void Logger\+::flush (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Force flush all pending log entries. 
+
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_ad62de8725e3a69d9d97b1763cddce6a3}\index{Logger@{Logger}!getCurrentLogFile@{getCurrentLogFile}}
+\index{getCurrentLogFile@{getCurrentLogFile}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getCurrentLogFile()}{getCurrentLogFile()}}
+{\footnotesize\ttfamily \label{class_logger_ad62de8725e3a69d9d97b1763cddce6a3} 
+std\+::string Logger\+::get\+Current\+Log\+File (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get current log file path. 
+
+\begin{DoxyReturn}{Returns}
+Path to current log file 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00207}{207}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c}\index{Logger@{Logger}!getGlobalLogger@{getGlobalLogger}}
+\index{getGlobalLogger@{getGlobalLogger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getGlobalLogger()}{getGlobalLogger()}}
+{\footnotesize\ttfamily \label{class_logger_ae50c46c4c30726c60cdfc45bbbcfea2c} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_logger}{Logger}} $>$ Logger\+::get\+Global\+Logger (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get global logger instance. 
+
+\begin{DoxyReturn}{Returns}
+Shared pointer to global logger (may be null) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00492}{492}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_ad24b5c07ec0a84b2f4b7fafc384ccfc5}\index{Logger@{Logger}!getTotalLogCount@{getTotalLogCount}}
+\index{getTotalLogCount@{getTotalLogCount}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getTotalLogCount()}{getTotalLogCount()}}
+{\footnotesize\ttfamily \label{class_logger_ad24b5c07ec0a84b2f4b7fafc384ccfc5} 
+size\+\_\+t Logger\+::get\+Total\+Log\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get total number of log entries written. 
+
+\begin{DoxyReturn}{Returns}
+Total log entry count 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00213}{213}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{class_logger_a793cbdc12c2db002ad256dc9e79972e2}\index{Logger@{Logger}!info@{info}}
+\index{info@{info}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily \label{class_logger_a793cbdc12c2db002ad256dc9e79972e2} 
+void Logger\+::info (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{component}{, }\item[{const std\+::string \&}]{message}{, }\item[{\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}}}]{destination}{ = {\ttfamily \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}}}}\end{DoxyParamCaption})}
+
+
+
+Log an info message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & Component name \\
+\hline
+{\em message} & Log message \\
+\hline
+{\em destination} & Override default destination \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_abd5e843165a1301a2a64b77da796d73e}\index{Logger@{Logger}!initialize@{initialize}}
+\index{initialize@{initialize}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_logger_abd5e843165a1301a2a64b77da796d73e} 
+bool Logger\+::initialize (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+Directory}{ = {\ttfamily "{}/logs"{}}}\end{DoxyParamCaption})}
+
+
+
+Initialize the logging system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Directory} & Directory for log files (default\+: "{}/logs"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if initialization successful 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_a830fec85c3e39c66028ca96274c81dbb}\index{Logger@{Logger}!logf@{logf}}
+\index{logf@{logf}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{logf()}{logf()}}
+{\footnotesize\ttfamily \label{class_logger_a830fec85c3e39c66028ca96274c81dbb} 
+void Logger\+::logf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level}{, }\item[{const std\+::string \&}]{component}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Log a formatted message with printf-\/style formatting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Log level \\
+\hline
+{\em component} & Component name \\
+\hline
+{\em format} & Printf-\/style format string \\
+\hline
+{\em ...} & Format arguments \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_a6985945e90517c2b4cd31c4f4da2f651}\index{Logger@{Logger}!logSystemShutdown@{logSystemShutdown}}
+\index{logSystemShutdown@{logSystemShutdown}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{logSystemShutdown()}{logSystemShutdown()}}
+{\footnotesize\ttfamily \label{class_logger_a6985945e90517c2b4cd31c4f4da2f651} 
+void Logger\+::log\+System\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Log system shutdown information. 
+
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00192}{192}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_ad3f4d554839b4da88d494656a74d0431}\index{Logger@{Logger}!logSystemStartup@{logSystemStartup}}
+\index{logSystemStartup@{logSystemStartup}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{logSystemStartup()}{logSystemStartup()}}
+{\footnotesize\ttfamily \label{class_logger_ad3f4d554839b4da88d494656a74d0431} 
+void Logger\+::log\+System\+Startup (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{device\+Info}{}\end{DoxyParamCaption})}
+
+
+
+Log system startup information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device\+Info} & Device information to log \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_acf4f5c4f1be6036c7c164873a5035ce2}\index{Logger@{Logger}!setAsyncLogging@{setAsyncLogging}}
+\index{setAsyncLogging@{setAsyncLogging}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setAsyncLogging()}{setAsyncLogging()}}
+{\footnotesize\ttfamily \label{class_logger_acf4f5c4f1be6036c7c164873a5035ce2} 
+void Logger\+::set\+Async\+Logging (\begin{DoxyParamCaption}\item[{bool}]{enabled}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable asynchronous logging. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enabled} & If true, logs are queued and written by background thread \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_a4df94c4b592f4bf9098ef22d735b0092}\index{Logger@{Logger}!setConsoleLogLevel@{setConsoleLogLevel}}
+\index{setConsoleLogLevel@{setConsoleLogLevel}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setConsoleLogLevel()}{setConsoleLogLevel()}}
+{\footnotesize\ttfamily \label{class_logger_a4df94c4b592f4bf9098ef22d735b0092} 
+void Logger\+::set\+Console\+Log\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set minimum log level for console output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Minimum level to display on console \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00100}{100}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{class_logger_a7e228454164a85cd2e61281319b66445}\index{Logger@{Logger}!setFileLogLevel@{setFileLogLevel}}
+\index{setFileLogLevel@{setFileLogLevel}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setFileLogLevel()}{setFileLogLevel()}}
+{\footnotesize\ttfamily \label{class_logger_a7e228454164a85cd2e61281319b66445} 
+void Logger\+::set\+File\+Log\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{level}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set minimum log level for file output. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & Minimum level to write to file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00106}{106}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{class_logger_a0f72b848687018de7dc741d7576a389e}\index{Logger@{Logger}!setGlobalLogger@{setGlobalLogger}}
+\index{setGlobalLogger@{setGlobalLogger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setGlobalLogger()}{setGlobalLogger()}}
+{\footnotesize\ttfamily \label{class_logger_a0f72b848687018de7dc741d7576a389e} 
+void Logger\+::set\+Global\+Logger (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_logger}{Logger}} $>$}]{logger}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Set global logger instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em logger} & Shared pointer to logger instance \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00486}{486}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_a656a669c2e93021464272575d6690d6a}\index{Logger@{Logger}!setLogDestination@{setLogDestination}}
+\index{setLogDestination@{setLogDestination}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setLogDestination()}{setLogDestination()}}
+{\footnotesize\ttfamily \label{class_logger_a656a669c2e93021464272575d6690d6a} 
+void Logger\+::set\+Log\+Destination (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}}}]{destination}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set default log destination. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination} & Where to output logs \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00112}{112}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{class_logger_a6a5cbd9a390bcf40b796eb442fde8461}\index{Logger@{Logger}!setMaxBackupFiles@{setMaxBackupFiles}}
+\index{setMaxBackupFiles@{setMaxBackupFiles}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setMaxBackupFiles()}{setMaxBackupFiles()}}
+{\footnotesize\ttfamily \label{class_logger_a6a5cbd9a390bcf40b796eb442fde8461} 
+void Logger\+::set\+Max\+Backup\+Files (\begin{DoxyParamCaption}\item[{int}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set maximum number of rotated log files to keep. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & Number of backup files (default\+: 5) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00130}{130}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{class_logger_a81288808f3c1fca988ebee489a2e2205}\index{Logger@{Logger}!setMaxFileSize@{setMaxFileSize}}
+\index{setMaxFileSize@{setMaxFileSize}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{setMaxFileSize()}{setMaxFileSize()}}
+{\footnotesize\ttfamily \label{class_logger_a81288808f3c1fca988ebee489a2e2205} 
+void Logger\+::set\+Max\+File\+Size (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size\+Bytes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set maximum log file size before rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+Bytes} & Maximum file size in bytes (default\+: 1MB) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00124}{124}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{class_logger_a9dbb809282232adfbe81a780077e587a}\index{Logger@{Logger}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily \label{class_logger_a9dbb809282232adfbe81a780077e587a} 
+void Logger\+::shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Shutdown the logging system gracefully. 
+
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+\Hypertarget{class_logger_aeb01828c91516c2a9c243eb49471b5ab}\index{Logger@{Logger}!warning@{warning}}
+\index{warning@{warning}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{warning()}{warning()}}
+{\footnotesize\ttfamily \label{class_logger_aeb01828c91516c2a9c243eb49471b5ab} 
+void Logger\+::warning (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{component}{, }\item[{const std\+::string \&}]{message}{, }\item[{\mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850c}{Log\+Destination}}}]{destination}{ = {\ttfamily \mbox{\hyperlink{logger_8h_a4d96f303a62a42f0088fbafbb30c850ca6328e5e3186c227a021ef2ff77e40197}{Log\+Destination\+::\+BOTH}}}}\end{DoxyParamCaption})}
+
+
+
+Log a warning message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em component} & Component name \\
+\hline
+{\em message} & Log message \\
+\hline
+{\em destination} & Override default destination \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{logger_8cpp_source_l00144}{144}} of file \mbox{\hyperlink{logger_8cpp_source}{logger.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/utils/\mbox{\hyperlink{logger_8h}{logger.\+h}}\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/src/utils/\mbox{\hyperlink{logger_8cpp}{logger.\+cpp}}\end{DoxyCompactItemize}

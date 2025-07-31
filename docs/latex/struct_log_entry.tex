@@ -1,0 +1,135 @@
+\doxysection{Log\+Entry Struct Reference}
+\hypertarget{struct_log_entry}{}\label{struct_log_entry}\index{LogEntry@{LogEntry}}
+
+
+Individual log entry structure.  
+
+
+
+
+{\ttfamily \#include $<$logger.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_log_entry_a267bdf64fe7ade673692970f58f49781}{Log\+Entry}} (\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} lvl, const std\+::string \&comp, const std\+::string \&msg, const std\+::string \&file="{}"{}, int line=0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} \mbox{\hyperlink{struct_log_entry_a3da4cc198fd911dd664a30f95760c755}{level}}
+\item 
+std\+::string \mbox{\hyperlink{struct_log_entry_a584c1aa77642ddf394cb1d0e4b453422}{timestamp}}
+\item 
+std\+::string \mbox{\hyperlink{struct_log_entry_ada74ed7b1d0ab9bd444eabcdc84e2ef5}{component}}
+\begin{DoxyCompactList}\small\item\em Component/module name (e.\+g., "{}\+Wi\+Fi\+Scanner"{}, "{}\+Battery\+Monitor"{}) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_log_entry_a43b60becf065f4a9f96e14f7c2f8ad0e}{message}}
+\item 
+std\+::string \mbox{\hyperlink{struct_log_entry_a4f1833ee737b5c304790e09b09b521c3}{filename}}
+\begin{DoxyCompactList}\small\item\em Source file name (optional) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_log_entry_a8b63a7a6cd80ce6e323bb83afac7590b}{line\+Number}}
+\begin{DoxyCompactList}\small\item\em Source line number (optional) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Individual log entry structure. 
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00041}{41}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{struct_log_entry_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_log_entry_a267bdf64fe7ade673692970f58f49781}\index{LogEntry@{LogEntry}!LogEntry@{LogEntry}}
+\index{LogEntry@{LogEntry}!LogEntry@{LogEntry}}
+\doxysubsubsection{\texorpdfstring{LogEntry()}{LogEntry()}}
+{\footnotesize\ttfamily \label{struct_log_entry_a267bdf64fe7ade673692970f58f49781} 
+Log\+Entry\+::\+Log\+Entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}}}]{lvl}{, }\item[{const std\+::string \&}]{comp}{, }\item[{const std\+::string \&}]{msg}{, }\item[{const std\+::string \&}]{file}{ = {\ttfamily "{}"{}}, }\item[{int}]{line}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00050}{50}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_log_entry_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_log_entry_ada74ed7b1d0ab9bd444eabcdc84e2ef5}\index{LogEntry@{LogEntry}!component@{component}}
+\index{component@{component}!LogEntry@{LogEntry}}
+\doxysubsubsection{\texorpdfstring{component}{component}}
+{\footnotesize\ttfamily \label{struct_log_entry_ada74ed7b1d0ab9bd444eabcdc84e2ef5} 
+std\+::string Log\+Entry\+::component}
+
+
+
+Component/module name (e.\+g., "{}\+Wi\+Fi\+Scanner"{}, "{}\+Battery\+Monitor"{}) 
+
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00045}{45}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{struct_log_entry_a4f1833ee737b5c304790e09b09b521c3}\index{LogEntry@{LogEntry}!filename@{filename}}
+\index{filename@{filename}!LogEntry@{LogEntry}}
+\doxysubsubsection{\texorpdfstring{filename}{filename}}
+{\footnotesize\ttfamily \label{struct_log_entry_a4f1833ee737b5c304790e09b09b521c3} 
+std\+::string Log\+Entry\+::filename}
+
+
+
+Source file name (optional) 
+
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00047}{47}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{struct_log_entry_a3da4cc198fd911dd664a30f95760c755}\index{LogEntry@{LogEntry}!level@{level}}
+\index{level@{level}!LogEntry@{LogEntry}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily \label{struct_log_entry_a3da4cc198fd911dd664a30f95760c755} 
+\mbox{\hyperlink{logger_8h_aca1fd1d8935433e6ba2e3918214e07f9}{Log\+Level}} Log\+Entry\+::level}
+
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00043}{43}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{struct_log_entry_a8b63a7a6cd80ce6e323bb83afac7590b}\index{LogEntry@{LogEntry}!lineNumber@{lineNumber}}
+\index{lineNumber@{lineNumber}!LogEntry@{LogEntry}}
+\doxysubsubsection{\texorpdfstring{lineNumber}{lineNumber}}
+{\footnotesize\ttfamily \label{struct_log_entry_a8b63a7a6cd80ce6e323bb83afac7590b} 
+int Log\+Entry\+::line\+Number}
+
+
+
+Source line number (optional) 
+
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00048}{48}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{struct_log_entry_a43b60becf065f4a9f96e14f7c2f8ad0e}\index{LogEntry@{LogEntry}!message@{message}}
+\index{message@{message}!LogEntry@{LogEntry}}
+\doxysubsubsection{\texorpdfstring{message}{message}}
+{\footnotesize\ttfamily \label{struct_log_entry_a43b60becf065f4a9f96e14f7c2f8ad0e} 
+std\+::string Log\+Entry\+::message}
+
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00046}{46}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+\Hypertarget{struct_log_entry_a584c1aa77642ddf394cb1d0e4b453422}\index{LogEntry@{LogEntry}!timestamp@{timestamp}}
+\index{timestamp@{timestamp}!LogEntry@{LogEntry}}
+\doxysubsubsection{\texorpdfstring{timestamp}{timestamp}}
+{\footnotesize\ttfamily \label{struct_log_entry_a584c1aa77642ddf394cb1d0e4b453422} 
+std\+::string Log\+Entry\+::timestamp}
+
+
+
+Definition at line \mbox{\hyperlink{logger_8h_source_l00044}{44}} of file \mbox{\hyperlink{logger_8h_source}{logger.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/utils/\mbox{\hyperlink{logger_8h}{logger.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,175 @@
+\doxysection{Connection\+Stats Struct Reference}
+\hypertarget{struct_connection_stats}{}\label{struct_connection_stats}\index{ConnectionStats@{ConnectionStats}}
+
+
+Network connection statistics for monitoring.  
+
+
+
+
+{\ttfamily \#include $<$cellular\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_connection_stats_af2fc0f7dcaeee7ad30dc704118451ab4}{bytes\+Transmitted}} = 0
+\begin{DoxyCompactList}\small\item\em Total bytes transmitted. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_connection_stats_aabd94256cc46b9e0899e320602d8962e}{bytes\+Received}} = 0
+\begin{DoxyCompactList}\small\item\em Total bytes received. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_connection_stats_ac34aee8df99315401c70210bf7aa5ebc}{successful\+Connections}} = 0
+\begin{DoxyCompactList}\small\item\em Number of successful connections. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_connection_stats_a8178f47436d2d79beb3424279dca1713}{failed\+Connections}} = 0
+\begin{DoxyCompactList}\small\item\em Number of failed connections. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_connection_stats_aa9e1684affb046c8beefe2a34e6b9446}{http\+Requests\+Sent}} = 0
+\begin{DoxyCompactList}\small\item\em Number of HTTP requests sent. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_connection_stats_a68a99e30ccf138b03cc7a293f0da5665}{http\+Requests\+Successful}} = 0
+\begin{DoxyCompactList}\small\item\em Number of successful HTTP requests. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_connection_stats_a98547928aecb182f143517358f896a7e}{total\+Connection\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em Total time connected (seconds) \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_connection_stats_abfd54702a958d6194507ee65ca00326e}{last\+Connection\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em Timestamp of last connection. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_connection_stats_a84344e78cd81c2f6e02c039cc582d25c}{last\+Error}}
+\begin{DoxyCompactList}\small\item\em Last error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Network connection statistics for monitoring. 
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00055}{55}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_connection_stats_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_connection_stats_aabd94256cc46b9e0899e320602d8962e}\index{ConnectionStats@{ConnectionStats}!bytesReceived@{bytesReceived}}
+\index{bytesReceived@{bytesReceived}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{bytesReceived}{bytesReceived}}
+{\footnotesize\ttfamily \label{struct_connection_stats_aabd94256cc46b9e0899e320602d8962e} 
+uint64\+\_\+t Connection\+Stats\+::bytes\+Received = 0}
+
+
+
+Total bytes received. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00058}{58}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_af2fc0f7dcaeee7ad30dc704118451ab4}\index{ConnectionStats@{ConnectionStats}!bytesTransmitted@{bytesTransmitted}}
+\index{bytesTransmitted@{bytesTransmitted}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{bytesTransmitted}{bytesTransmitted}}
+{\footnotesize\ttfamily \label{struct_connection_stats_af2fc0f7dcaeee7ad30dc704118451ab4} 
+uint64\+\_\+t Connection\+Stats\+::bytes\+Transmitted = 0}
+
+
+
+Total bytes transmitted. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00057}{57}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_a8178f47436d2d79beb3424279dca1713}\index{ConnectionStats@{ConnectionStats}!failedConnections@{failedConnections}}
+\index{failedConnections@{failedConnections}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{failedConnections}{failedConnections}}
+{\footnotesize\ttfamily \label{struct_connection_stats_a8178f47436d2d79beb3424279dca1713} 
+uint32\+\_\+t Connection\+Stats\+::failed\+Connections = 0}
+
+
+
+Number of failed connections. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00060}{60}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_aa9e1684affb046c8beefe2a34e6b9446}\index{ConnectionStats@{ConnectionStats}!httpRequestsSent@{httpRequestsSent}}
+\index{httpRequestsSent@{httpRequestsSent}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{httpRequestsSent}{httpRequestsSent}}
+{\footnotesize\ttfamily \label{struct_connection_stats_aa9e1684affb046c8beefe2a34e6b9446} 
+uint32\+\_\+t Connection\+Stats\+::http\+Requests\+Sent = 0}
+
+
+
+Number of HTTP requests sent. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00061}{61}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_a68a99e30ccf138b03cc7a293f0da5665}\index{ConnectionStats@{ConnectionStats}!httpRequestsSuccessful@{httpRequestsSuccessful}}
+\index{httpRequestsSuccessful@{httpRequestsSuccessful}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{httpRequestsSuccessful}{httpRequestsSuccessful}}
+{\footnotesize\ttfamily \label{struct_connection_stats_a68a99e30ccf138b03cc7a293f0da5665} 
+uint32\+\_\+t Connection\+Stats\+::http\+Requests\+Successful = 0}
+
+
+
+Number of successful HTTP requests. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00062}{62}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_abfd54702a958d6194507ee65ca00326e}\index{ConnectionStats@{ConnectionStats}!lastConnectionTime@{lastConnectionTime}}
+\index{lastConnectionTime@{lastConnectionTime}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{lastConnectionTime}{lastConnectionTime}}
+{\footnotesize\ttfamily \label{struct_connection_stats_abfd54702a958d6194507ee65ca00326e} 
+uint64\+\_\+t Connection\+Stats\+::last\+Connection\+Time = 0}
+
+
+
+Timestamp of last connection. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00064}{64}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_a84344e78cd81c2f6e02c039cc582d25c}\index{ConnectionStats@{ConnectionStats}!lastError@{lastError}}
+\index{lastError@{lastError}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{lastError}{lastError}}
+{\footnotesize\ttfamily \label{struct_connection_stats_a84344e78cd81c2f6e02c039cc582d25c} 
+std\+::string Connection\+Stats\+::last\+Error}
+
+
+
+Last error message. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00065}{65}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_ac34aee8df99315401c70210bf7aa5ebc}\index{ConnectionStats@{ConnectionStats}!successfulConnections@{successfulConnections}}
+\index{successfulConnections@{successfulConnections}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{successfulConnections}{successfulConnections}}
+{\footnotesize\ttfamily \label{struct_connection_stats_ac34aee8df99315401c70210bf7aa5ebc} 
+uint32\+\_\+t Connection\+Stats\+::successful\+Connections = 0}
+
+
+
+Number of successful connections. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00059}{59}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_connection_stats_a98547928aecb182f143517358f896a7e}\index{ConnectionStats@{ConnectionStats}!totalConnectionTime@{totalConnectionTime}}
+\index{totalConnectionTime@{totalConnectionTime}!ConnectionStats@{ConnectionStats}}
+\doxysubsubsection{\texorpdfstring{totalConnectionTime}{totalConnectionTime}}
+{\footnotesize\ttfamily \label{struct_connection_stats_a98547928aecb182f143517358f896a7e} 
+uint64\+\_\+t Connection\+Stats\+::total\+Connection\+Time = 0}
+
+
+
+Total time connected (seconds) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00063}{63}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{cellular__manager_8h}{cellular\+\_\+manager.\+h}}\end{DoxyCompactItemize}

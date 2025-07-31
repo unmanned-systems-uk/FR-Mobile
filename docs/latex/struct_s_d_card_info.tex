@@ -1,0 +1,175 @@
+\doxysection{SDCard\+Info Struct Reference}
+\hypertarget{struct_s_d_card_info}{}\label{struct_s_d_card_info}\index{SDCardInfo@{SDCardInfo}}
+
+
+SD Card information and statistics structure.  
+
+
+
+
+{\ttfamily \#include $<$sdcard\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_s_d_card_info_a34380d8f892829a1e99f8a4effeaa59b}{total\+Space}} = 0
+\begin{DoxyCompactList}\small\item\em Total card capacity in bytes. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_s_d_card_info_ad45dbf94e51d3c2958b4fa8f5b74ff9d}{used\+Space}} = 0
+\begin{DoxyCompactList}\small\item\em Used space in bytes. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_s_d_card_info_ac8639510667a3e0f080d1e9c4f1d5747}{available\+Space}} = 0
+\begin{DoxyCompactList}\small\item\em Available space in bytes. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{struct_s_d_card_info_ade1b00cbe54f435c71131a4fa64759e7}{capacity\+Percent}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Used capacity percentage. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_s_d_card_info_ab8da38e930a308e426b41b3d95690060}{card\+Type}}
+\begin{DoxyCompactList}\small\item\em Card type (SD, SDHC, SDXC) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_s_d_card_info_ade3f351228a95f611cf90a89d1aaf34b}{file\+System}}
+\begin{DoxyCompactList}\small\item\em File system type (FAT32, ex\+FAT) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_s_d_card_info_a39ae9e2636eeafeac042f1bad4717957}{mounted}} = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}
+\begin{DoxyCompactList}\small\item\em Mount status. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_s_d_card_info_a079150b7900bac482c6b6cec69a016a9}{sector\+Size}} = 512
+\begin{DoxyCompactList}\small\item\em Sector size in bytes. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{struct_s_d_card_info_a1aeb62a6c5d3f0a78ef3cd6fb6683241}{sector\+Count}} = 0
+\begin{DoxyCompactList}\small\item\em Total number of sectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+SD Card information and statistics structure. 
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00025}{25}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_s_d_card_info_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_s_d_card_info_ac8639510667a3e0f080d1e9c4f1d5747}\index{SDCardInfo@{SDCardInfo}!availableSpace@{availableSpace}}
+\index{availableSpace@{availableSpace}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{availableSpace}{availableSpace}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_ac8639510667a3e0f080d1e9c4f1d5747} 
+uint64\+\_\+t SDCard\+Info\+::available\+Space = 0}
+
+
+
+Available space in bytes. 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00029}{29}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_ade1b00cbe54f435c71131a4fa64759e7}\index{SDCardInfo@{SDCardInfo}!capacityPercent@{capacityPercent}}
+\index{capacityPercent@{capacityPercent}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{capacityPercent}{capacityPercent}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_ade1b00cbe54f435c71131a4fa64759e7} 
+float SDCard\+Info\+::capacity\+Percent = 0.\+0f}
+
+
+
+Used capacity percentage. 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00030}{30}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_ab8da38e930a308e426b41b3d95690060}\index{SDCardInfo@{SDCardInfo}!cardType@{cardType}}
+\index{cardType@{cardType}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{cardType}{cardType}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_ab8da38e930a308e426b41b3d95690060} 
+std\+::string SDCard\+Info\+::card\+Type}
+
+
+
+Card type (SD, SDHC, SDXC) 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00031}{31}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_ade3f351228a95f611cf90a89d1aaf34b}\index{SDCardInfo@{SDCardInfo}!fileSystem@{fileSystem}}
+\index{fileSystem@{fileSystem}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{fileSystem}{fileSystem}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_ade3f351228a95f611cf90a89d1aaf34b} 
+std\+::string SDCard\+Info\+::file\+System}
+
+
+
+File system type (FAT32, ex\+FAT) 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00032}{32}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_a39ae9e2636eeafeac042f1bad4717957}\index{SDCardInfo@{SDCardInfo}!mounted@{mounted}}
+\index{mounted@{mounted}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{mounted}{mounted}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_a39ae9e2636eeafeac042f1bad4717957} 
+bool SDCard\+Info\+::mounted = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}
+
+
+
+Mount status. 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00033}{33}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_a1aeb62a6c5d3f0a78ef3cd6fb6683241}\index{SDCardInfo@{SDCardInfo}!sectorCount@{sectorCount}}
+\index{sectorCount@{sectorCount}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{sectorCount}{sectorCount}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_a1aeb62a6c5d3f0a78ef3cd6fb6683241} 
+uint64\+\_\+t SDCard\+Info\+::sector\+Count = 0}
+
+
+
+Total number of sectors. 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00035}{35}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_a079150b7900bac482c6b6cec69a016a9}\index{SDCardInfo@{SDCardInfo}!sectorSize@{sectorSize}}
+\index{sectorSize@{sectorSize}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{sectorSize}{sectorSize}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_a079150b7900bac482c6b6cec69a016a9} 
+uint32\+\_\+t SDCard\+Info\+::sector\+Size = 512}
+
+
+
+Sector size in bytes. 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00034}{34}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_a34380d8f892829a1e99f8a4effeaa59b}\index{SDCardInfo@{SDCardInfo}!totalSpace@{totalSpace}}
+\index{totalSpace@{totalSpace}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{totalSpace}{totalSpace}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_a34380d8f892829a1e99f8a4effeaa59b} 
+uint64\+\_\+t SDCard\+Info\+::total\+Space = 0}
+
+
+
+Total card capacity in bytes. 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00027}{27}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_s_d_card_info_ad45dbf94e51d3c2958b4fa8f5b74ff9d}\index{SDCardInfo@{SDCardInfo}!usedSpace@{usedSpace}}
+\index{usedSpace@{usedSpace}!SDCardInfo@{SDCardInfo}}
+\doxysubsubsection{\texorpdfstring{usedSpace}{usedSpace}}
+{\footnotesize\ttfamily \label{struct_s_d_card_info_ad45dbf94e51d3c2958b4fa8f5b74ff9d} 
+uint64\+\_\+t SDCard\+Info\+::used\+Space = 0}
+
+
+
+Used space in bytes. 
+
+
+
+Definition at line \mbox{\hyperlink{sdcard__manager_8h_source_l00028}{28}} of file \mbox{\hyperlink{sdcard__manager_8h_source}{sdcard\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{sdcard__manager_8h}{sdcard\+\_\+manager.\+h}}\end{DoxyCompactItemize}

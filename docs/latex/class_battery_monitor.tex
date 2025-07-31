@@ -1,0 +1,200 @@
+\doxysection{Battery\+Monitor Class Reference}
+\hypertarget{class_battery_monitor}{}\label{class_battery_monitor}\index{BatteryMonitor@{BatteryMonitor}}
+Inheritance diagram for Battery\+Monitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_battery_monitor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_battery_monitor_a18d0b41efbbd1f94668666d3a7bd246e}{Battery\+Monitor}} ()
+\item 
+\mbox{\hyperlink{class_battery_monitor_adfb2bd1c77b76189fc052035517cd2f3}{\texorpdfstring{$\sim$}{\string~}\+Battery\+Monitor}} () override
+\item 
+bool \mbox{\hyperlink{class_battery_monitor_a6933fd38eb3f53bcd7b931659bbbb8ca}{initialize}} () override
+\item 
+bool \mbox{\hyperlink{class_battery_monitor_a32a5901f5de60b81a30c6ed8cce23af9}{is\+Connected}} () override
+\item 
+void \mbox{\hyperlink{class_battery_monitor_a2c4117b5676ad2a3b4ea22b179450db2}{reset}} () override
+\item 
+void \mbox{\hyperlink{class_battery_monitor_a4a06c4f0d4afc82098ce791370eda269}{cleanup}} () override
+\item 
+\mbox{\hyperlink{struct_battery_status}{Battery\+Status}} \mbox{\hyperlink{class_battery_monitor_ae7b8d66ea8c3554d8e774a8e41883a1a}{read\+Battery\+Status}} ()
+\item 
+bool \mbox{\hyperlink{class_battery_monitor_a1b818253989498126421f6976d6d8a93}{is\+Battery\+Safe}} (const \mbox{\hyperlink{struct_battery_status}{Battery\+Status}} \&status)
+\item 
+void \mbox{\hyperlink{class_battery_monitor_a289f5e357ca2493d921f65063a66f6d4}{print\+Battery\+Data}} (const \mbox{\hyperlink{struct_battery_status}{Battery\+Status}} \&status)
+\item 
+bool \mbox{\hyperlink{class_battery_monitor_acb02ad90f9269ec3b8e4278915eaca08}{calibrate\+Voltage\+Divider}} (uint16\+\_\+t current\+Voltage)
+\item 
+bool \mbox{\hyperlink{class_battery_monitor_aea64e1ac2698de1e771607275db55b26}{calibrate\+Current\+Shunt}} (int16\+\_\+t current)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_battery_monitor_a2c0f233ba405a7986738732e438a9358}{read\+Register}} (uint8\+\_\+t address, uint8\+\_\+t length=1)
+\item 
+bool \mbox{\hyperlink{class_battery_monitor_aeabccee3df63c321d00610bb287b9ae6}{write\+Register}} (uint8\+\_\+t address, uint16\+\_\+t value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_hardware_interface}{IHardware\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_hardware_interface_a11b02ca7834579417ed763c92473616f}{\texorpdfstring{$\sim$}{\string~}\+IHardware\+Interface}} ()=default
+\item 
+virtual \mbox{\hyperlink{class_i_hardware_interface_a11b02ca7834579417ed763c92473616f}{\texorpdfstring{$\sim$}{\string~}\+IHardware\+Interface}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_battery_monitor_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_battery_monitor_a18d0b41efbbd1f94668666d3a7bd246e}\index{BatteryMonitor@{BatteryMonitor}!BatteryMonitor@{BatteryMonitor}}
+\index{BatteryMonitor@{BatteryMonitor}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{BatteryMonitor()}{BatteryMonitor()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a18d0b41efbbd1f94668666d3a7bd246e} 
+Battery\+Monitor\+::\+Battery\+Monitor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_adfb2bd1c77b76189fc052035517cd2f3}\index{BatteryMonitor@{BatteryMonitor}!````~BatteryMonitor@{\texorpdfstring{$\sim$}{\string~}BatteryMonitor}}
+\index{````~BatteryMonitor@{\texorpdfstring{$\sim$}{\string~}BatteryMonitor}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}BatteryMonitor()}{\string~BatteryMonitor()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_adfb2bd1c77b76189fc052035517cd2f3} 
+Battery\+Monitor\+::\texorpdfstring{$\sim$}{\string~}\+Battery\+Monitor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_battery_monitor_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_battery_monitor_aea64e1ac2698de1e771607275db55b26}\index{BatteryMonitor@{BatteryMonitor}!calibrateCurrentShunt@{calibrateCurrentShunt}}
+\index{calibrateCurrentShunt@{calibrateCurrentShunt}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{calibrateCurrentShunt()}{calibrateCurrentShunt()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_aea64e1ac2698de1e771607275db55b26} 
+bool Battery\+Monitor\+::calibrate\+Current\+Shunt (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{current}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_battery_monitor_acb02ad90f9269ec3b8e4278915eaca08}\index{BatteryMonitor@{BatteryMonitor}!calibrateVoltageDivider@{calibrateVoltageDivider}}
+\index{calibrateVoltageDivider@{calibrateVoltageDivider}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{calibrateVoltageDivider()}{calibrateVoltageDivider()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_acb02ad90f9269ec3b8e4278915eaca08} 
+bool Battery\+Monitor\+::calibrate\+Voltage\+Divider (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{current\+Voltage}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_battery_monitor_a4a06c4f0d4afc82098ce791370eda269}\index{BatteryMonitor@{BatteryMonitor}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a4a06c4f0d4afc82098ce791370eda269} 
+void Battery\+Monitor\+::cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_hardware_interface_a8861181fe532fbf2a682d88eac2a38c0}{IHardware\+Interface}}.
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00117}{117}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_a6933fd38eb3f53bcd7b931659bbbb8ca}\index{BatteryMonitor@{BatteryMonitor}!initialize@{initialize}}
+\index{initialize@{initialize}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a6933fd38eb3f53bcd7b931659bbbb8ca} 
+bool Battery\+Monitor\+::initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_hardware_interface_a6179cac5a7e973e2a6a59c15996e7d26}{IHardware\+Interface}}.
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00067}{67}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_a1b818253989498126421f6976d6d8a93}\index{BatteryMonitor@{BatteryMonitor}!isBatterySafe@{isBatterySafe}}
+\index{isBatterySafe@{isBatterySafe}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{isBatterySafe()}{isBatterySafe()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a1b818253989498126421f6976d6d8a93} 
+bool Battery\+Monitor\+::is\+Battery\+Safe (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_battery_status}{Battery\+Status}} \&}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00183}{183}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_a32a5901f5de60b81a30c6ed8cce23af9}\index{BatteryMonitor@{BatteryMonitor}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a32a5901f5de60b81a30c6ed8cce23af9} 
+bool Battery\+Monitor\+::is\+Connected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_hardware_interface_ae73ca6ea3565794f5f29cebb65f39773}{IHardware\+Interface}}.
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_a289f5e357ca2493d921f65063a66f6d4}\index{BatteryMonitor@{BatteryMonitor}!printBatteryData@{printBatteryData}}
+\index{printBatteryData@{printBatteryData}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{printBatteryData()}{printBatteryData()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a289f5e357ca2493d921f65063a66f6d4} 
+void Battery\+Monitor\+::print\+Battery\+Data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_battery_status}{Battery\+Status}} \&}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_ae7b8d66ea8c3554d8e774a8e41883a1a}\index{BatteryMonitor@{BatteryMonitor}!readBatteryStatus@{readBatteryStatus}}
+\index{readBatteryStatus@{readBatteryStatus}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{readBatteryStatus()}{readBatteryStatus()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_ae7b8d66ea8c3554d8e774a8e41883a1a} 
+\mbox{\hyperlink{struct_battery_status}{Battery\+Status}} Battery\+Monitor\+::read\+Battery\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_a2c0f233ba405a7986738732e438a9358}\index{BatteryMonitor@{BatteryMonitor}!readRegister@{readRegister}}
+\index{readRegister@{readRegister}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{readRegister()}{readRegister()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a2c0f233ba405a7986738732e438a9358} 
+uint16\+\_\+t Battery\+Monitor\+::read\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint8\+\_\+t}]{length}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00202}{202}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_a2c4117b5676ad2a3b4ea22b179450db2}\index{BatteryMonitor@{BatteryMonitor}!reset@{reset}}
+\index{reset@{reset}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_a2c4117b5676ad2a3b4ea22b179450db2} 
+void Battery\+Monitor\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_hardware_interface_a46753f631f96902e22cc2b922395d649}{IHardware\+Interface}}.
+
+
+
+Definition at line \mbox{\hyperlink{battery__monitor_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{battery__monitor_8cpp_source}{battery\+\_\+monitor.\+cpp}}.
+
+\Hypertarget{class_battery_monitor_aeabccee3df63c321d00610bb287b9ae6}\index{BatteryMonitor@{BatteryMonitor}!writeRegister@{writeRegister}}
+\index{writeRegister@{writeRegister}!BatteryMonitor@{BatteryMonitor}}
+\doxysubsubsection{\texorpdfstring{writeRegister()}{writeRegister()}}
+{\footnotesize\ttfamily \label{class_battery_monitor_aeabccee3df63c321d00610bb287b9ae6} 
+bool Battery\+Monitor\+::write\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{address}{, }\item[{uint16\+\_\+t}]{value}{}\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/src/hardware/\mbox{\hyperlink{battery__monitor_8cpp}{battery\+\_\+monitor.\+cpp}}\end{DoxyCompactItemize}

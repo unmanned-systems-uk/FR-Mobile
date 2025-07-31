@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['scan_5finterval_5fms_0',['SCAN_INTERVAL_MS',['../namespace_config.html#a7b56a950f6ecd80f4805d0b973e08cac',1,'Config']]],
+  ['scanning_1',['scanning',['../struct_b_l_e_scanner_1_1_scan_config.html#a342b17bd09ce3abfc3b87541e2b15ff9',1,'BLEScanner::ScanConfig']]],
+  ['sdcard_2',['sdcard',['../struct_peripheral_config.html#afb19e49db244cd1ca98a685f94f0cda6',1,'PeripheralConfig']]],
+  ['sdcardcapacity_3',['sdCardCapacity',['../struct_asset_info.html#a08dcdd2cc0eedd02c118f6de0b21a363',1,'AssetInfo']]],
+  ['second_4',['second',['../struct_time_components.html#ace84e11bf3530cdaa4c39a259a664a55',1,'TimeComponents']]],
+  ['sectorcount_5',['sectorCount',['../struct_s_d_card_info.html#a1aeb62a6c5d3f0a78ef3cd6fb6683241',1,'SDCardInfo']]],
+  ['sectorsize_6',['sectorSize',['../struct_s_d_card_info.html#a079150b7900bac482c6b6cec69a016a9',1,'SDCardInfo']]],
+  ['sensors_7',['sensors',['../struct_peripheral_config.html#a6cc302bb3ceb187f5282e06398cb8aa9',1,'PeripheralConfig']]],
+  ['sinr_8',['sinr',['../struct_signal_info.html#a47a880c35258ce9c2e6d27e0b6711917',1,'SignalInfo']]],
+  ['sleepcycles_9',['sleepCycles',['../struct_power_stats.html#a2594474738c90c4abb9c5f8f62226771',1,'PowerStats']]],
+  ['source_10',['source',['../struct_probe_request.html#ae3a4a7d2e756575a0fa4d28eb6061d0b',1,'ProbeRequest']]],
+  ['stateofcharge_11',['stateOfCharge',['../struct_battery_status.html#a5ffac824debd5f94cab4668e401ea39f',1,'BatteryStatus::stateOfCharge'],['../struct_asset_info.html#a0e69691ce694d753642c3d407867f408',1,'AssetInfo::stateOfCharge']]],
+  ['stateofhealth_12',['stateOfHealth',['../struct_battery_status.html#ad5cbc5233c9fa2d2011628e5d0dc5a99',1,'BatteryStatus::stateOfHealth'],['../struct_asset_info.html#a3be297c6a57659e97d0043f884dd7f1a',1,'AssetInfo::stateOfHealth']]],
+  ['statuscode_13',['statusCode',['../struct_h_t_t_p_response.html#a77eadb87b99b44f99018c9cbcf26c549',1,'HTTPResponse']]],
+  ['statustext_14',['statusText',['../struct_h_t_t_p_response.html#ac1f255c3129550b5967ac1b2b11081a8',1,'HTTPResponse']]],
+  ['success_15',['success',['../struct_h_t_t_p_response.html#a334ed0fcea65383b205ae0c457b0997d',1,'HTTPResponse']]],
+  ['successfulconnections_16',['successfulConnections',['../struct_connection_stats.html#ac34aee8df99315401c70210bf7aa5ebc',1,'ConnectionStats']]],
+  ['successfulsyncs_17',['successfulSyncs',['../struct_time_sync_status.html#acaa2f32292bf68563f1382485000b118',1,'TimeSyncStatus']]],
+  ['syncattempts_18',['syncAttempts',['../struct_time_sync_status.html#a2b998d625f60805ea41a48adb884abbd',1,'TimeSyncStatus']]]
+];

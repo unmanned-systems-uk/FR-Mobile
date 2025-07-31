@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['task_5fwdt_0',['TASK_WDT',['../power__manager_8h.html#a06d9333e5541d14a05e83e78d4a07e11ac80849fdaa3d6d5b6a9899b5c639a6e0',1,'power_manager.h']]],
+  ['tasks_1',['✅ Completed Tasks',['../md__context.html#autotoc_md2',1,'']]],
+  ['terminatehttpservice_2',['terminateHTTPService',['../class_cellular_manager.html#aebf964e929a1a6cb41128226d43410e3',1,'CellularManager']]],
+  ['testing_3',['For Linux Development/Testing',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md47',1,'']]],
+  ['testnetworkconnectivity_4',['testNetworkConnectivity',['../class_cellular_manager.html#a609a93068fcdbff7b15d6bc2e8c62d4f',1,'CellularManager']]],
+  ['thread_20safety_5',['5. &lt;b&gt;Thread Safety&lt;/b&gt;',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md44',1,'']]],
+  ['timecomponents_6',['TimeComponents',['../struct_time_components.html',1,'']]],
+  ['timer_7',['TIMER',['../power__manager_8h.html#a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d',1,'TIMER:&#160;power_manager.h'],['../main_8h.html#a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d',1,'TIMER:&#160;power_manager.h'],['../power__manager_8h.html#a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d',1,'TIMER:&#160;main.h'],['../main_8h.html#a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d',1,'TIMER:&#160;main.h']]],
+  ['timesource_8',['timeSource',['../struct_time_sync_status.html#aa1eabec7e01e865a56161c2795b8d01e',1,'TimeSyncStatus']]],
+  ['timestamp_9',['timeStamp',['../struct_asset_info.html#a477182b19d849671e3553cb719138390',1,'AssetInfo']]],
+  ['timestamp_10',['timestamp',['../struct_probe_request.html#a8a732636f814b964c8e521a19146646b',1,'ProbeRequest::timestamp'],['../struct_log_entry.html#a584c1aa77642ddf394cb1d0e4b453422',1,'LogEntry::timestamp']]],
+  ['timesyncstatus_11',['TimeSyncStatus',['../struct_time_sync_status.html',1,'']]],
+  ['timezoneoffset_12',['timeZoneOffset',['../struct_time_components.html#a6b7277ef0f4545d92e10811e3567c847',1,'TimeComponents']]],
+  ['to_20completion_3a_13',['&lt;b&gt;Critical Path to Completion:&lt;/b&gt;',['../md__context.html#autotoc_md33',1,'']]],
+  ['to_20continue_20in_20a_20new_20chat_3a_14',['🔄 &lt;b&gt;To Continue in a New Chat:&lt;/b&gt;',['../md__context.html#autotoc_md35',1,'']]],
+  ['todo_20list_20priority_20order_15',['🚧 TODO List (Priority Order)',['../md__context.html#autotoc_md11',1,'']]],
+  ['tools_16',['&lt;b&gt;Required Tools&lt;/b&gt;',['../md__context.html#autotoc_md24',1,'']]],
+  ['totalactivetime_17',['totalActiveTime',['../struct_power_stats.html#aae7c2ed95cd6f0bdc2d032c7f8d02061',1,'PowerStats']]],
+  ['totalconnectiontime_18',['totalConnectionTime',['../struct_connection_stats.html#a98547928aecb182f143517358f896a7e',1,'ConnectionStats']]],
+  ['totalsleeptime_19',['totalSleepTime',['../struct_power_stats.html#a1dbb73ef499a59d9d2e3408bc76383c4',1,'PowerStats']]],
+  ['totalspace_20',['totalSpace',['../struct_s_d_card_info.html#a34380d8f892829a1e99f8a4effeaa59b',1,'SDCardInfo']]],
+  ['touchpad_21',['TOUCHPAD',['../power__manager_8h.html#a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1',1,'TOUCHPAD:&#160;power_manager.h'],['../main_8h.html#a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1',1,'TOUCHPAD:&#160;power_manager.h']]],
+  ['trim_22',['trim',['../class_utils.html#a709fc9d3286a8b90de822055fed9ca88',1,'Utils::trim(const std::string &amp;str)'],['../class_utils.html#ad0420f11bbea1af1f70db5753b03ea9b',1,'Utils::trim(const std::string &amp;str)']]]
+];

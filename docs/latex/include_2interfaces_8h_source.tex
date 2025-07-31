@@ -1,0 +1,105 @@
+\doxysection{interfaces.\+h}
+\hypertarget{include_2interfaces_8h_source}{}\label{include_2interfaces_8h_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/interfaces.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/interfaces.h}}
+\mbox{\hyperlink{include_2interfaces_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00006}00006\ \textcolor{comment}{//\ Base\ scanner\ interface}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00007}\mbox{\hyperlink{class_i_scanner}{00007}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_scanner}{IScanner}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00009}00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00010}\mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{00010}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{\string~IScanner}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00011}\mbox{\hyperlink{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}{00011}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}{initialize}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00012}\mbox{\hyperlink{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}{00012}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}{startScan}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00013}\mbox{\hyperlink{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}{00013}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}{stopScan}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00014}\mbox{\hyperlink{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}{00014}}\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<ProbeRequest>\ \mbox{\hyperlink{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}{getResults}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00015}\mbox{\hyperlink{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}{00015}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}{cleanup}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00016}00016\ \};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00018}00018\ \textcolor{comment}{//\ Base\ hardware\ interface}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00019}\mbox{\hyperlink{class_i_hardware_interface}{00019}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_hardware_interface}{IHardwareInterface}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00021}00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00022}\mbox{\hyperlink{class_i_hardware_interface_a11b02ca7834579417ed763c92473616f}{00022}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_hardware_interface_a11b02ca7834579417ed763c92473616f}{\string~IHardwareInterface}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00023}\mbox{\hyperlink{class_i_hardware_interface_a6179cac5a7e973e2a6a59c15996e7d26}{00023}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_hardware_interface_a6179cac5a7e973e2a6a59c15996e7d26}{initialize}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00024}\mbox{\hyperlink{class_i_hardware_interface_ae73ca6ea3565794f5f29cebb65f39773}{00024}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_hardware_interface_ae73ca6ea3565794f5f29cebb65f39773}{isConnected}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00025}\mbox{\hyperlink{class_i_hardware_interface_a46753f631f96902e22cc2b922395d649}{00025}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_hardware_interface_a46753f631f96902e22cc2b922395d649}{reset}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00026}\mbox{\hyperlink{class_i_hardware_interface_a8861181fe532fbf2a682d88eac2a38c0}{00026}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_hardware_interface_a8861181fe532fbf2a682d88eac2a38c0}{cleanup}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00027}00027\ \};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00029}00029\ \textcolor{comment}{//\ Timer\ callback\ interface}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00030}\mbox{\hyperlink{class_i_timer_callback}{00030}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_timer_callback}{ITimerCallback}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00032}00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00033}\mbox{\hyperlink{class_i_timer_callback_aaa229738c76a5097868c4ef8e51fff16}{00033}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_timer_callback_aaa229738c76a5097868c4ef8e51fff16}{\string~ITimerCallback}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00034}\mbox{\hyperlink{class_i_timer_callback_ae4728562d41b7f1efbaf4912b6038754}{00034}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_timer_callback_ae4728562d41b7f1efbaf4912b6038754}{onTimerExpired}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00035}00035\ \};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00037}00037\ \textcolor{comment}{//\ Data\ storage\ interface}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00038}\mbox{\hyperlink{class_i_data_storage}{00038}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_data_storage}{IDataStorage}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00040}00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00041}\mbox{\hyperlink{class_i_data_storage_aa5c10f594fa2de589a0f0882632835ae}{00041}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_data_storage_aa5c10f594fa2de589a0f0882632835ae}{\string~IDataStorage}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00042}\mbox{\hyperlink{class_i_data_storage_ac15800723ef8f2d5264101d22fe92474}{00042}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_data_storage_ac15800723ef8f2d5264101d22fe92474}{writeData}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_probe_request}{ProbeRequest}}\ \&data,\ \textcolor{keyword}{const}\ std::string\ \&filename)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00043}\mbox{\hyperlink{class_i_data_storage_a54933ab8f274fe1f11d95acd26d27a22}{00043}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_data_storage_a54933ab8f274fe1f11d95acd26d27a22}{writeAssetData}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_asset_info}{AssetInfo}}\ \&data)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00044}\mbox{\hyperlink{class_i_data_storage_a657c8289f7fc02bdecf6a9fd7ce90834}{00044}}\ \ \ \ \ \textcolor{keyword}{virtual}\ std::vector<std::string>\ \mbox{\hyperlink{class_i_data_storage_a657c8289f7fc02bdecf6a9fd7ce90834}{readFile}}(\textcolor{keyword}{const}\ std::string\ \&filename)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00045}\mbox{\hyperlink{class_i_data_storage_a79c9c9119e8a3cc2901917fd3ccb70f7}{00045}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_data_storage_a79c9c9119e8a3cc2901917fd3ccb70f7}{fileExists}}(\textcolor{keyword}{const}\ std::string\ \&filename)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00046}\mbox{\hyperlink{class_i_data_storage_a78938c1e990c910e98f7642897d1489d}{00046}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_i_data_storage_a78938c1e990c910e98f7642897d1489d}{getFileSize}}(\textcolor{keyword}{const}\ std::string\ \&filename)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00047}\mbox{\hyperlink{class_i_data_storage_a8e820a62559b7bed4c149b335f49af17}{00047}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_i_data_storage_a8e820a62559b7bed4c149b335f49af17}{getRemainingCapacityPercent}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00048}00048\ \};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00050}00050\ \textcolor{comment}{//\ Network\ interface}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00051}\mbox{\hyperlink{class_i_network_interface}{00051}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_network_interface}{INetworkInterface}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00053}00053\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00054}\mbox{\hyperlink{class_i_network_interface_afaacd2ba18f47e3efebf6eb80986af0f}{00054}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_network_interface_afaacd2ba18f47e3efebf6eb80986af0f}{\string~INetworkInterface}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00055}\mbox{\hyperlink{class_i_network_interface_ac398f435eb0245711c054e6f3bb209bc}{00055}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_network_interface_ac398f435eb0245711c054e6f3bb209bc}{connect}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00056}\mbox{\hyperlink{class_i_network_interface_a76c64a181e51a288cb5f38964f4b653d}{00056}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_network_interface_a76c64a181e51a288cb5f38964f4b653d}{disconnect}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00057}\mbox{\hyperlink{class_i_network_interface_ae25fda02e0870887edd520e1abcebd26}{00057}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_network_interface_ae25fda02e0870887edd520e1abcebd26}{isConnected}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00058}\mbox{\hyperlink{class_i_network_interface_ad7765ad20e1179453d1e4a752f70c3fd}{00058}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_network_interface_ad7765ad20e1179453d1e4a752f70c3fd}{sendData}}(\textcolor{keyword}{const}\ std::string\ \&data)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00059}\mbox{\hyperlink{class_i_network_interface_abada3920ae7f77c5d5cb3f56f4418f44}{00059}}\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_i_network_interface_abada3920ae7f77c5d5cb3f56f4418f44}{getNetworkTime}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00060}00060\ \};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00062}00062\ \textcolor{comment}{//\ Power\ management\ interface}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00063}\mbox{\hyperlink{class_i_power_manager}{00063}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_power_manager}{IPowerManager}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00065}00065\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00066}\mbox{\hyperlink{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}{00066}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}{\string~IPowerManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00067}\mbox{\hyperlink{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8}{00067}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8}{enablePeripherals}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00068}\mbox{\hyperlink{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3}{00068}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3}{disablePeripherals}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00069}\mbox{\hyperlink{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e}{00069}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e}{enterSleep}}(uint64\_t\ sleepTimeUs)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00070}\mbox{\hyperlink{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130}{00070}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}\ \mbox{\hyperlink{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130}{getWakeupCause}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00071}\mbox{\hyperlink{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5}{00071}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5}{configureWakeup}}(uint64\_t\ timeUs)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00072}00072\ \};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00074}00074\ \textcolor{comment}{//\ Time\ management\ interface}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00075}\mbox{\hyperlink{class_i_time_manager}{00075}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_time_manager}{ITimeManager}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00076}00076\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00077}00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00078}\mbox{\hyperlink{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}{00078}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}{\string~ITimeManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00079}\mbox{\hyperlink{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6}{00079}}\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6}{getCurrentDateTime}}()\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00080}\mbox{\hyperlink{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66}{00080}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66}{setTimeFromNetwork}}(\textcolor{keyword}{const}\ std::string\ \&networkTime)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00081}\mbox{\hyperlink{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2}{00081}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2}{isValidTime}}(\textcolor{keyword}{const}\ std::string\ \&timeStr)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00082}\mbox{\hyperlink{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b}{00082}}\ \ \ \ \ \textcolor{keyword}{virtual}\ uint64\_t\ \mbox{\hyperlink{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b}{getNightSleepDuration}}(\textcolor{keyword}{const}\ std::string\ \&currentTime)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00083}00083\ \};}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00085}00085\ \textcolor{comment}{//\ Utility\ functions}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00086}\mbox{\hyperlink{class_utils}{00086}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utils}{Utils}}}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00087}00087\ \{}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00088}00088\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{class_utils_a801d4f7c8bad7d3b9fdb7e00730dd872}{escapeJSONString}}(\textcolor{keyword}{const}\ std::string\ \&input);}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_utils_ad321cbc11973b950294d1e84d3fbbddc}{convertToTotalMinutes}}(\textcolor{keyword}{const}\ std::string\ \&dateTimeStr);}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00091}\mbox{\hyperlink{class_utils_a90bc448e35f84191cbc116c33ddabe9f}{00091}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_a90bc448e35f84191cbc116c33ddabe9f}{isTimeDifferenceGreaterThan}}(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keywordtype}{int}\ minutes);}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00092}00092\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<std::string>\ \mbox{\hyperlink{class_utils_a4fedecec19cd1e20a69bfeed76e57fc1}{split}}(\textcolor{keyword}{const}\ std::string\ \&str,\ \textcolor{keywordtype}{char}\ delimiter);}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{class_utils_a709fc9d3286a8b90de822055fed9ca88}{trim}}(\textcolor{keyword}{const}\ std::string\ \&str);}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_af27b62495f7352d75165a7d0e823a224}{isIgnoredMAC}}(\textcolor{keyword}{const}\ std::string\ \&mac);}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00095}00095\ \ \ \ \ \textcolor{keyword}{static}\ std::string\ \mbox{\hyperlink{class_utils_a7668acfc071b57a9cc9890e4b980c593}{getCurrentTimestamp}}();}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00097}00097\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00098}00098\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::vector<std::string>\ IGNORED\_MACS;}
+\DoxyCodeLine{\Hypertarget{include_2interfaces_8h_source_l00099}00099\ \};}
+
+\end{DoxyCode}

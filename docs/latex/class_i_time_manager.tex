@@ -1,0 +1,150 @@
+\doxysection{ITime\+Manager Class Reference}
+\hypertarget{class_i_time_manager}{}\label{class_i_time_manager}\index{ITimeManager@{ITimeManager}}
+
+
+{\ttfamily \#include $<$interfaces.\+h$>$}
+
+Inheritance diagram for ITime\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_time_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}{\texorpdfstring{$\sim$}{\string~}\+ITime\+Manager}} ()=default
+\item 
+virtual std\+::string \mbox{\hyperlink{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6}{get\+Current\+Date\+Time}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66}{set\+Time\+From\+Network}} (const std\+::string \&network\+Time)=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2}{is\+Valid\+Time}} (const std\+::string \&time\+Str)=0
+\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b}{get\+Night\+Sleep\+Duration}} (const std\+::string \&current\+Time)=0
+\item 
+virtual \mbox{\hyperlink{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}{\texorpdfstring{$\sim$}{\string~}\+ITime\+Manager}} ()=default
+\item 
+virtual std\+::string \mbox{\hyperlink{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6}{get\+Current\+Date\+Time}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66}{set\+Time\+From\+Network}} (const std\+::string \&network\+Time)=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2}{is\+Valid\+Time}} (const std\+::string \&time\+Str)=0
+\item 
+virtual uint64\+\_\+t \mbox{\hyperlink{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b}{get\+Night\+Sleep\+Duration}} (const std\+::string \&current\+Time)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{include_2interfaces_8h_source_l00075}{75}} of file \mbox{\hyperlink{include_2interfaces_8h_source}{interfaces.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_i_time_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}\index{ITimeManager@{ITimeManager}!````~ITimeManager@{\texorpdfstring{$\sim$}{\string~}ITimeManager}}
+\index{````~ITimeManager@{\texorpdfstring{$\sim$}{\string~}ITimeManager}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ITimeManager()}{\string~ITimeManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305} 
+virtual ITime\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+ITime\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+\Hypertarget{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305}\index{ITimeManager@{ITimeManager}!````~ITimeManager@{\texorpdfstring{$\sim$}{\string~}ITimeManager}}
+\index{````~ITimeManager@{\texorpdfstring{$\sim$}{\string~}ITimeManager}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ITimeManager()}{\string~ITimeManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a4c83c29aaadd2e38a94303f8928b8305} 
+virtual ITime\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+ITime\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_i_time_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6}\index{ITimeManager@{ITimeManager}!getCurrentDateTime@{getCurrentDateTime}}
+\index{getCurrentDateTime@{getCurrentDateTime}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentDateTime()}{getCurrentDateTime()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6} 
+virtual std\+::string ITime\+Manager\+::get\+Current\+Date\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10}{RTCTime\+Manager}}.
+
+\Hypertarget{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6}\index{ITimeManager@{ITimeManager}!getCurrentDateTime@{getCurrentDateTime}}
+\index{getCurrentDateTime@{getCurrentDateTime}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentDateTime()}{getCurrentDateTime()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a0dc221db031fe16653c0f293b212e6e6} 
+virtual std\+::string ITime\+Manager\+::get\+Current\+Date\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_a375c44c208916c4eba627a8646ba6d10}{RTCTime\+Manager}}.
+
+\Hypertarget{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b}\index{ITimeManager@{ITimeManager}!getNightSleepDuration@{getNightSleepDuration}}
+\index{getNightSleepDuration@{getNightSleepDuration}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{getNightSleepDuration()}{getNightSleepDuration()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b} 
+virtual uint64\+\_\+t ITime\+Manager\+::get\+Night\+Sleep\+Duration (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{current\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4}{RTCTime\+Manager}}.
+
+\Hypertarget{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b}\index{ITimeManager@{ITimeManager}!getNightSleepDuration@{getNightSleepDuration}}
+\index{getNightSleepDuration@{getNightSleepDuration}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{getNightSleepDuration()}{getNightSleepDuration()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a3e3661ca53e7903db14ef1d73e66bd1b} 
+virtual uint64\+\_\+t ITime\+Manager\+::get\+Night\+Sleep\+Duration (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{current\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_afb1e2fef62322a3752ba879d2bd10fa4}{RTCTime\+Manager}}.
+
+\Hypertarget{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2}\index{ITimeManager@{ITimeManager}!isValidTime@{isValidTime}}
+\index{isValidTime@{isValidTime}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{isValidTime()}{isValidTime()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2} 
+virtual bool ITime\+Manager\+::is\+Valid\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{time\+Str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d}{RTCTime\+Manager}}.
+
+\Hypertarget{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2}\index{ITimeManager@{ITimeManager}!isValidTime@{isValidTime}}
+\index{isValidTime@{isValidTime}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{isValidTime()}{isValidTime()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a5d99c99c1ccde5225cb46e99d1fe62c2} 
+virtual bool ITime\+Manager\+::is\+Valid\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{time\+Str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_ad5009618a016999e625a5aba0815561d}{RTCTime\+Manager}}.
+
+\Hypertarget{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66}\index{ITimeManager@{ITimeManager}!setTimeFromNetwork@{setTimeFromNetwork}}
+\index{setTimeFromNetwork@{setTimeFromNetwork}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{setTimeFromNetwork()}{setTimeFromNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66} 
+virtual bool ITime\+Manager\+::set\+Time\+From\+Network (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{network\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876}{RTCTime\+Manager}}.
+
+\Hypertarget{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66}\index{ITimeManager@{ITimeManager}!setTimeFromNetwork@{setTimeFromNetwork}}
+\index{setTimeFromNetwork@{setTimeFromNetwork}!ITimeManager@{ITimeManager}}
+\doxysubsubsection{\texorpdfstring{setTimeFromNetwork()}{setTimeFromNetwork()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_time_manager_a06256d540a9ca5e8f7f03989d6484a66} 
+virtual bool ITime\+Manager\+::set\+Time\+From\+Network (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{network\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_r_t_c_time_manager_a2866ea935a808c7be6e5f3d445f0d876}{RTCTime\+Manager}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/\mbox{\hyperlink{include_2interfaces_8h}{interfaces.\+h}}\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/\mbox{\hyperlink{interfaces_8h}{interfaces.\+h}}\end{DoxyCompactItemize}

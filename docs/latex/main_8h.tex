@@ -1,0 +1,187 @@
+\doxysection{D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/main.h File Reference}
+\hypertarget{main_8h}{}\label{main_8h}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/main.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/main.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_probe_request}{Probe\+Request}}
+\item 
+struct \mbox{\hyperlink{struct_battery_status}{Battery\+Status}}
+\item 
+struct \mbox{\hyperlink{struct_asset_info}{Asset\+Info}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_config}{Config}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{System\+State}} \{ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a928107a5679ed3e1be104d5de63adb32}{FIRST\+\_\+\+BOOT}}
+, \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}{NORMAL\+\_\+\+OPERATION}}
+, \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f}{SLEEP\+\_\+\+MODE}}
+, \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58}{ERROR\+\_\+\+STATE}}
+ \}
+\item 
+enum class \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} \{ \newline
+\mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3}{UNDEFINED}} = 0
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d}{ALL}} = 1
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638}{EXT0}} = 2
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a}{EXT1}} = 3
+, \newline
+\mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{TIMER}} = 4
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1}{TOUCHPAD}} = 5
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca}{ULP}} = 6
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235}{GPIO}} = 7
+, \newline
+\mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f}{UART}} = 8
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}} = 9
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{TIMER}}
+, \mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d}{EXTERNAL}}
+, \newline
+\mbox{\hyperlink{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}{UNKNOWN}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{namespace_config_a6b4401a831c6a5f1f899992b0c1d3318}{Config\+::\+ASSET\+\_\+\+ID}} = "{}9c3f2d54-\/3e77-\/4c8a-\/8e1d-\/0f5b8e3a7b10"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespace_config_a4f6ee86837579d4892b81c96af4787b3}{Config\+::\+DEVICE\+\_\+\+ID}} = "{}Device23"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespace_config_a2f30de576662546383551a90cc10697c}{Config\+::\+LOCATION}} = "{}Device23"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespace_config_ad58084995cc5ae949043b4d34c84771a}{Config\+::\+FOREST\+\_\+\+NAME}} = "{}Device23"{}
+\item 
+const double \mbox{\hyperlink{namespace_config_af2163c4ce4729a85119e1510258a3b86}{Config\+::\+LATITUDE}} = 55.\+5
+\item 
+const double \mbox{\hyperlink{namespace_config_a9e2b4df07302242c3daea41e355f4ea6}{Config\+::\+LONGITUDE}} = -\/2.\+84
+\item 
+const int \mbox{\hyperlink{namespace_config_a7b56a950f6ecd80f4805d0b973e08cac}{Config\+::\+SCAN\+\_\+\+INTERVAL\+\_\+\+MS}} = 10000
+\item 
+const int \mbox{\hyperlink{namespace_config_a1ecd6e382f8729ec28361f2b1b685bdb}{Config\+::\+BLE\+\_\+\+SCAN\+\_\+\+TIME\+\_\+\+MS}} = 60
+\item 
+const int \mbox{\hyperlink{namespace_config_a786f3a65fdb0e50e0c8c524da57c47d6}{Config\+::\+WIFI\+\_\+\+SCAN\+\_\+\+TIME\+\_\+\+MS}} = 600
+\item 
+const int \mbox{\hyperlink{namespace_config_aef4c34c29136f6b01af094ebb1f9a9c3}{Config\+::\+LTE\+\_\+\+TIME\+\_\+\+MINUTES}} = 200
+\item 
+const int \mbox{\hyperlink{namespace_config_ab0e7a9dede11d00bf58e89fc061a4d19}{Config\+::\+MAX\+\_\+\+CHUNK\+\_\+\+SIZE}} = 4096
+\item 
+const int \mbox{\hyperlink{namespace_config_a47cadc4fb311dfc26c23f2dfae4ce523}{Config\+::\+FILENAME\+\_\+\+LENGTH}} = 50
+\item 
+const int \mbox{\hyperlink{namespace_config_a417d856167e4127a2f85bc542b062524}{Config\+::\+BAT\+\_\+\+LOW\+\_\+\+SOC}} = 10
+\item 
+const int \mbox{\hyperlink{namespace_config_a06d6626cb8d9a0f68bcbb418722ed08b}{Config\+::\+BAT\+\_\+\+HIGH\+\_\+\+SOC}} = 101
+\item 
+const int \mbox{\hyperlink{namespace_config_a1bc407d76722f4150c84772590e96dd4}{Config\+::\+BAT\+\_\+\+LOW\+\_\+\+SOH}} = 50
+\item 
+const int \mbox{\hyperlink{namespace_config_ab7def6fd93b582ce1416ea98869ade8d}{Config\+::\+BAT\+\_\+\+LOW\+\_\+\+BOARD\+\_\+\+TEMP}} = 2
+\item 
+const int \mbox{\hyperlink{namespace_config_a9d7486097271641fd883c8a043fefa9e}{Config\+::\+BAT\+\_\+\+HIGH\+\_\+\+BOARD\+\_\+\+TEMP}} = 30
+\item 
+const int \mbox{\hyperlink{namespace_config_ab3e33381ac0c54be8f95ba0dd5bd4172}{Config\+::\+BAT\+\_\+\+LOW\+\_\+\+CELL\+\_\+\+TEMP}} = 4
+\item 
+const int \mbox{\hyperlink{namespace_config_a33044898eb192188f671c27774b182fd}{Config\+::\+BAT\+\_\+\+HIGH\+\_\+\+CELL\+\_\+\+TEMP}} = 30
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{main_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{main_8h_aa51313be2faacb739a18fdeecefbac75}\index{main.h@{main.h}!SystemState@{SystemState}}
+\index{SystemState@{SystemState}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{SystemState}{SystemState}}
+{\footnotesize\ttfamily \label{main_8h_aa51313be2faacb739a18fdeecefbac75} 
+enum class \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{System\+State}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FIRST\_BOOT@{FIRST\_BOOT}!main.h@{main.h}}\index{main.h@{main.h}!FIRST\_BOOT@{FIRST\_BOOT}}}\Hypertarget{main_8h_aa51313be2faacb739a18fdeecefbac75a928107a5679ed3e1be104d5de63adb32}\label{main_8h_aa51313be2faacb739a18fdeecefbac75a928107a5679ed3e1be104d5de63adb32} 
+FIRST\+\_\+\+BOOT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMAL\_OPERATION@{NORMAL\_OPERATION}!main.h@{main.h}}\index{main.h@{main.h}!NORMAL\_OPERATION@{NORMAL\_OPERATION}}}\Hypertarget{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}\label{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d} 
+NORMAL\+\_\+\+OPERATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SLEEP\_MODE@{SLEEP\_MODE}!main.h@{main.h}}\index{main.h@{main.h}!SLEEP\_MODE@{SLEEP\_MODE}}}\Hypertarget{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f}\label{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f} 
+SLEEP\+\_\+\+MODE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR\_STATE@{ERROR\_STATE}!main.h@{main.h}}\index{main.h@{main.h}!ERROR\_STATE@{ERROR\_STATE}}}\Hypertarget{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58}\label{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58} 
+ERROR\+\_\+\+STATE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00083}{83}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+
+\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44}\index{main.h@{main.h}!WakeupCause@{WakeupCause}}
+\index{WakeupCause@{WakeupCause}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{WakeupCause}{WakeupCause}}
+{\footnotesize\ttfamily \label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44} 
+enum class \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNDEFINED@{UNDEFINED}!main.h@{main.h}}\index{main.h@{main.h}!UNDEFINED@{UNDEFINED}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a0db45d2a4141101bdfe48e3314cfbca3} 
+UNDEFINED&Undefined or first boot. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL@{ALL}!main.h@{main.h}}\index{main.h@{main.h}!ALL@{ALL}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d} 
+ALL&All wakeup sources. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXT0@{EXT0}!main.h@{main.h}}\index{main.h@{main.h}!EXT0@{EXT0}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a1fc17c430b3538596b526e88d72d9638} 
+EXT0&External signal on RTC\+\_\+\+IO. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXT1@{EXT1}!main.h@{main.h}}\index{main.h@{main.h}!EXT1@{EXT1}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a770cdabd774961c8353fca4757be191a} 
+EXT1&External signal on RTC\+\_\+\+CNTL. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER@{TIMER}!main.h@{main.h}}\index{main.h@{main.h}!TIMER@{TIMER}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d} 
+TIMER&Timer wakeup. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TOUCHPAD@{TOUCHPAD}!main.h@{main.h}}\index{main.h@{main.h}!TOUCHPAD@{TOUCHPAD}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab37023f260283a7a7f7ae79637f476d1} 
+TOUCHPAD&Touchpad wakeup. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ULP@{ULP}!main.h@{main.h}}\index{main.h@{main.h}!ULP@{ULP}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab937060444a5865b050a752843b157ca} 
+ULP&ULP program wakeup. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GPIO@{GPIO}!main.h@{main.h}}\index{main.h@{main.h}!GPIO@{GPIO}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44aa4b03abff0e37da035d6fc0f9a4b1235} 
+GPIO&GPIO wakeup (light sleep only) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART@{UART}!main.h@{main.h}}\index{main.h@{main.h}!UART@{UART}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44acec5769b01fb096efaf0d6186823c78f} 
+UART&UART wakeup (light sleep only) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN@{UNKNOWN}!main.h@{main.h}}\index{main.h@{main.h}!UNKNOWN@{UNKNOWN}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3} 
+UNKNOWN&Unknown wakeup cause. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TIMER@{TIMER}!main.h@{main.h}}\index{main.h@{main.h}!TIMER@{TIMER}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d} 
+TIMER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXTERNAL@{EXTERNAL}!main.h@{main.h}}\index{main.h@{main.h}!EXTERNAL@{EXTERNAL}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a3932d629fb5e2be9d09b3a4485b3cc9d} 
+EXTERNAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNKNOWN@{UNKNOWN}!main.h@{main.h}}\index{main.h@{main.h}!UNKNOWN@{UNKNOWN}}}\Hypertarget{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3}\label{main_8h_a4145a5bb637b4b78d0a7926f830b2f44a696b031073e74bf2cb98e5ef201d4aa3} 
+UNKNOWN&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{main_8h_source_l00091}{91}} of file \mbox{\hyperlink{main_8h_source}{main.\+h}}.
+

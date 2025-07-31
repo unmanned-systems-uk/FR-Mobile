@@ -1,0 +1,47 @@
+\doxysection{D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/src/scanners/ble\+\_\+scanner.cpp File Reference}
+\hypertarget{ble__scanner_8cpp}{}\label{ble__scanner_8cpp}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/src/scanners/ble\_scanner.cpp@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/src/scanners/ble\_scanner.cpp}}
+{\ttfamily \#include "{}scanners/ble\+\_\+scanner.\+h"{}}\newline
+{\ttfamily \#include "{}utils/logger.\+h"{}}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ble__scanner_8cpp_a075604450ecaa03acf5a5827b698e391}{ble\+Scan\+Result\+Handler}} (\mbox{\hyperlink{class_b_l_e_scanner}{BLEScanner}} \texorpdfstring{$\ast$}{*}scanner, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}address, int rssi, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}adv\+Data, size\+\_\+t adv\+Data\+Len)
+\begin{DoxyCompactList}\small\item\em Global callback bridge function for BLE scan results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{ble__scanner_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ble__scanner_8cpp_a075604450ecaa03acf5a5827b698e391}\index{ble\_scanner.cpp@{ble\_scanner.cpp}!bleScanResultHandler@{bleScanResultHandler}}
+\index{bleScanResultHandler@{bleScanResultHandler}!ble\_scanner.cpp@{ble\_scanner.cpp}}
+\doxysubsubsection{\texorpdfstring{bleScanResultHandler()}{bleScanResultHandler()}}
+{\footnotesize\ttfamily \label{ble__scanner_8cpp_a075604450ecaa03acf5a5827b698e391} 
+void ble\+Scan\+Result\+Handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_l_e_scanner}{BLEScanner}} \texorpdfstring{$\ast$}{*}}]{scanner}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{int}]{rssi}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{adv\+Data}{, }\item[{size\+\_\+t}]{adv\+Data\+Len}{}\end{DoxyParamCaption})}
+
+
+
+Global callback bridge function for BLE scan results. 
+
+This function bridges the C-\/style callback required by the BLE stack to the C++ class method. It\textquotesingle{}s used internally by the \doxylink{class_b_l_e_scanner}{BLEScanner}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Pointer to \doxylink{class_b_l_e_scanner}{BLEScanner} instance \\
+\hline
+{\em address} & Device MAC address \\
+\hline
+{\em rssi} & Received signal strength \\
+\hline
+{\em adv\+Data} & Advertisement data \\
+\hline
+{\em adv\+Data\+Len} & Advertisement data length \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ble__scanner_8cpp_source_l00656}{656}} of file \mbox{\hyperlink{ble__scanner_8cpp_source}{ble\+\_\+scanner.\+cpp}}.
+

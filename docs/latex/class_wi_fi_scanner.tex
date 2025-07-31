@@ -1,0 +1,313 @@
+\doxysection{Wi\+Fi\+Scanner Class Reference}
+\hypertarget{class_wi_fi_scanner}{}\label{class_wi_fi_scanner}\index{WiFiScanner@{WiFiScanner}}
+
+
+Wi\+Fi Scanner class for capturing probe requests in promiscuous mode.  
+
+
+
+
+{\ttfamily \#include $<$wifi\+\_\+scanner.\+h$>$}
+
+Inheritance diagram for Wi\+Fi\+Scanner\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_wi_fi_scanner}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_wi_fi_scanner_afe2ffe2d2fe144354c1cbc89a7f50c5a}{Wi\+Fi\+Scanner}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$ storage, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_time_manager}{ITime\+Manager}} $>$ time\+Manager)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wi_fi_scanner_a01b85975193c72e751fe908e81f0645a}{\texorpdfstring{$\sim$}{\string~}\+Wi\+Fi\+Scanner}} () override
+\begin{DoxyCompactList}\small\item\em Destructor -\/ automatically cleans up resources. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wi_fi_scanner_a751322ae2e826c3c362b6223c8294ac1}{initialize}} () override
+\begin{DoxyCompactList}\small\item\em Initialize the Wi\+Fi scanner. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wi_fi_scanner_af8fce93fc52ecc67f57f5a13593d7601}{start\+Scan}} () override
+\begin{DoxyCompactList}\small\item\em Start Wi\+Fi scanning in promiscuous mode. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wi_fi_scanner_ab68185d3e130718f5f08a785236c2432}{stop\+Scan}} () override
+\begin{DoxyCompactList}\small\item\em Stop Wi\+Fi scanning. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ \mbox{\hyperlink{class_wi_fi_scanner_af54348497b160d0a841a530c9b71c012}{get\+Results}} () override
+\begin{DoxyCompactList}\small\item\em Get all scan results collected so far. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wi_fi_scanner_a8e7a37bca3c7be0622724b371a6c295b}{cleanup}} () override
+\begin{DoxyCompactList}\small\item\em Clean up all resources and reset state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wi_fi_scanner_a7f620ce0b709b326a9acad4ec0e38825}{set\+Probe\+Callback}} (std\+::function$<$ void(const \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} \&)$>$ callback)
+\begin{DoxyCompactList}\small\item\em Set callback function for real-\/time probe request processing. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_wi_fi_scanner_ad66c7f8a15d20cef66092d1e440dd9d5}{is\+Scanning}} () const
+\begin{DoxyCompactList}\small\item\em Check if scanner is currently active. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{class_wi_fi_scanner_ac8ecc3a616464919b318508dc713f486}{get\+Result\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Get number of probe requests captured. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wi_fi_scanner_a8cd405889e091acca25d2d31eadd2615}{clear\+Results}} ()
+\begin{DoxyCompactList}\small\item\em Clear all stored scan results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_scanner}{IScanner}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{\texorpdfstring{$\sim$}{\string~}\+IScanner}} ()=default
+\item 
+virtual \mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{\texorpdfstring{$\sim$}{\string~}\+IScanner}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_wi_fi_scanner_a3972d2cea51bfa11a2b08c42c8afa603}{wifi\+Scan\+Callback}} (\mbox{\hyperlink{class_wi_fi_scanner}{Wi\+Fi\+Scanner}} \texorpdfstring{$\ast$}{*}scanner, void \texorpdfstring{$\ast$}{*}buf, int type)
+\begin{DoxyCompactList}\small\item\em Global callback bridge function for Wi\+Fi scan results. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wi\+Fi Scanner class for capturing probe requests in promiscuous mode. 
+
+This class implements the \doxylink{class_i_scanner}{IScanner} interface to provide Wi\+Fi scanning functionality. It captures probe requests from nearby devices and stores them for analysis or transmission. 
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8h_source_l00017}{17}} of file \mbox{\hyperlink{wifi__scanner_8h_source}{wifi\+\_\+scanner.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_wi_fi_scanner_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_wi_fi_scanner_afe2ffe2d2fe144354c1cbc89a7f50c5a}\index{WiFiScanner@{WiFiScanner}!WiFiScanner@{WiFiScanner}}
+\index{WiFiScanner@{WiFiScanner}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{WiFiScanner()}{WiFiScanner()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_afe2ffe2d2fe144354c1cbc89a7f50c5a} 
+Wi\+Fi\+Scanner\+::\+Wi\+Fi\+Scanner (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$}]{storage}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_time_manager}{ITime\+Manager}} $>$}]{time\+Manager}{}\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em storage} & Shared pointer to data storage interface \\
+\hline
+{\em time\+Manager} & Shared pointer to time management interface \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_a01b85975193c72e751fe908e81f0645a}\index{WiFiScanner@{WiFiScanner}!````~WiFiScanner@{\texorpdfstring{$\sim$}{\string~}WiFiScanner}}
+\index{````~WiFiScanner@{\texorpdfstring{$\sim$}{\string~}WiFiScanner}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}WiFiScanner()}{\string~WiFiScanner()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_a01b85975193c72e751fe908e81f0645a} 
+Wi\+Fi\+Scanner\+::\texorpdfstring{$\sim$}{\string~}\+Wi\+Fi\+Scanner (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor -\/ automatically cleans up resources. 
+
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_wi_fi_scanner_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_wi_fi_scanner_a8e7a37bca3c7be0622724b371a6c295b}\index{WiFiScanner@{WiFiScanner}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_a8e7a37bca3c7be0622724b371a6c295b} 
+void Wi\+Fi\+Scanner\+::cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clean up all resources and reset state. 
+
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_a8cd405889e091acca25d2d31eadd2615}\index{WiFiScanner@{WiFiScanner}!clearResults@{clearResults}}
+\index{clearResults@{clearResults}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{clearResults()}{clearResults()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_a8cd405889e091acca25d2d31eadd2615} 
+void Wi\+Fi\+Scanner\+::clear\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Clear all stored scan results. 
+
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00187}{187}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_ac8ecc3a616464919b318508dc713f486}\index{WiFiScanner@{WiFiScanner}!getResultCount@{getResultCount}}
+\index{getResultCount@{getResultCount}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{getResultCount()}{getResultCount()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_ac8ecc3a616464919b318508dc713f486} 
+size\+\_\+t Wi\+Fi\+Scanner\+::get\+Result\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get number of probe requests captured. 
+
+\begin{DoxyReturn}{Returns}
+Count of captured probe requests 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_af54348497b160d0a841a530c9b71c012}\index{WiFiScanner@{WiFiScanner}!getResults@{getResults}}
+\index{getResults@{getResults}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{getResults()}{getResults()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_af54348497b160d0a841a530c9b71c012} 
+std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ Wi\+Fi\+Scanner\+::get\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get all scan results collected so far. 
+
+\begin{DoxyReturn}{Returns}
+Vector of \doxylink{struct_probe_request}{Probe\+Request} structures 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_a751322ae2e826c3c362b6223c8294ac1}\index{WiFiScanner@{WiFiScanner}!initialize@{initialize}}
+\index{initialize@{initialize}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_a751322ae2e826c3c362b6223c8294ac1} 
+bool Wi\+Fi\+Scanner\+::initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Initialize the Wi\+Fi scanner. 
+
+\begin{DoxyReturn}{Returns}
+true if initialization successful, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_ad66c7f8a15d20cef66092d1e440dd9d5}\index{WiFiScanner@{WiFiScanner}!isScanning@{isScanning}}
+\index{isScanning@{isScanning}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{isScanning()}{isScanning()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_ad66c7f8a15d20cef66092d1e440dd9d5} 
+bool Wi\+Fi\+Scanner\+::is\+Scanning (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if scanner is currently active. 
+
+\begin{DoxyReturn}{Returns}
+true if scanning is in progress 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8h_source_l00073}{73}} of file \mbox{\hyperlink{wifi__scanner_8h_source}{wifi\+\_\+scanner.\+h}}.
+
+\Hypertarget{class_wi_fi_scanner_a7f620ce0b709b326a9acad4ec0e38825}\index{WiFiScanner@{WiFiScanner}!setProbeCallback@{setProbeCallback}}
+\index{setProbeCallback@{setProbeCallback}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{setProbeCallback()}{setProbeCallback()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_a7f620ce0b709b326a9acad4ec0e38825} 
+void Wi\+Fi\+Scanner\+::set\+Probe\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(const \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} \&)$>$}]{callback}{}\end{DoxyParamCaption})}
+
+
+
+Set callback function for real-\/time probe request processing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Function to call when a probe request is detected \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_af8fce93fc52ecc67f57f5a13593d7601}\index{WiFiScanner@{WiFiScanner}!startScan@{startScan}}
+\index{startScan@{startScan}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{startScan()}{startScan()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_af8fce93fc52ecc67f57f5a13593d7601} 
+bool Wi\+Fi\+Scanner\+::start\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Start Wi\+Fi scanning in promiscuous mode. 
+
+\begin{DoxyReturn}{Returns}
+true if scan started successfully, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+\Hypertarget{class_wi_fi_scanner_ab68185d3e130718f5f08a785236c2432}\index{WiFiScanner@{WiFiScanner}!stopScan@{stopScan}}
+\index{stopScan@{stopScan}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{stopScan()}{stopScan()}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_ab68185d3e130718f5f08a785236c2432} 
+bool Wi\+Fi\+Scanner\+::stop\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Stop Wi\+Fi scanning. 
+
+\begin{DoxyReturn}{Returns}
+true if scan stopped successfully, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}{IScanner}}.
+
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+
+
+\label{doc-related-members}
+\Hypertarget{class_wi_fi_scanner_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_wi_fi_scanner_a3972d2cea51bfa11a2b08c42c8afa603}\index{WiFiScanner@{WiFiScanner}!wifiScanCallback@{wifiScanCallback}}
+\index{wifiScanCallback@{wifiScanCallback}!WiFiScanner@{WiFiScanner}}
+\doxysubsubsection{\texorpdfstring{wifiScanCallback}{wifiScanCallback}}
+{\footnotesize\ttfamily \label{class_wi_fi_scanner_a3972d2cea51bfa11a2b08c42c8afa603} 
+void wifi\+Scan\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_wi_fi_scanner}{Wi\+Fi\+Scanner}} \texorpdfstring{$\ast$}{*}}]{scanner}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{int}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Global callback bridge function for Wi\+Fi scan results. 
+
+This function bridges the C-\/style callback required by the Wi\+Fi stack to the C++ class method. It\textquotesingle{}s used internally by the \doxylink{class_wi_fi_scanner}{Wi\+Fi\+Scanner}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanner} & Pointer to \doxylink{class_wi_fi_scanner}{Wi\+Fi\+Scanner} instance \\
+\hline
+{\em buf} & Packet buffer from Wi\+Fi stack \\
+\hline
+{\em type} & Packet type identifier \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{wifi__scanner_8cpp_source_l00403}{403}} of file \mbox{\hyperlink{wifi__scanner_8cpp_source}{wifi\+\_\+scanner.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/scanners/\mbox{\hyperlink{wifi__scanner_8h}{wifi\+\_\+scanner.\+h}}\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/src/scanners/\mbox{\hyperlink{wifi__scanner_8cpp}{wifi\+\_\+scanner.\+cpp}}\end{DoxyCompactItemize}

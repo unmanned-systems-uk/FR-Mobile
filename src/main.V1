@@ -1,0 +1,1022 @@
+#include "main.h"
+#include "interfaces.h"
+#include "scanners/wifi_scanner.h"
+#include "scanners/ble_scanner.h"
+#include "hardware/bq34z100.h"
+#include "hardware/power_manager.h"
+#include "data/sdcard_manager.h"
+#include "data/cellular_manager.h"
+#include "data/rtc_time_manager.h"
+#include "utils/logger.h"
+
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include <sstream>
+#include <iomanip>
+
+#ifdef ESP32_PLATFORM
+#include <Arduino.h>
+#include <esp_system.h>
+#include <esp_task_wdt.h>
+#endif
+#ifdef ESP32_PLATFORM
+extern "C" void app_main(void)
+{
+    // Initialize NVS
+    esp_err_t ret = nvs_flash_init();
+    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND)
+    {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        ret = nvs_flash_init();
+    }
+    ESP_ERROR_CHECK(ret);
+
+    // Initialize default event loop
+    ESP_ERROR_CHECK(esp_event_loop_create_default());
+
+    // Initialize global logger
+    g_logger = std::make_shared<Logger>();
+    LoggerConfig config;
+    config.consoleEnabled = true;
+    config.fileEnabled = true;
+    config.consoleLevel = LogLevel::DEBUG;
+    config.fileLevel = LogLevel::INFO;
+    config.maxFileSize = 1024 * 1024; // 1MB log files
+    config.maxBackupFiles = 5;
+
+    if (!g_logger->initialize(config))
+    {
+        ESP_LOGE("MAIN", "Failed to initialize logger!");
+        esp_restart();
+    }
+
+    // Create and initialize application
+    ForestryResearchApp app;
+    if (!app.initialize())
+    {
+        LOG_ERROR("Application initialization failed!");
+        esp_restart();
+    }
+
+    // Run application
+    app.run();
+}
+#endif
+// Global logger instance
+std::shared_ptr<Logger> g_logger;
+
+// Static helper to get timestamp
+static std::string getCurrentTimestamp()
+{
+    auto now = std::chrono::system_clock::now();
+    auto time_t = std::chrono::system_clock::to_time_t(now);
+    std::tm *tm = std::localtime(&time_t);
+
+    std::ostringstream oss;
+    oss << std::put_time(tm, "%Y-%m-%d %H:%M:%S");
+    return oss.str();
+}
+
+// ForestryResearchApp Implementation
+ForestryResearchApp::ForestryResearchApp()
+    : currentState_(SystemState::FIRST_BOOT), running_(false), emergencyStop_(false)
+{
+    LOG_INFO("=====================================================");
+    LOG_INFO("Forestry Research Device - Version 1.0.0");
+    LOG_INFO("Device ID: " + std::string(Config::DEVICE_ID));
+    LOG_INFO("Location: " + std::string(Config::LOCATION));
+    LOG_INFO("=====================================================");
+}
+
+ForestryResearchApp::~ForestryResearchApp()
+{
+    if (running_)
+    {
+        shutdown();
+    }
+}
+
+bool ForestryResearchApp::initialize()
+{
+    LOG_INFO("[Main] Starting system initialization...");
+
+    try
+    {
+        // Initialize hardware components first
+        if (!initializeHardware())
+        {
+            LOG_ERROR("[Main] Hardware initialization failed");
+            return false;
+        }
+
+        // Initialize scanners
+        if (!initializeScanners())
+        {
+            LOG_ERROR("[Main] Scanner initialization failed");
+            return false;
+        }
+
+        // Perform initial time sync
+        LOG_INFO("[Main] Attempting initial time synchronization...");
+        if (cellularManager_ && cellularManager_->connect())
+        {
+            std::string networkTime = cellularManager_->getNetworkTime();
+            if (!networkTime.empty() && timeManager_)
+            {
+                LOG_INFO("[Main] Setting RTC time from network: " + networkTime);
+                timeManager_->setTimeFromNetwork(networkTime);
+            }
+            cellularManager_->disconnect();
+        }
+
+        // Log system information
+        logSystemInfo();
+
+        // Set state based on RTC validity
+        std::string currentTime = timeManager_->getCurrentDateTime();
+        if (timeManager_->isValidTime(currentTime))
+        {
+            currentState_ = SystemState::NORMAL_OPERATION;
+            LOG_INFO("[Main] System time is valid, entering normal operation");
+        }
+        else
+        {
+            currentState_ = SystemState::FIRST_BOOT;
+            LOG_WARNING("[Main] System time is invalid, staying in first boot mode");
+        }
+
+        LOG_INFO("[Main] System initialization complete");
+        return true;
+    }
+    catch (const std::exception &e)
+    {
+        LOG_ERROR("[Main] Exception during initialization: " + std::string(e.what()));
+        return false;
+    }
+}
+
+bool ForestryResearchApp::initializeHardware()
+{
+    LOG_INFO("[Main] Initializing hardware components...");
+
+    // 1. Power Manager (controls 5V supply)
+    powerManager_ = std::make_unique<PowerManager>(Config::Pins::POWER_5V_ENABLE);
+    if (!powerManager_->initialize())
+    {
+        LOG_ERROR("[Main] Failed to initialize power manager");
+        return false;
+    }
+
+    // Enable 5V for peripherals
+    powerManager_->enablePeripherals();
+
+    // 2. Battery Monitor
+    batteryMonitor_ = std::make_unique<BQ34Z100BatteryMonitor>();
+    if (!batteryMonitor_->initialize())
+    {
+        LOG_ERROR("[Main] Failed to initialize battery monitor");
+        handleError("Battery monitor initialization failed");
+    }
+    else
+    {
+        // Configure battery parameters
+        batteryMonitor_->setBatteryCapacity(26000); // 26Ah
+        batteryMonitor_->setDesignVoltage(12600);   // 12.6V nominal
+
+        // Set safety limits
+        BatterySafetyConfig safetyConfig;
+        safetyConfig.minStateOfCharge = Config::BAT_LOW_SOC;
+        safetyConfig.maxStateOfCharge = Config::BAT_HIGH_SOC;
+        safetyConfig.minStateOfHealth = Config::BAT_LOW_SOH;
+        safetyConfig.minCellTemp = Config::BAT_LOW_CELL_TEMP;
+        safetyConfig.maxCellTemp = Config::BAT_HIGH_CELL_TEMP;
+        safetyConfig.minBoardTemp = Config::BAT_LOW_BOARD_TEMP;
+        safetyConfig.maxBoardTemp = Config::BAT_HIGH_BOARD_TEMP;
+        safetyConfig.enableEmergencyShutdown = true;
+
+        batteryMonitor_->setSafetyConfig(safetyConfig);
+    }
+
+    // 3. RTC Time Manager
+    timeManager_ = std::make_unique<RTCTimeManager>(powerManager_);
+    if (!timeManager_->initialize())
+    {
+        LOG_ERROR("[Main] Failed to initialize RTC");
+        handleError("RTC initialization failed");
+    }
+    else
+    {
+        // Configure sleep schedule
+        SleepSchedule schedule;
+        schedule.nightStartHour = 22; // 10 PM
+        schedule.nightEndHour = 6;    // 6 AM
+        schedule.nightSleepMinutes = 30;
+        schedule.daySleepMinutes = 5;
+        schedule.enabled = true;
+        timeManager_->setSleepSchedule(schedule);
+    }
+
+    // 4. SD Card Manager
+    sdCardManager_ = std::make_unique<SDCardManager>("/sdcard");
+    if (!sdCardManager_->initialize(20, 200))
+    {
+        LOG_ERROR("[Main] Failed to initialize SD card");
+        handleError("SD card initialization failed");
+        return false; // SD card is critical
+    }
+
+    // Configure SD card settings
+    sdCardManager_->setLowSpaceThreshold(10.0f); // 10% threshold
+    sdCardManager_->setAutoCleanup(true);
+    sdCardManager_->setMaxFileSize(10 * 1024 * 1024); // 10MB files
+
+    // 5. Cellular Manager
+    cellularManager_ = std::make_unique<CellularManager>(
+        Config::Pins::CELL_RXD,
+        Config::Pins::CELL_TXD,
+        Config::Pins::CELL_NET);
+
+    // Power on cellular modem
+    powerManager_->controlCellularPower(true);
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+
+    if (!cellularManager_->initialize())
+    {
+        LOG_ERROR("[Main] Failed to initialize cellular modem");
+        handleError("Cellular initialization failed");
+    }
+    else
+    {
+        // Configure cellular settings
+        cellularManager_->setHTTPEndpoint(Config::Network::SERVER_URL);
+        cellularManager_->configureAPN(Config::Network::APN);
+        cellularManager_->setMaxRetries(Config::Network::MAX_RETRY_COUNT);
+        cellularManager_->setCommandTimeout(Config::Network::HTTP_TIMEOUT_MS);
+    }
+
+    LOG_INFO("[Main] Hardware initialization complete");
+    return true;
+}
+
+bool ForestryResearchApp::initializeScanners()
+{
+    LOG_INFO("[Main] Initializing scanners...");
+
+    // Initialize WiFi scanner
+    wifiScanner_ = std::make_unique<WiFiScanner>();
+    if (!wifiScanner_->initialize())
+    {
+        LOG_ERROR("[Main] Failed to initialize WiFi scanner");
+        return false;
+    }
+
+    // Configure WiFi scanner
+    dynamic_cast<WiFiScanner *>(wifiScanner_.get())->setChannelScanTime(Config::Scanner::WIFI_CHANNEL_SCAN_MS);
+    dynamic_cast<WiFiScanner *>(wifiScanner_.get())->setMinRSSI(Config::Scanner::MIN_RSSI_DBM);
+
+    // Initialize BLE scanner
+    bleScanner_ = std::make_unique<BLEScanner>();
+    if (!bleScanner_->initialize())
+    {
+        LOG_ERROR("[Main] Failed to initialize BLE scanner");
+        return false;
+    }
+
+    // Configure BLE scanner
+    dynamic_cast<BLEScanner *>(bleScanner_.get())->setScanInterval(Config::Scanner::BLE_SCAN_INTERVAL_MS);
+    dynamic_cast<BLEScanner *>(bleScanner_.get())->setScanWindow(Config::Scanner::BLE_SCAN_WINDOW_MS);
+    dynamic_cast<BLEScanner *>(bleScanner_.get())->setMinRSSI(Config::Scanner::MIN_RSSI_DBM);
+
+    LOG_INFO("[Main] Scanners initialized successfully");
+    return true;
+}
+
+void ForestryResearchApp::run()
+{
+    LOG_INFO("[Main] Starting main application loop");
+    running_ = true;
+
+    // Main state machine loop
+    while (running_ && !emergencyStop_)
+    {
+        try
+        {
+            // Check battery status first
+            if (batteryMonitor_ && batteryMonitor_->isConnected())
+            {
+                BatteryStatus batteryStatus = batteryMonitor_->getBatteryStatus();
+
+                // Check critical battery conditions
+                if (batteryStatus.is_critical)
+                {
+                    LOG_CRITICAL("[Main] Critical battery condition detected!");
+                    handleError("Critical battery: " + batteryStatus.last_error);
+                    emergencyStop_ = true;
+                    continue;
+                }
+
+                // Apply power management policies
+                if (powerManager_)
+                {
+                    powerManager_->checkBatteryLevel(batteryStatus.soc_percent);
+                }
+            }
+
+            // State machine
+            switch (currentState_)
+            {
+            case SystemState::FIRST_BOOT:
+                handleFirstBoot();
+                break;
+
+            case SystemState::NORMAL_OPERATION:
+                handleNormalOperation();
+                break;
+
+            case SystemState::SLEEP_MODE:
+                handleSleepMode();
+                break;
+
+            case SystemState::ERROR_STATE:
+                handleErrorState();
+                break;
+
+            case SystemState::EMERGENCY_SHUTDOWN:
+                handleEmergencyShutdown();
+                break;
+            }
+
+            // Small delay to prevent tight looping
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+        catch (const std::exception &e)
+        {
+            LOG_ERROR("[Main] Exception in main loop: " + std::string(e.what()));
+            handleError("Main loop exception");
+        }
+    }
+
+    LOG_INFO("[Main] Main loop ended");
+}
+
+void ForestryResearchApp::handleFirstBoot()
+{
+    LOG_INFO("[Main] Handling first boot sequence");
+
+    // Try to get network time
+    if (cellularManager_ && !cellularManager_->isConnected())
+    {
+        LOG_INFO("[Main] Attempting to connect for time sync...");
+        if (cellularManager_->connect())
+        {
+            std::string networkTime = cellularManager_->getNetworkTime();
+            if (!networkTime.empty() && timeManager_)
+            {
+                LOG_INFO("[Main] Got network time: " + networkTime);
+                if (timeManager_->setTimeFromNetwork(networkTime))
+                {
+                    LOG_INFO("[Main] Time synchronized successfully");
+                    updateSystemState(SystemState::NORMAL_OPERATION);
+                }
+            }
+
+            // Disconnect to save power
+            cellularManager_->disconnect();
+        }
+    }
+
+    // If time sync failed, proceed with scanning anyway
+    if (currentState_ == SystemState::FIRST_BOOT)
+    {
+        LOG_WARNING("[Main] Proceeding without valid time");
+        updateSystemState(SystemState::NORMAL_OPERATION);
+    }
+}
+
+void ForestryResearchApp::handleNormalOperation()
+{
+    static auto lastUploadTime = std::chrono::steady_clock::now();
+
+    // Perform scanning
+    if (!performScanning())
+    {
+        LOG_ERROR("[Main] Scanning failed");
+        handleError("Scanning failure");
+        return;
+    }
+
+    // Process and store data
+    if (!processAndStoreData())
+    {
+        LOG_ERROR("[Main] Data processing failed");
+        handleError("Data processing failure");
+        return;
+    }
+
+    // Check if it's time to upload
+    auto now = std::chrono::steady_clock::now();
+    auto timeSinceUpload = std::chrono::duration_cast<std::chrono::milliseconds>(
+                               now - lastUploadTime)
+                               .count();
+
+    if (timeSinceUpload >= Config::Timing::UPLOAD_INTERVAL_MS)
+    {
+        LOG_INFO("[Main] Upload interval reached, attempting data upload");
+        if (uploadDataIfNeeded())
+        {
+            lastUploadTime = now;
+        }
+    }
+
+    // Enter sleep mode
+    enterSleepMode();
+}
+
+void ForestryResearchApp::handleSleepMode()
+{
+    // Sleep is handled by enterSleepMode()
+    // When we wake up, transition back to normal operation
+    updateSystemState(SystemState::NORMAL_OPERATION);
+}
+
+void ForestryResearchApp::handleErrorState()
+{
+    static int errorCount = 0;
+    errorCount++;
+
+    LOG_WARNING("[Main] In error state, attempt " + std::to_string(errorCount));
+
+    if (errorCount > 5)
+    {
+        LOG_ERROR("[Main] Too many errors, entering emergency shutdown");
+        updateSystemState(SystemState::EMERGENCY_SHUTDOWN);
+        return;
+    }
+
+    // Try to recover
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+
+    // Attempt to reinitialize failed components
+    if (!sdCardManager_ || !sdCardManager_->performHealthCheck())
+    {
+        LOG_INFO("[Main] Attempting SD card recovery");
+        sdCardManager_->attemptErrorRecovery();
+    }
+
+    if (cellularManager_ && !cellularManager_->performHealthCheck())
+    {
+        LOG_INFO("[Main] Attempting cellular recovery");
+        cellularManager_->resetModule(false);
+    }
+
+    // Try to return to normal operation
+    updateSystemState(SystemState::NORMAL_OPERATION);
+}
+
+void ForestryResearchApp::handleEmergencyShutdown()
+{
+    LOG_CRITICAL("[Main] EMERGENCY SHUTDOWN INITIATED");
+
+    // Save any critical data
+    AssetInfo asset = gatherAssetInfo();
+    asset.timeStamp = timeManager_ ? timeManager_->getCurrentDateTime() : getCurrentTimestamp();
+
+    if (sdCardManager_)
+    {
+        sdCardManager_->writeAssetData(asset);
+    }
+
+    // Shutdown all components
+    shutdown();
+
+    // Enter deep sleep indefinitely
+    if (powerManager_)
+    {
+        powerManager_->shutdown(true);
+    }
+
+    running_ = false;
+}
+
+bool ForestryResearchApp::performScanning()
+{
+    LOG_INFO("[Main] Starting scan cycle");
+
+    bool wifiSuccess = false;
+    bool bleSuccess = false;
+
+    // WiFi Scanning
+    LOG_INFO("[Main] Starting WiFi scan...");
+    updateSystemState(SystemState::SCANNING_WIFI);
+
+    if (wifiScanner_ && wifiScanner_->startScan())
+    {
+        // Wait for WiFi scan to complete
+        std::this_thread::sleep_for(std::chrono::milliseconds(Config::WIFI_SCAN_TIME_MS));
+
+        if (wifiScanner_->stopScan())
+        {
+            auto wifiResults = wifiScanner_->getResults();
+            LOG_INFO("[Main] WiFi scan complete, found " +
+                     std::to_string(wifiResults.size()) + " devices");
+            wifiSuccess = true;
+        }
+    }
+
+    // BLE Scanning
+    LOG_INFO("[Main] Starting BLE scan...");
+    updateSystemState(SystemState::SCANNING_BLE);
+
+    if (bleScanner_ && bleScanner_->startScan())
+    {
+        // Wait for BLE scan to complete
+        std::this_thread::sleep_for(std::chrono::milliseconds(Config::BLE_SCAN_TIME_MS * 1000));
+
+        if (bleScanner_->stopScan())
+        {
+            auto bleResults = bleScanner_->getResults();
+            LOG_INFO("[Main] BLE scan complete, found " +
+                     std::to_string(bleResults.size()) + " devices");
+            bleSuccess = true;
+        }
+    }
+
+    return wifiSuccess || bleSuccess;
+}
+
+bool ForestryResearchApp::processAndStoreData()
+{
+    LOG_INFO("[Main] Processing and storing scan data");
+    updateSystemState(SystemState::PROCESSING_DATA);
+
+    std::string timestamp = timeManager_ ? timeManager_->getCurrentDateTime() : getCurrentTimestamp();
+
+    // Generate filename based on date
+    std::string dateStr = timestamp.substr(0, 10); // YYYY-MM-DD
+    std::replace(dateStr.begin(), dateStr.end(), '-', '_');
+
+    std::string wifiFilename = "wifi_" + dateStr + ".csv";
+    std::string bleFilename = "ble_" + dateStr + ".csv";
+
+    bool success = true;
+
+    // Process WiFi results
+    if (wifiScanner_)
+    {
+        auto wifiResults = wifiScanner_->getResults();
+        LOG_DEBUG("[Main] Processing " + std::to_string(wifiResults.size()) + " WiFi results");
+
+        for (const auto &result : wifiResults)
+        {
+            ProbeRequest probe;
+            probe.dataType = result.device_type;
+            probe.timestamp = timestamp;
+            probe.source = Config::DEVICE_ID;
+            probe.rssi = result.rssi;
+            probe.packetLength = 0; // Not tracked for passive scan
+            probe.macAddress = result.mac_address;
+            probe.payload = result.ssid;
+
+            if (!sdCardManager_->writeData(probe, wifiFilename))
+            {
+                LOG_ERROR("[Main] Failed to write WiFi data");
+                success = false;
+            }
+        }
+
+        // Clear results to free memory
+        wifiScanner_->cleanup();
+    }
+
+    // Process BLE results
+    if (bleScanner_)
+    {
+        auto bleResults = bleScanner_->getResults();
+        LOG_DEBUG("[Main] Processing " + std::to_string(bleResults.size()) + " BLE results");
+
+        for (const auto &result : bleResults)
+        {
+            ProbeRequest probe;
+            probe.dataType = result.device_type;
+            probe.timestamp = timestamp;
+            probe.source = Config::DEVICE_ID;
+            probe.rssi = result.rssi;
+            probe.packetLength = 0;
+            probe.macAddress = result.mac_address;
+            probe.payload = result.additional_data; // Contains device name/services
+
+            if (!sdCardManager_->writeData(probe, bleFilename))
+            {
+                LOG_ERROR("[Main] Failed to write BLE data");
+                success = false;
+            }
+        }
+
+        // Clear results
+        bleScanner_->cleanup();
+    }
+
+    // Write asset information
+    AssetInfo asset = gatherAssetInfo();
+    asset.timeStamp = timestamp;
+
+    if (!sdCardManager_->writeAssetData(asset))
+    {
+        LOG_ERROR("[Main] Failed to write asset data");
+        success = false;
+    }
+
+    return success;
+}
+
+bool ForestryResearchApp::uploadDataIfNeeded()
+{
+    LOG_INFO("[Main] Checking for data upload");
+    updateSystemState(SystemState::UPLOADING_DATA);
+
+    if (!cellularManager_ || !sdCardManager_)
+    {
+        LOG_ERROR("[Main] Required components not available for upload");
+        return false;
+    }
+
+    // Check for data files
+    auto dataFiles = sdCardManager_->listFiles("data", false);
+    if (dataFiles.empty())
+    {
+        LOG_INFO("[Main] No data files to upload");
+        return true;
+    }
+
+    // Power on cellular if needed
+    if (!cellularManager_->isConnected())
+    {
+        powerManager_->controlCellularPower(true);
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+
+        if (!cellularManager_->connect())
+        {
+            LOG_ERROR("[Main] Failed to connect to cellular network");
+            return false;
+        }
+    }
+
+    bool uploadSuccess = true;
+
+    // Upload each file
+    for (const auto &filename : dataFiles)
+    {
+        // Skip non-CSV files
+        if (filename.find(".csv") == std::string::npos)
+        {
+            continue;
+        }
+
+        LOG_INFO("[Main] Uploading file: " + filename);
+
+        // Read file data
+        auto lines = sdCardManager_->readFile(filename);
+        if (lines.empty())
+        {
+            continue;
+        }
+
+        // Create JSON payload
+        AssetInfo asset = gatherAssetInfo();
+        asset.timeStamp = timeManager_ ? timeManager_->getCurrentDateTime() : getCurrentTimestamp();
+
+        std::string jsonPayload = cellularManager_->createJSONPayload(asset, lines);
+
+        // Send data
+        if (cellularManager_->sendData(jsonPayload))
+        {
+            LOG_INFO("[Main] File uploaded successfully: " + filename);
+
+            // Delete uploaded file to save space
+            sdCardManager_->deleteFile(filename);
+        }
+        else
+        {
+            LOG_ERROR("[Main] Failed to upload file: " + filename);
+            uploadSuccess = false;
+        }
+
+        // Small delay between uploads
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+    }
+
+    // Sync time while connected
+    std::string networkTime = cellularManager_->getNetworkTime();
+    if (!networkTime.empty() && timeManager_)
+    {
+        LOG_INFO("[Main] Syncing time: " + networkTime);
+        timeManager_->setTimeFromNetwork(networkTime);
+    }
+
+    // Disconnect to save power
+    cellularManager_->disconnect();
+    powerManager_->setCellularSleepMode(true);
+
+    return uploadSuccess;
+}
+
+void ForestryResearchApp::enterSleepMode()
+{
+    LOG_INFO("[Main] Preparing to enter sleep mode");
+    updateSystemState(SystemState::SLEEP_MODE);
+
+    // Calculate sleep duration based on time of day
+    uint64_t sleepDurationUs = Config::Timing::SLEEP_DURATION_MS * 1000ULL; // Default
+
+    if (timeManager_)
+    {
+        std::string currentTime = timeManager_->getCurrentDateTime();
+        sleepDurationUs = timeManager_->getNightSleepDuration(currentTime);
+    }
+
+    uint32_t sleepMinutes = sleepDurationUs / (60 * 1000000ULL);
+    LOG_INFO("[Main] Entering sleep for " + std::to_string(sleepMinutes) + " minutes");
+
+    // Disable peripherals to save power
+    if (powerManager_)
+    {
+        powerManager_->disablePeripherals();
+    }
+
+    // Clean up scanners
+    if (wifiScanner_)
+    {
+        wifiScanner_->cleanup();
+    }
+    if (bleScanner_)
+    {
+        bleScanner_->cleanup();
+    }
+
+    // Enter deep sleep
+    if (powerManager_)
+    {
+        powerManager_->enterSleep(sleepDurationUs);
+    }
+    else
+    {
+        // Fallback sleep
+        std::this_thread::sleep_for(std::chrono::microseconds(sleepDurationUs));
+    }
+
+    // After waking up
+    LOG_INFO("[Main] Woke from sleep");
+
+    // Re-enable peripherals
+    if (powerManager_)
+    {
+        powerManager_->enablePeripherals();
+
+        // Log wakeup cause
+        WakeupCause cause = powerManager_->getWakeupCause();
+        LOG_INFO("[Main] Wakeup cause: " + PowerManager::wakeupCauseToString(cause));
+    }
+
+    // Reinitialize scanners
+    initializeScanners();
+}
+
+void ForestryResearchApp::shutdown()
+{
+    LOG_INFO("[Main] Shutting down application");
+    running_ = false;
+
+    // Save final asset data
+    AssetInfo asset = gatherAssetInfo();
+    asset.timeStamp = timeManager_ ? timeManager_->getCurrentDateTime() : getCurrentTimestamp();
+
+    if (sdCardManager_)
+    {
+        sdCardManager_->writeAssetData(asset);
+    }
+
+    // Cleanup components in reverse order
+    if (cellularManager_)
+    {
+        cellularManager_->disconnect();
+    }
+
+    if (bleScanner_)
+    {
+        bleScanner_->cleanup();
+    }
+
+    if (wifiScanner_)
+    {
+        wifiScanner_->cleanup();
+    }
+
+    if (sdCardManager_)
+    {
+        sdCardManager_->unmount();
+    }
+
+    if (batteryMonitor_)
+    {
+        batteryMonitor_->cleanup();
+    }
+
+    if (timeManager_)
+    {
+        timeManager_->cleanup();
+    }
+
+    if (powerManager_)
+    {
+        powerManager_->disablePeripherals();
+    }
+
+    LOG_INFO("[Main] Shutdown complete");
+}
+
+void ForestryResearchApp::handleError(const std::string &error)
+{
+    LOG_ERROR("[Main] Error occurred: " + error);
+
+    static int consecutiveErrors = 0;
+    consecutiveErrors++;
+
+    if (consecutiveErrors > 3)
+    {
+        LOG_ERROR("[Main] Too many consecutive errors");
+        updateSystemState(SystemState::ERROR_STATE);
+    }
+}
+
+void ForestryResearchApp::updateSystemState(SystemState newState)
+{
+    if (currentState_ != newState)
+    {
+        LOG_INFO("[Main] State transition: " +
+                 std::to_string(static_cast<int>(currentState_)) + " -> " +
+                 std::to_string(static_cast<int>(newState)));
+        currentState_ = newState;
+    }
+}
+
+AssetInfo ForestryResearchApp::gatherAssetInfo()
+{
+    AssetInfo asset;
+
+    // Static configuration
+    asset.assetId = Config::ASSET_ID;
+    asset.locationName = Config::LOCATION;
+    asset.forestName = Config::FOREST_NAME;
+    asset.latitude = std::to_string(Config::LATITUDE);
+    asset.longitude = std::to_string(Config::LONGITUDE);
+
+    // Battery information
+    if (batteryMonitor_ && batteryMonitor_->isConnected())
+    {
+        BatteryStatus battery = batteryMonitor_->getBatteryStatus();
+        asset.remainingBatteryCapacity = battery.current; // mAh
+        asset.stateOfCharge = battery.soc_percent;
+        asset.stateOfHealth = battery.health_percent;
+        asset.runtimeToEmpty = battery.time_to_empty_minutes;
+        asset.cycleCount = battery.cycle_count;
+        asset.batteryVoltage = battery.voltage;
+        asset.batteryCurrent = battery.current;
+        asset.cellTemperature = battery.temperature;
+        asset.pcbTemperature = battery.temperature; // Same sensor
+    }
+
+    // SD card capacity
+    if (sdCardManager_)
+    {
+        asset.sdCardCapacity = sdCardManager_->getRemainingCapacityPercent();
+    }
+
+    return asset;
+}
+
+void ForestryResearchApp::logSystemInfo()
+{
+    LOG_INFO("=== System Information ===");
+
+    // Power statistics
+    if (powerManager_)
+    {
+        PowerStats stats = powerManager_->getPowerStats();
+        LOG_INFO("Power - Uptime: " + std::to_string(powerManager_->getUptimeMs() / 1000) + "s");
+        LOG_INFO("Power - Sleep cycles: " + std::to_string(stats.sleepCycles));
+        LOG_INFO("Power - Duty cycle: " + std::to_string(stats.dutyCycle) + "%");
+        LOG_INFO("Power - Free heap: " + std::to_string(powerManager_->getFreeHeap()) + " bytes");
+    }
+
+    // Battery status
+    if (batteryMonitor_ && batteryMonitor_->isConnected())
+    {
+        BatteryStatus battery = batteryMonitor_->getBatteryStatus();
+        LOG_INFO("Battery - Voltage: " + std::to_string(battery.voltage) + "V");
+        LOG_INFO("Battery - SoC: " + std::to_string(battery.soc_percent) + "%");
+        LOG_INFO("Battery - Temperature: " + std::to_string(battery.temperature) + "°C");
+    }
+
+    // SD card status
+    if (sdCardManager_)
+    {
+        SDCardInfo cardInfo = sdCardManager_->getCardInfo();
+        LOG_INFO("SD Card - Type: " + cardInfo.cardType);
+        LOG_INFO("SD Card - Total: " + std::to_string(cardInfo.totalSpace / (1024 * 1024)) + " MB");
+        LOG_INFO("SD Card - Free: " + std::to_string(cardInfo.availableSpace / (1024 * 1024)) + " MB");
+    }
+
+    // Cellular status
+    if (cellularManager_)
+    {
+        SIMInfo simInfo = cellularManager_->getSIMInfo();
+        if (!simInfo.imei.empty())
+        {
+            LOG_INFO("Cellular - IMEI: " + simInfo.imei);
+            LOG_INFO("Cellular - Operator: " + simInfo.operatorName);
+        }
+    }
+
+    LOG_INFO("=========================");
+}
+
+// Main entry point
+#ifdef ESP32_PLATFORM
+void setup()
+{
+    // Initialize serial for debugging
+    Serial.begin(115200);
+    while (!Serial)
+    {
+        delay(10);
+    }
+
+    // Initialize global logger
+    g_logger = std::make_shared<Logger>();
+    LoggerConfig config;
+    config.consoleEnabled = true;
+    config.fileEnabled = true;
+    config.consoleLevel = LogLevel::DEBUG;
+    config.fileLevel = LogLevel::INFO;
+    config.maxFileSize = 1024 * 1024; // 1MB log files
+    config.maxBackupFiles = 5;
+    config.componentFilter = ""; // Log all components
+
+    if (!g_logger->initialize(config))
+    {
+        Serial.println("Failed to initialize logger!");
+    }
+
+    // Create and initialize application
+    ForestryResearchApp app;
+    if (!app.initialize())
+    {
+        LOG_ERROR("Application initialization failed!");
+        esp_restart();
+    }
+
+    // Run application
+    app.run();
+}
+
+void loop()
+{
+    // Not used - everything happens in setup()
+    delay(1000);
+}
+
+#else
+// Standard C++ entry point for development
+int main()
+{
+    // Initialize global logger
+    g_logger = std::make_shared<Logger>();
+    LoggerConfig config;
+    config.consoleEnabled = true;
+    config.fileEnabled = true;
+    config.consoleLevel = LogLevel::DEBUG;
+    config.fileLevel = LogLevel::INFO;
+    config.maxFileSize = 1024 * 1024;
+    config.maxBackupFiles = 5;
+
+    if (!g_logger->initialize(config))
+    {
+        std::cerr << "Failed to initialize logger!" << std::endl;
+        return 1;
+    }
+
+    // Create and initialize application
+    ForestryResearchApp app;
+    if (!app.initialize())
+    {
+        LOG_ERROR("Application initialization failed!");
+        return 1;
+    }
+
+    // Run application
+    app.run();
+
+    return 0;
+}
+#endif

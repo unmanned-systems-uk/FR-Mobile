@@ -1,0 +1,857 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/src/main.cpp@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}interfaces.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}data\_managers.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{wifi__scanner_8h}{wifi\_scanner.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ble__scanner_8h}{ble\_scanner.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{battery__monitor_8h}{battery\_monitor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}\mbox{\hyperlink{class_forestry_research_device}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_forestry_research_device_a7fdff768f45c5c91494365c5c27cc260}{ForestryResearchDevice}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a7fdff768f45c5c91494365c5c27cc260}{ForestryResearchDevice}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a4aa3a66a0510ad1fdf40d4491e6bd872}{\string~ForestryResearchDevice}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Main\ application\ lifecycle}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_forestry_research_device_ad32cb29c1cb85192dfbec5a6f4c897af}{initialize}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_forestry_research_device_a6341ce26a448f3cfdafa7a72a2fd5e60}{run}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_forestry_research_device_afa7264ec428eb1d5926aadf9b45d4d1b}{shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ State\ management}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}\mbox{\hyperlink{class_forestry_research_device_aa00a6213eaff04ddf72da36ea813724b}{00023}}\ \ \ \ \ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{SystemState}}\ \mbox{\hyperlink{class_forestry_research_device_aa00a6213eaff04ddf72da36ea813724b}{getCurrentState}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ currentState\_;\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}\mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{00024}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{setState}}(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{SystemState}}\ state)\ \{\ currentState\_\ =\ state;\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ Component\ interfaces}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028\ \ \ \ \ std::shared\_ptr<SDCardManager>\ storage\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029\ \ \ \ \ std::shared\_ptr<CellularManager>\ cellular\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030\ \ \ \ \ std::shared\_ptr<RTCTimeManager>\ timeManager\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031\ \ \ \ \ std::shared\_ptr<PowerManager>\ powerManager\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032\ \ \ \ \ std::shared\_ptr<WiFiScanner>\ wifiScanner\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033\ \ \ \ \ std::shared\_ptr<BLEScanner>\ bleScanner\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034\ \ \ \ \ std::shared\_ptr<BQ34z100BatteryMonitor>\ batteryMonitor\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ State\ variables}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037\ \ \ \ \ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{SystemState}}\ currentState\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038\ \ \ \ \ std::atomic<bool>\ running\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ firstTimeBoot\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040\ \ \ \ \ std::string\ currentFilename\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{struct\ }DeviceConfig}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ scanIntervalMs\ =\ \mbox{\hyperlink{namespace_config_a7b56a950f6ecd80f4805d0b973e08cac}{Config::SCAN\_INTERVAL\_MS}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ lteTimeMinutes\ =\ \mbox{\hyperlink{namespace_config_aef4c34c29136f6b01af094ebb1f9a9c3}{Config::LTE\_TIME\_MINUTES}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ nightSleepEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ debugMode\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049\ \ \ \ \ \}\ config\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Main\ workflow\ methods}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ performFirstBoot();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ performNormalOperation();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{void}\ performScanning();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ shouldUploadData();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ uploadDataToServer();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057\ \ \ \ \ \textcolor{keywordtype}{void}\ enterSleepMode();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Data\ management}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{void}\ updateFilename();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{bool}\ isTimeDifferenceGreaterThan(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keywordtype}{int}\ minutes);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{void}\ saveAssetData();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Network\ operations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{bool}\ setupNetworkTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{bool}\ checkNightTimeMode();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ System\ health}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ performSystemHealthCheck();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{void}\ handleError(\textcolor{keyword}{const}\ std::string\ \&error);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Utility\ methods}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073\ \ \ \ \ std::string\ generateFilename();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{void}\ logSystemInfo();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}\ analyzeWakeupCause();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076\ \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078\ \textcolor{comment}{//\ Implementation}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}\mbox{\hyperlink{class_forestry_research_device_a7fdff768f45c5c91494365c5c27cc260}{00079}}\ \mbox{\hyperlink{class_forestry_research_device_a7fdff768f45c5c91494365c5c27cc260}{ForestryResearchDevice::ForestryResearchDevice}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080\ \ \ \ \ :\ currentState\_(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75}{SystemState}}::\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a928107a5679ed3e1be104d5de63adb32}{FIRST\_BOOT}}),\ running\_(\mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}),\ firstTimeBoot\_(true)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}\mbox{\hyperlink{class_forestry_research_device_a4aa3a66a0510ad1fdf40d4491e6bd872}{00084}}\ \mbox{\hyperlink{class_forestry_research_device_a4aa3a66a0510ad1fdf40d4491e6bd872}{ForestryResearchDevice::\string~ForestryResearchDevice}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_afa7264ec428eb1d5926aadf9b45d4d1b}{shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}\mbox{\hyperlink{class_forestry_research_device_ad32cb29c1cb85192dfbec5a6f4c897af}{00089}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_forestry_research_device_ad32cb29c1cb85192dfbec5a6f4c897af}{ForestryResearchDevice::initialize}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}===\ Forestry\ Research\ Device\ v3.0\ ===\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Initializing\ system\ components...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ power\ management\ first}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ powerManager\_\ =\ std::make\_shared<PowerManager>();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!powerManager\_-\/>initialize())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ power\ management"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ peripherals}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ powerManager\_-\/>enablePeripherals();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ storage}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ storage\_\ =\ std::make\_shared<SDCardManager>();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!storage\_-\/>initialize())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ SD\ card"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ time\ management}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ timeManager\_\ =\ std::make\_shared<RTCTimeManager>();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!timeManager\_-\/>initialize())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ RTC"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ battery\ monitor}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ batteryMonitor\_\ =\ std::make\_shared<BQ34z100BatteryMonitor>();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!batteryMonitor\_-\/>initialize())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ battery\ monitor"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ scanners}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ wifiScanner\_\ =\ std::make\_shared<WiFiScanner>(storage\_,\ timeManager\_);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!wifiScanner\_-\/>initialize())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ WiFi\ scanner\ initialization\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ bleScanner\_\ =\ std::make\_shared<BLEScanner>(storage\_,\ timeManager\_);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!bleScanner\_-\/>initialize())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ BLE\ scanner\ initialization\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ cellular\ (will\ be\ connected\ when\ needed)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ cellular\_\ =\ std::make\_shared<CellularManager>();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Determine\ boot\ state}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{WakeupCause}}\ wakeupCause\ =\ powerManager\_-\/>getWakeupCause();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wakeupCause\ ==\ \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44ab127d163c55a6603f3a37ce3a642c36d}{WakeupCause::TIMER}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ firstTimeBoot\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ currentState\_\ =\ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}{SystemState::NORMAL\_OPERATION}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}System\ initialization\ completed\ successfully\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ logSystemInfo();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}System\ health\ check\ error:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167\ \textcolor{keywordtype}{void}\ ForestryResearchDevice::handleError(\textcolor{keyword}{const}\ std::string\ \&error)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169\ \ \ \ \ printf(\textcolor{stringliteral}{"{}ERROR:\ \%s\(\backslash\)n"{}},\ error.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ Log\ error\ to\ file\ if\ possible}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{if}\ (storage\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ std::string\ errorMsg\ =\ timeManager\_-\/>getCurrentDateTime()\ +\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ +\ error\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Could\ implement\ error\ logging\ here}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178\ \ \ \ \ \textcolor{comment}{//\ For\ critical\ errors,\ enter\ emergency\ sleep}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{if}\ (error.find(\textcolor{stringliteral}{"{}battery"{}})\ !=\ std::string::npos\ ||}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ error.find(\textcolor{stringliteral}{"{}critical"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Critical\ error\ detected,\ entering\ emergency\ sleep\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (powerManager\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ powerManager\_-\/>disablePeripherals();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ powerManager\_-\/>enterSleep(3600000000ULL);\ \textcolor{comment}{//\ 1\ hour}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00188}00188\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00189}00189\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00191}00191\ \textcolor{keywordtype}{void}\ ForestryResearchDevice::updateFilename()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00192}00192\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00193}00193\ \ \ \ \ std::string\ timestamp\ =\ timeManager\_-\/>getCurrentDateTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00194}00194\ \ \ \ \ currentFilename\_\ =\ \textcolor{stringliteral}{"{}/data\_"{}}\ +\ timestamp\ +\ \textcolor{stringliteral}{"{}.csv"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00196}00196\ \ \ \ \ \textcolor{comment}{//\ Replace\ colons\ with\ underscores\ for\ filesystem\ compatibility}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00197}00197\ \ \ \ \ std::replace(currentFilename\_.begin(),\ currentFilename\_.end(),\ \textcolor{charliteral}{':'},\ \textcolor{charliteral}{'\_'});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00199}00199\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ file\ with\ header\ if\ it\ doesn't\ exist}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{if}\ (!storage\_-\/>fileExists(currentFilename\_))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00201}00201\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ fullPath\ =\ currentFilename\_;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ std::ofstream\ file(fullPath);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file\ <<\ \textcolor{stringliteral}{"{}dataType,timestamp,source,rssi,packetLength,macAddress,payload\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Created\ new\ data\ file:\ \%s\(\backslash\)n"{}},\ currentFilename\_.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ create\ data\ file:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00217}00217\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00218}00218\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00220}00220\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::isTimeDifferenceGreaterThan(\textcolor{keyword}{const}\ std::string\ \&filename,\ \textcolor{keywordtype}{int}\ minutes)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00221}00221\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00222}00222\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00223}00223\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ timestamp\ from\ filename}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ start\ =\ filename.find\_last\_of(\textcolor{charliteral}{'\_'})\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ end\ =\ filename.find\_last\_of(\textcolor{charliteral}{'.'});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ ==\ std::string::npos\ ||\ end\ ==\ std::string::npos)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Invalid\ filename,\ assume\ we\ need\ to\ upload}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ std::string\ fileTimeStr\ =\ filename.substr(start,\ end\ -\/\ start);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ std::replace(fileTimeStr.begin(),\ fileTimeStr.end(),\ \textcolor{charliteral}{'\_'},\ \textcolor{charliteral}{':'});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ to\ minutes\ for\ comparison}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ fileTimeMinutes\ =\ \mbox{\hyperlink{class_utils_ad321cbc11973b950294d1e84d3fbbddc}{Utils::convertToTotalMinutes}}(fileTimeStr);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ std::string\ currentTime\ =\ timeManager\_-\/>getCurrentDateTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ currentTimeMinutes\ =\ \mbox{\hyperlink{class_utils_ad321cbc11973b950294d1e84d3fbbddc}{Utils::convertToTotalMinutes}}(currentTime);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ timeDifference\ =\ currentTimeMinutes\ -\/\ fileTimeMinutes;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Time\ difference:\ \%ld\ minutes\ (threshold:\ \%d)\(\backslash\)n"{}},\ timeDifference,\ minutes);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ timeDifference\ >\ minutes;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00246}00246\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00247}00247\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ checking\ time\ difference:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Assume\ we\ need\ to\ upload\ on\ error}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00250}00250\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00251}00251\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00253}00253\ \textcolor{keywordtype}{void}\ ForestryResearchDevice::saveAssetData()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00254}00254\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00256}00256\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ AssetInfo\ asset;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_ad8f370aff00e988b2bcbd91630968032}{assetId}}\ =\ \mbox{\hyperlink{namespace_config_a6b4401a831c6a5f1f899992b0c1d3318}{Config::ASSET\_ID}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a90dcde77230007e8a24434981f6205df}{locationName}}\ =\ \mbox{\hyperlink{namespace_config_a2f30de576662546383551a90cc10697c}{Config::LOCATION}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a512807dd9e56b05251dd3033c476ca7b}{forestName}}\ =\ \mbox{\hyperlink{namespace_config_ad58084995cc5ae949043b4d34c84771a}{Config::FOREST\_NAME}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a61a16ec26ee07f387d2216000dc82ecc}{latitude}}\ =\ std::to\_string(\mbox{\hyperlink{namespace_config_af2163c4ce4729a85119e1510258a3b86}{Config::LATITUDE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_aa651e355ea2bf9aafe2c3cecaaa1d676}{longitude}}\ =\ std::to\_string(\mbox{\hyperlink{namespace_config_a9e2b4df07302242c3daea41e355f4ea6}{Config::LONGITUDE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a477182b19d849671e3553cb719138390}{timeStamp}}\ =\ timeManager\_-\/>getCurrentDateTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ battery\ data}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ batteryStatus\ =\ batteryMonitor\_-\/>readBatteryStatus();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a910515ab1f65d2b4ab3e34e672979873}{remainingBatteryCapacity}}\ =\ batteryStatus.remainingCapacity;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a0e69691ce694d753642c3d407867f408}{stateOfCharge}}\ =\ batteryStatus.stateOfCharge;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a3be297c6a57659e97d0043f884dd7f1a}{stateOfHealth}}\ =\ batteryStatus.stateOfHealth;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a044f9f51496440a60ba73f073b9bbfe8}{runtimeToEmpty}}\ =\ batteryStatus.averageTimeToEmpty;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a6efdf7d6ed16ee28b67416e25cfd4a9d}{cycleCount}}\ =\ batteryStatus.cycleCount;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a1d0f7a9ae0721d3c0d56e02a725b53af}{batteryVoltage}}\ =\ batteryStatus.voltage;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a2246b2abf9c27254bdfb2cb30a379261}{batteryCurrent}}\ =\ batteryStatus.current;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_afcb5a79d5adeab55106380d7808638a2}{cellTemperature}}\ =\ batteryStatus.cellTemperature;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_aaa9443c3717bb66f6b7bfb60e1ddac9e}{pcbTemperature}}\ =\ batteryStatus.boardTemperature;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ SD\ card\ capacity}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ asset.\mbox{\hyperlink{struct_asset_info_a08dcdd2cc0eedd02c118f6de0b21a363}{sdCardCapacity}}\ =\ storage\_-\/>getRemainingCapacityPercent();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ to\ storage}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ storage\_-\/>writeAssetData(asset);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Asset\ data\ saved\ successfully\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00286}00286\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ save\ asset\ data:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00288}00288\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00289}00289\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00291}00291\ \textcolor{keywordtype}{void}\ ForestryResearchDevice::logSystemInfo()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00292}00292\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00293}00293\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n===\ SYSTEM\ INFORMATION\ ===\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00294}00294\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Device\ ID:\ \%s\(\backslash\)n"{}},\ \mbox{\hyperlink{namespace_config_a4f6ee86837579d4892b81c96af4787b3}{Config::DEVICE\_ID}}.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00295}00295\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Location:\ \%s\(\backslash\)n"{}},\ \mbox{\hyperlink{namespace_config_a2f30de576662546383551a90cc10697c}{Config::LOCATION}}.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00296}00296\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Forest:\ \%s\(\backslash\)n"{}},\ \mbox{\hyperlink{namespace_config_ad58084995cc5ae949043b4d34c84771a}{Config::FOREST\_NAME}}.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00297}00297\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Coordinates:\ \%.2f,\ \%.2f\(\backslash\)n"{}},\ \mbox{\hyperlink{namespace_config_af2163c4ce4729a85119e1510258a3b86}{Config::LATITUDE}},\ \mbox{\hyperlink{namespace_config_a9e2b4df07302242c3daea41e355f4ea6}{Config::LONGITUDE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00298}00298\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Current\ Time:\ \%s\(\backslash\)n"{}},\ timeManager\_-\/>getCurrentDateTime().c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00299}00299\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Scan\ Interval:\ \%d\ ms\(\backslash\)n"{}},\ config\_.scanIntervalMs);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00300}00300\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Upload\ Interval:\ \%d\ minutes\(\backslash\)n"{}},\ config\_.lteTimeMinutes);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00301}00301\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Night\ Sleep:\ \%s\(\backslash\)n"{}},\ config\_.nightSleepEnabled\ ?\ \textcolor{stringliteral}{"{}Enabled"{}}\ :\ \textcolor{stringliteral}{"{}Disabled"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00302}00302\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Debug\ Mode:\ \%s\(\backslash\)n"{}},\ config\_.debugMode\ ?\ \textcolor{stringliteral}{"{}Enabled"{}}\ :\ \textcolor{stringliteral}{"{}Disabled"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00303}00303\ \ \ \ \ printf(\textcolor{stringliteral}{"{}==========================\(\backslash\)n\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00304}00304\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00306}00306\ \textcolor{comment}{//\ Utility\ Functions\ Implementation}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00307}00307\ \textcolor{keyword}{const}\ std::vector<std::string>\ Utils::IGNORED\_MACS\ =\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00308}00308\ \ \ \ \ \textcolor{stringliteral}{"{}fc:ec:da:1a:f5:0a"{}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00309}00309\ \ \ \ \ \textcolor{stringliteral}{"{}02:ec:da:1a:f5:0a"{}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00310}00310\ \ \ \ \ \textcolor{stringliteral}{"{}06:ec:da:1a:f5:0a"{}}\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00312}\mbox{\hyperlink{class_utils_a801d4f7c8bad7d3b9fdb7e00730dd872}{00312}}\ std::string\ \mbox{\hyperlink{class_utils_a801d4f7c8bad7d3b9fdb7e00730dd872}{Utils::escapeJSONString}}(\textcolor{keyword}{const}\ std::string\ \&input)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00313}00313\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00314}00314\ \ \ \ \ std::string\ output;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00315}00315\ \ \ \ \ output.reserve(input.length()\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00317}00317\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ c\ :\ input)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00318}00318\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (c)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'"{}'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)"{}"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\(\backslash\)b'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)b"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\(\backslash\)f'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)f"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\(\backslash\)n'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\(\backslash\)r'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)r"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'\(\backslash\)t'}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)t"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ <\ 0x20\ ||\ c\ >\ 0x7E)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buf[7];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::snprintf(buf,\ \textcolor{keyword}{sizeof}(buf),\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)u\%04x"{}},\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(c));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ buf;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\ +=\ c;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00355}00355\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00357}00357\ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00358}00358\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00360}\mbox{\hyperlink{class_utils_ad321cbc11973b950294d1e84d3fbbddc}{00360}}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_utils_ad321cbc11973b950294d1e84d3fbbddc}{Utils::convertToTotalMinutes}}(\textcolor{keyword}{const}\ std::string\ \&dateTimeStr)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00361}00361\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00362}00362\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00363}00363\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ year\ =\ std::stoi(dateTimeStr.substr(0,\ 4));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ month\ =\ std::stoi(dateTimeStr.substr(5,\ 2));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ day\ =\ std::stoi(dateTimeStr.substr(8,\ 2));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hour\ =\ std::stoi(dateTimeStr.substr(11,\ 2));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ minute\ =\ std::stoi(dateTimeStr.substr(14,\ 2));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Simplified\ calculation\ (assuming\ 30\ days\ per\ month,\ 365\ days\ per\ year)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ totalMinutes\ =\ minute\ +\ (hour\ *\ 60)\ +\ (day\ *\ 24\ *\ 60)\ +}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (month\ *\ 30\ *\ 24\ *\ 60)\ +\ (year\ *\ 365\ *\ 24\ *\ 60);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ totalMinutes;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00375}00375\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00376}00376\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00377}00377\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ converting\ time\ to\ minutes:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00380}00380\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00381}00381\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00383}\mbox{\hyperlink{class_utils_af27b62495f7352d75165a7d0e823a224}{00383}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utils_af27b62495f7352d75165a7d0e823a224}{Utils::isIgnoredMAC}}(\textcolor{keyword}{const}\ std::string\ \&mac)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00384}00384\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00385}00385\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&ignoredMac\ :\ IGNORED\_MACS)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00386}00386\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mac\ ==\ ignoredMac)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00391}00391\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00392}00392\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00393}00393\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00395}\mbox{\hyperlink{class_utils_a7668acfc071b57a9cc9890e4b980c593}{00395}}\ std::string\ \mbox{\hyperlink{class_utils_a7668acfc071b57a9cc9890e4b980c593}{Utils::getCurrentTimestamp}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00396}00396\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00397}00397\ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00398}00398\ \ \ \ \ \textcolor{keyword}{auto}\ time\_t\ =\ std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00399}00399\ \ \ \ \ \textcolor{keyword}{auto}\ tm\ =\ *std::gmtime(\&time\_t);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00401}00401\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[30];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00402}00402\ \ \ \ \ std::strftime(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%dT\%H\_\%M\_\%SZ"{}},\ \&tm);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00404}00404\ \ \ \ \ \textcolor{keywordflow}{return}\ std::string(buffer);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00405}00405\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00407}\mbox{\hyperlink{class_utils_a4fedecec19cd1e20a69bfeed76e57fc1}{00407}}\ std::vector<std::string>\ \mbox{\hyperlink{class_utils_a4fedecec19cd1e20a69bfeed76e57fc1}{Utils::split}}(\textcolor{keyword}{const}\ std::string\ \&str,\ \textcolor{keywordtype}{char}\ delimiter)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00408}00408\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00409}00409\ \ \ \ \ std::vector<std::string>\ tokens;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00410}00410\ \ \ \ \ std::stringstream\ ss(str);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00411}00411\ \ \ \ \ std::string\ token;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00413}00413\ \ \ \ \ \textcolor{keywordflow}{while}\ (std::getline(ss,\ token,\ delimiter))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00414}00414\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ tokens.push\_back(\mbox{\hyperlink{class_utils_a709fc9d3286a8b90de822055fed9ca88}{trim}}(token));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00416}00416\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00417}00417\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00418}00418\ \ \ \ \ \textcolor{keywordflow}{return}\ tokens;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00419}00419\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00420}00420\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00421}\mbox{\hyperlink{class_utils_a709fc9d3286a8b90de822055fed9ca88}{00421}}\ std::string\ \mbox{\hyperlink{class_utils_a709fc9d3286a8b90de822055fed9ca88}{Utils::trim}}(\textcolor{keyword}{const}\ std::string\ \&str)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00422}00422\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00423}00423\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ start\ =\ str.find\_first\_not\_of(\textcolor{stringliteral}{"{}\ \(\backslash\)t\(\backslash\)r\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00424}00424\ \ \ \ \ \textcolor{keywordflow}{if}\ (start\ ==\ std::string::npos)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00425}00425\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00427}00427\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00429}00429\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ end\ =\ str.find\_last\_not\_of(\textcolor{stringliteral}{"{}\ \(\backslash\)t\(\backslash\)r\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00430}00430\ \ \ \ \ \textcolor{keywordflow}{return}\ str.substr(start,\ end\ -\/\ start\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00431}00431\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00433}00433\ \textcolor{comment}{//\ Main\ entry\ point}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00434}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00434}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00435}00435\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00436}00436\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00437}00437\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00438}00438\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Starting\ Forestry\ Research\ Device...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device}{ForestryResearchDevice}}\ device;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00442}00442\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!device.\mbox{\hyperlink{class_forestry_research_device_ad32cb29c1cb85192dfbec5a6f4c897af}{initialize}}())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ initialize\ device\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ device.\mbox{\hyperlink{class_forestry_research_device_a6341ce26a448f3cfdafa7a72a2fd5e60}{run}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Device\ execution\ completed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00452}00452\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00453}00453\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00454}00454\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Fatal\ error:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00457}00457\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00458}00458\ \})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00459}00459\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00460}00460\ \ \ \ \ handleError(\textcolor{stringliteral}{"{}System\ initialization\ failed:\ "{}}\ +\ std::string(e.what()));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00461}\mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{00461}}\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00462}00462\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00463}00463\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00464}00464\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00465}\mbox{\hyperlink{class_forestry_research_device_a6341ce26a448f3cfdafa7a72a2fd5e60}{00465}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_forestry_research_device_a6341ce26a448f3cfdafa7a72a2fd5e60}{ForestryResearchDevice::run}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00466}00466\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00467}00467\ \ \ \ \ running\_.store(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00469}00469\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00470}00470\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (running\_.load())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ powerManager\_-\/>resetWatchdog();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00474}00474\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (currentState\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a928107a5679ed3e1be104d5de63adb32}{SystemState::FIRST\_BOOT}}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (performFirstBoot())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{setState}}(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}{SystemState::NORMAL\_OPERATION}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{setState}}(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58}{SystemState::ERROR\_STATE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00487}00487\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}{SystemState::NORMAL\_OPERATION}}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (performNormalOperation())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{setState}}(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f}{SystemState::SLEEP\_MODE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{setState}}(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58}{SystemState::ERROR\_STATE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00498}00498\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f}{SystemState::SLEEP\_MODE}}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enterSleepMode();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ After\ wakeup,\ return\ to\ normal\ operation}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{setState}}(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a3a6a384f673fff15d1ee717c24638e4d}{SystemState::NORMAL\_OPERATION}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00504}00504\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a397d3e35d1fdce0886c277e2b6bdee58}{SystemState::ERROR\_STATE}}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}System\ in\ error\ state"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Try\ to\ recover\ by\ going\ to\ sleep}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_forestry_research_device_a3d5befc73ed4969806fd8761e8883449}{setState}}(\mbox{\hyperlink{main_8h_aa51313be2faacb739a18fdeecefbac75a879eed395a93a93e6a1d0954aa86cb6f}{SystemState::SLEEP\_MODE}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00512}00512\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00513}00513\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00514}00514\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}Runtime\ error:\ "{}}\ +\ std::string(e.what()));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00516}00516\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00517}00517\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00519}\mbox{\hyperlink{class_forestry_research_device_afa7264ec428eb1d5926aadf9b45d4d1b}{00519}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_forestry_research_device_afa7264ec428eb1d5926aadf9b45d4d1b}{ForestryResearchDevice::shutdown}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00520}00520\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00521}00521\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Shutting\ down\ system...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00523}00523\ \ \ \ \ running\_.store(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00524}00524\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00525}00525\ \ \ \ \ \textcolor{comment}{//\ Stop\ scanners}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00526}00526\ \ \ \ \ \textcolor{keywordflow}{if}\ (wifiScanner\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00527}00527\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ wifiScanner\_-\/>cleanup();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00529}00529\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00530}00530\ \ \ \ \ \textcolor{keywordflow}{if}\ (bleScanner\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00531}00531\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ bleScanner\_-\/>cleanup();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00533}00533\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00534}00534\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00535}00535\ \ \ \ \ \textcolor{comment}{//\ Disconnect\ cellular}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00536}00536\ \ \ \ \ \textcolor{keywordflow}{if}\ (cellular\_\ \&\&\ cellular\_-\/>isConnected())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00537}00537\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ cellular\_-\/>disconnect();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00539}00539\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00541}00541\ \ \ \ \ \textcolor{comment}{//\ Disable\ peripherals}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00542}00542\ \ \ \ \ \textcolor{keywordflow}{if}\ (powerManager\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00543}00543\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ powerManager\_-\/>disablePeripherals();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00545}00545\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00547}00547\ \ \ \ \ printf(\textcolor{stringliteral}{"{}System\ shutdown\ completed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00548}00548\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00549}00549\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00550}00550\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::performFirstBoot()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00551}00551\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00552}00552\ \ \ \ \ printf(\textcolor{stringliteral}{"{}===\ FIRST\ BOOT\ SEQUENCE\ ===\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00553}00553\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00554}00554\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00555}00555\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ and\ display\ battery\ status}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ batteryStatus\ =\ batteryMonitor\_-\/>readBatteryStatus();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ batteryMonitor\_-\/>printBatteryData(batteryStatus);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00559}00559\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ SD\ card\ capacity}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sdCapacity\ =\ storage\_-\/>getRemainingCapacityPercent();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}SD\ Card\ capacity\ remaining:\ \%.1f\%\%\(\backslash\)n"{}},\ sdCapacity);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Setup\ network\ time}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!setupNetworkTime())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ Failed\ to\ setup\ network\ time\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00569}00569\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ initial\ data\ file}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ updateFilename();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ initial\ data\ collection}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00574}00574\ \ \ \ \ \ \ \ \ performScanning();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00575}00575\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Upload\ initial\ data}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00577}00577\ \ \ \ \ \ \ \ \ saveAssetData();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!uploadDataToServer())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ Failed\ to\ upload\ initial\ data\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00582}00582\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}First\ boot\ sequence\ completed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ firstTimeBoot\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00586}00586\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00587}00587\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00588}00588\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00589}00589\ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}First\ boot\ failed:\ "{}}\ +\ std::string(e.what()));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00591}00591\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00592}00592\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00593}00593\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00594}00594\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::performNormalOperation()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00595}00595\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00596}00596\ \ \ \ \ printf(\textcolor{stringliteral}{"{}===\ NORMAL\ OPERATION\ ===\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00597}00597\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00598}00598\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00599}00599\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ System\ health\ check}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!performSystemHealthCheck())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}System\ health\ check\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00606}00606\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ we\ need\ to\ upload\ data}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (shouldUploadData())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Data\ upload\ required\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00611}00611\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!setupNetworkTime())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ Failed\ to\ update\ network\ time\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ saveAssetData();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00618}00618\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00619}00619\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!uploadDataToServer())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ Failed\ to\ upload\ data\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00623}00623\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ updateFilename();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00625}00625\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ night\ time\ sleep}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (checkNightTimeMode())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Entering\ night\ time\ sleep\ mode\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Will\ enter\ sleep\ mode}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00633}00633\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ scanning\ operations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00635}00635\ \ \ \ \ \ \ \ \ performScanning();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00636}00636\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00637}00637\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00638}00638\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00639}00639\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00640}00640\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00641}00641\ \ \ \ \ \ \ \ \ handleError(\textcolor{stringliteral}{"{}Normal\ operation\ failed:\ "{}}\ +\ std::string(e.what()));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00642}00642\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00643}00643\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00644}00644\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00645}00645\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00646}00646\ \textcolor{keywordtype}{void}\ ForestryResearchDevice::performScanning()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00647}00647\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00648}00648\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Starting\ scanning\ operations...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00649}00649\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00650}00650\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00651}00651\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ WiFi\ scanning}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wifiScanner\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00654}00654\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ wifiScanner\_-\/>startScan();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00657}00657\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ BLE\ scanning}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bleScanner\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ bleScanner\_-\/>startScan();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00662}00662\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00663}00663\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00664}00664\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Wait\ for\ scan\ duration}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00665}00665\ \ \ \ \ \ \ \ \ std::this\_thread::sleep\_for(std::chrono::milliseconds(config\_.scanIntervalMs));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00666}00666\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Stop\ scanning}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00668}00668\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wifiScanner\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ wifiScanner\_-\/>stopScan();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ wifiResults\ =\ wifiScanner\_-\/>getResults();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}WiFi\ scan\ found\ \%zu\ devices\(\backslash\)n"{}},\ wifiResults.size());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00674}00674\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bleScanner\_)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ bleScanner\_-\/>stopScan();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ bleResults\ =\ bleScanner\_-\/>getResults();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}BLE\ scan\ found\ \%zu\ devices\(\backslash\)n"{}},\ bleResults.size());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00680}00680\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00681}00681\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00682}00682\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Scanning\ completed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00683}00683\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00684}00684\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00685}00685\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00686}00686\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Scanning\ error:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00687}00687\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00688}00688\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00689}00689\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00690}00690\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::shouldUploadData()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00691}00691\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00692}00692\ \ \ \ \ \textcolor{keywordflow}{if}\ (currentFilename\_.empty())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00693}00693\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00694}00694\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ No\ filename\ set,\ need\ to\ upload}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00695}00695\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00696}00696\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00697}00697\ \ \ \ \ \textcolor{keywordflow}{return}\ isTimeDifferenceGreaterThan(currentFilename\_,\ config\_.lteTimeMinutes);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00698}00698\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00699}00699\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00700}00700\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::uploadDataToServer()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00701}00701\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00702}00702\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Uploading\ data\ to\ server...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00703}00703\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00704}00704\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00705}00705\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00706}00706\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cellular\_-\/>connect())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ connect\ to\ cellular\ network\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00710}00710\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00711}00711\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cellular\_-\/>setupHTTPService())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00713}00713\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ setup\ HTTP\ service\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00716}00716\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00717}00717\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00718}00718\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ success\ =\ cellular\_-\/>sendDataInChunks(currentFilename\_,\ storage\_);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00719}00719\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00720}00720\ \ \ \ \ \ \ \ \ cellular\_-\/>terminateHTTPService();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00721}00721\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00722}00722\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (success)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Data\ uploaded\ successfully\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00725}00725\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00727}00727\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Data\ upload\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00729}00729\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00730}00730\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00731}00731\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ success;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00732}00732\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00733}00733\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00734}00734\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00735}00735\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Upload\ error:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00736}00736\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00737}00737\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00738}00738\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00739}00739\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00740}00740\ \textcolor{keywordtype}{void}\ ForestryResearchDevice::enterSleepMode()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00741}00741\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00742}00742\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Entering\ sleep\ mode...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00743}00743\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00744}00744\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00745}00745\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00746}00746\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ sleep\ duration}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00747}00747\ \ \ \ \ \ \ \ \ uint64\_t\ sleepDuration\ =\ config\_.scanIntervalMs\ *\ 1000ULL;\ \textcolor{comment}{//\ Convert\ to\ microseconds}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00748}00748\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00749}00749\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ night\ time}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00750}00750\ \ \ \ \ \ \ \ \ std::string\ currentTime\ =\ cellular\_-\/>getNetworkTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00751}00751\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!currentTime.empty()\ \&\&\ timeManager\_-\/>isValidTime(currentTime))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00752}00752\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00753}00753\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ nightSleep\ =\ timeManager\_-\/>getNightSleepDuration(currentTime);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nightSleep\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sleepDuration\ =\ nightSleep;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Night\ time\ detected,\ sleeping\ until\ 6\ AM\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00760}00760\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00761}00761\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Sleep\ duration:\ \%llu\ seconds\(\backslash\)n"{}},\ sleepDuration\ /\ 1000000);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00762}00762\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00763}00763\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enter\ deep\ sleep}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00764}00764\ \ \ \ \ \ \ \ \ powerManager\_-\/>enterSleep(sleepDuration);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00765}00765\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00766}00766\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00767}00767\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00768}00768\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Sleep\ mode\ error:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fallback\ to\ default\ sleep}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00770}00770\ \ \ \ \ \ \ \ \ powerManager\_-\/>enterSleep(config\_.scanIntervalMs\ *\ 1000ULL);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00771}00771\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00772}00772\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00773}00773\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00774}00774\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::setupNetworkTime()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00775}00775\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00776}00776\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Setting\ up\ network\ time...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00777}00777\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00778}00778\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00779}00779\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00780}00780\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!cellular\_-\/>connect())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00781}00781\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00783}00783\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00784}00784\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00785}00785\ \ \ \ \ \ \ \ \ std::string\ networkTime\ =\ cellular\_-\/>getNetworkTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00786}00786\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (networkTime.find(\textcolor{stringliteral}{"{}Error"{}})\ !=\ std::string::npos)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00787}00787\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ get\ network\ time\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00790}00790\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00791}00791\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00792}00792\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!timeManager\_-\/>setTimeFromNetwork(networkTime))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00793}00793\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ set\ RTC\ from\ network\ time\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00796}00796\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00797}00797\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00798}00798\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Network\ time\ updated\ successfully:\ \%s\(\backslash\)n"{}},\ networkTime.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00799}00799\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00800}00800\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00801}00801\ \ \ \ \ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\ \&e)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00802}00802\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00803}00803\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Network\ time\ setup\ error:\ \%s\(\backslash\)n"{}},\ e.what());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00804}00804\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00805}00805\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00806}00806\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00807}00807\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00808}00808\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::checkNightTimeMode()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00809}00809\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00810}00810\ \ \ \ \ \textcolor{keywordflow}{if}\ (!config\_.nightSleepEnabled)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00811}00811\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00812}00812\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00813}00813\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00814}00814\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00815}00815\ \ \ \ \ std::string\ networkTime\ =\ cellular\_-\/>getNetworkTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00816}00816\ \ \ \ \ \textcolor{keywordflow}{if}\ (networkTime.empty()\ ||\ !timeManager\_-\/>isValidTime(networkTime))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00817}00817\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00818}00818\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00819}00819\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00820}00820\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00821}00821\ \ \ \ \ \textcolor{keywordflow}{return}\ timeManager\_-\/>getNightSleepDuration(networkTime)\ >\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00822}00822\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00823}00823\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00824}00824\ \textcolor{keywordtype}{bool}\ ForestryResearchDevice::performSystemHealthCheck()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00825}00825\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00826}00826\ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00827}00827\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00828}00828\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ battery\ status}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00829}00829\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ batteryStatus\ =\ batteryMonitor\_-\/>readBatteryStatus();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00830}00830\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!batteryMonitor\_-\/>isBatterySafe(batteryStatus))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00831}00831\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00832}00832\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Battery\ safety\ check\ failed\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00833}00833\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00834}00834\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00835}00835\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00836}00836\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ SD\ card\ space}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00837}00837\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ sdCapacity\ =\ storage\_-\/>getRemainingCapacityPercent();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00838}00838\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sdCapacity\ <\ 5.0f)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00839}00839\ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//\ Less\ than\ 5\%\ remaining}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00840}00840\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ SD\ card\ almost\ full\ (\%.1f\%\%\ remaining)\(\backslash\)n"{}},\ sdCapacity);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00841}00841\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00842}00842\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00843}00843\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ system\ time}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00844}00844\ \ \ \ \ \ \ \ \ std::string\ currentTime\ =\ timeManager\_-\/>getCurrentDateTime();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00845}00845\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentTime.empty())}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00846}00846\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00847}00847\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ System\ time\ not\ available\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00848}00848\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00849}00849\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00850}00850\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00851}00851\ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (\textcolor{keyword}{const}\ std::exception\&\ e}
+
+\end{DoxyCode}

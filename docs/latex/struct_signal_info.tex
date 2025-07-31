@@ -1,0 +1,159 @@
+\doxysection{Signal\+Info Struct Reference}
+\hypertarget{struct_signal_info}{}\label{struct_signal_info}\index{SignalInfo@{SignalInfo}}
+
+
+Network signal information structure.  
+
+
+
+
+{\ttfamily \#include $<$cellular\+\_\+manager.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_signal_info_aa403bb488ff48227f2a2989cd4f3bfb9}{rssi}} = -\/999
+\begin{DoxyCompactList}\small\item\em Received Signal Strength Indicator (d\+Bm) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_signal_info_af9c4ea781b281799782eb02f3ff2b980}{ber}} = 99
+\begin{DoxyCompactList}\small\item\em Bit Error Rate (0-\/7, 99=unknown) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_signal_info_abda09a4e34eb7dd91c5aaeb1d3eb49de}{rsrp}} = -\/999
+\begin{DoxyCompactList}\small\item\em Reference Signal Received Power (d\+Bm) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_signal_info_a9ab288047ef59a2de354b1da90291eb0}{rsrq}} = -\/999
+\begin{DoxyCompactList}\small\item\em Reference Signal Received Quality (dB) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_signal_info_a47a880c35258ce9c2e6d27e0b6711917}{sinr}} = -\/999
+\begin{DoxyCompactList}\small\item\em Signal to Interference plus Noise Ratio (dB) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_signal_info_a0b68c57341bc139f74d349c7374cbb89}{network\+Type}}
+\begin{DoxyCompactList}\small\item\em Network type (2G, 3G, 4G, LTE) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_signal_info_af4063a9ae0648dd996fa08e91af6bb9f}{operator\+Name}}
+\begin{DoxyCompactList}\small\item\em Network operator name. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_signal_info_aec96baeafb8edf0e545dc719f6bb746a}{roaming}} = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}
+\begin{DoxyCompactList}\small\item\em Roaming status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Network signal information structure. 
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00026}{26}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_signal_info_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_signal_info_af9c4ea781b281799782eb02f3ff2b980}\index{SignalInfo@{SignalInfo}!ber@{ber}}
+\index{ber@{ber}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{ber}{ber}}
+{\footnotesize\ttfamily \label{struct_signal_info_af9c4ea781b281799782eb02f3ff2b980} 
+int Signal\+Info\+::ber = 99}
+
+
+
+Bit Error Rate (0-\/7, 99=unknown) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00029}{29}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_signal_info_a0b68c57341bc139f74d349c7374cbb89}\index{SignalInfo@{SignalInfo}!networkType@{networkType}}
+\index{networkType@{networkType}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{networkType}{networkType}}
+{\footnotesize\ttfamily \label{struct_signal_info_a0b68c57341bc139f74d349c7374cbb89} 
+std\+::string Signal\+Info\+::network\+Type}
+
+
+
+Network type (2G, 3G, 4G, LTE) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00033}{33}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_signal_info_af4063a9ae0648dd996fa08e91af6bb9f}\index{SignalInfo@{SignalInfo}!operatorName@{operatorName}}
+\index{operatorName@{operatorName}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{operatorName}{operatorName}}
+{\footnotesize\ttfamily \label{struct_signal_info_af4063a9ae0648dd996fa08e91af6bb9f} 
+std\+::string Signal\+Info\+::operator\+Name}
+
+
+
+Network operator name. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00034}{34}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_signal_info_aec96baeafb8edf0e545dc719f6bb746a}\index{SignalInfo@{SignalInfo}!roaming@{roaming}}
+\index{roaming@{roaming}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{roaming}{roaming}}
+{\footnotesize\ttfamily \label{struct_signal_info_aec96baeafb8edf0e545dc719f6bb746a} 
+bool Signal\+Info\+::roaming = \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}
+
+
+
+Roaming status. 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00035}{35}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_signal_info_abda09a4e34eb7dd91c5aaeb1d3eb49de}\index{SignalInfo@{SignalInfo}!rsrp@{rsrp}}
+\index{rsrp@{rsrp}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{rsrp}{rsrp}}
+{\footnotesize\ttfamily \label{struct_signal_info_abda09a4e34eb7dd91c5aaeb1d3eb49de} 
+int Signal\+Info\+::rsrp = -\/999}
+
+
+
+Reference Signal Received Power (d\+Bm) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00030}{30}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_signal_info_a9ab288047ef59a2de354b1da90291eb0}\index{SignalInfo@{SignalInfo}!rsrq@{rsrq}}
+\index{rsrq@{rsrq}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{rsrq}{rsrq}}
+{\footnotesize\ttfamily \label{struct_signal_info_a9ab288047ef59a2de354b1da90291eb0} 
+int Signal\+Info\+::rsrq = -\/999}
+
+
+
+Reference Signal Received Quality (dB) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00031}{31}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_signal_info_aa403bb488ff48227f2a2989cd4f3bfb9}\index{SignalInfo@{SignalInfo}!rssi@{rssi}}
+\index{rssi@{rssi}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{rssi}{rssi}}
+{\footnotesize\ttfamily \label{struct_signal_info_aa403bb488ff48227f2a2989cd4f3bfb9} 
+int Signal\+Info\+::rssi = -\/999}
+
+
+
+Received Signal Strength Indicator (d\+Bm) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00028}{28}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{struct_signal_info_a47a880c35258ce9c2e6d27e0b6711917}\index{SignalInfo@{SignalInfo}!sinr@{sinr}}
+\index{sinr@{sinr}!SignalInfo@{SignalInfo}}
+\doxysubsubsection{\texorpdfstring{sinr}{sinr}}
+{\footnotesize\ttfamily \label{struct_signal_info_a47a880c35258ce9c2e6d27e0b6711917} 
+int Signal\+Info\+::sinr = -\/999}
+
+
+
+Signal to Interference plus Noise Ratio (dB) 
+
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00032}{32}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{cellular__manager_8h}{cellular\+\_\+manager.\+h}}\end{DoxyCompactItemize}

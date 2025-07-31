@@ -1,0 +1,593 @@
+\doxysection{Cellular\+Manager Class Reference}
+\hypertarget{class_cellular_manager}{}\label{class_cellular_manager}\index{CellularManager@{CellularManager}}
+
+
+Cellular Manager implementing comprehensive network communication.  
+
+
+
+
+{\ttfamily \#include $<$cellular\+\_\+manager.\+h$>$}
+
+Inheritance diagram for Cellular\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cellular_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cellular_manager_a64cd463ed759ad563d3f0bd9d3028095}{Cellular\+Manager}} (int rx\+Pin=0, int tx\+Pin=4, int net\+Pin=33)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_cellular_manager_ac22f2d9e34917aa6039d273e643bc699}{\texorpdfstring{$\sim$}{\string~}\+Cellular\+Manager}} () override
+\begin{DoxyCompactList}\small\item\em Destructor -\/ ensures proper cleanup and disconnection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_ac903c33125d1da07d1bedc7fe74cdca4}{connect}} () override
+\begin{DoxyCompactList}\small\item\em Connect to cellular network with full initialization. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a62e656c3a61de31415a6f931f0ce14f9}{disconnect}} () override
+\begin{DoxyCompactList}\small\item\em Disconnect from cellular network and cleanup. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a3298bff10977c232fc094ef58fdbc197}{is\+Connected}} () override
+\begin{DoxyCompactList}\small\item\em Check if currently connected to network. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_aabd59f33e3c4d44d8e05dc32b5d56751}{send\+Data}} (const std\+::string \&data) override
+\begin{DoxyCompactList}\small\item\em Send data via HTTP POST to configured endpoint. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_cellular_manager_adc96fcfbc4531bde2ba1043bbfd6f378}{get\+Network\+Time}} () override
+\begin{DoxyCompactList}\small\item\em Get current network time from cellular provider. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a6f5a62dcaef3e79c38a3a14a83db75a8}{initialize}} (uint32\+\_\+t baud\+Rate=115200, uint32\+\_\+t timeout\+Ms=30000)
+\begin{DoxyCompactList}\small\item\em Initialize SIM7600X module and serial communication. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_s_i_m_info}{SIMInfo}} \mbox{\hyperlink{class_cellular_manager_aeb87d325119d461dd344858160e4e9f4}{get\+SIMInfo}} ()
+\begin{DoxyCompactList}\small\item\em Get comprehensive SIM card information. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_signal_info}{Signal\+Info}} \mbox{\hyperlink{class_cellular_manager_a6a95cdc41b68c0a3014770c594b24cd0}{get\+Signal\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Get current signal quality and network information. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_connection_stats}{Connection\+Stats}} \mbox{\hyperlink{class_cellular_manager_a114a70c5591706593a39e21c5174d5b7}{get\+Connection\+Stats}} () const
+\begin{DoxyCompactList}\small\item\em Get connection and transmission statistics. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_ad38778f3814cab6276c73e69abae7ffe}{setup\+HTTPService}} (const std\+::string \&url, const std\+::string \&content\+Type="{}application/json"{})
+\begin{DoxyCompactList}\small\item\em Configure HTTP service with endpoint and parameters. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_aebf964e929a1a6cb41128226d43410e3}{terminate\+HTTPService}} ()
+\begin{DoxyCompactList}\small\item\em Terminate HTTP service and cleanup. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_h_t_t_p_response}{HTTPResponse}} \mbox{\hyperlink{class_cellular_manager_a362dfb7152b8553f079accde456b4530}{send\+HTTPRequest}} (const std\+::string \&data, bool more\+Data=\mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}})
+\begin{DoxyCompactList}\small\item\em Send HTTP POST request with data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a385038fdbdb56c1c523f45d9404089ba}{send\+Data\+In\+Chunks}} (const std\+::string \&filename, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$ storage, size\+\_\+t chunk\+Size=4096)
+\begin{DoxyCompactList}\small\item\em Send large file in chunks via HTTP. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_af0ce9644dd225c9b7725ea42c7583f07}{enable\+NITZ}} ()
+\begin{DoxyCompactList}\small\item\em Enable Network Identity and Time Zone (NITZ) updates. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a5910f6da0b564b8f4b17b0792923c373}{enable\+CTZR}} ()
+\begin{DoxyCompactList}\small\item\em Enable Clock Time Zone Reporting (CTZR) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a80efb22a321bf5e9d5c25d27673ed486}{is\+Valid\+Network\+Time}} (const std\+::string \&time\+String)
+\begin{DoxyCompactList}\small\item\em Validate network time format and content. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a609a93068fcdbff7b15d6bc2e8c62d4f}{test\+Network\+Connectivity}} (const std\+::string \&test\+Url="{}"{})
+\begin{DoxyCompactList}\small\item\em Test network connectivity with ping or basic HTTP request. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a6a731045f09f6d8964f5c1f56eba8742}{check\+SIMReady}} ()
+\begin{DoxyCompactList}\small\item\em Check if SIM card is ready and network registered. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a4ffea795c60c2fd07038b8e3477d1855}{monitor\+Network\+Status}} (uint32\+\_\+t timeout\+Ms=10000)
+\begin{DoxyCompactList}\small\item\em Monitor network status using NET pin signal. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_afcb3d5a8dc4050fc316aa7ef62cd0944}{configure\+APN}} (const std\+::string \&apn="{}everywhere"{}, const std\+::string \&username="{}"{}, const std\+::string \&password="{}"{})
+\begin{DoxyCompactList}\small\item\em Configure Access Point Name (APN) for data connection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cellular_manager_ab5dd6b8333b4798f3f08cb0ddfb18e15}{set\+HTTPEndpoint}} (const std\+::string \&url)
+\begin{DoxyCompactList}\small\item\em Set HTTP endpoint URL for data transmission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cellular_manager_a2b0c20e0b7f3a48e0376ff9dc65a6e94}{set\+Max\+Retries}} (int max\+Retries)
+\begin{DoxyCompactList}\small\item\em Set maximum retry attempts for failed operations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cellular_manager_a987eb27ce97347e345557a8bc3a869db}{set\+Command\+Timeout}} (uint32\+\_\+t timeout\+Ms)
+\begin{DoxyCompactList}\small\item\em Set timeout for AT command responses. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_cellular_manager_ad072343a23b2f9ff3132877bde907881}{get\+Last\+Error}} () const
+\begin{DoxyCompactList}\small\item\em Get last error message for diagnostics. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_a78a569acfff7c60d2d13987d57d5f31e}{perform\+Health\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Perform comprehensive module health check. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cellular_manager_ab20206f3ac79f7c084161a3836d93215}{reset\+Module}} (bool hard\+Reset=\mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}})
+\begin{DoxyCompactList}\small\item\em Reset SIM7600X module (hardware or software reset) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_network_interface}{INetwork\+Interface}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_network_interface_afaacd2ba18f47e3efebf6eb80986af0f}{\texorpdfstring{$\sim$}{\string~}\+INetwork\+Interface}} ()=default
+\item 
+virtual \mbox{\hyperlink{class_i_network_interface_afaacd2ba18f47e3efebf6eb80986af0f}{\texorpdfstring{$\sim$}{\string~}\+INetwork\+Interface}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Cellular Manager implementing comprehensive network communication. 
+
+This class provides a complete interface for cellular communication using the SIM7600X module. Features include\+:
+
+
+\begin{DoxyItemize}
+\item Network connection management with automatic retry
+\item HTTP/\+HTTPS operations for data upload
+\item Network time synchronization (NITZ)
+\item Signal quality monitoring and reporting
+\item SIM card management and authentication
+\item Data transmission in configurable chunks
+\item Connection health monitoring and recovery
+\item Comprehensive error handling and logging
+\item Thread-\/safe operations with proper synchronization 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00098}{98}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_cellular_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cellular_manager_a64cd463ed759ad563d3f0bd9d3028095}\index{CellularManager@{CellularManager}!CellularManager@{CellularManager}}
+\index{CellularManager@{CellularManager}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{CellularManager()}{CellularManager()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a64cd463ed759ad563d3f0bd9d3028095} 
+Cellular\+Manager\+::\+Cellular\+Manager (\begin{DoxyParamCaption}\item[{int}]{rx\+Pin}{ = {\ttfamily 0}, }\item[{int}]{tx\+Pin}{ = {\ttfamily 4}, }\item[{int}]{net\+Pin}{ = {\ttfamily 33}}\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rx\+Pin} & UART RX pin for SIM7600X communication (default\+: 0) \\
+\hline
+{\em tx\+Pin} & UART TX pin for SIM7600X communication (default\+: 4) \\
+\hline
+{\em net\+Pin} & Network status monitoring pin (default\+: 33) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_cellular_manager_ac22f2d9e34917aa6039d273e643bc699}\index{CellularManager@{CellularManager}!````~CellularManager@{\texorpdfstring{$\sim$}{\string~}CellularManager}}
+\index{````~CellularManager@{\texorpdfstring{$\sim$}{\string~}CellularManager}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}CellularManager()}{\string~CellularManager()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_ac22f2d9e34917aa6039d273e643bc699} 
+Cellular\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+Cellular\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Destructor -\/ ensures proper cleanup and disconnection. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_cellular_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cellular_manager_a6a731045f09f6d8964f5c1f56eba8742}\index{CellularManager@{CellularManager}!checkSIMReady@{checkSIMReady}}
+\index{checkSIMReady@{checkSIMReady}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{checkSIMReady()}{checkSIMReady()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a6a731045f09f6d8964f5c1f56eba8742} 
+bool Cellular\+Manager\+::check\+SIMReady (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Check if SIM card is ready and network registered. 
+
+\begin{DoxyReturn}{Returns}
+true if SIM ready and registered, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_afcb3d5a8dc4050fc316aa7ef62cd0944}\index{CellularManager@{CellularManager}!configureAPN@{configureAPN}}
+\index{configureAPN@{configureAPN}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{configureAPN()}{configureAPN()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_afcb3d5a8dc4050fc316aa7ef62cd0944} 
+bool Cellular\+Manager\+::configure\+APN (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{apn}{ = {\ttfamily "{}everywhere"{}}, }\item[{const std\+::string \&}]{username}{ = {\ttfamily "{}"{}}, }\item[{const std\+::string \&}]{password}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Configure Access Point Name (APN) for data connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em apn} & APN string (default\+: "{}everywhere"{}) \\
+\hline
+{\em username} & APN username (optional) \\
+\hline
+{\em password} & APN password (optional) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if APN configuration successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_ac903c33125d1da07d1bedc7fe74cdca4}\index{CellularManager@{CellularManager}!connect@{connect}}
+\index{connect@{connect}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_ac903c33125d1da07d1bedc7fe74cdca4} 
+bool Cellular\+Manager\+::connect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Connect to cellular network with full initialization. 
+
+\begin{DoxyReturn}{Returns}
+true if connection successful, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_network_interface_ac398f435eb0245711c054e6f3bb209bc}{INetwork\+Interface}}.
+
+\Hypertarget{class_cellular_manager_a62e656c3a61de31415a6f931f0ce14f9}\index{CellularManager@{CellularManager}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a62e656c3a61de31415a6f931f0ce14f9} 
+bool Cellular\+Manager\+::disconnect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Disconnect from cellular network and cleanup. 
+
+\begin{DoxyReturn}{Returns}
+true if disconnection successful, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_network_interface_a76c64a181e51a288cb5f38964f4b653d}{INetwork\+Interface}}.
+
+\Hypertarget{class_cellular_manager_a5910f6da0b564b8f4b17b0792923c373}\index{CellularManager@{CellularManager}!enableCTZR@{enableCTZR}}
+\index{enableCTZR@{enableCTZR}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{enableCTZR()}{enableCTZR()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a5910f6da0b564b8f4b17b0792923c373} 
+bool Cellular\+Manager\+::enable\+CTZR (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Enable Clock Time Zone Reporting (CTZR) 
+
+\begin{DoxyReturn}{Returns}
+true if CTZR enabled successfully, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_af0ce9644dd225c9b7725ea42c7583f07}\index{CellularManager@{CellularManager}!enableNITZ@{enableNITZ}}
+\index{enableNITZ@{enableNITZ}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{enableNITZ()}{enableNITZ()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_af0ce9644dd225c9b7725ea42c7583f07} 
+bool Cellular\+Manager\+::enable\+NITZ (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Enable Network Identity and Time Zone (NITZ) updates. 
+
+\begin{DoxyReturn}{Returns}
+true if NITZ enabled successfully, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a114a70c5591706593a39e21c5174d5b7}\index{CellularManager@{CellularManager}!getConnectionStats@{getConnectionStats}}
+\index{getConnectionStats@{getConnectionStats}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{getConnectionStats()}{getConnectionStats()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a114a70c5591706593a39e21c5174d5b7} 
+\mbox{\hyperlink{struct_connection_stats}{Connection\+Stats}} Cellular\+Manager\+::get\+Connection\+Stats (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get connection and transmission statistics. 
+
+\begin{DoxyReturn}{Returns}
+Statistics structure with performance data 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_ad072343a23b2f9ff3132877bde907881}\index{CellularManager@{CellularManager}!getLastError@{getLastError}}
+\index{getLastError@{getLastError}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{getLastError()}{getLastError()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_ad072343a23b2f9ff3132877bde907881} 
+std\+::string Cellular\+Manager\+::get\+Last\+Error (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get last error message for diagnostics. 
+
+\begin{DoxyReturn}{Returns}
+String describing the last error that occurred 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00283}{283}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{class_cellular_manager_adc96fcfbc4531bde2ba1043bbfd6f378}\index{CellularManager@{CellularManager}!getNetworkTime@{getNetworkTime}}
+\index{getNetworkTime@{getNetworkTime}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{getNetworkTime()}{getNetworkTime()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_adc96fcfbc4531bde2ba1043bbfd6f378} 
+std\+::string Cellular\+Manager\+::get\+Network\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get current network time from cellular provider. 
+
+\begin{DoxyReturn}{Returns}
+Network time string in format "{}\+YY/\+MM/\+DD,\+HH\+:\+MM\+:\+SS+\+ZZ"{} or error message 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_network_interface_abada3920ae7f77c5d5cb3f56f4418f44}{INetwork\+Interface}}.
+
+\Hypertarget{class_cellular_manager_a6a95cdc41b68c0a3014770c594b24cd0}\index{CellularManager@{CellularManager}!getSignalInfo@{getSignalInfo}}
+\index{getSignalInfo@{getSignalInfo}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{getSignalInfo()}{getSignalInfo()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a6a95cdc41b68c0a3014770c594b24cd0} 
+\mbox{\hyperlink{struct_signal_info}{Signal\+Info}} Cellular\+Manager\+::get\+Signal\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get current signal quality and network information. 
+
+\begin{DoxyReturn}{Returns}
+Signal information structure 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_aeb87d325119d461dd344858160e4e9f4}\index{CellularManager@{CellularManager}!getSIMInfo@{getSIMInfo}}
+\index{getSIMInfo@{getSIMInfo}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{getSIMInfo()}{getSIMInfo()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_aeb87d325119d461dd344858160e4e9f4} 
+\mbox{\hyperlink{struct_s_i_m_info}{SIMInfo}} Cellular\+Manager\+::get\+SIMInfo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get comprehensive SIM card information. 
+
+\begin{DoxyReturn}{Returns}
+SIM information structure 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a6f5a62dcaef3e79c38a3a14a83db75a8}\index{CellularManager@{CellularManager}!initialize@{initialize}}
+\index{initialize@{initialize}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a6f5a62dcaef3e79c38a3a14a83db75a8} 
+bool Cellular\+Manager\+::initialize (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{baud\+Rate}{ = {\ttfamily 115200}, }\item[{uint32\+\_\+t}]{timeout\+Ms}{ = {\ttfamily 30000}}\end{DoxyParamCaption})}
+
+
+
+Initialize SIM7600X module and serial communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baud\+Rate} & Serial communication baud rate (default\+: 115200) \\
+\hline
+{\em timeout\+Ms} & Initialization timeout in milliseconds (default\+: 30000) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if initialization successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a3298bff10977c232fc094ef58fdbc197}\index{CellularManager@{CellularManager}!isConnected@{isConnected}}
+\index{isConnected@{isConnected}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{isConnected()}{isConnected()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a3298bff10977c232fc094ef58fdbc197} 
+bool Cellular\+Manager\+::is\+Connected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if currently connected to network. 
+
+\begin{DoxyReturn}{Returns}
+true if connected, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_network_interface_ae25fda02e0870887edd520e1abcebd26}{INetwork\+Interface}}.
+
+\Hypertarget{class_cellular_manager_a80efb22a321bf5e9d5c25d27673ed486}\index{CellularManager@{CellularManager}!isValidNetworkTime@{isValidNetworkTime}}
+\index{isValidNetworkTime@{isValidNetworkTime}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{isValidNetworkTime()}{isValidNetworkTime()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a80efb22a321bf5e9d5c25d27673ed486} 
+bool Cellular\+Manager\+::is\+Valid\+Network\+Time (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{time\+String}{}\end{DoxyParamCaption})}
+
+
+
+Validate network time format and content. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+String} & Time string to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if time string is valid, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a4ffea795c60c2fd07038b8e3477d1855}\index{CellularManager@{CellularManager}!monitorNetworkStatus@{monitorNetworkStatus}}
+\index{monitorNetworkStatus@{monitorNetworkStatus}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{monitorNetworkStatus()}{monitorNetworkStatus()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a4ffea795c60c2fd07038b8e3477d1855} 
+bool Cellular\+Manager\+::monitor\+Network\+Status (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{timeout\+Ms}{ = {\ttfamily 10000}}\end{DoxyParamCaption})}
+
+
+
+Monitor network status using NET pin signal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Ms} & Maximum time to wait for stable signal (default\+: 10000) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if network status is stable, false if timeout or error 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a78a569acfff7c60d2d13987d57d5f31e}\index{CellularManager@{CellularManager}!performHealthCheck@{performHealthCheck}}
+\index{performHealthCheck@{performHealthCheck}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{performHealthCheck()}{performHealthCheck()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a78a569acfff7c60d2d13987d57d5f31e} 
+bool Cellular\+Manager\+::perform\+Health\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Perform comprehensive module health check. 
+
+\begin{DoxyReturn}{Returns}
+true if module appears healthy, false if issues detected 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_ab20206f3ac79f7c084161a3836d93215}\index{CellularManager@{CellularManager}!resetModule@{resetModule}}
+\index{resetModule@{resetModule}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{resetModule()}{resetModule()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_ab20206f3ac79f7c084161a3836d93215} 
+bool Cellular\+Manager\+::reset\+Module (\begin{DoxyParamCaption}\item[{bool}]{hard\+Reset}{ = {\ttfamily \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}}\end{DoxyParamCaption})}
+
+
+
+Reset SIM7600X module (hardware or software reset) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hard\+Reset} & Whether to perform hardware reset (default\+: false) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if reset successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_aabd59f33e3c4d44d8e05dc32b5d56751}\index{CellularManager@{CellularManager}!sendData@{sendData}}
+\index{sendData@{sendData}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{sendData()}{sendData()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_aabd59f33e3c4d44d8e05dc32b5d56751} 
+bool Cellular\+Manager\+::send\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Send data via HTTP POST to configured endpoint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & JSON data to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if transmission successful, false otherwise 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_network_interface_ad7765ad20e1179453d1e4a752f70c3fd}{INetwork\+Interface}}.
+
+\Hypertarget{class_cellular_manager_a385038fdbdb56c1c523f45d9404089ba}\index{CellularManager@{CellularManager}!sendDataInChunks@{sendDataInChunks}}
+\index{sendDataInChunks@{sendDataInChunks}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{sendDataInChunks()}{sendDataInChunks()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a385038fdbdb56c1c523f45d9404089ba} 
+bool Cellular\+Manager\+::send\+Data\+In\+Chunks (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename}{, }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_i_data_storage}{IData\+Storage}} $>$}]{storage}{, }\item[{size\+\_\+t}]{chunk\+Size}{ = {\ttfamily 4096}}\end{DoxyParamCaption})}
+
+
+
+Send large file in chunks via HTTP. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & Local file to upload \\
+\hline
+{\em storage} & Storage interface for file access \\
+\hline
+{\em chunk\+Size} & Size of each chunk in bytes (default\+: 4096) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if entire file uploaded successfully, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a362dfb7152b8553f079accde456b4530}\index{CellularManager@{CellularManager}!sendHTTPRequest@{sendHTTPRequest}}
+\index{sendHTTPRequest@{sendHTTPRequest}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{sendHTTPRequest()}{sendHTTPRequest()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a362dfb7152b8553f079accde456b4530} 
+\mbox{\hyperlink{struct_h_t_t_p_response}{HTTPResponse}} Cellular\+Manager\+::send\+HTTPRequest (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data}{, }\item[{bool}]{more\+Data}{ = {\ttfamily \mbox{\hyperlink{main_8cpp_a5df37b7f02e5cdc7d9412b7f872b8e01}{false}}}}\end{DoxyParamCaption})}
+
+
+
+Send HTTP POST request with data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data to send in request body \\
+\hline
+{\em more\+Data} & Whether more data will follow (for chunked transfer) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+HTTP response structure with status and content 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a987eb27ce97347e345557a8bc3a869db}\index{CellularManager@{CellularManager}!setCommandTimeout@{setCommandTimeout}}
+\index{setCommandTimeout@{setCommandTimeout}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{setCommandTimeout()}{setCommandTimeout()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a987eb27ce97347e345557a8bc3a869db} 
+void Cellular\+Manager\+::set\+Command\+Timeout (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{timeout\+Ms}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set timeout for AT command responses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout\+Ms} & Timeout in milliseconds (default\+: 5000) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00276}{276}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{class_cellular_manager_ab5dd6b8333b4798f3f08cb0ddfb18e15}\index{CellularManager@{CellularManager}!setHTTPEndpoint@{setHTTPEndpoint}}
+\index{setHTTPEndpoint@{setHTTPEndpoint}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{setHTTPEndpoint()}{setHTTPEndpoint()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_ab5dd6b8333b4798f3f08cb0ddfb18e15} 
+void Cellular\+Manager\+::set\+HTTPEndpoint (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{url}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set HTTP endpoint URL for data transmission. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em url} & Target URL for HTTP requests \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00264}{264}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{class_cellular_manager_a2b0c20e0b7f3a48e0376ff9dc65a6e94}\index{CellularManager@{CellularManager}!setMaxRetries@{setMaxRetries}}
+\index{setMaxRetries@{setMaxRetries}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{setMaxRetries()}{setMaxRetries()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a2b0c20e0b7f3a48e0376ff9dc65a6e94} 
+void Cellular\+Manager\+::set\+Max\+Retries (\begin{DoxyParamCaption}\item[{int}]{max\+Retries}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set maximum retry attempts for failed operations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Retries} & Maximum number of retry attempts (default\+: 3) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{cellular__manager_8h_source_l00270}{270}} of file \mbox{\hyperlink{cellular__manager_8h_source}{cellular\+\_\+manager.\+h}}.
+
+\Hypertarget{class_cellular_manager_ad38778f3814cab6276c73e69abae7ffe}\index{CellularManager@{CellularManager}!setupHTTPService@{setupHTTPService}}
+\index{setupHTTPService@{setupHTTPService}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{setupHTTPService()}{setupHTTPService()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_ad38778f3814cab6276c73e69abae7ffe} 
+bool Cellular\+Manager\+::setup\+HTTPService (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{url}{, }\item[{const std\+::string \&}]{content\+Type}{ = {\ttfamily "{}application/json"{}}}\end{DoxyParamCaption})}
+
+
+
+Configure HTTP service with endpoint and parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em url} & Target URL for HTTP requests \\
+\hline
+{\em content\+Type} & Content type header (default\+: "{}application/json"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if HTTP service setup successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_aebf964e929a1a6cb41128226d43410e3}\index{CellularManager@{CellularManager}!terminateHTTPService@{terminateHTTPService}}
+\index{terminateHTTPService@{terminateHTTPService}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{terminateHTTPService()}{terminateHTTPService()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_aebf964e929a1a6cb41128226d43410e3} 
+bool Cellular\+Manager\+::terminate\+HTTPService (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Terminate HTTP service and cleanup. 
+
+\begin{DoxyReturn}{Returns}
+true if termination successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_cellular_manager_a609a93068fcdbff7b15d6bc2e8c62d4f}\index{CellularManager@{CellularManager}!testNetworkConnectivity@{testNetworkConnectivity}}
+\index{testNetworkConnectivity@{testNetworkConnectivity}!CellularManager@{CellularManager}}
+\doxysubsubsection{\texorpdfstring{testNetworkConnectivity()}{testNetworkConnectivity()}}
+{\footnotesize\ttfamily \label{class_cellular_manager_a609a93068fcdbff7b15d6bc2e8c62d4f} 
+bool Cellular\+Manager\+::test\+Network\+Connectivity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{test\+Url}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Test network connectivity with ping or basic HTTP request. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em test\+Url} & URL to test connectivity (default\+: uses configured endpoint) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if network is reachable, false otherwise 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/data/\mbox{\hyperlink{cellular__manager_8h}{cellular\+\_\+manager.\+h}}\end{DoxyCompactItemize}

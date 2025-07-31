@@ -1,0 +1,57 @@
+\chapter{ble\+\_\+scanner }
+\hypertarget{md_ble__scanner}{}\label{md_ble__scanner}\index{ble\_scanner@{ble\_scanner}}
+Key Features Implemented\+:
+\begin{DoxyEnumerate}
+\item Complete BLE Functionality
+\end{DoxyEnumerate}
+
+ESP32 Bluetooth stack integration (commented for reference) Advertisement data parsing for device names and service UUIDs Configurable scan parameters (interval, window, RSSI threshold) Real-\/time result callbacks for immediate processing
+
+
+\begin{DoxyEnumerate}
+\item Professional Logging Integration
+\end{DoxyEnumerate}
+
+Component-\/based logging with "{}\+BLEScanner"{} identifier Detailed operation tracking for all major functions Error diagnostics with context and parameters Debug information for development and troubleshooting
+
+
+\begin{DoxyEnumerate}
+\item BLE-\/\+Specific Data Extraction
+\end{DoxyEnumerate}
+
+Device name parsing from advertisement data Service UUID extraction (both 16-\/bit and 128-\/bit) Advertisement data validation and filtering Enhanced payload formatting with readable annotations
+
+
+\begin{DoxyEnumerate}
+\item Development Support
+\end{DoxyEnumerate}
+
+Mock BLE devices for testing without hardware Simulated advertisements with realistic data Platform abstraction for cross-\/platform development Comprehensive error handling
+
+
+\begin{DoxyEnumerate}
+\item Thread Safety \& Performance
+\end{DoxyEnumerate}
+
+Atomic operations for scanner state Mutex protection for result storage Exception safety throughout Resource management with proper cleanup
+
+🎯 Key Methods Implemented\+: Core Interface Methods\+: cppbool initialize() // Initialize BLE stack and callbacks bool start\+Scan() // Start BLE advertisement scanning ~\newline
+ bool stop\+Scan() // Stop scanning and report results std\+::vector$<$\+Probe\+Request$>$ get\+Results() // Get all captured advertisements void cleanup() // Clean up BLE resources BLE-\/\+Specific Methods\+: cppvoid set\+Scan\+Params(interval, window) // Configure scan timing void set\+Min\+RSSI(threshold) // Set signal strength filter void set\+Result\+Callback(callback) // Register real-\/time callback Scan\+Config get\+Scan\+Config() // Query current configuration Advanced Features\+: cppstd\+::string extract\+Device\+Name() // Parse device name from ads std\+::vector$<$std\+::string$>$ extract\+Service\+UUIDs() // Extract advertised services bool is\+Valid\+Advertisement() // Validate advertisement data 📋 Example Usage\+: cpp\#include "{}scanners/ble\+\_\+scanner.\+h"{} \#include "{}utils/logger.\+h"{}
+
+// Create BLE scanner auto ble\+Scanner = std\+::make\+\_\+shared$<$\+BLEScanner$>$(storage, time\+Manager);
+
+// Configure scanner ble\+Scanner-\/\texorpdfstring{$>$}{>}set\+Min\+RSSI(-\/80); // Only strong signals ble\+Scanner-\/\texorpdfstring{$>$}{>}set\+Scan\+Params(0x50, 0x30); // 50ms interval, 30ms window
+
+// Set callback for real-\/time processing ble\+Scanner-\/\texorpdfstring{$>$}{>}set\+Result\+Callback(\mbox{[}\mbox{]}(const \doxylink{struct_probe_request}{Probe\+Request}\& result) \{ LOG\+\_\+\+INFO("{}\+APP"{}, "{}\+Found BLE device\+: "{} + result.\+mac\+Address + "{} (\+RSSI\+: "{} + std\+::to\+\_\+string(result.\+rssi) + "{})"{}); \});
+
+// Start scanning if (ble\+Scanner-\/\texorpdfstring{$>$}{>}initialize()) \{ ble\+Scanner-\/\texorpdfstring{$>$}{>}start\+Scan();
+
+// Scan for 30 seconds std\+::this\+\_\+thread\+::sleep\+\_\+for(std\+::chrono\+::seconds(30));
+
+ble\+Scanner-\/\texorpdfstring{$>$}{>}stop\+Scan();
+
+auto results = ble\+Scanner-\/\texorpdfstring{$>$}{>}get\+Results(); LOG\+\_\+\+INFO("{}\+APP"{}, "{}\+BLE scan completed\+: "{} + std\+::to\+\_\+string(results.\+size()) + "{} devices found"{});
+
+// Print device details for (const auto\& result \+: results) \{ LOG\+\_\+\+INFO("{}\+APP"{}, "{}\+Device\+: "{} + result.\+mac\+Address + "{} RSSI\+: "{} + std\+::to\+\_\+string(result.\+rssi) + "{} Data\+: "{} + result.\+payload); \} \} 🔧 ESP32 Integration Notes\+: The implementation includes commented ESP32-\/specific code that you can uncomment when building for ESP32\+: cpp// ESP32 BLE stack initialization bt\+Start(); esp\+\_\+bluedroid\+\_\+init(); esp\+\_\+bluedroid\+\_\+enable(); esp\+\_\+ble\+\_\+gap\+\_\+register\+\_\+callback(ble\+Gap\+Callback);
+
+// Scan parameter configuration esp\+\_\+ble\+\_\+scan\+\_\+params\+\_\+t scan\+Params = \{ .scan\+\_\+type = BLE\+\_\+\+SCAN\+\_\+\+TYPE\+\_\+\+ACTIVE, .own\+\_\+addr\+\_\+type = BLE\+\_\+\+ADDR\+\_\+\+TYPE\+\_\+\+PUBLIC, .scan\+\_\+filter\+\_\+policy = BLE\+\_\+\+SCAN\+\_\+\+FILTER\+\_\+\+ALLOW\+\_\+\+ALL, .scan\+\_\+interval = scan\+Interval\+\_\+, .scan\+\_\+window = scan\+Window\+\_\+ \}; esp\+\_\+ble\+\_\+gap\+\_\+set\+\_\+scan\+\_\+params(\&scan\+Params); 📊 Data Extraction Examples\+: The scanner can extract rich information from BLE advertisements\+: // Example output\+: BLE Advertisement\+: MAC=aa\+:bb\+:cc\+:dd\+:ee\+:ff, RSSI=-\/45, Length=31, Name=i\+Phone 12 Payload\+: 02 01 06 0a 09 69 50 68 6f 6e 65 20 31 32 \mbox{[}Name\+: i\+Phone 12\mbox{]} \mbox{[}Services\+: 180f,1805\mbox{]} 

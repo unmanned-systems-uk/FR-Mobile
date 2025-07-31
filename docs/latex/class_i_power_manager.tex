@@ -1,0 +1,174 @@
+\doxysection{IPower\+Manager Class Reference}
+\hypertarget{class_i_power_manager}{}\label{class_i_power_manager}\index{IPowerManager@{IPowerManager}}
+
+
+{\ttfamily \#include $<$interfaces.\+h$>$}
+
+Inheritance diagram for IPower\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_power_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}{\texorpdfstring{$\sim$}{\string~}\+IPower\+Manager}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8}{enable\+Peripherals}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3}{disable\+Peripherals}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e}{enter\+Sleep}} (uint64\+\_\+t sleep\+Time\+Us)=0
+\item 
+virtual \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} \mbox{\hyperlink{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130}{get\+Wakeup\+Cause}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5}{configure\+Wakeup}} (uint64\+\_\+t time\+Us)=0
+\item 
+virtual \mbox{\hyperlink{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}{\texorpdfstring{$\sim$}{\string~}\+IPower\+Manager}} ()=default
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8}{enable\+Peripherals}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3}{disable\+Peripherals}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e}{enter\+Sleep}} (uint64\+\_\+t sleep\+Time\+Us)=0
+\item 
+virtual \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} \mbox{\hyperlink{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130}{get\+Wakeup\+Cause}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5}{configure\+Wakeup}} (uint64\+\_\+t time\+Us)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{include_2interfaces_8h_source_l00063}{63}} of file \mbox{\hyperlink{include_2interfaces_8h_source}{interfaces.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_i_power_manager_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}\index{IPowerManager@{IPowerManager}!````~IPowerManager@{\texorpdfstring{$\sim$}{\string~}IPowerManager}}
+\index{````~IPowerManager@{\texorpdfstring{$\sim$}{\string~}IPowerManager}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IPowerManager()}{\string~IPowerManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94} 
+virtual IPower\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+IPower\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+\Hypertarget{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94}\index{IPowerManager@{IPowerManager}!````~IPowerManager@{\texorpdfstring{$\sim$}{\string~}IPowerManager}}
+\index{````~IPowerManager@{\texorpdfstring{$\sim$}{\string~}IPowerManager}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IPowerManager()}{\string~IPowerManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a9e4aad48ce1c57600c7dd89dc7d37f94} 
+virtual IPower\+Manager\+::\texorpdfstring{$\sim$}{\string~}\+IPower\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_i_power_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5}\index{IPowerManager@{IPowerManager}!configureWakeup@{configureWakeup}}
+\index{configureWakeup@{configureWakeup}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{configureWakeup()}{configureWakeup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5} 
+virtual void IPower\+Manager\+::configure\+Wakeup (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{time\+Us}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a064ec6a4f8af44c7424dba52c67c6796}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5}\index{IPowerManager@{IPowerManager}!configureWakeup@{configureWakeup}}
+\index{configureWakeup@{configureWakeup}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{configureWakeup()}{configureWakeup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a942ea56e5fddd0f9a0d7aea2108961e5} 
+virtual void IPower\+Manager\+::configure\+Wakeup (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{time\+Us}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a064ec6a4f8af44c7424dba52c67c6796}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3}\index{IPowerManager@{IPowerManager}!disablePeripherals@{disablePeripherals}}
+\index{disablePeripherals@{disablePeripherals}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{disablePeripherals()}{disablePeripherals()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3} 
+virtual void IPower\+Manager\+::disable\+Peripherals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a84eca8b42dcd28a7211ddd33e4057d01}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3}\index{IPowerManager@{IPowerManager}!disablePeripherals@{disablePeripherals}}
+\index{disablePeripherals@{disablePeripherals}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{disablePeripherals()}{disablePeripherals()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_ab9842873eee3b78fda028e36d8360ef3} 
+virtual void IPower\+Manager\+::disable\+Peripherals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a84eca8b42dcd28a7211ddd33e4057d01}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8}\index{IPowerManager@{IPowerManager}!enablePeripherals@{enablePeripherals}}
+\index{enablePeripherals@{enablePeripherals}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{enablePeripherals()}{enablePeripherals()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8} 
+virtual void IPower\+Manager\+::enable\+Peripherals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a416206aeab4fad278771c33df90d55aa}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8}\index{IPowerManager@{IPowerManager}!enablePeripherals@{enablePeripherals}}
+\index{enablePeripherals@{enablePeripherals}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{enablePeripherals()}{enablePeripherals()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a1fdf209a6ce3532bd53cf5528ce745e8} 
+virtual void IPower\+Manager\+::enable\+Peripherals (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a416206aeab4fad278771c33df90d55aa}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e}\index{IPowerManager@{IPowerManager}!enterSleep@{enterSleep}}
+\index{enterSleep@{enterSleep}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{enterSleep()}{enterSleep()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e} 
+virtual void IPower\+Manager\+::enter\+Sleep (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{sleep\+Time\+Us}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a1a7bb8e40ab19a380bb6a3930c2deb75}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e}\index{IPowerManager@{IPowerManager}!enterSleep@{enterSleep}}
+\index{enterSleep@{enterSleep}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{enterSleep()}{enterSleep()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_a956eb583bac8e1e075a13994d57e825e} 
+virtual void IPower\+Manager\+::enter\+Sleep (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{sleep\+Time\+Us}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_a1a7bb8e40ab19a380bb6a3930c2deb75}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130}\index{IPowerManager@{IPowerManager}!getWakeupCause@{getWakeupCause}}
+\index{getWakeupCause@{getWakeupCause}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{getWakeupCause()}{getWakeupCause()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130} 
+virtual \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} IPower\+Manager\+::get\+Wakeup\+Cause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_ac9f7272f6409e1da2271e4c3b692000e}{Power\+Manager}}.
+
+\Hypertarget{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130}\index{IPowerManager@{IPowerManager}!getWakeupCause@{getWakeupCause}}
+\index{getWakeupCause@{getWakeupCause}!IPowerManager@{IPowerManager}}
+\doxysubsubsection{\texorpdfstring{getWakeupCause()}{getWakeupCause()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_power_manager_aacc629e38d03fd5264677ea8ff3a3130} 
+virtual \mbox{\hyperlink{power__manager_8h_a4145a5bb637b4b78d0a7926f830b2f44}{Wakeup\+Cause}} IPower\+Manager\+::get\+Wakeup\+Cause (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_power_manager_ac9f7272f6409e1da2271e4c3b692000e}{Power\+Manager}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/\mbox{\hyperlink{include_2interfaces_8h}{interfaces.\+h}}\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/\mbox{\hyperlink{interfaces_8h}{interfaces.\+h}}\end{DoxyCompactItemize}

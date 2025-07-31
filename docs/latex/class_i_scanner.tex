@@ -1,0 +1,174 @@
+\doxysection{IScanner Class Reference}
+\hypertarget{class_i_scanner}{}\label{class_i_scanner}\index{IScanner@{IScanner}}
+
+
+{\ttfamily \#include $<$interfaces.\+h$>$}
+
+Inheritance diagram for IScanner\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_scanner}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{\texorpdfstring{$\sim$}{\string~}\+IScanner}} ()=default
+\item 
+virtual bool \mbox{\hyperlink{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}{initialize}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}{start\+Scan}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}{stop\+Scan}} ()=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ \mbox{\hyperlink{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}{get\+Results}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}{cleanup}} ()=0
+\item 
+virtual \mbox{\hyperlink{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}{\texorpdfstring{$\sim$}{\string~}\+IScanner}} ()=default
+\item 
+virtual bool \mbox{\hyperlink{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}{initialize}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}{start\+Scan}} ()=0
+\item 
+virtual bool \mbox{\hyperlink{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}{stop\+Scan}} ()=0
+\item 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ \mbox{\hyperlink{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}{get\+Results}} ()=0
+\item 
+virtual void \mbox{\hyperlink{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}{cleanup}} ()=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{include_2interfaces_8h_source_l00007}{7}} of file \mbox{\hyperlink{include_2interfaces_8h_source}{interfaces.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_i_scanner_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}\index{IScanner@{IScanner}!````~IScanner@{\texorpdfstring{$\sim$}{\string~}IScanner}}
+\index{````~IScanner@{\texorpdfstring{$\sim$}{\string~}IScanner}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IScanner()}{\string~IScanner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5} 
+virtual IScanner\+::\texorpdfstring{$\sim$}{\string~}\+IScanner (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+\Hypertarget{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5}\index{IScanner@{IScanner}!````~IScanner@{\texorpdfstring{$\sim$}{\string~}IScanner}}
+\index{````~IScanner@{\texorpdfstring{$\sim$}{\string~}IScanner}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IScanner()}{\string~IScanner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a36d72465c5414925b7c849b3bfdbe9f5} 
+virtual IScanner\+::\texorpdfstring{$\sim$}{\string~}\+IScanner (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_i_scanner_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}\index{IScanner@{IScanner}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926} 
+virtual void IScanner\+::cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_af625c78173a44e5eeb61aeb11e4ad0b3}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_a8e7a37bca3c7be0622724b371a6c295b}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926}\index{IScanner@{IScanner}!cleanup@{cleanup}}
+\index{cleanup@{cleanup}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{cleanup()}{cleanup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a1d0145db31b1a8d46ba2902b82351926} 
+virtual void IScanner\+::cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_af625c78173a44e5eeb61aeb11e4ad0b3}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_a8e7a37bca3c7be0622724b371a6c295b}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}\index{IScanner@{IScanner}!getResults@{getResults}}
+\index{getResults@{getResults}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{getResults()}{getResults()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602} 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ IScanner\+::get\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_ac53f2b2dc624e5c097a98778c59fa289}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_af54348497b160d0a841a530c9b71c012}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602}\index{IScanner@{IScanner}!getResults@{getResults}}
+\index{getResults@{getResults}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{getResults()}{getResults()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a0ab9a92deed9348b05699d2b5ba77602} 
+virtual std\+::vector$<$ \mbox{\hyperlink{struct_probe_request}{Probe\+Request}} $>$ IScanner\+::get\+Results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_ac53f2b2dc624e5c097a98778c59fa289}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_af54348497b160d0a841a530c9b71c012}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}\index{IScanner@{IScanner}!initialize@{initialize}}
+\index{initialize@{initialize}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c} 
+virtual bool IScanner\+::initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_a76addad96849c91eea738f3320db7687}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_a751322ae2e826c3c362b6223c8294ac1}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c}\index{IScanner@{IScanner}!initialize@{initialize}}
+\index{initialize@{initialize}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{initialize()}{initialize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_ac970a8deecf394a305a2fbd98cc2643c} 
+virtual bool IScanner\+::initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_a76addad96849c91eea738f3320db7687}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_a751322ae2e826c3c362b6223c8294ac1}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}\index{IScanner@{IScanner}!startScan@{startScan}}
+\index{startScan@{startScan}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{startScan()}{startScan()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4} 
+virtual bool IScanner\+::start\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_a04d2df81cc799b64668e46a2dffa9a6e}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_af8fce93fc52ecc67f57f5a13593d7601}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4}\index{IScanner@{IScanner}!startScan@{startScan}}
+\index{startScan@{startScan}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{startScan()}{startScan()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a4e924eed13c176741cbc7285d4136bd4} 
+virtual bool IScanner\+::start\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_a04d2df81cc799b64668e46a2dffa9a6e}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_af8fce93fc52ecc67f57f5a13593d7601}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}\index{IScanner@{IScanner}!stopScan@{stopScan}}
+\index{stopScan@{stopScan}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{stopScan()}{stopScan()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b} 
+virtual bool IScanner\+::stop\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_a2873741b6119765ba562d402cafb776f}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_ab68185d3e130718f5f08a785236c2432}{Wi\+Fi\+Scanner}}.
+
+\Hypertarget{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b}\index{IScanner@{IScanner}!stopScan@{stopScan}}
+\index{stopScan@{stopScan}!IScanner@{IScanner}}
+\doxysubsubsection{\texorpdfstring{stopScan()}{stopScan()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_i_scanner_a70acc0b63220dd61ff4eb7846437288b} 
+virtual bool IScanner\+::stop\+Scan (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{class_b_l_e_scanner_a2873741b6119765ba562d402cafb776f}{BLEScanner}}, and \mbox{\hyperlink{class_wi_fi_scanner_ab68185d3e130718f5f08a785236c2432}{Wi\+Fi\+Scanner}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/include/\mbox{\hyperlink{include_2interfaces_8h}{interfaces.\+h}}\item 
+D\+:/\+Mobile/\+SB\+\_\+forest\+\_\+\+Research\+\_\+\+Firmware\+\_\+v4/\+FR-\/\+Mobile-\/\+V4-\/\+VC/\+RF-\/\+Mobile-\/\+V4/\mbox{\hyperlink{interfaces_8h}{interfaces.\+h}}\end{DoxyCompactItemize}

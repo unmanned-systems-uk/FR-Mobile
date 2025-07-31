@@ -1,0 +1,319 @@
+# CMakeLists.txt
+cmake_minimum_required(VERSION 3.16)
+
+project(ForestryResearchDevice 
+    VERSION 3.0.0
+    DESCRIPTION "Forestry Research Device for WiFi/BLE Scanning"
+    LANGUAGES CXX)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Platform detection
+if(ESP32)
+    set(PLATFORM_ESP32 ON)
+    add_definitions(-DESP32_PLATFORM)
+    message(STATUS "Building for ESP32 platform")
+elseif(UNIX)
+    set(PLATFORM_LINUX ON)
+    add_definitions(-DLINUX_PLATFORM)
+    message(STATUS "Building for Linux platform")
+elseif(WIN32)
+    set(PLATFORM_WINDOWS ON)
+    add_definitions(-DWINDOWS_PLATFORM)
+    message(STATUS "Building for Windows platform")
+endif()
+
+# Compiler-specific options
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    add_compile_options(-Wall -Wextra -pedantic)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_compile_options(-g -O0)
+        add_definitions(-DDEBUG_MODE)
+    else()
+        add_compile_options(-O2)
+    endif()
+endif()
+
+# Include directories
+include_directories(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+# Core source files
+set(CORE_SOURCES
+    src/main.cpp
+)
+
+# Scanner source files
+set(SCANNER_SOURCES
+    src/scanners/wifi_scanner.cpp
+    src/scanners/ble_scanner.cpp
+)
+
+# Hardware source files
+set(HARDWARE_SOURCES
+    src/hardware/bq34z100_battery_monitor.cpp
+    src/hardware/power_manager.cpp
+)
+
+# Data management source files
+set(DATA_SOURCES
+    src/data/sdcard_manager.cpp
+    src/data/cellular_manager.cpp
+    src/data/rtc_time_manager.cpp
+)
+
+# Utility source files
+set(UTILS_SOURCES
+    src/utils/logger.cpp
+    src/utils/utils.cpp
+)
+
+# Platform-specific source files
+set(PLATFORM_SOURCES)
+if(PLATFORM_ESP32)
+    list(APPEND PLATFORM_SOURCES
+        src/platform/esp32/esp32_wifi.cpp
+        src/platform/esp32/esp32_ble.cpp
+        src/platform/esp32/esp32_i2c.cpp
+        src/platform/esp32/esp32_power.cpp
+        src/platform/esp32/esp32_uart.cpp
+        src/platform/esp32/esp32_sdcard.cpp
+    )
+elseif(PLATFORM_LINUX)
+    list(APPEND PLATFORM_SOURCES
+        src/platform/linux/linux_mock.cpp
+        src/platform/linux/linux_serial.cpp
+        src/platform/linux/linux_i2c.cpp
+    )
+elseif(PLATFORM_WINDOWS)
+    list(APPEND PLATFORM_SOURCES
+        src/platform/windows/windows_mock.cpp
+        src/platform/windows/windows_serial.cpp
+    )
+endif()
+
+# All sources
+set(ALL_SOURCES
+    ${CORE_SOURCES}
+    ${SCANNER_SOURCES}
+    ${HARDWARE_SOURCES}
+    ${DATA_SOURCES}
+    ${UTILS_SOURCES}
+    ${PLATFORM_SOURCES}
+)
+
+# Create executable
+add_executable(${PROJECT_NAME} ${ALL_SOURCES})
+
+# Set include directories for target
+target_include_directories(${PROJECT_NAME} 
+    PUBLIC 
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+# Platform-specific libraries
+if(PLATFORM_ESP32)
+    # ESP32 with ESP-IDF would handle libraries differently
+    # This is for standalone CMake build
+    message(STATUS "ESP32 platform - libraries handled by ESP-IDF")
+elseif(PLATFORM_LINUX)
+    # Linux-specific libraries
+    target_link_libraries(${PROJECT_NAME} 
+        pthread
+        stdc++fs
+    )
+    
+    # Optional: Add real hardware support libraries
+    find_package(PkgConfig)
+    if(PkgConfig_FOUND)
+        # For I2C support
+        pkg_check_modules(I2C libi2c)
+        if(I2C_FOUND)
+            target_link_libraries(${PROJECT_NAME} ${I2C_LIBRARIES})
+            target_include_directories(${PROJECT_NAME} PRIVATE ${I2C_INCLUDE_DIRS})
+        endif()
+        
+        # For Bluetooth support
+        pkg_check_modules(BLUEZ bluez)
+        if(BLUEZ_FOUND)
+            target_link_libraries(${PROJECT_NAME} ${BLUEZ_LIBRARIES})
+            target_include_directories(${PROJECT_NAME} PRIVATE ${BLUEZ_INCLUDE_DIRS})
+        endif()
+    endif()
+elseif(PLATFORM_WINDOWS)
+    # Windows-specific libraries
+    target_link_libraries(${PROJECT_NAME} 
+        ws2_32  # For networking
+    )
+    # Filesystem library
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        target_link_libraries(${PROJECT_NAME} stdc++fs)
+    endif()
+endif()
+
+# Common libraries for all platforms
+if(NOT PLATFORM_ESP32)
+    # std::filesystem support
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9.0)
+            target_link_libraries(${PROJECT_NAME} stdc++fs)
+        endif()
+    elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 7.0)
+            target_link_libraries(${PROJECT_NAME} c++fs)
+        endif()
+    endif()
+endif()
+
+# Install target
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION bin
+)
+
+# Install configuration files
+install(FILES 
+    ${CMAKE_CURRENT_SOURCE_DIR}/config/device_config.json
+    DESTINATION etc/${PROJECT_NAME}
+    OPTIONAL
+)
+
+# Custom targets for development
+add_custom_target(format
+    COMMAND find ${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_SOURCE_DIR}/include 
+            -name '*.cpp' -o -name '*.h' -o -name '*.hpp' | xargs clang-format -i
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Formatting source code"
+)
+
+add_custom_target(clean-all
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_BINARY_DIR}
+    COMMENT "Cleaning all build files"
+)
+
+# Create build directories
+add_custom_target(create-dirs
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/logs
+    COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/data
+    COMMENT "Creating runtime directories"
+)
+
+# Testing (optional)
+option(BUILD_TESTS "Build unit tests" OFF)
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
+
+# Documentation (optional)
+option(BUILD_DOCS "Build documentation" OFF)
+if(BUILD_DOCS)
+    find_package(Doxygen)
+    if(DOXYGEN_FOUND)
+        set(DOXYGEN_GENERATE_HTML YES)
+        set(DOXYGEN_GENERATE_MAN NO)
+        set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs)
+        set(DOXYGEN_RECURSIVE YES)
+        set(DOXYGEN_EXTRACT_ALL YES)
+        set(DOXYGEN_EXTRACT_PRIVATE YES)
+        set(DOXYGEN_EXTRACT_STATIC YES)
+        
+        doxygen_add_docs(
+            docs
+            ${CMAKE_CURRENT_SOURCE_DIR}/include
+            ${CMAKE_CURRENT_SOURCE_DIR}/src
+            COMMENT "Generating API documentation with Doxygen"
+        )
+    endif()
+endif()
+
+# Package configuration
+option(BUILD_PACKAGE "Build installation package" OFF)
+if(BUILD_PACKAGE)
+    set(CPACK_GENERATOR "TGZ;ZIP")
+    set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+    set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION})
+    set(CPACK_PACKAGE_VENDOR "Forestry Research")
+    set(CPACK_PACKAGE_INSTALL_DIRECTORY ${PROJECT_NAME})
+    set(CPACK_SOURCE_IGNORE_FILES 
+        ${CMAKE_BINARY_DIR}
+        /\\.git/
+        /\\.vscode/
+        /build/
+        /\\.gitignore$
+    )
+    include(CPack)
+endif()
+
+# Configuration summary
+message(STATUS "")
+message(STATUS "====================================")
+message(STATUS "Configuration Summary:")
+message(STATUS "  Project: ${PROJECT_NAME} v${PROJECT_VERSION}")
+message(STATUS "  Build type: ${CMAKE_BUILD_TYPE}")
+message(STATUS "  C++ standard: ${CMAKE_CXX_STANDARD}")
+message(STATUS "  Platform: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "  Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
+message(STATUS "  Install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "")
+message(STATUS "Components:")
+message(STATUS "  WiFi Scanner: YES")
+message(STATUS "  BLE Scanner: YES")
+message(STATUS "  Battery Monitor: YES (BQ34Z100)")
+message(STATUS "  Power Manager: YES")
+message(STATUS "  SD Card: YES")
+message(STATUS "  Cellular: YES (SIM7600X)")
+message(STATUS "  RTC: YES (DS1307)")
+message(STATUS "  Logger: YES")
+message(STATUS "")
+message(STATUS "Options:")
+message(STATUS "  Build tests: ${BUILD_TESTS}")
+message(STATUS "  Build docs: ${BUILD_DOCS}")
+message(STATUS "  Build package: ${BUILD_PACKAGE}")
+message(STATUS "====================================")
+message(STATUS "")
+
+# For ESP32 with ESP-IDF, create a separate CMakeLists.txt in main/
+if(PLATFORM_ESP32 AND DEFINED ENV{IDF_PATH})
+    message(STATUS "ESP-IDF detected. Use 'idf.py build' instead of cmake directly.")
+    message(STATUS "Creating ESP-IDF component CMakeLists.txt in main/")
+    
+    file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/main/CMakeLists.txt 
+"idf_component_register(
+    SRCS 
+        \"../src/main.cpp\"
+        \"../src/scanners/wifi_scanner.cpp\"
+        \"../src/scanners/ble_scanner.cpp\"
+        \"../src/hardware/bq34z100_battery_monitor.cpp\"
+        \"../src/hardware/power_manager.cpp\"
+        \"../src/data/sdcard_manager.cpp\"
+        \"../src/data/cellular_manager.cpp\"
+        \"../src/data/rtc_time_manager.cpp\"
+        \"../src/utils/logger.cpp\"
+        \"../src/utils/utils.cpp\"
+    INCLUDE_DIRS 
+        \"../include\"
+    REQUIRES 
+        esp_wifi
+        esp_system
+        esp_event
+        nvs_flash
+        driver
+        fatfs
+        sdmmc
+        spi_flash
+        bt
+        esp_timer
+        esp_sleep
+        esp_pm
+        freertos
+        esp_http_client
+        esp_https_ota
+        app_update
+)")
+endif()

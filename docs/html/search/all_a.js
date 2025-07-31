@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['a_20new_20chat_3a_0',['🔄 &lt;b&gt;To Continue in a New Chat:&lt;/b&gt;',['../md__context.html#autotoc_md35',1,'']]],
+  ['abstraction_1',['Abstraction',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md41',1,'2. <b>Platform Abstraction</b>'],['../md__context.html#autotoc_md20',1,'<b>4. Platform Abstraction</b>']]],
+  ['access_2',['Component Access',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md54',1,'']]],
+  ['accomplishments_2090_20complete_20_3a_3',['&lt;b&gt;Major Accomplishments (90% Complete!):&lt;/b&gt;',['../md__context.html#autotoc_md31',1,'']]],
+  ['advanced_20features_4',['&lt;b&gt;LOW PRIORITY - Advanced Features&lt;/b&gt;',['../md__context.html#autotoc_md14',1,'']]],
+  ['advanced_20features_20implemented_5',['&lt;b&gt;Advanced Features Implemented&lt;/b&gt;',['../md__context.html#autotoc_md29',1,'']]],
+  ['all_6',['ALL',['../power__manager_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d',1,'ALL:&#160;power_manager.h'],['../main_8h.html#a4145a5bb637b4b78d0a7926f830b2f44a5fb1f955b45e38e31789286a1790398d',1,'ALL:&#160;power_manager.h']]],
+  ['application_20framework_7',['8. &lt;b&gt;Main Application Framework&lt;/b&gt;',['../md__context.html#autotoc_md10',1,'']]],
+  ['applied_8',['&lt;b&gt;Code Standards Applied&lt;/b&gt;',['../md__context.html#autotoc_md28',1,'']]],
+  ['applydriftcorrection_9',['applyDriftCorrection',['../class_r_t_c_time_manager.html#a3d28e2df3782a7d12c848d32238004ea',1,'RTCTimeManager']]],
+  ['architecture_10',['&lt;b&gt;1. Interface-Based Architecture&lt;/b&gt;',['../md__context.html#autotoc_md17',1,'']]],
+  ['architecture_20design_20core_20headers_11',['1. &lt;b&gt;Architecture Design &amp;amp; Core Headers&lt;/b&gt;',['../md__context.html#autotoc_md3',1,'']]],
+  ['architecture_20status_12',['🏗️ Current Architecture Status',['../md__context.html#autotoc_md15',1,'']]],
+  ['arduino_20ide_13',['For ESP32 with Arduino IDE',['../md__d_1_2_mobile_2_s_b__forest___research___firmware__v4_2_f_r-_mobile-_v4-_v_c_2_r_f-_mobile-_v4_2_migration.html#autotoc_md49',1,'']]],
+  ['asset_5fid_14',['ASSET_ID',['../namespace_config.html#a6b4401a831c6a5f1f899992b0c1d3318',1,'Config']]],
+  ['assetid_15',['assetId',['../struct_asset_info.html#ad8f370aff00e988b2bcbd91630968032',1,'AssetInfo']]],
+  ['assetinfo_16',['AssetInfo',['../struct_asset_info.html',1,'']]],
+  ['attempterrorrecovery_17',['attemptErrorRecovery',['../class_s_d_card_manager.html#a017d00a88df0ed0b672c82c8cc6ce0af',1,'SDCardManager']]],
+  ['availablespace_18',['availableSpace',['../struct_s_d_card_info.html#ac8639510667a3e0f080d1e9c4f1d5747',1,'SDCardInfo']]],
+  ['averagecurrent_19',['averageCurrent',['../struct_battery_status.html#a00d42cd7be5690d5ba74a8721ead1876',1,'BatteryStatus']]],
+  ['averagesleepduration_20',['averageSleepDuration',['../struct_power_stats.html#ab7e6464c7fc852c57f03bcb2f270fa77',1,'PowerStats']]],
+  ['averagetimetoempty_21',['averageTimeToEmpty',['../struct_battery_status.html#a458ba534a78dac338466799f27a6216c',1,'BatteryStatus']]]
+];

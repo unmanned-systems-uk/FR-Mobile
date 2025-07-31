@@ -1,0 +1,225 @@
+\doxysection{cellular\+\_\+manager.\+h}
+\hypertarget{cellular__manager_8h_source}{}\label{cellular__manager_8h_source}\index{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/cellular\_manager.h@{D:/Mobile/SB\_forest\_Research\_Firmware\_v4/FR-\/Mobile-\/V4-\/VC/RF-\/Mobile-\/V4/include/data/cellular\_manager.h}}
+\mbox{\hyperlink{cellular__manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}interfaces.h"{}}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00026}\mbox{\hyperlink{struct_signal_info}{00026}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_signal_info}{SignalInfo}}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00027}00027\ \{}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00028}\mbox{\hyperlink{struct_signal_info_aa403bb488ff48227f2a2989cd4f3bfb9}{00028}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_signal_info_aa403bb488ff48227f2a2989cd4f3bfb9}{rssi}}\ =\ -\/999;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00029}\mbox{\hyperlink{struct_signal_info_af9c4ea781b281799782eb02f3ff2b980}{00029}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_signal_info_af9c4ea781b281799782eb02f3ff2b980}{ber}}\ =\ 99;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00030}\mbox{\hyperlink{struct_signal_info_abda09a4e34eb7dd91c5aaeb1d3eb49de}{00030}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_signal_info_abda09a4e34eb7dd91c5aaeb1d3eb49de}{rsrp}}\ =\ -\/999;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00031}\mbox{\hyperlink{struct_signal_info_a9ab288047ef59a2de354b1da90291eb0}{00031}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_signal_info_a9ab288047ef59a2de354b1da90291eb0}{rsrq}}\ =\ -\/999;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00032}\mbox{\hyperlink{struct_signal_info_a47a880c35258ce9c2e6d27e0b6711917}{00032}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_signal_info_a47a880c35258ce9c2e6d27e0b6711917}{sinr}}\ =\ -\/999;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00033}\mbox{\hyperlink{struct_signal_info_a0b68c57341bc139f74d349c7374cbb89}{00033}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_signal_info_a0b68c57341bc139f74d349c7374cbb89}{networkType}};\ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00034}\mbox{\hyperlink{struct_signal_info_af4063a9ae0648dd996fa08e91af6bb9f}{00034}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_signal_info_af4063a9ae0648dd996fa08e91af6bb9f}{operatorName}};\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00035}\mbox{\hyperlink{struct_signal_info_aec96baeafb8edf0e545dc719f6bb746a}{00035}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_signal_info_aec96baeafb8edf0e545dc719f6bb746a}{roaming}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00036}00036\ \};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00041}\mbox{\hyperlink{struct_s_i_m_info}{00041}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_s_i_m_info}{SIMInfo}}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00043}\mbox{\hyperlink{struct_s_i_m_info_afc702a2042d857b8a08249fbedf41c1f}{00043}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_s_i_m_info_afc702a2042d857b8a08249fbedf41c1f}{imei}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00044}\mbox{\hyperlink{struct_s_i_m_info_adcfff7debc044ce3d7bd0dd2660aeed3}{00044}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_s_i_m_info_adcfff7debc044ce3d7bd0dd2660aeed3}{imsi}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00045}\mbox{\hyperlink{struct_s_i_m_info_afdc324e55aa7c623eacb1e320f682df4}{00045}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_s_i_m_info_afdc324e55aa7c623eacb1e320f682df4}{iccid}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00046}\mbox{\hyperlink{struct_s_i_m_info_a6f0c92af7fe174276c589719e5575bb6}{00046}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_s_i_m_info_a6f0c92af7fe174276c589719e5575bb6}{phoneNumber}};\ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00047}\mbox{\hyperlink{struct_s_i_m_info_a54baf6317a2e1fe2504d9f616e73cf54}{00047}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_s_i_m_info_a54baf6317a2e1fe2504d9f616e73cf54}{operatorName}};\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00048}\mbox{\hyperlink{struct_s_i_m_info_a7503a3899a067b83556ed421ca975fe6}{00048}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_s_i_m_info_a7503a3899a067b83556ed421ca975fe6}{pinRequired}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00049}\mbox{\hyperlink{struct_s_i_m_info_adc1168f9a5191ad56938b1a02fa5b1eb}{00049}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_s_i_m_info_adc1168f9a5191ad56938b1a02fa5b1eb}{ready}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00050}00050\ \};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00055}\mbox{\hyperlink{struct_connection_stats}{00055}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_connection_stats}{ConnectionStats}}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00057}\mbox{\hyperlink{struct_connection_stats_af2fc0f7dcaeee7ad30dc704118451ab4}{00057}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_connection_stats_af2fc0f7dcaeee7ad30dc704118451ab4}{bytesTransmitted}}\ =\ 0;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00058}\mbox{\hyperlink{struct_connection_stats_aabd94256cc46b9e0899e320602d8962e}{00058}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_connection_stats_aabd94256cc46b9e0899e320602d8962e}{bytesReceived}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00059}\mbox{\hyperlink{struct_connection_stats_ac34aee8df99315401c70210bf7aa5ebc}{00059}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_connection_stats_ac34aee8df99315401c70210bf7aa5ebc}{successfulConnections}}\ =\ 0;\ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00060}\mbox{\hyperlink{struct_connection_stats_a8178f47436d2d79beb3424279dca1713}{00060}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_connection_stats_a8178f47436d2d79beb3424279dca1713}{failedConnections}}\ =\ 0;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00061}\mbox{\hyperlink{struct_connection_stats_aa9e1684affb046c8beefe2a34e6b9446}{00061}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_connection_stats_aa9e1684affb046c8beefe2a34e6b9446}{httpRequestsSent}}\ =\ 0;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00062}\mbox{\hyperlink{struct_connection_stats_a68a99e30ccf138b03cc7a293f0da5665}{00062}}\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_connection_stats_a68a99e30ccf138b03cc7a293f0da5665}{httpRequestsSuccessful}}\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00063}\mbox{\hyperlink{struct_connection_stats_a98547928aecb182f143517358f896a7e}{00063}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_connection_stats_a98547928aecb182f143517358f896a7e}{totalConnectionTime}}\ =\ 0;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00064}\mbox{\hyperlink{struct_connection_stats_abfd54702a958d6194507ee65ca00326e}{00064}}\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{struct_connection_stats_abfd54702a958d6194507ee65ca00326e}{lastConnectionTime}}\ =\ 0;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00065}\mbox{\hyperlink{struct_connection_stats_a84344e78cd81c2f6e02c039cc582d25c}{00065}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_connection_stats_a84344e78cd81c2f6e02c039cc582d25c}{lastError}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00066}00066\ \};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00071}\mbox{\hyperlink{struct_h_t_t_p_response}{00071}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_h_t_t_p_response}{HTTPResponse}}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00073}\mbox{\hyperlink{struct_h_t_t_p_response_a77eadb87b99b44f99018c9cbcf26c549}{00073}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_h_t_t_p_response_a77eadb87b99b44f99018c9cbcf26c549}{statusCode}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00074}\mbox{\hyperlink{struct_h_t_t_p_response_ac1f255c3129550b5967ac1b2b11081a8}{00074}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_h_t_t_p_response_ac1f255c3129550b5967ac1b2b11081a8}{statusText}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00075}\mbox{\hyperlink{struct_h_t_t_p_response_a64a9aad0bf4cc1b2b5f7bbc8b3cb1867}{00075}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_h_t_t_p_response_a64a9aad0bf4cc1b2b5f7bbc8b3cb1867}{body}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00076}\mbox{\hyperlink{struct_h_t_t_p_response_a5cc4d04dbca2b18d0e4e971e1f6426db}{00076}}\ \ \ \ \ std::string\ \mbox{\hyperlink{struct_h_t_t_p_response_a5cc4d04dbca2b18d0e4e971e1f6426db}{headers}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00077}\mbox{\hyperlink{struct_h_t_t_p_response_ab44845077d3531dba50627eb9483ec9c}{00077}}\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{struct_h_t_t_p_response_ab44845077d3531dba50627eb9483ec9c}{contentLength}}\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00078}\mbox{\hyperlink{struct_h_t_t_p_response_a334ed0fcea65383b205ae0c457b0997d}{00078}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_h_t_t_p_response_a334ed0fcea65383b205ae0c457b0997d}{success}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00079}\mbox{\hyperlink{struct_h_t_t_p_response_aa1e711b4bc61d22a7d1c0d2fa3c9fc96}{00079}}\ \ \ \ \ std::chrono::milliseconds\ \mbox{\hyperlink{struct_h_t_t_p_response_aa1e711b4bc61d22a7d1c0d2fa3c9fc96}{responseTime}}\{0\};\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00080}00080\ \};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00098}\mbox{\hyperlink{class_cellular_manager}{00098}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cellular_manager_a64cd463ed759ad563d3f0bd9d3028095}{CellularManager}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_network_interface}{INetworkInterface}}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00099}00099\ \{}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00100}00100\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00107}\mbox{\hyperlink{class_cellular_manager_a64cd463ed759ad563d3f0bd9d3028095}{00107}}\ \ \ \ \ \mbox{\hyperlink{class_cellular_manager_a64cd463ed759ad563d3f0bd9d3028095}{CellularManager}}(\textcolor{keywordtype}{int}\ rxPin\ =\ 0,\ \textcolor{keywordtype}{int}\ txPin\ =\ 4,\ \textcolor{keywordtype}{int}\ netPin\ =\ 33);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00112}\mbox{\hyperlink{class_cellular_manager_ac22f2d9e34917aa6039d273e643bc699}{00112}}\ \ \ \ \ \mbox{\hyperlink{class_cellular_manager_ac22f2d9e34917aa6039d273e643bc699}{\string~CellularManager}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00114}00114\ \ \ \ \ \textcolor{comment}{//\ INetworkInterface\ implementation}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00119}\mbox{\hyperlink{class_cellular_manager_ac903c33125d1da07d1bedc7fe74cdca4}{00119}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_ac903c33125d1da07d1bedc7fe74cdca4}{connect}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00125}\mbox{\hyperlink{class_cellular_manager_a62e656c3a61de31415a6f931f0ce14f9}{00125}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a62e656c3a61de31415a6f931f0ce14f9}{disconnect}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00131}\mbox{\hyperlink{class_cellular_manager_a3298bff10977c232fc094ef58fdbc197}{00131}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a3298bff10977c232fc094ef58fdbc197}{isConnected}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00138}\mbox{\hyperlink{class_cellular_manager_aabd59f33e3c4d44d8e05dc32b5d56751}{00138}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_aabd59f33e3c4d44d8e05dc32b5d56751}{sendData}}(\textcolor{keyword}{const}\ std::string\ \&data)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00144}\mbox{\hyperlink{class_cellular_manager_adc96fcfbc4531bde2ba1043bbfd6f378}{00144}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_cellular_manager_adc96fcfbc4531bde2ba1043bbfd6f378}{getNetworkTime}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00146}00146\ \ \ \ \ \textcolor{comment}{//\ Cellular-\/specific\ operations}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00153}\mbox{\hyperlink{class_cellular_manager_a6f5a62dcaef3e79c38a3a14a83db75a8}{00153}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a6f5a62dcaef3e79c38a3a14a83db75a8}{initialize}}(uint32\_t\ baudRate\ =\ 115200,\ uint32\_t\ timeoutMs\ =\ 30000);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00159}\mbox{\hyperlink{class_cellular_manager_aeb87d325119d461dd344858160e4e9f4}{00159}}\ \ \ \ \ \mbox{\hyperlink{struct_s_i_m_info}{SIMInfo}}\ \mbox{\hyperlink{class_cellular_manager_aeb87d325119d461dd344858160e4e9f4}{getSIMInfo}}();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00165}\mbox{\hyperlink{class_cellular_manager_a6a95cdc41b68c0a3014770c594b24cd0}{00165}}\ \ \ \ \ \mbox{\hyperlink{struct_signal_info}{SignalInfo}}\ \mbox{\hyperlink{class_cellular_manager_a6a95cdc41b68c0a3014770c594b24cd0}{getSignalInfo}}();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00171}\mbox{\hyperlink{class_cellular_manager_a114a70c5591706593a39e21c5174d5b7}{00171}}\ \ \ \ \ \mbox{\hyperlink{struct_connection_stats}{ConnectionStats}}\ \mbox{\hyperlink{class_cellular_manager_a114a70c5591706593a39e21c5174d5b7}{getConnectionStats}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00173}00173\ \ \ \ \ \textcolor{comment}{//\ HTTP\ operations}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00180}\mbox{\hyperlink{class_cellular_manager_ad38778f3814cab6276c73e69abae7ffe}{00180}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_ad38778f3814cab6276c73e69abae7ffe}{setupHTTPService}}(\textcolor{keyword}{const}\ std::string\ \&url,\ \textcolor{keyword}{const}\ std::string\ \&contentType\ =\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00186}\mbox{\hyperlink{class_cellular_manager_aebf964e929a1a6cb41128226d43410e3}{00186}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_aebf964e929a1a6cb41128226d43410e3}{terminateHTTPService}}();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00194}\mbox{\hyperlink{class_cellular_manager_a362dfb7152b8553f079accde456b4530}{00194}}\ \ \ \ \ \mbox{\hyperlink{struct_h_t_t_p_response}{HTTPResponse}}\ \mbox{\hyperlink{class_cellular_manager_a362dfb7152b8553f079accde456b4530}{sendHTTPRequest}}(\textcolor{keyword}{const}\ std::string\ \&data,\ \textcolor{keywordtype}{bool}\ moreData\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00203}\mbox{\hyperlink{class_cellular_manager_a385038fdbdb56c1c523f45d9404089ba}{00203}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a385038fdbdb56c1c523f45d9404089ba}{sendDataInChunks}}(\textcolor{keyword}{const}\ std::string\ \&filename,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<IDataStorage>\ storage,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ chunkSize\ =\ 4096);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00207}00207\ \ \ \ \ \textcolor{comment}{//\ Network\ time\ and\ synchronization}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00212}\mbox{\hyperlink{class_cellular_manager_af0ce9644dd225c9b7725ea42c7583f07}{00212}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_af0ce9644dd225c9b7725ea42c7583f07}{enableNITZ}}();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00218}\mbox{\hyperlink{class_cellular_manager_a5910f6da0b564b8f4b17b0792923c373}{00218}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a5910f6da0b564b8f4b17b0792923c373}{enableCTZR}}();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00225}\mbox{\hyperlink{class_cellular_manager_a80efb22a321bf5e9d5c25d27673ed486}{00225}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a80efb22a321bf5e9d5c25d27673ed486}{isValidNetworkTime}}(\textcolor{keyword}{const}\ std::string\ \&timeString);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00227}00227\ \ \ \ \ \textcolor{comment}{//\ Connection\ management}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00233}\mbox{\hyperlink{class_cellular_manager_a609a93068fcdbff7b15d6bc2e8c62d4f}{00233}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a609a93068fcdbff7b15d6bc2e8c62d4f}{testNetworkConnectivity}}(\textcolor{keyword}{const}\ std::string\ \&testUrl\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00239}\mbox{\hyperlink{class_cellular_manager_a6a731045f09f6d8964f5c1f56eba8742}{00239}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a6a731045f09f6d8964f5c1f56eba8742}{checkSIMReady}}();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00246}\mbox{\hyperlink{class_cellular_manager_a4ffea795c60c2fd07038b8e3477d1855}{00246}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a4ffea795c60c2fd07038b8e3477d1855}{monitorNetworkStatus}}(uint32\_t\ timeoutMs\ =\ 10000);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00248}00248\ \ \ \ \ \textcolor{comment}{//\ Configuration\ and\ settings}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00256}\mbox{\hyperlink{class_cellular_manager_afcb3d5a8dc4050fc316aa7ef62cd0944}{00256}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_afcb3d5a8dc4050fc316aa7ef62cd0944}{configureAPN}}(\textcolor{keyword}{const}\ std::string\ \&apn\ =\ \textcolor{stringliteral}{"{}everywhere"{}},}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&username\ =\ \textcolor{stringliteral}{"{}"{}},}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&password\ =\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00264}\mbox{\hyperlink{class_cellular_manager_ab5dd6b8333b4798f3f08cb0ddfb18e15}{00264}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cellular_manager_ab5dd6b8333b4798f3f08cb0ddfb18e15}{setHTTPEndpoint}}(\textcolor{keyword}{const}\ std::string\ \&url)\ \{\ httpEndpoint\_\ =\ url;\ \}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00270}\mbox{\hyperlink{class_cellular_manager_a2b0c20e0b7f3a48e0376ff9dc65a6e94}{00270}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cellular_manager_a2b0c20e0b7f3a48e0376ff9dc65a6e94}{setMaxRetries}}(\textcolor{keywordtype}{int}\ maxRetries)\ \{\ maxRetries\_\ =\ maxRetries;\ \}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00276}\mbox{\hyperlink{class_cellular_manager_a987eb27ce97347e345557a8bc3a869db}{00276}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_cellular_manager_a987eb27ce97347e345557a8bc3a869db}{setCommandTimeout}}(uint32\_t\ timeoutMs)\ \{\ commandTimeoutMs\_\ =\ timeoutMs;\ \}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00278}00278\ \ \ \ \ \textcolor{comment}{//\ Error\ handling\ and\ diagnostics}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00283}\mbox{\hyperlink{class_cellular_manager_ad072343a23b2f9ff3132877bde907881}{00283}}\ \ \ \ \ std::string\ \mbox{\hyperlink{class_cellular_manager_ad072343a23b2f9ff3132877bde907881}{getLastError}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ lastError\_;\ \}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00289}\mbox{\hyperlink{class_cellular_manager_a78a569acfff7c60d2d13987d57d5f31e}{00289}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_a78a569acfff7c60d2d13987d57d5f31e}{performHealthCheck}}();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00296}\mbox{\hyperlink{class_cellular_manager_ab20206f3ac79f7c084161a3836d93215}{00296}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cellular_manager_ab20206f3ac79f7c084161a3836d93215}{resetModule}}(\textcolor{keywordtype}{bool}\ hardReset\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00298}00298\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00299}00299\ \ \ \ \ \textcolor{comment}{//\ Hardware\ configuration}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00300}00300\ \ \ \ \ \textcolor{keywordtype}{int}\ rxPin\_;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00301}00301\ \ \ \ \ \textcolor{keywordtype}{int}\ txPin\_;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00302}00302\ \ \ \ \ \textcolor{keywordtype}{int}\ netPin\_;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00303}00303\ \ \ \ \ uint32\_t\ baudRate\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00305}00305\ \ \ \ \ \textcolor{comment}{//\ Connection\ state}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00306}00306\ \ \ \ \ std::atomic<bool>\ connected\_;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00307}00307\ \ \ \ \ std::atomic<bool>\ httpServiceActive\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00308}00308\ \ \ \ \ \textcolor{keywordtype}{bool}\ initialized\_;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00310}00310\ \ \ \ \ \textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00311}00311\ \ \ \ \ std::string\ apnName\_;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00312}00312\ \ \ \ \ std::string\ apnUsername\_;\ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00313}00313\ \ \ \ \ std::string\ apnPassword\_;\ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00314}00314\ \ \ \ \ std::string\ httpEndpoint\_;\ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00315}00315\ \ \ \ \ \textcolor{keywordtype}{int}\ maxRetries\_;\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00316}00316\ \ \ \ \ uint32\_t\ commandTimeoutMs\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//\ State\ tracking}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00319}00319\ \ \ \ \ \mbox{\hyperlink{struct_s_i_m_info}{SIMInfo}}\ simInfo\_;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00320}00320\ \ \ \ \ \mbox{\hyperlink{struct_signal_info}{SignalInfo}}\ signalInfo\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00321}00321\ \ \ \ \ \mbox{\hyperlink{struct_connection_stats}{ConnectionStats}}\ stats\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00322}00322\ \ \ \ \ std::string\ lastError\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00324}00324\ \ \ \ \ \textcolor{comment}{//\ Thread\ safety}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00325}00325\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ operationMutex\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00326}00326\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ statsMutex\_;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00328}00328\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ handle}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00329}00329\ \ \ \ \ \textcolor{keywordtype}{void}\ *serialHandle\_;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00331}00331\ \ \ \ \ \textcolor{comment}{//\ AT\ command\ operations}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00340}00340\ \ \ \ \ \textcolor{keywordtype}{bool}\ sendATCommand(\textcolor{keyword}{const}\ std::string\ \&command,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&expectedResponse,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxAttempts\ =\ 3,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeoutMs\ =\ 0);\ \textcolor{comment}{//\ 0\ =\ use\ default\ timeout}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00353}00353\ \ \ \ \ \textcolor{keywordtype}{bool}\ sendATCommandPost(\textcolor{keyword}{const}\ std::string\ \&command,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&expectedResponse,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxAttempts\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeoutMs\ =\ 30000);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00363}00363\ \ \ \ \ std::string\ readSerialResponse(uint32\_t\ timeoutMs);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00368}00368\ \ \ \ \ \textcolor{keywordtype}{void}\ clearSerialBuffer();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00370}00370\ \ \ \ \ \textcolor{comment}{//\ Network\ operations}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00375}00375\ \ \ \ \ \textcolor{keywordtype}{bool}\ activatePDPContext();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00381}00381\ \ \ \ \ \textcolor{keywordtype}{bool}\ deactivatePDPContext();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00387}00387\ \ \ \ \ \textcolor{keywordtype}{bool}\ checkNetworkRegistration();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00389}00389\ \ \ \ \ \textcolor{comment}{//\ Data\ formatting\ and\ transmission}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00396}00396\ \ \ \ \ std::string\ createJSONPayload(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_asset_info}{AssetInfo}}\ \&asset,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\ \&dataLines);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00404}00404\ \ \ \ \ std::string\ escapeJSONString(\textcolor{keyword}{const}\ std::string\ \&input);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00412}00412\ \ \ \ \ \textcolor{keywordtype}{int}\ countLinesInFile(\textcolor{keyword}{const}\ std::string\ \&filename,}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::shared\_ptr<IDataStorage>\ storage);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00415}00415\ \ \ \ \ \textcolor{comment}{//\ Statistics\ and\ monitoring}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00422}00422\ \ \ \ \ \textcolor{keywordtype}{void}\ updateStats(\textcolor{keyword}{const}\ std::string\ \&operation,\ \textcolor{keywordtype}{bool}\ success,\ \textcolor{keywordtype}{size\_t}\ bytes\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00427}00427\ \ \ \ \ \textcolor{keywordtype}{void}\ updateSignalInfo();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00432}00432\ \ \ \ \ \textcolor{keywordtype}{void}\ updateSIMInfo();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00434}00434\ \ \ \ \ \textcolor{comment}{//\ Platform-\/specific\ implementations}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00439}00439\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformInitializeSerial();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00444}00444\ \ \ \ \ \textcolor{keywordtype}{void}\ platformCleanupSerial();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00450}00450\ \ \ \ \ \textcolor{keywordtype}{bool}\ platformSetupGPIO();}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00452}00452\ \ \ \ \ \textcolor{comment}{//\ Constants}}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00453}00453\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ DEFAULT\_BAUD\_RATE\ =\ 115200;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00454}00454\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ DEFAULT\_COMMAND\_TIMEOUT\ =\ 5000;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00455}00455\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ DEFAULT\_HTTP\_TIMEOUT\ =\ 30000;\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00456}00456\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DEFAULT\_MAX\_RETRIES\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00457}00457\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ SERIAL\_BUFFER\_SIZE\ =\ 1024;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00458}00458\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ MAX\_HTTP\_CHUNK\_SIZE\ =\ 4096;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00459}00459\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ uint32\_t\ NET\_PIN\_FLASH\_DELAY\_US\ =\ 50000000;\ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00460}00460\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NET\_PIN\_TEST\_FLASHES\ =\ 2;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00461}00461\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *DEFAULT\_APN\ =\ \textcolor{stringliteral}{"{}everywhere"{}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00462}00462\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *DEFAULT\_HTTP\_ENDPOINT\ =\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00463}00463\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}https://uk-\/610246-\/forestryresearchapi-\/app-\/dev-\/01.azurewebsites.net/api/DeviceData"{}};}
+\DoxyCodeLine{\Hypertarget{cellular__manager_8h_source_l00464}00464\ \};}
+
+\end{DoxyCode}
