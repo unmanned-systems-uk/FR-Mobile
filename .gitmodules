@@ -1,0 +1,3 @@
+[submodule "external/embedded_logger"]
+	path = external/embedded_logger
+	url = https://github.com/unmanned-systems-uk/embedded_logger.git
